@@ -1,0 +1,16 @@
+# Table of content
+# Learn more at https://jupyterbook.org/customize/toc.html
+#
+format: jb-book
+root: docs/intro
+parts:
+- caption: Getting started
+  chapters:
+#  - file: docs/capabilities
+#    section:
+#    - docs/functionals
+  - file: docs/installation
+- caption: References
+  chapters:
+  - file: docs/refs
+  
