@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home &#8212; VeloxChem program manual</title>
+    <title>Program structure &#8212; VeloxChem program manual</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -52,7 +52,8 @@
     <link rel="shortcut icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Installation" href="installation.html" />
+    <link rel="next" title="Source code structure" href="source_struct.html" />
+    <link rel="prev" title="X-ray spectroscpies" href="xray.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -83,8 +84,8 @@
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
- <li class="toctree-l1 current">
-  <a class="reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
    Home
   </a>
  </li>
@@ -190,9 +191,9 @@
   Advanced users
  </span>
 </p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="program_struct.html">
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Program structure
   </a>
  </li>
@@ -254,9 +255,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/docs/intro.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/docs/program_struct.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -274,7 +275,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fdocs/intro.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fdocs/program_struct.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -290,6 +291,23 @@
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/docs/program_struct.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
@@ -301,8 +319,8 @@
             <nav id="bd-toc-nav">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#next-generation-quantum-chemistry-software-for-molecular-properties">
-   Next-generation quantum chemistry software for molecular properties
+  <a class="reference internal nav-link" href="#classes">
+   Classes
   </a>
  </li>
 </ul>
@@ -316,33 +334,307 @@
         
               <div>
                 
-  <div class="section" id="home">
-<h1>Home<a class="headerlink" href="#home" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="next-generation-quantum-chemistry-software-for-molecular-properties">
-<h2>Next-generation quantum chemistry software for molecular properties<a class="headerlink" href="#next-generation-quantum-chemistry-software-for-molecular-properties" title="Permalink to this headline">¶</a></h2>
-<p>VeloxChem <span id="id1">[<a class="reference internal" href="refs.html#id29">RLV+20</a>]</span> is a Python-based open source quantum chemistry software developed for the calculation of molecular properties and simulation of a variety of spectroscopies.</p>
-<p>VeloxChem features interactive program access through Jupyter notebooks as well as large-scale calculations in contemporary high-performance computing (HPC) environments. A comprehensive presentation of the former desktop aspect is provided in the <a class="reference external" href="https://kthpanor.github.io/echem">eChem</a> book and this manual will focus on the latter HPC aspect.</p>
-<p><strong>Key capabilities</strong></p>
-<ul class="simple">
-<li><p>Kohn–Sham Density Functional Theory (DFT)</p></li>
-<li><p>Time-dependent DFT (TDDFT)</p></li>
-<li><p>Optical and X-ray absorption</p></li>
-<li><p>Electric circular dichroism (ECD)</p></li>
-<li><p>Polarizabilities and dispersion coefficients</p></li>
-<li><p>Complex polarization propagator (CPP)</p></li>
-<li><p>Response theory for pulses</p></li>
-</ul>
-<a class="bg-primary mb-1 reference internal image-reference" href="../_images/cover.png"><img alt="cover" class="bg-primary mb-1 align-center" src="../_images/cover.png" style="width: 400px;" /></a>
+  <div class="section" id="program-structure">
+<h1>Program structure<a class="headerlink" href="#program-structure" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">veloxchem</span> <span class="k">as</span> <span class="nn">vlx</span>
+</pre></div>
 </div>
-<div class="toctree-wrapper compound">
 </div>
-<div class="toctree-wrapper compound">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Warning * Environment variable OMP_NUM_THREADS not set.
+* Warning * Setting OMP_NUM_THREADS to 4.
+</pre></div>
 </div>
-<div class="toctree-wrapper compound">
 </div>
-<div class="toctree-wrapper compound">
 </div>
-<div class="toctree-wrapper compound">
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">vlx</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on package veloxchem:
+
+NAME
+    veloxchem
+
+DESCRIPTION
+    #                           VELOXCHEM 1.0-RC2
+    #         ----------------------------------------------------
+    #                     An Electronic Structure Code
+    #
+    #  Copyright © 2018-2021 by VeloxChem developers. All rights reserved.
+    #  Contact: https://veloxchem.org/contact
+    #
+    #  SPDX-License-Identifier: LGPL-3.0-or-later
+    #
+    #  This file is part of VeloxChem.
+    #
+    #  VeloxChem is free software: you can redistribute it and/or modify it under
+    #  the terms of the GNU Lesser General Public License as published by the Free
+    #  Software Foundation, either version 3 of the License, or (at your option)
+    #  any later version.
+    #
+    #  VeloxChem is distributed in the hope that it will be useful, but WITHOUT
+    #  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+    #  FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
+    #  License for more details.
+    #
+    #  You should have received a copy of the GNU Lesser General Public License
+    #  along with VeloxChem. If not, see &lt;https://www.gnu.org/licenses/&gt;.
+
+PACKAGE CONTENTS
+    __main__
+    aodensitymatrix
+    aofockmatrix
+    batchsize
+    blockdavidson
+    c2diis
+    c6solver
+    checkpoint
+    cli
+    cppsolver
+    cubicgrid
+    denguess
+    deprecations
+    distributedarray
+    environ
+    errorhandler
+    excitondriver
+    gradientdriver
+    inputparser
+    linearsolver
+    loprop
+    lreigensolver
+    lrsolver
+    main
+    mointsdriver
+    molecularbasis
+    molecularorbitals
+    molecule
+    mp2driver
+    mpitask
+    optimizationdriver
+    optimizationengine
+    outputstream
+    polembed
+    profiler
+    pulsedrsp
+    qqscheme
+    rspabsorption
+    rspc6
+    rspcdspec
+    rspcustomproperty
+    rspdriver
+    rsplinabscross
+    rsppolarizability
+    rspproperty
+    rsptpa
+    scfdriver
+    scffirstorderprop
+    scfgradientdriver
+    scfrestdriver
+    scfunrestdriver
+    signalhandler
+    slurminfo
+    subcommunicators
+    tdaexcidriver
+    tpadriver
+    tpafulldriver
+    tpareddriver
+    veloxchemlib
+    visualizationdriver
+    xtbdriver
+    xtbgradientdriver
+
+FUNCTIONS
+    ao_matrix_to_dalton(...) method of builtins.PyCapsule instance
+        ao_matrix_to_dalton(arg0: CDenseMatrix, arg1: veloxchem.veloxchemlib.MolecularBasis, arg2: veloxchem.veloxchemlib.Molecule) -&gt; CDenseMatrix
+    
+    ao_matrix_to_veloxchem(...) method of builtins.PyCapsule instance
+        ao_matrix_to_veloxchem(arg0: CDenseMatrix, arg1: veloxchem.veloxchemlib.MolecularBasis, arg2: veloxchem.veloxchemlib.Molecule) -&gt; CDenseMatrix
+    
+    bohr_in_angstroms(...) method of builtins.PyCapsule instance
+        bohr_in_angstroms() -&gt; float
+    
+    hartree_in_ev(...) method of builtins.PyCapsule instance
+        hartree_in_ev() -&gt; float
+    
+    hartree_in_kcalpermol(...) method of builtins.PyCapsule instance
+        hartree_in_kcalpermol() -&gt; float
+    
+    mathconst_pi(...) method of builtins.PyCapsule instance
+        mathconst_pi() -&gt; float
+    
+    mpi_initialized(...) method of builtins.PyCapsule instance
+        mpi_initialized() -&gt; bool
+    
+    mpi_master(...) method of builtins.PyCapsule instance
+        mpi_master() -&gt; int
+
+DATA
+    __deployed__ = {&#39;author&#39;: &#39;Roberto Di Remigio&#39;, &#39;commit&#39;: &#39;ffa16d355ed...
+
+VERSION
+    1.0rc2
+
+FILE
+    /opt/miniconda3/envs/vlxr02/lib/python3.9/site-packages/veloxchem/__init__.py
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">dir</span><span class="p">(</span><span class="n">vlx</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;AODensityMatrix&#39;,
+ &#39;AOFockMatrix&#39;,
+ &#39;Absorption&#39;,
+ &#39;AtomBasis&#39;,
+ &#39;BasisFunction&#39;,
+ &#39;BlockDavidsonSolver&#39;,
+ &#39;C6&#39;,
+ &#39;C6Solver&#39;,
+ &#39;CircularDichroismSpectrum&#39;,
+ &#39;ComplexResponse&#39;,
+ &#39;CubicGrid&#39;,
+ &#39;CustomProperty&#39;,
+ &#39;DenseMatrix&#39;,
+ &#39;DispersionModel&#39;,
+ &#39;ElectricDipoleIntegralsDriver&#39;,
+ &#39;ElectronRepulsionIntegralsDriver&#39;,
+ &#39;ExcitationVector&#39;,
+ &#39;ExcitonModelDriver&#39;,
+ &#39;InputParser&#39;,
+ &#39;KineticEnergyIntegralsDriver&#39;,
+ &#39;LinearAbsorptionCrossSection&#39;,
+ &#39;LinearResponseEigenSolver&#39;,
+ &#39;LinearResponseSolver&#39;,
+ &#39;LoPropDriver&#39;,
+ &#39;MOIntegralsDriver&#39;,
+ &#39;MOIntsBatch&#39;,
+ &#39;MolecularBasis&#39;,
+ &#39;MolecularOrbitals&#39;,
+ &#39;Molecule&#39;,
+ &#39;Mp2Driver&#39;,
+ &#39;MpiTask&#39;,
+ &#39;NuclearPotentialIntegralsDriver&#39;,
+ &#39;OptimizationDriver&#39;,
+ &#39;OutputStream&#39;,
+ &#39;OverlapIntegralsDriver&#39;,
+ &#39;Polarizability&#39;,
+ &#39;ResponseDriver&#39;,
+ &#39;ResponseProperty&#39;,
+ &#39;SADGuessDriver&#39;,
+ &#39;ScfFirstOrderProperties&#39;,
+ &#39;ScfGradientDriver&#39;,
+ &#39;ScfRestrictedDriver&#39;,
+ &#39;ScfUnrestrictedDriver&#39;,
+ &#39;SubCommunicators&#39;,
+ &#39;TDAExciDriver&#39;,
+ &#39;TwoIndexes&#39;,
+ &#39;VisualizationDriver&#39;,
+ &#39;XTBDriver&#39;,
+ &#39;XTBGradientDriver&#39;,
+ &#39;__builtins__&#39;,
+ &#39;__cached__&#39;,
+ &#39;__deployed__&#39;,
+ &#39;__doc__&#39;,
+ &#39;__file__&#39;,
+ &#39;__loader__&#39;,
+ &#39;__name__&#39;,
+ &#39;__package__&#39;,
+ &#39;__path__&#39;,
+ &#39;__spec__&#39;,
+ &#39;__version__&#39;,
+ &#39;ao_matrix_to_dalton&#39;,
+ &#39;ao_matrix_to_veloxchem&#39;,
+ &#39;aodensitymatrix&#39;,
+ &#39;aofockmatrix&#39;,
+ &#39;assert_msg_critical&#39;,
+ &#39;batchsize&#39;,
+ &#39;blockdavidson&#39;,
+ &#39;bohr_in_angstroms&#39;,
+ &#39;c2diis&#39;,
+ &#39;c6solver&#39;,
+ &#39;checkpoint&#39;,
+ &#39;cppsolver&#39;,
+ &#39;cubicgrid&#39;,
+ &#39;denguess&#39;,
+ &#39;denmat&#39;,
+ &#39;deprecations&#39;,
+ &#39;distributedarray&#39;,
+ &#39;environ&#39;,
+ &#39;ericut&#39;,
+ &#39;errorhandler&#39;,
+ &#39;excitondriver&#39;,
+ &#39;fockmat&#39;,
+ &#39;get_basis_path&#39;,
+ &#39;get_qq_scheme&#39;,
+ &#39;get_qq_type&#39;,
+ &#39;gradientdriver&#39;,
+ &#39;hartree_in_ev&#39;,
+ &#39;hartree_in_kcalpermol&#39;,
+ &#39;inputparser&#39;,
+ &#39;linearsolver&#39;,
+ &#39;loprop&#39;,
+ &#39;lreigensolver&#39;,
+ &#39;lrsolver&#39;,
+ &#39;mathconst_pi&#39;,
+ &#39;moints&#39;,
+ &#39;mointsdriver&#39;,
+ &#39;molecularbasis&#39;,
+ &#39;molecularorbitals&#39;,
+ &#39;molecule&#39;,
+ &#39;molorb&#39;,
+ &#39;mp2driver&#39;,
+ &#39;mpi_initialized&#39;,
+ &#39;mpi_master&#39;,
+ &#39;mpitask&#39;,
+ &#39;optimizationdriver&#39;,
+ &#39;optimizationengine&#39;,
+ &#39;outputstream&#39;,
+ &#39;profiler&#39;,
+ &#39;qqscheme&#39;,
+ &#39;rspabsorption&#39;,
+ &#39;rspc6&#39;,
+ &#39;rspcdspec&#39;,
+ &#39;rspcustomproperty&#39;,
+ &#39;rspdriver&#39;,
+ &#39;rsplinabscross&#39;,
+ &#39;rsppolarizability&#39;,
+ &#39;rspproperty&#39;,
+ &#39;scfdriver&#39;,
+ &#39;scffirstorderprop&#39;,
+ &#39;scfgradientdriver&#39;,
+ &#39;scfrestdriver&#39;,
+ &#39;scfunrestdriver&#39;,
+ &#39;set_omp_num_threads&#39;,
+ &#39;set_vlxbasispath&#39;,
+ &#39;signalhandler&#39;,
+ &#39;subcommunicators&#39;,
+ &#39;szblock&#39;,
+ &#39;tdaexcidriver&#39;,
+ &#39;tpadriver&#39;,
+ &#39;tpafulldriver&#39;,
+ &#39;tpareddriver&#39;,
+ &#39;veloxchemlib&#39;,
+ &#39;visualizationdriver&#39;,
+ &#39;xtbdriver&#39;,
+ &#39;xtbgradientdriver&#39;]
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 
@@ -371,7 +663,8 @@
         
         <div class='prev-next-bottom'>
             
-    <a class='right-next' id="next-link" href="installation.html" title="next page">Installation</a>
+    <a class='left-prev' id="prev-link" href="xray.html" title="previous page">X-ray spectroscpies</a>
+    <a class='right-next' id="next-link" href="source_struct.html" title="next page">Source code structure</a>
 
         </div>
         

@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home &#8212; VeloxChem program manual</title>
+    <title>Environment &#8212; VeloxChem program manual</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -52,7 +52,8 @@
     <link rel="shortcut icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Installation" href="installation.html" />
+    <link rel="next" title="UV/vis absorption/emission" href="uv-vis.html" />
+    <link rel="prev" title="Hamiltonian" href="hamiltonian.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -83,8 +84,8 @@
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
- <li class="toctree-l1 current">
-  <a class="reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
    Home
   </a>
  </li>
@@ -121,7 +122,7 @@
   Model chemistry
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="functionals.html">
    Exchange–correlation funcitonals
@@ -137,8 +138,8 @@
    Hamiltonian
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="embedding.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Environment
   </a>
  </li>
@@ -254,7 +255,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/docs/intro.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/docs/embedding.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -274,7 +275,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fdocs/intro.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fdocs/embedding.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -301,8 +302,30 @@
             <nav id="bd-toc-nav">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#next-generation-quantum-chemistry-software-for-molecular-properties">
-   Next-generation quantum chemistry software for molecular properties
+  <a class="reference internal nav-link" href="#localized-properties">
+   Localized properties
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#esp-charges">
+     ESP charges
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#resp-charges">
+     RESP charges
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#loprop-charges-and-polarizabilities">
+     LoProp charges and polarizabilities
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#polarizable-embedding">
+   Polarizable embedding
   </a>
  </li>
 </ul>
@@ -316,33 +339,22 @@
         
               <div>
                 
-  <div class="section" id="home">
-<h1>Home<a class="headerlink" href="#home" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="next-generation-quantum-chemistry-software-for-molecular-properties">
-<h2>Next-generation quantum chemistry software for molecular properties<a class="headerlink" href="#next-generation-quantum-chemistry-software-for-molecular-properties" title="Permalink to this headline">¶</a></h2>
-<p>VeloxChem <span id="id1">[<a class="reference internal" href="refs.html#id29">RLV+20</a>]</span> is a Python-based open source quantum chemistry software developed for the calculation of molecular properties and simulation of a variety of spectroscopies.</p>
-<p>VeloxChem features interactive program access through Jupyter notebooks as well as large-scale calculations in contemporary high-performance computing (HPC) environments. A comprehensive presentation of the former desktop aspect is provided in the <a class="reference external" href="https://kthpanor.github.io/echem">eChem</a> book and this manual will focus on the latter HPC aspect.</p>
-<p><strong>Key capabilities</strong></p>
-<ul class="simple">
-<li><p>Kohn–Sham Density Functional Theory (DFT)</p></li>
-<li><p>Time-dependent DFT (TDDFT)</p></li>
-<li><p>Optical and X-ray absorption</p></li>
-<li><p>Electric circular dichroism (ECD)</p></li>
-<li><p>Polarizabilities and dispersion coefficients</p></li>
-<li><p>Complex polarization propagator (CPP)</p></li>
-<li><p>Response theory for pulses</p></li>
-</ul>
-<a class="bg-primary mb-1 reference internal image-reference" href="../_images/cover.png"><img alt="cover" class="bg-primary mb-1 align-center" src="../_images/cover.png" style="width: 400px;" /></a>
+  <div class="section" id="environment">
+<h1>Environment<a class="headerlink" href="#environment" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="localized-properties">
+<h2>Localized properties<a class="headerlink" href="#localized-properties" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="esp-charges">
+<h3>ESP charges<a class="headerlink" href="#esp-charges" title="Permalink to this headline">¶</a></h3>
 </div>
-<div class="toctree-wrapper compound">
+<div class="section" id="resp-charges">
+<h3>RESP charges<a class="headerlink" href="#resp-charges" title="Permalink to this headline">¶</a></h3>
 </div>
-<div class="toctree-wrapper compound">
+<div class="section" id="loprop-charges-and-polarizabilities">
+<h3>LoProp charges and polarizabilities<a class="headerlink" href="#loprop-charges-and-polarizabilities" title="Permalink to this headline">¶</a></h3>
 </div>
-<div class="toctree-wrapper compound">
 </div>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
+<div class="section" id="polarizable-embedding">
+<h2>Polarizable embedding<a class="headerlink" href="#polarizable-embedding" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
@@ -371,7 +383,8 @@
         
         <div class='prev-next-bottom'>
             
-    <a class='right-next' id="next-link" href="installation.html" title="next page">Installation</a>
+    <a class='left-prev' id="prev-link" href="hamiltonian.html" title="previous page">Hamiltonian</a>
+    <a class='right-next' id="next-link" href="uv-vis.html" title="next page">UV/vis absorption/emission</a>
 
         </div>
         
