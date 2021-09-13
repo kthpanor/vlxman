@@ -6,10 +6,29 @@ root: docs/intro
 parts:
 - caption: Getting started
   chapters:
-#  - file: docs/capabilities
-#    section:
-#    - docs/functionals
   - file: docs/installation
+  - file: docs/run_input
+  - file: docs/run_nb
+  - file: docs/run_cluster
+- caption: Model chemistry
+  chapters:
+  - file: docs/functionals
+  - file: docs/basis_sets
+  - file: docs/hamiltonian
+  - file: docs/embedding
+- caption: Properties
+  chapters:
+  - file: docs/uv-vis
+  - file: docs/opt_act
+  - file: docs/vib_spect
+  - file: docs/pes
+  - file: docs/magnetic
+  - file: docs/nlo
+  - file: docs/xray
+- caption: Advanced users
+  chapters:
+  - file: docs/program_struct
+  - file: docs/source_struct
 - caption: References
   chapters:
   - file: docs/refs

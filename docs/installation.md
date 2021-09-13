@@ -348,3 +348,9 @@ $ make install
 # Set XTBHOME prior to installing VeloxChem
 $ export XTBHOME=/path/to/your/xtb
 ```
+## Release versions
+
+- 1.0-rc2 (2021-04-23) Second release candidate
+
+- 1.0-rc (2020-02-28) First release candidate
+
