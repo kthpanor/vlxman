@@ -53,7 +53,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Hamiltonian" href="hamiltonian.html" />
-    <link rel="prev" title="Exchange–correlation funcitonals" href="functionals.html" />
+    <link rel="prev" title="Exchange–correlation functionals" href="functionals.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -125,7 +125,7 @@
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="functionals.html">
-   Exchange–correlation funcitonals
+   Exchange–correlation functionals
   </a>
  </li>
  <li class="toctree-l1 current active">
@@ -255,9 +255,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/docs/basis_sets.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/docs/basis_sets.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -291,6 +291,23 @@
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/docs/basis_sets.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
@@ -302,13 +319,18 @@
             <nav id="bd-toc-nav">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#basis-set-specification">
+   Basis set specification
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#available-basis-sets">
    Available basis sets
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#effective-core-potentials">
-   Effective-core potentials
+  <a class="reference internal nav-link" href="#effective-core-potential-basis-sets">
+   Effective-core potential basis sets
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -329,14 +351,113 @@
                 
   <div class="section" id="basis-sets">
 <h1>Basis sets<a class="headerlink" href="#basis-sets" title="Permalink to this headline">¶</a></h1>
+<p>Let us consider an example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">veloxchem</span> <span class="k">as</span> <span class="nn">vlx</span>
+
+<span class="n">mol_str</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">C        0.00000000    0.00000000    0.00000000</span>
+<span class="s2">O        0.00000000    0.00000000    1.43</span>
+<span class="s2">&quot;&quot;&quot;</span>
+<span class="n">molecule</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">Molecule</span><span class="o">.</span><span class="n">read_str</span><span class="p">(</span><span class="n">mol_str</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s1">&#39;angstrom&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">molecule</span><span class="o">.</span><span class="n">get_string</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Warning * Environment variable OMP_NUM_THREADS not set.
+* Warning * Setting OMP_NUM_THREADS to 4.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Molecular Geometry (Angstroms)
+================================
+
+  Atom         Coordinate X          Coordinate Y          Coordinate Z  
+
+  C           0.000000000000        0.000000000000        0.000000000000
+  O           0.000000000000        0.000000000000        1.430000000000
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="basis-set-specification">
+<h2>Basis set specification<a class="headerlink" href="#basis-set-specification" title="Permalink to this headline">¶</a></h2>
+<p>A basis set is specfied with the <code class="docutils literal notranslate"><span class="pre">read</span></code> method of the <code class="docutils literal notranslate"><span class="pre">MolecularBasis</span></code> class.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">basis</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">MolecularBasis</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="s1">&#39;cc-pVDZ&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">basis</span><span class="o">.</span><span class="n">get_string</span><span class="p">(</span><span class="s1">&#39;cc-pVDZ&#39;</span><span class="p">,</span> <span class="n">molecule</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Molecular Basis (cc-pVDZ)
+===========================
+
+Basis: CC-PVDZ                                        
+
+  Atom Contracted GTOs          Primitive GTOs           
+
+  C   (3S,2P,1D)               (17S,4P,1D)              
+  O   (3S,2P,1D)               (17S,4P,1D)              
+
+Contracted Basis Functions : 28                       
+Primitive Basis Functions  : 68                       
+</pre></div>
+</div>
+</div>
+</div>
+</div>
 <div class="section" id="available-basis-sets">
 <h2>Available basis sets<a class="headerlink" href="#available-basis-sets" title="Permalink to this headline">¶</a></h2>
+<p>The basis sets provided in the VeloxChem library for a specific element can be listed with the <code class="docutils literal notranslate"><span class="pre">get_avail_basis</span></code> method of the <code class="docutils literal notranslate"><span class="pre">MolecularBasis</span></code> class.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Available basis sets for carbon:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">vlx</span><span class="o">.</span><span class="n">MolecularBasis</span><span class="o">.</span><span class="n">get_avail_basis</span><span class="p">(</span><span class="s1">&#39;C&#39;</span><span class="p">))</span>
+</pre></div>
 </div>
-<div class="section" id="effective-core-potentials">
-<h2>Effective-core potentials<a class="headerlink" href="#effective-core-potentials" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Available basis sets for carbon:
+ [&#39;6-31++G&#39;, &#39;6-31+G&#39;, &#39;6-31+G(D,P)&#39;, &#39;6-311++G&#39;, &#39;6-311++G(2D,2P)&#39;, &#39;6-311++G(D,P)&#39;, &#39;6-311+G&#39;, &#39;6-311+G(2D,P)&#39;, &#39;6-311G&#39;, &#39;6-311G(2DF,2PD)&#39;, &#39;6-31G&#39;, &#39;6-31G(2DF,P)&#39;, &#39;AUG-CC-PCVDZ&#39;, &#39;AUG-CC-PCVQZ&#39;, &#39;AUG-CC-PCVTZ&#39;, &#39;AUG-CC-PVDZ&#39;, &#39;AUG-CC-PVTZ&#39;, &#39;CC-PCVDZ&#39;, &#39;CC-PVDZ&#39;, &#39;CC-PVDZ-RI&#39;, &#39;CC-PVTZ&#39;, &#39;CC-PVTZ-RI&#39;, &#39;D-AUG-CC-PVDZ&#39;, &#39;D-AUG-CC-PVQZ&#39;, &#39;D-AUG-CC-PVTZ&#39;, &#39;DEF2-QZVP&#39;, &#39;DEF2-QZVPD&#39;, &#39;DEF2-QZVPP&#39;, &#39;DEF2-QZVPPD&#39;, &#39;DEF2-RI-J&#39;, &#39;DEF2-SV(P)&#39;, &#39;DEF2-SVP&#39;, &#39;DEF2-SVPD&#39;, &#39;DEF2-TZVP&#39;, &#39;DEF2-TZVPP&#39;, &#39;DEF2-TZVPPD&#39;, &#39;MIN-CC-PVDZ&#39;, &#39;SADLEJ-PVTZ&#39;, &#39;STO-3G&#39;, &#39;STO-6G&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="effective-core-potential-basis-sets">
+<h2>Effective-core potential basis sets<a class="headerlink" href="#effective-core-potential-basis-sets" title="Permalink to this headline">¶</a></h2>
+<p>Effective-core potatials are in the process of being implmented in VeloxChem.</p>
 </div>
 <div class="section" id="adding-a-basis-set">
 <h2>Adding a basis set<a class="headerlink" href="#adding-a-basis-set" title="Permalink to this headline">¶</a></h2>
+<p>You can provide you own basis set file in the job submission directory. The format of this file exeplified below for a single element (carbon), listing separated contracted atomic orbitals (AOs) after one another with specification made of the orbital angular momentum and number of Gaussian primitive functions.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@BASIS_SET</span> <span class="n">my_basis</span>
+
+<span class="nd">@ATOMBASIS</span> <span class="n">C</span>
+<span class="n">S</span> <span class="mi">6</span>  <span class="mi">1</span>
+<span class="mf">3.047524900000e+03</span>  <span class="mf">1.834700000000e-03</span>
+<span class="mf">4.573695100000e+02</span>  <span class="mf">1.403730000000e-02</span>
+<span class="mf">1.039486900000e+02</span>  <span class="mf">6.884260000000e-02</span>
+<span class="mf">2.921015500000e+01</span>  <span class="mf">2.321844000000e-01</span>
+<span class="mf">9.286663000000e+00</span>  <span class="mf">4.679413000000e-01</span>
+<span class="mf">3.163927000000e+00</span>  <span class="mf">3.623120000000e-01</span>
+<span class="n">S</span> <span class="mi">3</span>  <span class="mi">1</span>
+<span class="mf">7.868272400000e+00</span> <span class="o">-</span><span class="mf">1.193324000000e-01</span>
+<span class="mf">1.881288500000e+00</span> <span class="o">-</span><span class="mf">1.608542000000e-01</span>
+<span class="mf">5.442493000000e-01</span>  <span class="mf">1.143456400000e+00</span>
+<span class="n">P</span> <span class="mi">3</span>  <span class="mi">1</span>
+<span class="mf">7.868272400000e+00</span>  <span class="mf">6.899910000000e-02</span>
+<span class="mf">1.881288500000e+00</span>  <span class="mf">3.164240000000e-01</span>
+<span class="mf">5.442493000000e-01</span>  <span class="mf">7.443083000000e-01</span>
+<span class="n">S</span> <span class="mi">1</span>  <span class="mi">1</span>
+<span class="mf">1.687144000000e-01</span>  <span class="mf">1.000000000000e+00</span>
+<span class="n">P</span> <span class="mi">1</span>  <span class="mi">1</span>
+<span class="mf">1.687144000000e-01</span>  <span class="mf">1.000000000000e+00</span>
+<span class="nd">@END</span>
+</pre></div>
+</div>
 </div>
 </div>
 
@@ -365,7 +486,7 @@
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="functionals.html" title="previous page">Exchange–correlation funcitonals</a>
+    <a class='left-prev' id="prev-link" href="functionals.html" title="previous page">Exchange–correlation functionals</a>
     <a class='right-next' id="next-link" href="hamiltonian.html" title="next page">Hamiltonian</a>
 
         </div>

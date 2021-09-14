@@ -125,7 +125,7 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="functionals.html">
-   Exchange–correlation funcitonals
+   Exchange–correlation functionals
   </a>
  </li>
  <li class="toctree-l1">
@@ -323,6 +323,11 @@
    Classes
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#methods-and-properties">
+   Methods and properties
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -349,7 +354,10 @@
 </div>
 </div>
 </div>
-<div class="cell tag_hide-output docutils container">
+<p>The VeloxChem program adopts a layered Python/C++ language structure.</p>
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/code-structure.png"><img alt="veloxchem-structure" class="bg-primary mb-1 align-center" src="../_images/code-structure.png" style="width: 600px;" /></a>
+<p>You can use the standard functions to get a more detailed view of the Python layer. The <code class="docutils literal notranslate"><span class="pre">help</span></code> function will give you a package description, stating the copyright agreement.</p>
+<div class="cell tag_output_scroll docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">vlx</span><span class="p">)</span>
 </pre></div>
@@ -489,7 +497,8 @@ FILE
 </div>
 <div class="section" id="classes">
 <h2>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
-<div class="cell tag_hide-output docutils container">
+<p>The functionality of VeloxChem is built into the classes it implements. An overview of the available classes is provided with the <code class="docutils literal notranslate"><span class="pre">dir</span></code> function.</p>
+<div class="cell tag_output_scroll docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">dir</span><span class="p">(</span><span class="n">vlx</span><span class="p">)</span>
 </pre></div>
@@ -631,6 +640,109 @@ FILE
  &#39;visualizationdriver&#39;,
  &#39;xtbdriver&#39;,
  &#39;xtbgradientdriver&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Information about a specific class is available from the docstring.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">vlx</span><span class="o">.</span><span class="n">ScfUnrestrictedDriver</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Implements spin unrestricted open shell SCF method with C2-DIIS and
+    two-level C2-DIIS convergence accelerators.
+
+    :param comm:
+        The MPI communicator.
+    :param ostream:
+        The output stream.
+    
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="methods-and-properties">
+<h2>Methods and properties<a class="headerlink" href="#methods-and-properties" title="Permalink to this headline">¶</a></h2>
+<p>The actual calculations are performed by the methods in the classes. To list the properties and methods of a class, the <code class="docutils literal notranslate"><span class="pre">dir</span></code> function can be used as follows.</p>
+<div class="cell tag_output_scroll docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">dir</span><span class="p">(</span><span class="n">vlx</span><span class="o">.</span><span class="n">ScfRestrictedDriver</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;__class__&#39;,
+ &#39;__delattr__&#39;,
+ &#39;__dict__&#39;,
+ &#39;__dir__&#39;,
+ &#39;__doc__&#39;,
+ &#39;__eq__&#39;,
+ &#39;__format__&#39;,
+ &#39;__ge__&#39;,
+ &#39;__getattribute__&#39;,
+ &#39;__gt__&#39;,
+ &#39;__hash__&#39;,
+ &#39;__init__&#39;,
+ &#39;__init_subclass__&#39;,
+ &#39;__le__&#39;,
+ &#39;__lt__&#39;,
+ &#39;__module__&#39;,
+ &#39;__ne__&#39;,
+ &#39;__new__&#39;,
+ &#39;__reduce__&#39;,
+ &#39;__reduce_ex__&#39;,
+ &#39;__repr__&#39;,
+ &#39;__setattr__&#39;,
+ &#39;__sizeof__&#39;,
+ &#39;__str__&#39;,
+ &#39;__subclasshook__&#39;,
+ &#39;__weakref__&#39;,
+ &#39;add_iter_data&#39;,
+ &#39;check_convergence&#39;,
+ &#39;comp_2e_fock&#39;,
+ &#39;comp_2e_fock_single_comm&#39;,
+ &#39;comp_2e_fock_split_comm&#39;,
+ &#39;comp_density_change&#39;,
+ &#39;comp_diis&#39;,
+ &#39;comp_energy&#39;,
+ &#39;comp_full_fock&#39;,
+ &#39;comp_gradient&#39;,
+ &#39;comp_guess_density&#39;,
+ &#39;comp_npot_mat_split_comm&#39;,
+ &#39;comp_one_ints&#39;,
+ &#39;compute&#39;,
+ &#39;compute_s2&#39;,
+ &#39;delete_mos&#39;,
+ &#39;gen_molecular_orbitals&#39;,
+ &#39;gen_new_density&#39;,
+ &#39;get_acc_type&#39;,
+ &#39;get_dyn_threshold&#39;,
+ &#39;get_effective_fock&#39;,
+ &#39;get_guess_type&#39;,
+ &#39;get_qq_dyn&#39;,
+ &#39;get_scaled_fock&#39;,
+ &#39;get_scf_energy&#39;,
+ &#39;get_scf_range&#39;,
+ &#39;get_scf_type&#39;,
+ &#39;graceful_exit&#39;,
+ &#39;need_graceful_exit&#39;,
+ &#39;print_energy_components&#39;,
+ &#39;print_ground_state&#39;,
+ &#39;print_header&#39;,
+ &#39;print_iter_data&#39;,
+ &#39;print_scf_energy&#39;,
+ &#39;print_scf_finish&#39;,
+ &#39;print_scf_title&#39;,
+ &#39;set_skip_iter_flag&#39;,
+ &#39;store_diis_data&#39;,
+ &#39;update_fock_type&#39;,
+ &#39;update_mol_orbs_phase&#39;,
+ &#39;update_settings&#39;,
+ &#39;write_checkpoint&#39;]
 </pre></div>
 </div>
 </div>

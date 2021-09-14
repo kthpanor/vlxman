@@ -52,7 +52,7 @@
     <link rel="shortcut icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Exchange–correlation funcitonals" href="functionals.html" />
+    <link rel="next" title="Exchange–correlation functionals" href="functionals.html" />
     <link rel="prev" title="Running in a Notebook" href="run_nb.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -125,7 +125,7 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="functionals.html">
-   Exchange–correlation funcitonals
+   Exchange–correlation functionals
   </a>
  </li>
  <li class="toctree-l1">
@@ -306,6 +306,33 @@
                 
   <div class="section" id="running-on-a-cluster">
 <h1>Running on a cluster<a class="headerlink" href="#running-on-a-cluster" title="Permalink to this headline">¶</a></h1>
+<p>A SLURM job submission script for VeloxChem can take something of the following form:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+
+#SBATCH --time=10:00:00
+
+#SBATCH --nodes=4
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=32
+
+# setup the environemnt
+module load buildtool-easybuild/3.5.3-nsc17d8ce4
+module load intel/2018a
+module load Python/3.6.4-nsc2-intel-2018a-eb
+
+# activate veloxchem
+source $HOME/software/VeloxChemMP/venv/bin/activate
+
+# number of threads should match the SLURM specification
+export OMP_NUM_THREADS=32
+
+# start the calculation
+job=water
+mpirun python3 -m veloxchem ${job}.inp ${job}.out
+
+# end of script
+</pre></div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -334,7 +361,7 @@
         <div class='prev-next-bottom'>
             
     <a class='left-prev' id="prev-link" href="run_nb.html" title="previous page">Running in a Notebook</a>
-    <a class='right-next' id="next-link" href="functionals.html" title="next page">Exchange–correlation funcitonals</a>
+    <a class='right-next' id="next-link" href="functionals.html" title="next page">Exchange–correlation functionals</a>
 
         </div>
         

@@ -125,7 +125,7 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="functionals.html">
-   Exchange–correlation funcitonals
+   Exchange–correlation functionals
   </a>
  </li>
  <li class="toctree-l1">
@@ -326,9 +326,30 @@
 <h1>Source code structure<a class="headerlink" href="#source-code-structure" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="python-layer">
 <h2>Python layer<a class="headerlink" href="#python-layer" title="Permalink to this headline">¶</a></h2>
+<p>In a Jupyter notebook, the file module locatation of an object can be found with by adding “?” at the end of an object name:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>vlx.ScfRestrictedDriver.compute?
+</pre></div>
+</div>
+<p>In return the following information is given:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Signature</span><span class="p">:</span> <span class="n">vlx</span><span class="o">.</span><span class="n">ScfRestrictedDriver</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">molecule</span><span class="p">,</span> <span class="n">ao_basis</span><span class="p">,</span> <span class="n">min_basis</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">Docstring</span><span class="p">:</span>
+<span class="n">Performs</span> <span class="n">SCF</span> <span class="n">calculation</span> <span class="n">using</span> <span class="n">molecular</span> <span class="n">data</span><span class="o">.</span>
+
+<span class="p">:</span><span class="n">param</span> <span class="n">molecule</span><span class="p">:</span>
+    <span class="n">The</span> <span class="n">molecule</span><span class="o">.</span>
+<span class="p">:</span><span class="n">param</span> <span class="n">ao_basis</span><span class="p">:</span>
+    <span class="n">The</span> <span class="n">AO</span> <span class="n">basis</span> <span class="nb">set</span><span class="o">.</span>
+<span class="p">:</span><span class="n">param</span> <span class="n">min_basis</span><span class="p">:</span>
+    <span class="n">The</span> <span class="n">minimal</span> <span class="n">AO</span> <span class="n">basis</span> <span class="nb">set</span><span class="o">.</span>
+<span class="n">File</span><span class="p">:</span>      <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">miniconda3</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">vlxr02</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">veloxchem</span><span class="o">/</span><span class="n">scfdriver</span><span class="o">.</span><span class="n">py</span>
+<span class="n">Type</span><span class="p">:</span>      <span class="n">function</span>
+</pre></div>
+</div>
+<p>revealing, among other things, the module file name and the file location.</p>
 </div>
 <div class="section" id="c-layer">
 <h2>C++ layer<a class="headerlink" href="#c-layer" title="Permalink to this headline">¶</a></h2>
+<p>The C++ layer implements the compute-intensive routines for the calculations of one- and two-electron integrals as well as the DFT kernel integrations. To add functionality in this layer is less straightforward but also not foreseen to be needed for the great majority of regular and advanced users.</p>
 </div>
 </div>
 
