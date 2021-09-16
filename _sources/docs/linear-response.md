@@ -38,6 +38,35 @@ H   0.0  -1.4   1.1
 @end 
 ```
 
+## C6 dispersion coefficients
+
+```
+@jobs
+task: response
+@end
+
+@method settings
+basis: DEF2-SVPD
+dft: yes
+grid_level: 4
+xcfun: b3lyp
+@end
+
+@response
+property: C6
+conv_thresh: 1.0e-3
+n_points: 7
+@end
+
+@molecule
+charge: 0
+multiplicity: 1
+units: ang
+xyz:
+C -5.8575354 3.6359158 -1.6619244
+...
+@end
+```
 
 ## Laser pulse propagation
 

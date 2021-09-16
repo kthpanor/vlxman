@@ -324,6 +324,11 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#c6-dispersion-coefficients">
+   C6 dispersion coefficients
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#laser-pulse-propagation">
    Laser pulse propagation
   </a>
@@ -374,6 +379,36 @@
 <span class="n">H</span>   <span class="mf">0.0</span>   <span class="mf">1.4</span>   <span class="mf">1.1</span>
 <span class="n">H</span>   <span class="mf">0.0</span>  <span class="o">-</span><span class="mf">1.4</span>   <span class="mf">1.1</span>
 <span class="nd">@end</span> 
+</pre></div>
+</div>
+</div>
+<div class="section" id="c6-dispersion-coefficients">
+<h2>C6 dispersion coefficients<a class="headerlink" href="#c6-dispersion-coefficients" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
+<span class="n">task</span><span class="p">:</span> <span class="n">response</span>
+<span class="nd">@end</span>
+
+<span class="nd">@method</span> <span class="n">settings</span>
+<span class="n">basis</span><span class="p">:</span> <span class="n">DEF2</span><span class="o">-</span><span class="n">SVPD</span>
+<span class="n">dft</span><span class="p">:</span> <span class="n">yes</span>
+<span class="n">grid_level</span><span class="p">:</span> <span class="mi">4</span>
+<span class="n">xcfun</span><span class="p">:</span> <span class="n">b3lyp</span>
+<span class="nd">@end</span>
+
+<span class="nd">@response</span>
+<span class="nb">property</span><span class="p">:</span> <span class="n">C6</span>
+<span class="n">conv_thresh</span><span class="p">:</span> <span class="mf">1.0e-3</span>
+<span class="n">n_points</span><span class="p">:</span> <span class="mi">7</span>
+<span class="nd">@end</span>
+
+<span class="nd">@molecule</span>
+<span class="n">charge</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">multiplicity</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">units</span><span class="p">:</span> <span class="n">ang</span>
+<span class="n">xyz</span><span class="p">:</span>
+<span class="n">C</span> <span class="o">-</span><span class="mf">5.8575354</span> <span class="mf">3.6359158</span> <span class="o">-</span><span class="mf">1.6619244</span>
+<span class="o">...</span>
+<span class="nd">@end</span>
 </pre></div>
 </div>
 </div>
