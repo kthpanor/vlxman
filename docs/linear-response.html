@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Magnetic resonances &#8212; VeloxChem program manual</title>
+    <title>Linear response &#8212; VeloxChem program manual</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -49,11 +49,13 @@
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="shortcut icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Linear response" href="linear-response.html" />
-    <link rel="prev" title="Potential energy surfaces" href="pes.html" />
+    <link rel="next" title="Multi-photon interactions" href="nlo.html" />
+    <link rel="prev" title="Magnetic resonances" href="magnetic.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -180,13 +182,13 @@
    Potential energy surfaces
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="magnetic.html">
    Magnetic resonances
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="linear-response.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Linear response
   </a>
  </li>
@@ -270,7 +272,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/docs/magnetic.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/docs/linear-response.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -290,7 +292,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fdocs/magnetic.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fdocs/linear-response.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -311,6 +313,24 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#polarizability">
+   Polarizability
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#laser-pulse-propagation">
+   Laser pulse propagation
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -319,8 +339,86 @@
         
               <div>
                 
-  <div class="section" id="magnetic-resonances">
-<h1>Magnetic resonances<a class="headerlink" href="#magnetic-resonances" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="linear-response">
+<h1>Linear response<a class="headerlink" href="#linear-response" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="polarizability">
+<h2>Polarizability<a class="headerlink" href="#polarizability" title="Permalink to this headline">¶</a></h2>
+<p>The linear electric-dipole polarizabilty is determined from the linear response function</p>
+<div class="math notranslate nohighlight">
+\[
+\alpha_{\alpha\beta}(\omega) =
+- 
+\langle\langle \hat{\mu}_\alpha; \hat{\mu}_\beta 
+\rangle \rangle
+\]</div>
+<p>The frequencies of the perturbing electric field is specfied as a <code class="docutils literal notranslate"><span class="pre">list</span></code> or in terms of a frequency region with a frequency point sepation in parenthesis.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
+<span class="n">task</span><span class="p">:</span> <span class="n">response</span>
+<span class="nd">@end</span>
+
+<span class="nd">@method</span> <span class="n">settings</span>
+<span class="n">basis</span><span class="p">:</span> <span class="n">aug</span><span class="o">-</span><span class="n">cc</span><span class="o">-</span><span class="n">pvdz</span>
+<span class="nd">@end</span>
+
+<span class="nd">@response</span>
+<span class="nb">property</span><span class="p">:</span> <span class="n">polarizability</span>
+<span class="n">frequencies</span><span class="p">:</span> <span class="mi">0</span><span class="o">-</span><span class="mf">0.25</span> <span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="nd">@end</span>
+
+<span class="nd">@molecule</span>
+<span class="n">charge</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">multiplicity</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">units</span><span class="p">:</span> <span class="n">au</span>
+<span class="n">xyz</span><span class="p">:</span>  
+<span class="n">O</span>   <span class="mf">0.0</span>   <span class="mf">0.0</span>   <span class="mf">0.0</span>
+<span class="n">H</span>   <span class="mf">0.0</span>   <span class="mf">1.4</span>   <span class="mf">1.1</span>
+<span class="n">H</span>   <span class="mf">0.0</span>  <span class="o">-</span><span class="mf">1.4</span>   <span class="mf">1.1</span>
+<span class="nd">@end</span> 
+</pre></div>
+</div>
+</div>
+<div class="section" id="laser-pulse-propagation">
+<h2>Laser pulse propagation<a class="headerlink" href="#laser-pulse-propagation" title="Permalink to this headline">¶</a></h2>
+<p>VeloxChem allows for calculation of the linear electric dipole response for the frequency region of a single Gaussian-envelope pulse deemed sufficiently large (using the &#64;pulses module).</p>
+<p>The time-domain shape parameters for this pulse may be specified by the user, optionally storing a collection of pertinent results in an HDF5-formatted file or a plaintext ASCII file whose name may be specified by the user.</p>
+<p>An example of an input file that when run will carry out such a calculation is given below. For more documentation about the available keywords, please consult the source file whose path from the VeloxChem root folder is src/pymodule/pulsedrsp.py. Note in particular that the default of carrier envelope phase may need adjustment to match your desired setup.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
+<span class="n">task</span><span class="p">:</span> <span class="n">hf</span>
+<span class="nd">@end</span>
+
+<span class="nd">@method</span> <span class="n">settings</span>
+<span class="n">basis</span><span class="p">:</span> <span class="n">aug</span><span class="o">-</span><span class="n">cc</span><span class="o">-</span><span class="n">pvdz</span>
+<span class="nd">@end</span>
+
+<span class="nd">@molecule</span>
+<span class="n">charge</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">multiplicity</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">units</span><span class="p">:</span> <span class="n">au</span>
+<span class="n">xyz</span><span class="p">:</span>
+<span class="n">O</span>   <span class="mf">0.0</span>   <span class="mf">0.0</span>   <span class="mf">0.0</span>
+<span class="n">H</span>   <span class="mf">0.0</span>   <span class="mf">1.4</span>   <span class="mf">1.1</span>
+<span class="n">H</span>   <span class="mf">0.0</span>  <span class="o">-</span><span class="mf">1.4</span>   <span class="mf">1.1</span>
+<span class="nd">@end</span>
+
+<span class="nd">@pulses</span>
+<span class="n">envelope</span><span class="p">:</span> <span class="n">gaussian</span>
+<span class="n">field_max</span> <span class="p">:</span> <span class="mf">1.0e-5</span>
+<span class="n">number_pulses</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">centers</span><span class="p">:</span> <span class="mi">300</span> 
+<span class="n">field_cutoff_ratio</span><span class="p">:</span> <span class="mf">1e-5</span>
+<span class="n">frequency_range</span> <span class="p">:</span> <span class="mf">0.2</span><span class="o">-</span><span class="mf">0.4</span><span class="p">(</span><span class="mf">0.001</span><span class="p">)</span>
+<span class="n">carrier_frequencies</span><span class="p">:</span> <span class="mf">0.325</span>
+<span class="n">pulse_widths</span><span class="p">:</span> <span class="mi">50</span> 
+<span class="n">pol_dir</span><span class="p">:</span> <span class="n">xyz</span>
+<span class="n">h5</span> <span class="p">:</span> <span class="n">pulsed</span>
+<span class="n">ascii</span> <span class="p">:</span> <span class="n">pulsed</span>
+<span class="nd">@end</span>
+</pre></div>
+</div>
+<p>If HDF5-formatted data was produced during this calculation, that data may used for plot generation using the script located at <code class="docutils literal notranslate"><span class="pre">utils/pulsed_response_plot.py</span></code> from the VeloxChem root folder.</p>
+<p>Also note that other standard python modules such as <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> must be installed on the system from which this script is run. The script will take the HDF5-formatted data produced during the VeloxChem calculation and generate a plot of the real and imaginary frequency-domain electric dipole polarizability, a representation of the perturbing field in the frequency domain, the resulting (real-valued) first-order dipole moment correction in the time domain and a representation of the perturbing field in the time domain.</p>
+<p>For more information and further description of how to run this script, please consult the documentation written inside it.</p>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -348,8 +446,8 @@
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="pes.html" title="previous page">Potential energy surfaces</a>
-    <a class='right-next' id="next-link" href="linear-response.html" title="next page">Linear response</a>
+    <a class='left-prev' id="prev-link" href="magnetic.html" title="previous page">Magnetic resonances</a>
+    <a class='right-next' id="next-link" href="nlo.html" title="next page">Multi-photon interactions</a>
 
         </div>
         

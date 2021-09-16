@@ -1,4 +1,4 @@
-# Installation
+# Installing the program
 
 ## Installing binaries
 
@@ -70,7 +70,6 @@ $ git clone https://gitlab.com/veloxchem/veloxchem
   - [psutil](https://psutil.readthedocs.io/en/latest/)
   - [MPI4Py](https://mpi4py.readthedocs.io/)
   - [NumPy](https://numpy.org)
-  - [LoProp](https://pypi.org/project/LoProp/)
   - [geomeTRIC](https://github.com/leeping/geomeTRIC)
 
 Optional, add-on dependencies:

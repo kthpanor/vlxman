@@ -97,8 +97,13 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="limits.html">
+   Pushing the limits
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="installation.html">
-   Installation
+   Installing the program
   </a>
  </li>
  <li class="toctree-l1">
@@ -124,8 +129,13 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="refstate.html">
+   Reference states
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="functionals.html">
-   Exchange–correlation funcitonals
+   Exchange–correlation functionals
   </a>
  </li>
  <li class="toctree-l1">
@@ -173,6 +183,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="magnetic.html">
    Magnetic resonances
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="linear-response.html">
+   Linear response
   </a>
  </li>
  <li class="toctree-l1">
@@ -296,6 +311,24 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#generalized-eigenvalue-equation">
+   Generalized eigenvalue equation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#complex-polarization-propagator-approach">
+   Complex polarization propagator approach
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -306,6 +339,67 @@
                 
   <div class="section" id="uv-vis-absorption-emission">
 <h1>UV/vis absorption/emission<a class="headerlink" href="#uv-vis-absorption-emission" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="generalized-eigenvalue-equation">
+<h2>Generalized eigenvalue equation<a class="headerlink" href="#generalized-eigenvalue-equation" title="Permalink to this headline">¶</a></h2>
+<p>The standard method to calculate UV/vis absorption and emission spectra is to solve the generalized eigenvalue equation.</p>
+<p>In the case of SCF theory, it is commonly referred to as the time-dependent density functional theory or Hartree–Fock (TDDFT or TDHF) approach. TDHF is also known as the Random Phase Approximation (RPA).</p>
+<p>VeloxChem implements a reduced-space Davidson algorithm to solve the equation for the <em>N</em> lowest eigenvalues (bottom-up).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
+<span class="n">task</span><span class="p">:</span> <span class="n">response</span>
+<span class="nd">@end</span>
+
+<span class="nd">@method</span> <span class="n">settings</span>
+<span class="n">xcfun</span><span class="p">:</span> <span class="n">b3lyp</span>
+<span class="n">basis</span><span class="p">:</span> <span class="n">def2</span><span class="o">-</span><span class="n">svp</span>
+<span class="nd">@end</span>
+
+<span class="nd">@response</span>
+<span class="nb">property</span><span class="p">:</span> <span class="n">absorption</span>
+<span class="n">nstates</span><span class="p">:</span> <span class="mi">3</span>
+<span class="nd">@end</span>
+
+<span class="nd">@molecule</span>
+<span class="n">charge</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">multiplicity</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">units</span><span class="p">:</span> <span class="n">au</span>
+<span class="n">xyz</span><span class="p">:</span>  
+<span class="n">O</span>   <span class="mf">0.0</span>   <span class="mf">0.0</span>   <span class="mf">0.0</span>
+<span class="n">H</span>   <span class="mf">0.0</span>   <span class="mf">1.4</span>   <span class="mf">1.1</span>
+<span class="n">H</span>   <span class="mf">0.0</span>  <span class="o">-</span><span class="mf">1.4</span>   <span class="mf">1.1</span>
+<span class="nd">@end</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="complex-polarization-propagator-approach">
+<h2>Complex polarization propagator approach<a class="headerlink" href="#complex-polarization-propagator-approach" title="Permalink to this headline">¶</a></h2>
+<p>Absorption spectra are also available from the imaginary part of the complex polarizability, in which case an arbitrary frequency region is specified together with a requested frequency resolution.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
+<span class="n">task</span><span class="p">:</span> <span class="n">response</span>
+<span class="nd">@end</span>
+
+<span class="nd">@method</span> <span class="n">settings</span>
+<span class="n">xcfun</span><span class="p">:</span> <span class="n">b3lyp</span>
+<span class="n">basis</span><span class="p">:</span> <span class="n">def2</span><span class="o">-</span><span class="n">svp</span>
+<span class="nd">@end</span>
+
+<span class="nd">@response</span>
+<span class="nb">property</span><span class="p">:</span> <span class="n">absorption</span> <span class="p">(</span><span class="n">cpp</span><span class="p">)</span>
+<span class="c1"># frequency region (and resolution)</span>
+<span class="n">frequencies</span><span class="p">:</span> <span class="mi">0</span><span class="o">-</span><span class="mf">0.25</span> <span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="nd">@end</span>
+
+<span class="nd">@molecule</span>
+<span class="n">charge</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">multiplicity</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">units</span><span class="p">:</span> <span class="n">au</span>
+<span class="n">xyz</span><span class="p">:</span>  
+<span class="n">O</span>   <span class="mf">0.0</span>   <span class="mf">0.0</span>   <span class="mf">0.0</span>
+<span class="n">H</span>   <span class="mf">0.0</span>   <span class="mf">1.4</span>   <span class="mf">1.1</span>
+<span class="n">H</span>   <span class="mf">0.0</span>  <span class="o">-</span><span class="mf">1.4</span>   <span class="mf">1.1</span>
+<span class="nd">@end</span> 
+</pre></div>
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
