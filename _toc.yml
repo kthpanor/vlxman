@@ -6,12 +6,14 @@ root: docs/intro
 parts:
 - caption: Getting started
   chapters:
+  - file: docs/limits
   - file: docs/installation
   - file: docs/run_input
   - file: docs/run_nb
   - file: docs/run_cluster
 - caption: Model chemistry
   chapters:
+  - file: docs/refstate
   - file: docs/functionals
   - file: docs/basis_sets
   - file: docs/hamiltonian
@@ -23,8 +25,15 @@ parts:
   - file: docs/vib_spect
   - file: docs/pes
   - file: docs/magnetic
+  - file: docs/linear-response
   - file: docs/nlo
   - file: docs/xray
+- caption: Environment
+  chapters:
+  - file: docs/pol_emb
+- caption: Visualization
+  chapters:
+  - file: docs/elec_dens
 - caption: Advanced users
   chapters:
   - file: docs/program_struct
