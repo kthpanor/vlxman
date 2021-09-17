@@ -26,6 +26,17 @@ A comprehensive presenation of how to interact and run the VeloxChem program in 
 
 ## Using an input file
 
+An input file driven VeloxChem calculation can be started on the command line as follows:
+
+```
+export OMP_NUM_THREADS=8
+mpirun -n 1 python3 -m veloxchem water.inp water.out
+```
+
+This launches a calculation on 1 MPI rank with 8 OpenMP threads. It is recommended to launch no more than one thread per available core on your desktop CPU.
+
+The input file (here assumed to be named `water.inp`) consists of multiple groups marked with `@group name` and `@end`. For example, the following input file has three groups: `jobs`, `method settings`, and `molecule`.
+
 ```
 @jobs
 task: scf
@@ -48,13 +59,3 @@ H   0.0  -1.4   1.1
 ```
 
 
-The VeloxChem input file consists of multiple groups marked with `@group name` and `@end`. For example, the following input file has three groups: `jobs`, `method settings`, and `molecule`.
-
-An input file driven calculation can be started on the command line as follows:
-
-```
-export OMP_NUM_THREADS=6
-mpirun -n 2 python3 -m veloxchem water.inp water.out
-```
-
-This launches a calculation on 2 MPI ranks, each with 6 OpenMP threads. The recommended way to run VeloxChem is to run 1 MPI rank per allocated cluster node and 1 OpenMP thread per CPU core on a single node.
