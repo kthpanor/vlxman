@@ -28,3 +28,28 @@ mpirun python3 -m veloxchem ${job}.inp ${job}.out
 
 # end of script
 ```
+
+This script will start a job with 4 MPI ranks, each with 32 OpenMP threads. It is recommended to start one MPI rank per node, and on each node, one OpenMP thread per core.
+
+The input file (here assumed to be named `water.inp`) consists of multiple groups marked with `@group name` and `@end`. For example, the following input file has three groups: `jobs`, `method settings`, and `molecule`.
+
+```
+@jobs
+task: scf
+@end
+
+@method settings
+xcfun: b3lyp
+basis: def2-svp
+@end
+
+@molecule
+charge: 0
+multiplicity: 1
+units: au
+xyz:
+O   0.0   0.0   0.0
+H   0.0   1.4   1.1
+H   0.0  -1.4   1.1
+@end
+```
