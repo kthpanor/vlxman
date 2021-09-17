@@ -49,6 +49,8 @@
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="shortcut icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -203,6 +205,18 @@
 </ul>
 <p class="caption">
  <span class="caption-text">
+  Visualization
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="elec_dens.html">
+   Electronic densities
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
   Advanced users
  </span>
 </p>
@@ -341,9 +355,17 @@
 <h1>UV/vis absorption/emission<a class="headerlink" href="#uv-vis-absorption-emission" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="generalized-eigenvalue-equation">
 <h2>Generalized eigenvalue equation<a class="headerlink" href="#generalized-eigenvalue-equation" title="Permalink to this headline">¶</a></h2>
-<p>The standard method to calculate UV/vis absorption and emission spectra is to solve the generalized eigenvalue equation.</p>
+<p>The standard method to calculate UV/vis absorption and emission spectra is to solve the generalized eigenvalue equation <span id="id1">[<a class="reference internal" href="refs.html#id48">NRS18</a>]</span>.</p>
 <p>In the case of SCF theory, it is commonly referred to as the time-dependent density functional theory or Hartree–Fock (TDDFT or TDHF) approach. TDHF is also known as the Random Phase Approximation (RPA).</p>
-<p>VeloxChem implements a reduced-space Davidson algorithm to solve the equation for the <em>N</em> lowest eigenvalues (bottom-up).</p>
+<p>If electron de-excitations are ignored in the formation of the electronic Hessian, then one arrives at the Tamm–Dancoff approximation and which can be invoked with a keyword in the input file.</p>
+<p>VeloxChem implements a reduced-space Davidson algorithm to solve the equation for the <em>N</em> lowest eigenvalues (bottom-up). Based on these eigenvalues, or transition frequencies, and the associated transition moments, the diensionless oscillator strengths are calculated according to</p>
+<div class="math notranslate nohighlight">
+\[
+  f_{n0} = \frac{2 m_\mathrm{e} \omega_{n0}}{3\hbar e^2}
+  \sum_{\alpha = x,y,z}
+  |\langle 0 | \hat{\mu}_\alpha | n \rangle |^2
+  = \frac{2 m_\mathrm{e} \omega_{n0}}{3\hbar e^2}\boldsymbol{\mu}_{0n}\cdot\boldsymbol{\mu}_{n0}
+\]</div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
 <span class="n">task</span><span class="p">:</span> <span class="n">response</span>
 <span class="nd">@end</span>
@@ -355,6 +377,7 @@
 
 <span class="nd">@response</span>
 <span class="nb">property</span><span class="p">:</span> <span class="n">absorption</span>
+<span class="c1"># tamm_dancoff: yes</span>
 <span class="n">nstates</span><span class="p">:</span> <span class="mi">3</span>
 <span class="nd">@end</span>
 
@@ -372,7 +395,16 @@
 </div>
 <div class="section" id="complex-polarization-propagator-approach">
 <h2>Complex polarization propagator approach<a class="headerlink" href="#complex-polarization-propagator-approach" title="Permalink to this headline">¶</a></h2>
-<p>Absorption spectra are also available from the imaginary part of the complex polarizability, in which case an arbitrary frequency region is specified together with a requested frequency resolution.</p>
+<p>Absorption spectra are also available from the imaginary part of the complex polarizability <span id="id2">[<a class="reference internal" href="refs.html#id48">NRS18</a>]</span></p>
+<div class="math notranslate nohighlight">
+\[
+\sigma(\omega) =
+\frac{\omega}{\epsilon_0 c}
+\mathrm{Im}\left\{
+\overline{\alpha}(-\omega;\omega)
+\right\}
+\]</div>
+<p>In this case an arbitrary frequency region is specified together with a requested frequency resolution.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
 <span class="n">task</span><span class="p">:</span> <span class="n">response</span>
 <span class="nd">@end</span>

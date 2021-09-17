@@ -2,13 +2,13 @@
 
 ## Polarizability
 
-The linear electric-dipole polarizabilty is determined from the linear response function
+The linear electric-dipole polarizabilty is determined from the linear response function {cite}`Norman2018`
 
 $$
 \alpha_{\alpha\beta}(\omega) =
 - 
 \langle\langle \hat{\mu}_\alpha; \hat{\mu}_\beta 
-\rangle \rangle
+\rangle \rangle_\omega
 $$
 
 The frequencies of the perturbing electric field is specfied as a `list` or in terms of a frequency region with a frequency point sepation in parenthesis.
@@ -40,6 +40,24 @@ H   0.0  -1.4   1.1
 
 ## C6 dispersion coefficients
 
+The $C_6$ dispersion coefficient relates to the electric-dipole polarizability according to
+
+$$
+C_6 = \frac{3\hbar}{\pi}
+\int^{\infty}_0 \bar{\alpha}_A(i\omega) \bar{\alpha}_B(i\omega) 
+d\omega
+$$
+
+where $\bar{\alpha}_A{i\omega}$ is the isotropic average of the polarizability tensor for molecular system $A$.
+
+The integral over the positive imaginary frequency axis is performed in VeloxChem using a Gauss–Legendre quadrature after substituting the integration variables according to
+
+$$
+    i\omega^I = i\omega_0 \frac{1-t}{1+t},\quad d\omega^I = \frac{-2\omega_0 dt}{(1+t)^2},
+$$
+
+where a transformation factor of $\omega_0 = 0.3$ a.u. is used. The user may specified the number of frequency grid points used in the quadrature, or otherwise a default value is adopted. The polarizabilities are calculated from the complex polarization propagator (CPP), or complex linear response function {cite}`Norman2018`.
+
 ```
 @jobs
 task: response
@@ -48,7 +66,7 @@ task: response
 @method settings
 basis: DEF2-SVPD
 dft: yes
-grid_level: 4
+grid_level: 4     # this is the default grid density
 xcfun: b3lyp
 @end
 

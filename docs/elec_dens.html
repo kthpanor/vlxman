@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vibrational spectroscopies &#8212; VeloxChem program manual</title>
+    <title>Electronic densities &#8212; VeloxChem program manual</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -52,8 +52,8 @@
     <link rel="shortcut icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Potential energy surfaces" href="pes.html" />
-    <link rel="prev" title="Optical activity and dichroism" href="opt_act.html" />
+    <link rel="next" title="Program structure" href="program_struct.html" />
+    <link rel="prev" title="X-ray spectroscpies" href="xray.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -159,7 +159,7 @@
   Properties
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="uv-vis.html">
    UV/vis absorption/emission
@@ -170,8 +170,8 @@
    Optical activity and dichroism
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="vib_spect.html">
    Vibrational spectroscopies
   </a>
  </li>
@@ -206,9 +206,9 @@
   Visualization
  </span>
 </p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="elec_dens.html">
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Electronic densities
   </a>
  </li>
@@ -282,7 +282,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/docs/vib_spect.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/docs/elec_dens.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -302,7 +302,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fdocs/vib_spect.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fdocs/elec_dens.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -323,6 +323,36 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cube-files">
+   Cube files
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#molecular-orbitals">
+     Molecular orbitals
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#natural-transition-orbitals-and-attachment-detachment-densities">
+     Natural transition orbitals and attachment/detachment densities
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#visualize-cube-files">
+     Visualize cube files
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -331,8 +361,74 @@
         
               <div>
                 
-  <div class="section" id="vibrational-spectroscopies">
-<h1>Vibrational spectroscopies<a class="headerlink" href="#vibrational-spectroscopies" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="electronic-densities">
+<h1>Electronic densities<a class="headerlink" href="#electronic-densities" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="cube-files">
+<h2>Cube files<a class="headerlink" href="#cube-files" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="molecular-orbitals">
+<h3>Molecular orbitals<a class="headerlink" href="#molecular-orbitals" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
+<span class="n">task</span><span class="p">:</span> <span class="n">visualization</span>
+<span class="nd">@end</span>
+
+<span class="nd">@method</span> <span class="n">settings</span>
+<span class="n">basis</span><span class="p">:</span> <span class="n">def2</span><span class="o">-</span><span class="n">svp</span>
+<span class="nd">@end</span>
+
+<span class="nd">@visualization</span>
+<span class="n">cubes</span><span class="p">:</span> <span class="n">density</span><span class="p">(</span><span class="n">alpha</span><span class="p">),</span> <span class="n">mo</span><span class="p">(</span><span class="n">homo</span><span class="p">)</span>
+<span class="n">files</span><span class="p">:</span> <span class="n">density</span><span class="o">.</span><span class="n">cube</span><span class="p">,</span> <span class="n">homo</span><span class="o">.</span><span class="n">cube</span>
+<span class="nd">@end</span>
+
+<span class="nd">@molecule</span>
+<span class="n">charge</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">multiplicity</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">units</span><span class="p">:</span> <span class="n">au</span>
+<span class="n">xyz</span><span class="p">:</span>  
+<span class="n">O</span>   <span class="mf">0.0</span>   <span class="mf">0.0</span>   <span class="mf">0.0</span>
+<span class="n">H</span>   <span class="mf">0.0</span>   <span class="mf">1.4</span>   <span class="mf">1.1</span>
+<span class="n">H</span>   <span class="mf">0.0</span>  <span class="o">-</span><span class="mf">1.4</span>   <span class="mf">1.1</span>
+<span class="nd">@end</span> 
+</pre></div>
+</div>
+</div>
+<div class="section" id="natural-transition-orbitals-and-attachment-detachment-densities">
+<h3>Natural transition orbitals and attachment/detachment densities<a class="headerlink" href="#natural-transition-orbitals-and-attachment-detachment-densities" title="Permalink to this headline">¶</a></h3>
+<p>Cube files for natural transition orbitals (NTOs) and detachment/attachment densities can be generated in response calculations with the following response section statements:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@response</span>
+<span class="nb">property</span><span class="p">:</span> <span class="n">absorption</span>
+<span class="n">nstates</span><span class="p">:</span> <span class="mi">3</span>
+<span class="n">nto</span><span class="p">:</span> <span class="n">yes</span>
+<span class="n">nto_pairs</span><span class="p">:</span> <span class="mi">2</span>
+<span class="n">detach_attach</span><span class="p">:</span> <span class="n">yes</span>
+<span class="nd">@end</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="visualize-cube-files">
+<h3>Visualize cube files<a class="headerlink" href="#visualize-cube-files" title="Permalink to this headline">¶</a></h3>
+<p>The cube files can be visualized in a Jupyter notebook with use of the <a class="reference external" href="https://pypi.org/project/py3Dmol/">py3Dmol</a> module:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">py3Dmol</span> <span class="k">as</span> <span class="nn">p3d</span>
+
+<span class="c1"># generate view</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">p3d</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
+
+<span class="n">v</span><span class="o">.</span><span class="n">addModel</span><span class="p">(</span><span class="n">pyridine_xyz</span><span class="p">,</span> <span class="s2">&quot;xyz&quot;</span><span class="p">)</span>
+<span class="n">v</span><span class="o">.</span><span class="n">setStyle</span><span class="p">({</span><span class="s1">&#39;stick&#39;</span><span class="p">:{}})</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;cube_1.cube&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">cube</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="c1"># negative lobe    </span>
+<span class="n">v</span><span class="o">.</span><span class="n">addVolumetricData</span><span class="p">(</span><span class="n">cube</span><span class="p">,</span> <span class="s2">&quot;cube&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;isoval&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.02</span><span class="p">,</span> <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;opacity&quot;</span><span class="p">:</span> <span class="mf">0.75</span><span class="p">})</span>
+<span class="c1"># positive lobe</span>
+<span class="n">v</span><span class="o">.</span><span class="n">addVolumetricData</span><span class="p">(</span><span class="n">cube</span><span class="p">,</span> <span class="s2">&quot;cube&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;isoval&quot;</span><span class="p">:</span> <span class="mf">0.02</span><span class="p">,</span> <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;opacity&quot;</span><span class="p">:</span> <span class="mf">0.75</span><span class="p">})</span>
+
+<span class="n">v</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -360,8 +456,8 @@
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="opt_act.html" title="previous page">Optical activity and dichroism</a>
-    <a class='right-next' id="next-link" href="pes.html" title="next page">Potential energy surfaces</a>
+    <a class='left-prev' id="prev-link" href="xray.html" title="previous page">X-ray spectroscpies</a>
+    <a class='right-next' id="next-link" href="program_struct.html" title="next page">Program structure</a>
 
         </div>
         

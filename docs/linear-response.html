@@ -205,6 +205,18 @@
 </ul>
 <p class="caption">
  <span class="caption-text">
+  Visualization
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="elec_dens.html">
+   Electronic densities
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
   Advanced users
  </span>
 </p>
@@ -348,13 +360,13 @@
 <h1>Linear response<a class="headerlink" href="#linear-response" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="polarizability">
 <h2>Polarizability<a class="headerlink" href="#polarizability" title="Permalink to this headline">¶</a></h2>
-<p>The linear electric-dipole polarizabilty is determined from the linear response function</p>
+<p>The linear electric-dipole polarizabilty is determined from the linear response function <span id="id1">[<a class="reference internal" href="refs.html#id48">NRS18</a>]</span></p>
 <div class="math notranslate nohighlight">
 \[
 \alpha_{\alpha\beta}(\omega) =
 - 
 \langle\langle \hat{\mu}_\alpha; \hat{\mu}_\beta 
-\rangle \rangle
+\rangle \rangle_\omega
 \]</div>
 <p>The frequencies of the perturbing electric field is specfied as a <code class="docutils literal notranslate"><span class="pre">list</span></code> or in terms of a frequency region with a frequency point sepation in parenthesis.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
@@ -384,6 +396,20 @@
 </div>
 <div class="section" id="c6-dispersion-coefficients">
 <h2>C6 dispersion coefficients<a class="headerlink" href="#c6-dispersion-coefficients" title="Permalink to this headline">¶</a></h2>
+<p>The <span class="math notranslate nohighlight">\(C_6\)</span> dispersion coefficient relates to the electric-dipole polarizability according to</p>
+<div class="math notranslate nohighlight">
+\[
+C_6 = \frac{3\hbar}{\pi}
+\int^{\infty}_0 \bar{\alpha}_A(i\omega) \bar{\alpha}_B(i\omega) 
+d\omega
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\bar{\alpha}_A{i\omega}\)</span> is the isotropic average of the polarizability tensor for molecular system <span class="math notranslate nohighlight">\(A\)</span>.</p>
+<p>The integral over the positive imaginary frequency axis is performed in VeloxChem using a Gauss–Legendre quadrature after substituting the integration variables according to</p>
+<div class="math notranslate nohighlight">
+\[
+    i\omega^I = i\omega_0 \frac{1-t}{1+t},\quad d\omega^I = \frac{-2\omega_0 dt}{(1+t)^2},
+\]</div>
+<p>where a transformation factor of <span class="math notranslate nohighlight">\(\omega_0 = 0.3\)</span> a.u. is used. The user may specified the number of frequency grid points used in the quadrature, or otherwise a default value is adopted. The polarizabilities are calculated from the complex polarization propagator (CPP), or complex linear response function <span id="id2">[<a class="reference internal" href="refs.html#id48">NRS18</a>]</span>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
 <span class="n">task</span><span class="p">:</span> <span class="n">response</span>
 <span class="nd">@end</span>
@@ -391,7 +417,7 @@
 <span class="nd">@method</span> <span class="n">settings</span>
 <span class="n">basis</span><span class="p">:</span> <span class="n">DEF2</span><span class="o">-</span><span class="n">SVPD</span>
 <span class="n">dft</span><span class="p">:</span> <span class="n">yes</span>
-<span class="n">grid_level</span><span class="p">:</span> <span class="mi">4</span>
+<span class="n">grid_level</span><span class="p">:</span> <span class="mi">4</span>     <span class="c1"># this is the default grid density</span>
 <span class="n">xcfun</span><span class="p">:</span> <span class="n">b3lyp</span>
 <span class="nd">@end</span>
 

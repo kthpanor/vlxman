@@ -203,6 +203,18 @@
 </ul>
 <p class="caption">
  <span class="caption-text">
+  Visualization
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="elec_dens.html">
+   Electronic densities
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
   Advanced users
  </span>
 </p>
@@ -322,8 +334,8 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#adding-a-functional">
-   Adding a functional
+  <a class="reference internal nav-link" href="#dft-settings">
+   DFT settings
   </a>
  </li>
 </ul>
@@ -366,8 +378,18 @@
 </li>
 </ul>
 </div>
-<div class="section" id="adding-a-functional">
-<h2>Adding a functional<a class="headerlink" href="#adding-a-functional" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="dft-settings">
+<h2>DFT settings<a class="headerlink" href="#dft-settings" title="Permalink to this headline">¶</a></h2>
+<p>The choice of functional and related settings are performed in the input file section <code class="docutils literal notranslate"><span class="pre">method</span> <span class="pre">settings</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@method</span> <span class="n">settings</span>
+<span class="n">dft</span><span class="p">:</span> <span class="n">yes</span>
+<span class="n">grid_level</span><span class="p">:</span> <span class="mi">4</span>
+<span class="n">xcfun</span><span class="p">:</span> <span class="n">b3lyp</span>
+<span class="n">basis</span><span class="p">:</span> <span class="n">def2</span><span class="o">-</span><span class="n">svp</span>
+<span class="nd">@end</span>
+</pre></div>
+</div>
+<p>Grid densities are available up to level 6. Level 4 (default) is recommended for production calculations.</p>
 </div>
 </div>
 
