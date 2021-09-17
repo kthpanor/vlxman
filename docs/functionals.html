@@ -372,18 +372,19 @@
 </ul>
 </li>
 </ul>
+<p>More functionals are being implemented and range-separated hybrids are a priority.</p>
 </div>
 <div class="section" id="dft-settings">
 <h2>DFT settings<a class="headerlink" href="#dft-settings" title="Permalink to this headline">¶</a></h2>
 <p>The choice of functional and related settings are performed in the input file section <code class="docutils literal notranslate"><span class="pre">method</span> <span class="pre">settings</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@method</span> <span class="n">settings</span>
 <span class="n">dft</span><span class="p">:</span> <span class="n">yes</span>
-<span class="n">grid_level</span><span class="p">:</span> <span class="mi">4</span>
 <span class="n">xcfun</span><span class="p">:</span> <span class="n">b3lyp</span>
-<span class="n">basis</span><span class="p">:</span> <span class="n">def2</span><span class="o">-</span><span class="n">svp</span>
+<span class="n">grid_level</span><span class="p">:</span> <span class="mi">4</span>
 <span class="nd">@end</span>
 </pre></div>
 </div>
+<p>To change to another functional, replace <code class="docutils literal notranslate"><span class="pre">b3lyp</span></code> with any of the others (as spelled in the list above).</p>
 <p>Grid densities are available up to level 6. Level 4 (default) is recommended for production calculations.</p>
 </div>
 </div>
