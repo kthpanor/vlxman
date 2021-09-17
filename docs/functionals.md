@@ -18,6 +18,8 @@
 	- BHANDH
 	- BHANDHLYP
 
+More functionals are being implemented and range-separated hybrids are a priority.
+
 ## DFT settings
 
 The choice of functional and related settings are performed in the input file section `method settings`:
@@ -25,10 +27,11 @@ The choice of functional and related settings are performed in the input file se
 ```
 @method settings
 dft: yes
-grid_level: 4
 xcfun: b3lyp
-basis: def2-svp
+grid_level: 4
 @end
 ```
+
+To change to another functional, replace `b3lyp` with any of the others (as spelled in the list above). 
 
 Grid densities are available up to level 6. Level 4 (default) is recommended for production calculations.

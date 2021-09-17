@@ -1,8 +1,6 @@
 # Running on a desktop
 
-## In a Notebook
-
-## SCF optimization
+## In a Jupyter notebook
 
 ```
 import veloxchem as vlx
@@ -52,11 +50,11 @@ H   0.0  -1.4   1.1
 
 The VeloxChem input file consists of multiple groups marked with `@group name` and `@end`. For example, the following input file has three groups: `jobs`, `method settings`, and `molecule`.
 
-### Launching the calculation
+An input file driven calculation can be started on the command line as follows:
 
 ```
 export OMP_NUM_THREADS=6
 mpirun -n 2 python3 -m veloxchem water.inp water.out
 ```
 
-This launches a VeloxChem calculation on 2 MPI ranks, each with 6 OpenMP threads. The recommended way to run VeloxChem is to run 1 MPI rank per allocated cluster node and 1 OpenMP thread per CPU core on a single node.
+This launches a calculation on 2 MPI ranks, each with 6 OpenMP threads. The recommended way to run VeloxChem is to run 1 MPI rank per allocated cluster node and 1 OpenMP thread per CPU core on a single node.
