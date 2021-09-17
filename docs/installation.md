@@ -2,6 +2,12 @@
 
 ## Installing binaries
 
+Binaries are available for the three main operating systems:
+
+- Windows
+- MacOS
+- Linux
+
 ### With Conda
 
 Conda is an open-source package and environment management system that runs on Windows, MacOS, and Linux. The conda repository contains a large number of open-source certified packages enabling scientific work. It is recommended that you install the minimal installer for conda named miniconda that includes only conda, Python, the packages they depend on, and a small number of other useful packages, including pip, zlib and a few others.
