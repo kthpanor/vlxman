@@ -3,7 +3,7 @@
 
 title: VeloxChem program manual
 author: The VeloxChem team
-logo: logo.png
+logo: vlx_logo.png
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
@@ -43,4 +43,4 @@ repository:
 html:
   use_issues_button: true
   use_repository_button: true
-  favicon: favicon.png
+  favicon: vlx_logo_mark.png
