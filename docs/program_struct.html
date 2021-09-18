@@ -49,7 +49,7 @@
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <link rel="shortcut icon" href="../_static/favicon.png"/>
+    <link rel="shortcut icon" href="../_static/vlx_logo_mark.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Source code structure" href="source_struct.html" />
@@ -72,7 +72,7 @@
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
-      <img src="../_static/logo.png" class="logo" alt="logo">
+      <img src="../_static/vlx_logo.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">VeloxChem program manual</h1>
@@ -369,12 +369,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Warning * Environment variable OMP_NUM_THREADS not set.
-* Warning * Setting OMP_NUM_THREADS to 4.
-</pre></div>
-</div>
-</div>
 </div>
 <p>The VeloxChem program adopts a layered Python/C++ language structure.</p>
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/code-structure.png"><img alt="veloxchem-structure" class="bg-primary mb-1 align-center" src="../_images/code-structure.png" style="width: 600px;" /></a>
@@ -429,12 +423,14 @@ PACKAGE CONTENTS
     cppsolver
     cubicgrid
     denguess
-    deprecations
     distributedarray
     environ
     errorhandler
     excitondriver
+    firstorderprop
     gradientdriver
+    hessiandriver
+    import_from_pyscf
     inputparser
     linearsolver
     loprop
@@ -449,11 +445,14 @@ PACKAGE CONTENTS
     mpitask
     optimizationdriver
     optimizationengine
+    orbitalresponse
     outputstream
     polembed
     profiler
     pulsedrsp
     qqscheme
+    respchargesdriver
+    rpaorbitalresponse
     rspabsorption
     rspc6
     rspcdspec
@@ -464,55 +463,79 @@ PACKAGE CONTENTS
     rspproperty
     rsptpa
     scfdriver
-    scffirstorderprop
     scfgradientdriver
+    scfhessiandriver
     scfrestdriver
+    scfrestopendriver
     scfunrestdriver
     signalhandler
     slurminfo
     subcommunicators
     tdaexcidriver
+    tdaorbitalresponse
+    tdhfgradientdriver
+    tdhfhessiandriver
     tpadriver
     tpafulldriver
     tpareddriver
+    trajectorydriver
     veloxchemlib
     visualizationdriver
     xtbdriver
     xtbgradientdriver
+    xtbhessiandriver
 
 FUNCTIONS
     ao_matrix_to_dalton(...) method of builtins.PyCapsule instance
-        ao_matrix_to_dalton(arg0: CDenseMatrix, arg1: veloxchem.veloxchemlib.MolecularBasis, arg2: veloxchem.veloxchemlib.Molecule) -&gt; CDenseMatrix
+        ao_matrix_to_dalton(matrix: CDenseMatrix, basis: veloxchem.veloxchemlib.MolecularBasis, molecule: veloxchem.veloxchemlib.Molecule) -&gt; CDenseMatrix
+        
+        Transforms AO matrix from VeloxChem to Dalton format.
     
     ao_matrix_to_veloxchem(...) method of builtins.PyCapsule instance
-        ao_matrix_to_veloxchem(arg0: CDenseMatrix, arg1: veloxchem.veloxchemlib.MolecularBasis, arg2: veloxchem.veloxchemlib.Molecule) -&gt; CDenseMatrix
+        ao_matrix_to_veloxchem(matrix: CDenseMatrix, basis: veloxchem.veloxchemlib.MolecularBasis, molecule: veloxchem.veloxchemlib.Molecule) -&gt; CDenseMatrix
+        
+        Transforms AO matrix from Dalton to VeloxChem format.
     
     bohr_in_angstroms(...) method of builtins.PyCapsule instance
         bohr_in_angstroms() -&gt; float
+        
+        Gets Bohr value in Angstroms.
+    
+    get_basis_function_indices_for_atom(...) method of builtins.PyCapsule instance
+        get_basis_function_indices_for_atom(molecule: veloxchem.veloxchemlib.Molecule, basis: veloxchem.veloxchemlib.MolecularBasis, atomIdx: int) -&gt; List[List[int]]
+        
+        Gets basis function indices for an atom.
     
     hartree_in_ev(...) method of builtins.PyCapsule instance
         hartree_in_ev() -&gt; float
+        
+        Gets Hartree value in electronvolts.
     
     hartree_in_kcalpermol(...) method of builtins.PyCapsule instance
         hartree_in_kcalpermol() -&gt; float
+        
+        Gets Hartree value in kcal/mol.
     
     mathconst_pi(...) method of builtins.PyCapsule instance
         mathconst_pi() -&gt; float
+        
+        Gets value of PI constant.
     
     mpi_initialized(...) method of builtins.PyCapsule instance
         mpi_initialized() -&gt; bool
+        
+        Check if MPI has been initialized.
     
     mpi_master(...) method of builtins.PyCapsule instance
         mpi_master() -&gt; int
-
-DATA
-    __deployed__ = {&#39;author&#39;: &#39;Roberto Di Remigio&#39;, &#39;commit&#39;: &#39;ffa16d355ed...
+        
+        Gets default rank of master MPI process.
 
 VERSION
     1.0rc2
 
 FILE
-    /opt/miniconda3/envs/vlxr02/lib/python3.9/site-packages/veloxchem/__init__.py
+    /home/emi/.local/lib/python3.6/site-packages/veloxchem-1.0rc2-py3.6-linux-x86_64.egg/veloxchem/__init__.py
 </pre></div>
 </div>
 </div>
@@ -545,6 +568,8 @@ FILE
  &#39;ElectronRepulsionIntegralsDriver&#39;,
  &#39;ExcitationVector&#39;,
  &#39;ExcitonModelDriver&#39;,
+ &#39;FirstOrderProperties&#39;,
+ &#39;HessianDriver&#39;,
  &#39;InputParser&#39;,
  &#39;KineticEnergyIntegralsDriver&#39;,
  &#39;LinearAbsorptionCrossSection&#39;,
@@ -560,25 +585,28 @@ FILE
  &#39;MpiTask&#39;,
  &#39;NuclearPotentialIntegralsDriver&#39;,
  &#39;OptimizationDriver&#39;,
+ &#39;OrbitalResponse&#39;,
  &#39;OutputStream&#39;,
  &#39;OverlapIntegralsDriver&#39;,
  &#39;Polarizability&#39;,
  &#39;ResponseDriver&#39;,
  &#39;ResponseProperty&#39;,
  &#39;SADGuessDriver&#39;,
- &#39;ScfFirstOrderProperties&#39;,
  &#39;ScfGradientDriver&#39;,
+ &#39;ScfHessianDriver&#39;,
  &#39;ScfRestrictedDriver&#39;,
  &#39;ScfUnrestrictedDriver&#39;,
  &#39;SubCommunicators&#39;,
  &#39;TDAExciDriver&#39;,
+ &#39;TdhfGradientDriver&#39;,
+ &#39;TdhfHessianDriver&#39;,
  &#39;TwoIndexes&#39;,
  &#39;VisualizationDriver&#39;,
  &#39;XTBDriver&#39;,
  &#39;XTBGradientDriver&#39;,
+ &#39;XTBHessianDriver&#39;,
  &#39;__builtins__&#39;,
  &#39;__cached__&#39;,
- &#39;__deployed__&#39;,
  &#39;__doc__&#39;,
  &#39;__file__&#39;,
  &#39;__loader__&#39;,
@@ -602,19 +630,24 @@ FILE
  &#39;cubicgrid&#39;,
  &#39;denguess&#39;,
  &#39;denmat&#39;,
- &#39;deprecations&#39;,
  &#39;distributedarray&#39;,
  &#39;environ&#39;,
+ &#39;eri_deriv&#39;,
  &#39;ericut&#39;,
  &#39;errorhandler&#39;,
  &#39;excitondriver&#39;,
+ &#39;firstorderprop&#39;,
+ &#39;fock_deriv&#39;,
  &#39;fockmat&#39;,
+ &#39;get_basis_function_indices_for_atom&#39;,
  &#39;get_basis_path&#39;,
  &#39;get_qq_scheme&#39;,
  &#39;get_qq_type&#39;,
  &#39;gradientdriver&#39;,
  &#39;hartree_in_ev&#39;,
  &#39;hartree_in_kcalpermol&#39;,
+ &#39;hessiandriver&#39;,
+ &#39;import_from_pyscf&#39;,
  &#39;inputparser&#39;,
  &#39;linearsolver&#39;,
  &#39;loprop&#39;,
@@ -633,9 +666,12 @@ FILE
  &#39;mpitask&#39;,
  &#39;optimizationdriver&#39;,
  &#39;optimizationengine&#39;,
+ &#39;orbitalresponse&#39;,
  &#39;outputstream&#39;,
+ &#39;overlap_deriv&#39;,
  &#39;profiler&#39;,
  &#39;qqscheme&#39;,
+ &#39;rpaorbitalresponse&#39;,
  &#39;rspabsorption&#39;,
  &#39;rspc6&#39;,
  &#39;rspcdspec&#39;,
@@ -645,8 +681,8 @@ FILE
  &#39;rsppolarizability&#39;,
  &#39;rspproperty&#39;,
  &#39;scfdriver&#39;,
- &#39;scffirstorderprop&#39;,
  &#39;scfgradientdriver&#39;,
+ &#39;scfhessiandriver&#39;,
  &#39;scfrestdriver&#39;,
  &#39;scfunrestdriver&#39;,
  &#39;set_omp_num_threads&#39;,
@@ -655,13 +691,17 @@ FILE
  &#39;subcommunicators&#39;,
  &#39;szblock&#39;,
  &#39;tdaexcidriver&#39;,
+ &#39;tdaorbitalresponse&#39;,
+ &#39;tdhfgradientdriver&#39;,
+ &#39;tdhfhessiandriver&#39;,
  &#39;tpadriver&#39;,
  &#39;tpafulldriver&#39;,
  &#39;tpareddriver&#39;,
  &#39;veloxchemlib&#39;,
  &#39;visualizationdriver&#39;,
  &#39;xtbdriver&#39;,
- &#39;xtbgradientdriver&#39;]
+ &#39;xtbgradientdriver&#39;,
+ &#39;xtbhessiandriver&#39;]
 </pre></div>
 </div>
 </div>
@@ -764,7 +804,8 @@ FILE
  &#39;update_fock_type&#39;,
  &#39;update_mol_orbs_phase&#39;,
  &#39;update_settings&#39;,
- &#39;write_checkpoint&#39;]
+ &#39;write_checkpoint&#39;,
+ &#39;write_final_hdf5&#39;]
 </pre></div>
 </div>
 </div>
