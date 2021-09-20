@@ -49,7 +49,9 @@
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <link rel="shortcut icon" href="../_static/vlx_logo_mark.png"/>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="shortcut icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Vibrational spectroscopies" href="vib_spect.html" />
@@ -72,7 +74,7 @@
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
-      <img src="../_static/vlx_logo.png" class="logo" alt="logo">
+      <img src="../_static/logo.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">VeloxChem program manual</h1>
@@ -318,6 +320,29 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rotatory-strengths">
+   Rotatory strengths
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#anisotropy-of-extinction-coefficient">
+   Anisotropy of extinction coefficient
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exciton-coupling-model">
+   Exciton coupling model
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -328,6 +353,127 @@
                 
   <div class="section" id="optical-activity-and-dichroism">
 <h1>Optical activity and dichroism<a class="headerlink" href="#optical-activity-and-dichroism" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="rotatory-strengths">
+<h2>Rotatory strengths<a class="headerlink" href="#rotatory-strengths" title="Permalink to this headline">¶</a></h2>
+<p>The strength of an ECD band is given by the anisotropy of the decadic molar extinction coefficient <span id="id1">[<a class="reference internal" href="refs.html#id49">NRS18</a>]</span></p>
+<div class="math notranslate nohighlight">
+\[
+\Delta\epsilon\left(\omega\right) =
+\epsilon_+\left(\omega\right)-\epsilon_-\left(\omega\right) =
+\frac{16\pi^2{\mathcal N}\omega}{3\times
+  1000\ln\left(10\right)\left(4\pi\epsilon_0\right)\hbar
+  c^2}\sum_{n}f(\omega;\omega_{n0},\gamma)\, R_{n0} 
+\]</div>
+<p>where the rotatory strength <span class="math notranslate nohighlight">\(R_{n0}\)</span> defined as</p>
+<div class="math notranslate nohighlight">
+\[
+R_{n0} =
+\lim_{\omega\rightarrow\omega_{n0}}
+\left(\omega_{n0}-\omega\right)
+\Im\langle \langle \hat{\mu}_\alpha
+;\hat{m}_\alpha\rangle \rangle_\omega
+= \langle 0 | \hat{\mu}_\alpha | n \rangle
+\langle n | \hat{m}_\alpha | 0\rangle
+\]</div>
+<p>Note that there is an implied Einstein summation of the repeated tensor indices in the equations above as to refer to a situation of an isotropic sample.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
+<span class="n">task</span><span class="p">:</span> <span class="n">response</span>
+<span class="nd">@end</span>
+
+<span class="nd">@method</span> <span class="n">settings</span>
+<span class="n">basis</span><span class="p">:</span> <span class="n">def2</span><span class="o">-</span><span class="n">SVPD</span>
+<span class="n">dft</span><span class="p">:</span> <span class="n">yes</span>
+<span class="n">xcfun</span><span class="p">:</span> <span class="n">b3lyp</span>
+<span class="nd">@end</span>
+
+<span class="nd">@response</span>
+<span class="nb">property</span><span class="p">:</span> <span class="n">ecd</span>
+<span class="n">nstates</span><span class="p">:</span> <span class="mi">20</span>
+<span class="nd">@end</span>
+
+<span class="nd">@molecule</span>
+<span class="n">charge</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">multiplicity</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">xyz</span><span class="p">:</span>
+<span class="o">...</span>
+<span class="nd">@end</span>
+
+</pre></div>
+</div>
+</div>
+<div class="section" id="anisotropy-of-extinction-coefficient">
+<h2>Anisotropy of extinction coefficient<a class="headerlink" href="#anisotropy-of-extinction-coefficient" title="Permalink to this headline">¶</a></h2>
+<p>The anisotropy of the decadic molar extinction coefficient can be determined directly from the complex polarization propagator evaluated for mixed electric- and magnetic-dipole operators <span id="id2">[<a class="reference internal" href="refs.html#id3">JN07</a>, <a class="reference internal" href="refs.html#id49">NRS18</a>]</span></p>
+<div class="math notranslate nohighlight">
+\[
+\Delta\epsilon(\omega) =
+\epsilon_+(\omega) - \epsilon_-(\omega) =
+\frac{
+	16\pi^2{\mathcal N}\omega
+}{
+	3 \times 1000 \ln(10)
+	(4\pi\epsilon_0)\hbar c^2
+}
+\Re 
+\langle \langle \hat{\mu}_\alpha
+;\hat{m}_\alpha\rangle \rangle_\omega^\gamma
+\]</div>
+<p>The linear response function is here complex and calculated with a damping term, <span class="math notranslate nohighlight">\(\gamma\)</span>, associated with the inverse finite lifetime of the excited states. The default program setting for this parameter is 0.124 eV (or 1000 cm<span class="math notranslate nohighlight">\(^{-1}\)</span>).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
+<span class="n">task</span><span class="p">:</span> <span class="n">response</span>
+<span class="nd">@end</span>
+
+<span class="nd">@method</span> <span class="n">settings</span>
+<span class="n">basis</span><span class="p">:</span> <span class="n">def2</span><span class="o">-</span><span class="n">SVPD</span>
+<span class="n">dft</span><span class="p">:</span> <span class="n">yes</span>
+<span class="n">xcfun</span><span class="p">:</span> <span class="n">b3lyp</span>
+<span class="nd">@end</span>
+
+<span class="nd">@response</span>
+<span class="nb">property</span><span class="p">:</span> <span class="n">ecd</span> <span class="p">(</span><span class="n">cpp</span><span class="p">)</span>
+<span class="n">frequencies</span><span class="p">:</span> <span class="mf">0.05</span><span class="o">-</span><span class="mf">0.15</span> <span class="p">(</span><span class="mf">0.0025</span><span class="p">)</span>
+<span class="nd">@end</span>
+
+<span class="nd">@molecule</span>
+<span class="n">charge</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">multiplicity</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">xyz</span><span class="p">:</span>
+<span class="o">...</span>
+<span class="nd">@end</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="exciton-coupling-model">
+<h2>Exciton coupling model<a class="headerlink" href="#exciton-coupling-model" title="Permalink to this headline">¶</a></h2>
+<p>VeloxChem implements the exciton coupling model to determine circular dichroism spectra.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
+<span class="n">task</span><span class="p">:</span> <span class="n">exciton</span>
+<span class="nd">@end</span>
+
+<span class="nd">@method</span> <span class="n">settings</span>
+<span class="n">xcfun</span><span class="p">:</span> <span class="n">b3lyp</span>
+<span class="n">basis</span><span class="p">:</span> <span class="n">cc</span><span class="o">-</span><span class="n">pvdz</span>
+<span class="nd">@end</span>
+
+<span class="nd">@exciton</span>
+<span class="n">fragments</span><span class="p">:</span> <span class="mi">40</span>
+<span class="n">atoms_per_fragment</span><span class="p">:</span> <span class="mi">55</span>
+<span class="n">nstates</span><span class="p">:</span> <span class="mi">5</span>
+<span class="n">ct_nocc</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">ct_nvir</span><span class="p">:</span> <span class="mi">0</span>
+<span class="nd">@end</span>
+
+<span class="nd">@molecule</span>
+<span class="n">charge</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">multiplicity</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">xyz</span><span class="p">:</span>
+<span class="o">...</span>
+<span class="n">XYZ</span> <span class="n">coordinates</span> <span class="k">for</span> <span class="mi">40</span> <span class="n">x</span> <span class="mi">55</span> <span class="n">atoms</span>
+<span class="o">...</span>
+<span class="nd">@end</span>
+</pre></div>
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">

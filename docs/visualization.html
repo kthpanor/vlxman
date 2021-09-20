@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Exchange–correlation functionals &#8212; VeloxChem program manual</title>
+    <title>Visualization &#8212; VeloxChem program manual</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -52,8 +52,8 @@
     <link rel="shortcut icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Basis sets" href="basis_sets.html" />
-    <link rel="prev" title="Reference states" href="refstate.html" />
+    <link rel="next" title="Program structure" href="program_struct.html" />
+    <link rel="prev" title="X-ray spectroscpies" href="xray.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -107,8 +107,13 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="run_desktop.html">
-   Running on a desktop
+  <a class="reference internal" href="run_input.html">
+   Running with input files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="run_nb.html">
+   Running in a Notebook
   </a>
  </li>
  <li class="toctree-l1">
@@ -122,14 +127,14 @@
   Model chemistry
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="refstate.html">
    Reference states
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="functionals.html">
    Exchange–correlation functionals
   </a>
  </li>
@@ -201,10 +206,10 @@
   Visualization
  </span>
 </p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="elec_dens.html">
-   Electronic densities
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Visualization
   </a>
  </li>
 </ul>
@@ -277,7 +282,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/docs/functionals.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/docs/visualization.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -297,7 +302,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fdocs/functionals.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fdocs/visualization.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -323,14 +328,14 @@
             </div>
             <nav id="bd-toc-nav">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#available-functionals">
-   Available functionals
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Visualization
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dft-settings">
-   DFT settings
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cube-files">
+   Cube files
   </a>
  </li>
 </ul>
@@ -344,48 +349,34 @@
         
               <div>
                 
-  <div class="section" id="exchangecorrelation-functionals">
-<h1>Exchange–correlation functionals<a class="headerlink" href="#exchangecorrelation-functionals" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="available-functionals">
-<h2>Available functionals<a class="headerlink" href="#available-functionals" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p>Exchange functional</p>
-<ul>
-<li><p>SLATER</p></li>
-<li><p>BECKE88</p></li>
-<li><p>B88X</p></li>
-</ul>
-</li>
-<li><p>Correlation functional</p>
-<ul>
-<li><p>VWN3</p></li>
-<li><p>LYP</p></li>
-</ul>
-</li>
-<li><p>Exchange-correlation functional</p>
-<ul>
-<li><p>SLDA</p></li>
-<li><p>BLYP</p></li>
-<li><p>B3LYP</p></li>
-<li><p>BHANDH</p></li>
-<li><p>BHANDHLYP</p></li>
-</ul>
-</li>
-</ul>
-<p>More functionals are being implemented and range-separated hybrids are a priority.</p>
+  <div class="section" id="visualization">
+<h1>Visualization<a class="headerlink" href="#visualization" title="Permalink to this headline">¶</a></h1>
 </div>
-<div class="section" id="dft-settings">
-<h2>DFT settings<a class="headerlink" href="#dft-settings" title="Permalink to this headline">¶</a></h2>
-<p>The choice of functional and related settings are performed in the input file section <code class="docutils literal notranslate"><span class="pre">method</span> <span class="pre">settings</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@method</span> <span class="n">settings</span>
-<span class="n">dft</span><span class="p">:</span> <span class="n">yes</span>
-<span class="n">xcfun</span><span class="p">:</span> <span class="n">b3lyp</span>
-<span class="n">grid_level</span><span class="p">:</span> <span class="mi">4</span>
+<div class="section" id="cube-files">
+<h1>Cube files<a class="headerlink" href="#cube-files" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
+<span class="n">task</span><span class="p">:</span> <span class="n">visualization</span>
 <span class="nd">@end</span>
+
+<span class="nd">@method</span> <span class="n">settings</span>
+<span class="n">basis</span><span class="p">:</span> <span class="n">def2</span><span class="o">-</span><span class="n">svp</span>
+<span class="nd">@end</span>
+
+<span class="nd">@visualization</span>
+<span class="n">cubes</span><span class="p">:</span> <span class="n">density</span><span class="p">(</span><span class="n">alpha</span><span class="p">),</span> <span class="n">mo</span><span class="p">(</span><span class="n">homo</span><span class="p">)</span>
+<span class="n">files</span><span class="p">:</span> <span class="n">density</span><span class="o">.</span><span class="n">cube</span><span class="p">,</span> <span class="n">homo</span><span class="o">.</span><span class="n">cube</span>
+<span class="nd">@end</span>
+
+<span class="nd">@molecule</span>
+<span class="n">charge</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">multiplicity</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">units</span><span class="p">:</span> <span class="n">au</span>
+<span class="n">xyz</span><span class="p">:</span>  
+<span class="n">O</span>   <span class="mf">0.0</span>   <span class="mf">0.0</span>   <span class="mf">0.0</span>
+<span class="n">H</span>   <span class="mf">0.0</span>   <span class="mf">1.4</span>   <span class="mf">1.1</span>
+<span class="n">H</span>   <span class="mf">0.0</span>  <span class="o">-</span><span class="mf">1.4</span>   <span class="mf">1.1</span>
+<span class="nd">@end</span> 
 </pre></div>
-</div>
-<p>To change to another functional, replace <code class="docutils literal notranslate"><span class="pre">b3lyp</span></code> with any of the others (as spelled in the list above).</p>
-<p>Grid densities are available up to level 6. Level 4 (default) is recommended for production calculations.</p>
 </div>
 </div>
 
@@ -414,8 +405,8 @@
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="refstate.html" title="previous page">Reference states</a>
-    <a class='right-next' id="next-link" href="basis_sets.html" title="next page">Basis sets</a>
+    <a class='left-prev' id="prev-link" href="xray.html" title="previous page">X-ray spectroscpies</a>
+    <a class='right-next' id="next-link" href="program_struct.html" title="next page">Program structure</a>
 
         </div>
         

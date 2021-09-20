@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Exchange–correlation functionals &#8212; VeloxChem program manual</title>
+    <title>Running in a Notebook &#8212; VeloxChem program manual</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -52,8 +52,8 @@
     <link rel="shortcut icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Basis sets" href="basis_sets.html" />
-    <link rel="prev" title="Reference states" href="refstate.html" />
+    <link rel="next" title="Running on a cluster" href="run_cluster.html" />
+    <link rel="prev" title="Running with input files" href="run_input.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -95,7 +95,7 @@
   Getting started
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="limits.html">
    Pushing the limits
@@ -107,8 +107,13 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="run_desktop.html">
-   Running on a desktop
+  <a class="reference internal" href="run_input.html">
+   Running with input files
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Running in a Notebook
   </a>
  </li>
  <li class="toctree-l1">
@@ -122,14 +127,14 @@
   Model chemistry
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="refstate.html">
    Reference states
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="functionals.html">
    Exchange–correlation functionals
   </a>
  </li>
@@ -277,7 +282,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/docs/functionals.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/docs/run_nb.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -297,7 +302,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fdocs/functionals.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fdocs/run_nb.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -324,13 +329,8 @@
             <nav id="bd-toc-nav">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#available-functionals">
-   Available functionals
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dft-settings">
-   DFT settings
+  <a class="reference internal nav-link" href="#scf-optimization">
+   SCF optimization
   </a>
  </li>
 </ul>
@@ -344,48 +344,30 @@
         
               <div>
                 
-  <div class="section" id="exchangecorrelation-functionals">
-<h1>Exchange–correlation functionals<a class="headerlink" href="#exchangecorrelation-functionals" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="available-functionals">
-<h2>Available functionals<a class="headerlink" href="#available-functionals" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p>Exchange functional</p>
-<ul>
-<li><p>SLATER</p></li>
-<li><p>BECKE88</p></li>
-<li><p>B88X</p></li>
-</ul>
-</li>
-<li><p>Correlation functional</p>
-<ul>
-<li><p>VWN3</p></li>
-<li><p>LYP</p></li>
-</ul>
-</li>
-<li><p>Exchange-correlation functional</p>
-<ul>
-<li><p>SLDA</p></li>
-<li><p>BLYP</p></li>
-<li><p>B3LYP</p></li>
-<li><p>BHANDH</p></li>
-<li><p>BHANDHLYP</p></li>
-</ul>
-</li>
-</ul>
-<p>More functionals are being implemented and range-separated hybrids are a priority.</p>
-</div>
-<div class="section" id="dft-settings">
-<h2>DFT settings<a class="headerlink" href="#dft-settings" title="Permalink to this headline">¶</a></h2>
-<p>The choice of functional and related settings are performed in the input file section <code class="docutils literal notranslate"><span class="pre">method</span> <span class="pre">settings</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@method</span> <span class="n">settings</span>
-<span class="n">dft</span><span class="p">:</span> <span class="n">yes</span>
-<span class="n">xcfun</span><span class="p">:</span> <span class="n">b3lyp</span>
-<span class="n">grid_level</span><span class="p">:</span> <span class="mi">4</span>
-<span class="nd">@end</span>
+  <div class="section" id="running-in-a-notebook">
+<h1>Running in a Notebook<a class="headerlink" href="#running-in-a-notebook" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="scf-optimization">
+<h2>SCF optimization<a class="headerlink" href="#scf-optimization" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">veloxchem</span> <span class="k">as</span> <span class="nn">vlx</span>
+
+<span class="n">molecule_string</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    O 0 0 0</span>
+<span class="s2">    H 0 0 1.795239827225189</span>
+<span class="s2">    H 1.693194615993441 0 -0.599043184453037&quot;&quot;&quot;</span>
+
+<span class="n">molecule</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">Molecule</span><span class="o">.</span><span class="n">read_str</span><span class="p">(</span><span class="n">molecule_string</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s1">&#39;angstrom&#39;</span><span class="p">)</span>
+
+<span class="n">basis</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">MolecularBasis</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="s1">&#39;def2-svp&#39;</span><span class="p">)</span>
+
+<span class="n">scf_settings</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;conv_thresh&#39;</span><span class="p">:</span> <span class="mf">1.0e-6</span><span class="p">}</span>
+<span class="n">method_settings</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;xcfun&#39;</span><span class="p">:</span> <span class="s1">&#39;b3lyp&#39;</span><span class="p">,</span> <span class="s1">&#39;grid_level&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">}</span>
+
+<span class="n">scfdrv</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">ScfRestrictedDriver</span><span class="p">()</span>
+<span class="n">scfdrv</span><span class="o">.</span><span class="n">update_settings</span><span class="p">(</span><span class="n">scf_settings</span><span class="p">,</span> <span class="n">method_settings</span><span class="p">)</span>
+<span class="n">scfdrv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">basis</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>To change to another functional, replace <code class="docutils literal notranslate"><span class="pre">b3lyp</span></code> with any of the others (as spelled in the list above).</p>
-<p>Grid densities are available up to level 6. Level 4 (default) is recommended for production calculations.</p>
+<p>A comprehensive presenation of how to interact and run the VeloxChem program in a Jupyter notebook is provided in the <a class="reference external" href="https://kthpanor.github.io/echem">eChem book</a>.</p>
 </div>
 </div>
 
@@ -414,8 +396,8 @@
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="refstate.html" title="previous page">Reference states</a>
-    <a class='right-next' id="next-link" href="basis_sets.html" title="next page">Basis sets</a>
+    <a class='left-prev' id="prev-link" href="run_input.html" title="previous page">Running with input files</a>
+    <a class='right-next' id="next-link" href="run_cluster.html" title="next page">Running on a cluster</a>
 
         </div>
         
