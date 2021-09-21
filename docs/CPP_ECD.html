@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Optical activity and dichroism &#8212; VeloxChem program manual</title>
+    <title>&lt;no title&gt; &#8212; VeloxChem program manual</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -54,8 +54,6 @@
     <link rel="shortcut icon" href="../_static/vlx_logo_mark.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Vibrational spectroscopies" href="vib_spect.html" />
-    <link rel="prev" title="UV/vis absorption/emission" href="uv-vis.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -156,14 +154,14 @@
   Properties
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="uv-vis.html">
    UV/vis absorption/emission
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="opt_act.html">
    Optical activity and dichroism
   </a>
  </li>
@@ -279,9 +277,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/docs/opt_act.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/docs/CPP_ECD.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -299,7 +297,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fdocs/opt_act.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fdocs/CPP_ECD.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -315,6 +313,23 @@
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/docs/CPP_ECD.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
@@ -324,22 +339,7 @@
                 <i class="fas fa-list"></i> Contents
             </div>
             <nav id="bd-toc-nav">
-                <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#rotatory-strengths">
-   Rotatory strengths
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#anisotropy-of-extinction-coefficient">
-   Anisotropy of extinction coefficient
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exciton-coupling-model">
-   Exciton coupling model
-  </a>
- </li>
+                <ul class="simple visible nav section-nav flex-column">
 </ul>
 
             </nav>
@@ -351,143 +351,12 @@
         
               <div>
                 
-  <div class="section" id="optical-activity-and-dichroism">
-<h1>Optical activity and dichroism<a class="headerlink" href="#optical-activity-and-dichroism" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="rotatory-strengths">
-<h2>Rotatory strengths<a class="headerlink" href="#rotatory-strengths" title="Permalink to this headline">¶</a></h2>
-<p>The strength of an ECD band is given by the anisotropy of the decadic molar extinction coefficient <span id="id1">[<a class="reference internal" href="refs.html#id49">NRS18</a>]</span></p>
-<div class="math notranslate nohighlight">
-\[
-\Delta\epsilon\left(\omega\right) =
-\epsilon_+\left(\omega\right)-\epsilon_-\left(\omega\right) =
-\frac{16\pi^2{\mathcal N}\omega}{3\times
-  1000\ln\left(10\right)\left(4\pi\epsilon_0\right)\hbar
-  c^2}\sum_{n}f(\omega;\omega_{n0},\gamma)\, R_{n0} 
-\]</div>
-<p>where the rotatory strength <span class="math notranslate nohighlight">\(R_{n0}\)</span> is defined as</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-R_{n0} &amp; =
-\lim_{\omega\rightarrow\omega_{n0}}
-\left(\omega_{n0}-\omega\right)
-\Im\langle \langle \hat{\mu}_\alpha
-;\hat{m}_\alpha\rangle \rangle_\omega
-= \langle 0 | \hat{\mu}_\alpha | n \rangle
-\langle n | \hat{m}_\alpha | 0\rangle 
-\\ &amp; =
-\frac{i}{m_\mathrm{e} \omega_{n0}}
-\langle 0 | \hat{p}_\alpha | n \rangle
-\langle n | \hat{m}_\alpha | 0\rangle
-\end{align*}\]</div>
-<p>In VeloxChem, the rotatory strength is evaluated in the velocity gauge as given in the final expression.</p>
-<p>Note that there is an implied Einstein summation of the repeated tensor indices in the equations above as to refer to a situation of an isotropic sample.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
-<span class="n">task</span><span class="p">:</span> <span class="n">response</span>
-<span class="nd">@end</span>
-
-<span class="nd">@method</span> <span class="n">settings</span>
-<span class="n">basis</span><span class="p">:</span> <span class="n">def2</span><span class="o">-</span><span class="n">SVPD</span>
-<span class="n">dft</span><span class="p">:</span> <span class="n">yes</span>
-<span class="n">xcfun</span><span class="p">:</span> <span class="n">b3lyp</span>
-<span class="nd">@end</span>
-
-<span class="nd">@response</span>
-<span class="nb">property</span><span class="p">:</span> <span class="n">ecd</span>
-<span class="n">nstates</span><span class="p">:</span> <span class="mi">20</span>
-<span class="nd">@end</span>
-
-<span class="nd">@molecule</span>
-<span class="n">charge</span><span class="p">:</span> <span class="mi">0</span>
-<span class="n">multiplicity</span><span class="p">:</span> <span class="mi">1</span>
-<span class="n">xyz</span><span class="p">:</span>
-<span class="o">...</span>
-<span class="nd">@end</span>
-
-</pre></div>
-</div>
-</div>
-<div class="section" id="anisotropy-of-extinction-coefficient">
-<h2>Anisotropy of extinction coefficient<a class="headerlink" href="#anisotropy-of-extinction-coefficient" title="Permalink to this headline">¶</a></h2>
-<p>The anisotropy of the decadic molar extinction coefficient can be determined directly from the complex polarization propagator evaluated for mixed electric- and magnetic-dipole operators <span id="id2">[<a class="reference internal" href="refs.html#id3">JN07</a>, <a class="reference internal" href="refs.html#id49">NRS18</a>]</span></p>
-<div class="math notranslate nohighlight">
-\[
-\Delta\epsilon(\omega) = \epsilon_+(\omega) - \epsilon_-(\omega) = \frac{288\times10^{-30}\pi^2 \cal{N} a_0^4}{100}\frac{\pi}{4.5\mathrm{ln}(10)1000}
-\, \beta  \tilde{\nu}^2 
-\]</div>
-<p>where</p>
-<div class="math notranslate nohighlight">
-\[
-\beta = -\frac{1}{3 \omega} (G_{xx} + G_{yy} + G_{zz})
-\]</div>
-<p>and</p>
-<div class="math notranslate nohighlight">
-\[
-G_{\alpha\alpha} = \Re\langle\langle\hat{\mu}_\alpha;\hat{m}_\alpha
-\rangle\rangle_\omega = 
-\frac{e}{\omega m_e}
-\Im 
-\langle\langle\hat{p}_\alpha;
-\hat{m}_\alpha
-\rangle\rangle_\omega
-\]</div>
-<p>The mixed electric–magnetic dipole tensor, <span class="math notranslate nohighlight">\(G\)</span>, is evaluated in the velocity gauge as given in the final expression. Furthermore, it is complex and calculated with a damping term, <span class="math notranslate nohighlight">\(\gamma\)</span>, associated with the inverse finite lifetime of the excited states. The default program setting for this parameter is 0.124 eV (or 0.004556 a.u.).</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
-<span class="n">task</span><span class="p">:</span> <span class="n">response</span>
-<span class="nd">@end</span>
-
-<span class="nd">@method</span> <span class="n">settings</span>
-<span class="n">basis</span><span class="p">:</span> <span class="n">def2</span><span class="o">-</span><span class="n">SVPD</span>
-<span class="n">dft</span><span class="p">:</span> <span class="n">yes</span>
-<span class="n">xcfun</span><span class="p">:</span> <span class="n">b3lyp</span>
-<span class="nd">@end</span>
-
-<span class="nd">@response</span>
-<span class="nb">property</span><span class="p">:</span> <span class="n">ecd</span> <span class="p">(</span><span class="n">cpp</span><span class="p">)</span>
-<span class="n">frequencies</span><span class="p">:</span> <span class="mf">0.05</span><span class="o">-</span><span class="mf">0.15</span> <span class="p">(</span><span class="mf">0.0025</span><span class="p">)</span>
-<span class="n">damping</span><span class="p">:</span> <span class="mf">0.0045563</span>  <span class="c1"># this is the default value</span>
-<span class="nd">@end</span>
-
-<span class="nd">@molecule</span>
-<span class="n">charge</span><span class="p">:</span> <span class="mi">0</span>
-<span class="n">multiplicity</span><span class="p">:</span> <span class="mi">1</span>
-<span class="n">xyz</span><span class="p">:</span>
-<span class="o">...</span>
-<span class="nd">@end</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="exciton-coupling-model">
-<h2>Exciton coupling model<a class="headerlink" href="#exciton-coupling-model" title="Permalink to this headline">¶</a></h2>
-<p>VeloxChem implements the exciton coupling model to determine circular dichroism spectra.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
-<span class="n">task</span><span class="p">:</span> <span class="n">exciton</span>
-<span class="nd">@end</span>
-
-<span class="nd">@method</span> <span class="n">settings</span>
-<span class="n">xcfun</span><span class="p">:</span> <span class="n">b3lyp</span>
-<span class="n">basis</span><span class="p">:</span> <span class="n">cc</span><span class="o">-</span><span class="n">pvdz</span>
-<span class="nd">@end</span>
-
-<span class="nd">@exciton</span>
-<span class="n">fragments</span><span class="p">:</span> <span class="mi">40</span>
-<span class="n">atoms_per_fragment</span><span class="p">:</span> <span class="mi">55</span>
-<span class="n">nstates</span><span class="p">:</span> <span class="mi">5</span>
-<span class="n">ct_nocc</span><span class="p">:</span> <span class="mi">0</span>
-<span class="n">ct_nvir</span><span class="p">:</span> <span class="mi">0</span>
-<span class="nd">@end</span>
-
-<span class="nd">@molecule</span>
-<span class="n">charge</span><span class="p">:</span> <span class="mi">0</span>
-<span class="n">multiplicity</span><span class="p">:</span> <span class="mi">1</span>
-<span class="n">xyz</span><span class="p">:</span>
-<span class="o">...</span>
-<span class="n">XYZ</span> <span class="n">coordinates</span> <span class="k">for</span> <span class="mi">40</span> <span class="n">x</span> <span class="mi">55</span> <span class="n">atoms</span>
-<span class="o">...</span>
-<span class="nd">@end</span>
-</pre></div>
-</div>
-</div>
-</div>
+  <p><span class="math notranslate nohighlight">\(G_{xx} = \Re\langle\langle\hat{\mu}_x;\hat{m}_x\rangle\rangle_\omega = \omega^{-1}m_e^{-1}\Im\langle\langle\hat{p}_x;\hat{m}_x\rangle\rangle_\omega\)</span> (velocity gauge)</p>
+<p><span class="math notranslate nohighlight">\(\beta = -\frac{1}{3 \omega} (G_{xx} + G_{yy} + G_{zz})\)</span></p>
+<p>omega in wavenumbers, first factor transforms (beta) into molar ellipticity, second factor (molar ellipticity) in the extinction coefficient</p>
+<p><span class="math notranslate nohighlight">\(\Delta\epsilon(\omega) = \epsilon_+(\omega) - \epsilon_-(\omega) = \beta  \tilde{\nu}^2 \frac{288\times10^{-30}\pi^2 \cal{N} a_0^4}{100}\frac{\pi}{4.5ln(10)1000}\)</span></p>
+<p>keyword for damping parameter:</p>
+<p>damping: 0.004556335252911937</p>
 
     <script type="text/x-thebe-config">
     {
@@ -514,8 +383,6 @@ G_{\alpha\alpha} = \Re\langle\langle\hat{\mu}_\alpha;\hat{m}_\alpha
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="uv-vis.html" title="previous page">UV/vis absorption/emission</a>
-    <a class='right-next' id="next-link" href="vib_spect.html" title="next page">Vibrational spectroscopies</a>
 
         </div>
         
