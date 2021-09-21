@@ -18,8 +18,10 @@ $ open _build/html/index.html
 
 ```
 $ pip install ghp-import
-$ ghp-import -n -p -f _build/html
+$ ghp-import -n -p -c veloxchem.org -f _build/html
 ```
+
+The flag `-c veloxchem.org` will create a file named `CNAME` in the `gh-pages` branch containing the published pages. This file contains a single line with `veloxchem.org` that is needed to be able to reach the manual from the `https://veloxchemorg` domain.   
 
 # References
 The file `references.bib` in the top directory is a regular BIBTEX file. Add your references in this file. A citation in the text is added with
