@@ -371,9 +371,10 @@ $ open _build/html/index.html
 <div class="section" id="publish-the-html-version">
 <h1>Publish the html-version<a class="headerlink" href="#publish-the-html-version" title="Permalink to this headline">¶</a></h1>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install ghp-import
-$ ghp-import -n -p -f _build/html
+$ ghp-import -n -p -c veloxchem.org -f _build/html
 </pre></div>
 </div>
+<p>The flag <code class="docutils literal notranslate"><span class="pre">-c</span> <span class="pre">veloxchem.org</span></code> will create a file named <code class="docutils literal notranslate"><span class="pre">CNAME</span></code> in the <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code> branch containing the published pages. This file contains a single line with <code class="docutils literal notranslate"><span class="pre">veloxchem.org</span></code> that is needed to be able to reach the manual from the <code class="docutils literal notranslate"><span class="pre">https://veloxchemorg</span></code> domain.</p>
 </div>
 <div class="section" id="references">
 <h1>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h1>

@@ -5,14 +5,20 @@
 The strength of an ECD band is given by the anisotropy of the decadic molar extinction coefficient {cite}`Norman2018`
 
 $$
-\Delta\epsilon\left(\omega\right) =
-\epsilon_+\left(\omega\right)-\epsilon_-\left(\omega\right) =
-\frac{16\pi^2{\mathcal N}\omega}{3\times
-  1000\ln\left(10\right)\left(4\pi\epsilon_0\right)\hbar
-  c^2}\sum_{n}f(\omega;\omega_{n0},\gamma)\, R_{n0} 
+\Delta\epsilon(\omega) =
+\frac{
+	16\pi^2 N_\mathrm{A} \, \omega
+}{
+	3\times
+  	1000\ln\left(10\right)
+	\left(4\pi\epsilon_0\right)\hbar 
+	c^2
+}
+\sum_n f(\omega; \omega_{n0},\gamma)\, 
+R_{n0} 
 $$
 
-where the rotatory strength $R_{n0}$ is defined as
+where $N_\mathrm{A}$ is Avogadro's constant, $f$ is the [Cauchy distribution](https://en.wikipedia.org/wiki/Cauchy_distribution), and $R_{n0}$ is the rotatory strength defined as
 
 \begin{align*}
 R_{n0} & =
@@ -20,15 +26,16 @@ R_{n0} & =
 \left(\omega_{n0}-\omega\right)
 \Im\langle \langle \hat{\mu}_\alpha
 ;\hat{m}_\alpha\rangle \rangle_\omega
-= \langle 0 | \hat{\mu}_\alpha | n \rangle
+= \Im 
+\langle 0 | \hat{\mu}_\alpha | n \rangle
 \langle n | \hat{m}_\alpha | 0\rangle 
 \\ & =
-\frac{i}{m_\mathrm{e} \omega_{n0}}
+\frac{e}{m_\mathrm{e} \omega_{n0}}
 \langle 0 | \hat{p}_\alpha | n \rangle
 \langle n | \hat{m}_\alpha | 0\rangle
 \end{align*}
 
-In VeloxChem, the rotatory strength is evaluated in the velocity gauge as given in the final expression.
+In VeloxChem, the rotatory strength is evaluated in the velocity gauge as given in the final expression and presented in units of $10^{−40} \mathrm{esu}^2 \mathrm{cm}^2$.
 
 Note that there is an implied Einstein summation of the repeated tensor indices in the equations above as to refer to a situation of an isotropic sample.
 
@@ -57,34 +64,43 @@ xyz:
 
 ```
 
-## Anisotropy of extinction coefficient
+## Extinction coefficient
 
 The anisotropy of the decadic molar extinction coefficient can be determined directly from the complex polarization propagator evaluated for mixed electric- and magnetic-dipole operators {cite}`Norman2018, Jiem2007`
 
 $$
-\Delta\epsilon(\omega) = \epsilon_+(\omega) - \epsilon_-(\omega) = \frac{288\times10^{-30}\pi^2 \cal{N} a_0^4}{100}\frac{\pi}{4.5\mathrm{ln}(10)1000}
-\, \beta  \tilde{\nu}^2 
+\Delta\epsilon(\omega) =
+\frac{
+	16\pi^3 N_\mathrm{A} \, \omega^2
+}{
+  	1000\ln\left(10\right)
+	\left(4\pi\epsilon_0\right) 
+	c^2
+}
+\, \beta(\omega)
 $$
 
 where 
 
 $$
-\beta = -\frac{1}{3 \omega} (G_{xx} + G_{yy} + G_{zz})
+\beta(\omega) = -\frac{1}{3 \omega} (G_{xx} + G_{yy} + G_{zz})
 $$
 
 and 
 
 $$
 G_{\alpha\alpha} = \Re\langle\langle\hat{\mu}_\alpha;\hat{m}_\alpha
-\rangle\rangle_\omega = 
+\rangle\rangle_\omega^\gamma = 
 \frac{e}{\omega m_e}
 \Im 
 \langle\langle\hat{p}_\alpha;
 \hat{m}_\alpha
-\rangle\rangle_\omega
+\rangle\rangle_\omega^\gamma
 $$
 
 The mixed electric–magnetic dipole tensor, $G$, is evaluated in the velocity gauge as given in the final expression. Furthermore, it is complex and calculated with a damping term, $\gamma$, associated with the inverse finite lifetime of the excited states. The default program setting for this parameter is 0.124 eV (or 0.004556 a.u.).
+
+In VeloxChem, results for $\Delta \epsilon(\omega)$ are presented in units of $\mathrm{L} \, \mathrm{mol}^{-1} \mathrm{cm}^{-1}$.
 
 ```
 @jobs

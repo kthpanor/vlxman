@@ -331,8 +331,8 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#anisotropy-of-extinction-coefficient">
-   Anisotropy of extinction coefficient
+  <a class="reference internal nav-link" href="#extinction-coefficient">
+   Extinction coefficient
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -358,13 +358,19 @@
 <p>The strength of an ECD band is given by the anisotropy of the decadic molar extinction coefficient <span id="id1">[<a class="reference internal" href="refs.html#id49">NRS18</a>]</span></p>
 <div class="math notranslate nohighlight">
 \[
-\Delta\epsilon\left(\omega\right) =
-\epsilon_+\left(\omega\right)-\epsilon_-\left(\omega\right) =
-\frac{16\pi^2{\mathcal N}\omega}{3\times
-  1000\ln\left(10\right)\left(4\pi\epsilon_0\right)\hbar
-  c^2}\sum_{n}f(\omega;\omega_{n0},\gamma)\, R_{n0} 
+\Delta\epsilon(\omega) =
+\frac{
+	16\pi^2 N_\mathrm{A} \, \omega
+}{
+	3\times
+  	1000\ln\left(10\right)
+	\left(4\pi\epsilon_0\right)\hbar 
+	c^2
+}
+\sum_n f(\omega; \omega_{n0},\gamma)\, 
+R_{n0} 
 \]</div>
-<p>where the rotatory strength <span class="math notranslate nohighlight">\(R_{n0}\)</span> is defined as</p>
+<p>where <span class="math notranslate nohighlight">\(N_\mathrm{A}\)</span> is Avogadro’s constant, <span class="math notranslate nohighlight">\(f\)</span> is the <a class="reference external" href="https://en.wikipedia.org/wiki/Cauchy_distribution">Cauchy distribution</a>, and <span class="math notranslate nohighlight">\(R_{n0}\)</span> is the rotatory strength defined as</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
 R_{n0} &amp; =
@@ -372,14 +378,15 @@ R_{n0} &amp; =
 \left(\omega_{n0}-\omega\right)
 \Im\langle \langle \hat{\mu}_\alpha
 ;\hat{m}_\alpha\rangle \rangle_\omega
-= \langle 0 | \hat{\mu}_\alpha | n \rangle
+= \Im 
+\langle 0 | \hat{\mu}_\alpha | n \rangle
 \langle n | \hat{m}_\alpha | 0\rangle 
 \\ &amp; =
-\frac{i}{m_\mathrm{e} \omega_{n0}}
+\frac{e}{m_\mathrm{e} \omega_{n0}}
 \langle 0 | \hat{p}_\alpha | n \rangle
 \langle n | \hat{m}_\alpha | 0\rangle
 \end{align*}\]</div>
-<p>In VeloxChem, the rotatory strength is evaluated in the velocity gauge as given in the final expression.</p>
+<p>In VeloxChem, the rotatory strength is evaluated in the velocity gauge as given in the final expression and presented in units of <span class="math notranslate nohighlight">\(10^{−40} \mathrm{esu}^2 \mathrm{cm}^2\)</span>.</p>
 <p>Note that there is an implied Einstein summation of the repeated tensor indices in the equations above as to refer to a situation of an isotropic sample.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
 <span class="n">task</span><span class="p">:</span> <span class="n">response</span>
@@ -406,31 +413,39 @@ R_{n0} &amp; =
 </pre></div>
 </div>
 </div>
-<div class="section" id="anisotropy-of-extinction-coefficient">
-<h2>Anisotropy of extinction coefficient<a class="headerlink" href="#anisotropy-of-extinction-coefficient" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="extinction-coefficient">
+<h2>Extinction coefficient<a class="headerlink" href="#extinction-coefficient" title="Permalink to this headline">¶</a></h2>
 <p>The anisotropy of the decadic molar extinction coefficient can be determined directly from the complex polarization propagator evaluated for mixed electric- and magnetic-dipole operators <span id="id2">[<a class="reference internal" href="refs.html#id3">JN07</a>, <a class="reference internal" href="refs.html#id49">NRS18</a>]</span></p>
 <div class="math notranslate nohighlight">
 \[
-\Delta\epsilon(\omega) = \epsilon_+(\omega) - \epsilon_-(\omega) = \frac{288\times10^{-30}\pi^2 \cal{N} a_0^4}{100}\frac{\pi}{4.5\mathrm{ln}(10)1000}
-\, \beta  \tilde{\nu}^2 
+\Delta\epsilon(\omega) =
+\frac{
+	16\pi^3 N_\mathrm{A} \, \omega^2
+}{
+  	1000\ln\left(10\right)
+	\left(4\pi\epsilon_0\right) 
+	c^2
+}
+\, \beta(\omega)
 \]</div>
 <p>where</p>
 <div class="math notranslate nohighlight">
 \[
-\beta = -\frac{1}{3 \omega} (G_{xx} + G_{yy} + G_{zz})
+\beta(\omega) = -\frac{1}{3 \omega} (G_{xx} + G_{yy} + G_{zz})
 \]</div>
 <p>and</p>
 <div class="math notranslate nohighlight">
 \[
 G_{\alpha\alpha} = \Re\langle\langle\hat{\mu}_\alpha;\hat{m}_\alpha
-\rangle\rangle_\omega = 
+\rangle\rangle_\omega^\gamma = 
 \frac{e}{\omega m_e}
 \Im 
 \langle\langle\hat{p}_\alpha;
 \hat{m}_\alpha
-\rangle\rangle_\omega
+\rangle\rangle_\omega^\gamma
 \]</div>
 <p>The mixed electric–magnetic dipole tensor, <span class="math notranslate nohighlight">\(G\)</span>, is evaluated in the velocity gauge as given in the final expression. Furthermore, it is complex and calculated with a damping term, <span class="math notranslate nohighlight">\(\gamma\)</span>, associated with the inverse finite lifetime of the excited states. The default program setting for this parameter is 0.124 eV (or 0.004556 a.u.).</p>
+<p>In VeloxChem, results for <span class="math notranslate nohighlight">\(\Delta \epsilon(\omega)\)</span> are presented in units of <span class="math notranslate nohighlight">\(\mathrm{L} \, \mathrm{mol}^{-1} \mathrm{cm}^{-1}\)</span>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
 <span class="n">task</span><span class="p">:</span> <span class="n">response</span>
 <span class="nd">@end</span>
