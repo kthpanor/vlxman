@@ -372,11 +372,10 @@
 <div class="section" id="using-an-input-file">
 <h2>Using an input file<a class="headerlink" href="#using-an-input-file" title="Permalink to this headline">¶</a></h2>
 <p>An input file driven VeloxChem calculation can be started on the command line as follows:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">OMP_NUM_THREADS</span><span class="o">=</span><span class="mi">8</span>
-<span class="n">mpirun</span> <span class="o">-</span><span class="n">n</span> <span class="mi">1</span> <span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">veloxchem</span> <span class="n">water</span><span class="o">.</span><span class="n">inp</span> <span class="n">water</span><span class="o">.</span><span class="n">out</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ vlx water.inp [water.out]
 </pre></div>
 </div>
-<p>This launches a calculation on 1 MPI rank with 8 OpenMP threads. It is recommended to launch no more than one thread per available core on your desktop CPU.</p>
+<p>If the optional output file name is omitted the output will be sent to standard output.</p>
 <p>The input file (here assumed to be named <code class="docutils literal notranslate"><span class="pre">water.inp</span></code>) consists of multiple groups marked with <code class="docutils literal notranslate"><span class="pre">&#64;group</span> <span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">&#64;end</span></code>. For example, the following input file has three groups: <code class="docutils literal notranslate"><span class="pre">jobs</span></code>, <code class="docutils literal notranslate"><span class="pre">method</span> <span class="pre">settings</span></code>, and <code class="docutils literal notranslate"><span class="pre">molecule</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
 <span class="n">task</span><span class="p">:</span> <span class="n">scf</span>
