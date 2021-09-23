@@ -32,7 +32,7 @@ An input file driven VeloxChem calculation can be started on the command line as
 $ vlx water.inp [water.out]
 ```
 
-If the optional output file name is omitted the output will be sent to standard output.
+If the optional output file name is omitted, the output will be sent to standard output.
 
 The input file (here assumed to be named `water.inp`) consists of multiple groups marked with `@group name` and `@end`. For example, the following input file has three groups: `jobs`, `method settings`, and `molecule`.
 
