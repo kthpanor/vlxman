@@ -66,27 +66,25 @@ xyz:
 
 ## Extinction coefficient
 
-The anisotropy of the decadic molar extinction coefficient can be determined directly from the complex polarization propagator evaluated for mixed electric- and magnetic-dipole operators {cite}`Norman2018, Jiem2007`
+The anisotropy of the decadic molar extinction coefficient can be determined directly from the complex polarization propagator evaluated for mixed electric- and magnetic-dipole operators {cite}` Jiem2007`
 
 $$
 \Delta\epsilon(\omega) =
 \frac{
-	16\pi^3 N_\mathrm{A} \, \omega^2
+	160 \pi N_\mathrm{A} a_0^2
 }{
-  	1000\ln\left(10\right)
-	\left(4\pi\epsilon_0\right) 
-	c^2
+  	\ln(10)
 }
-\, \beta(\omega)
+\frac{\omega^2 \beta(\omega)}{c^2}
 $$
 
-where 
+where the Bohr radius, $a_0$, is given in SI units whereas the optical frequency, $\omega$, the speed of light, $c$, and the molecular response property, $\beta(\omega)$, are given in atomic units. The latter is defined as
 
 $$
 \beta(\omega) = -\frac{1}{3 \omega} (G_{xx} + G_{yy} + G_{zz})
 $$
 
-and 
+where
 
 $$
 G_{\alpha\alpha} = \Re\langle\langle\hat{\mu}_\alpha;\hat{m}_\alpha
@@ -100,7 +98,7 @@ $$
 
 The mixed electric–magnetic dipole tensor, $G$, is evaluated in the velocity gauge as given in the final expression. Furthermore, it is complex and calculated with a damping term, $\gamma$, associated with the inverse finite lifetime of the excited states. The default program setting for this parameter is 0.124 eV (or 0.004556 a.u.).
 
-In VeloxChem, results for $\Delta \epsilon(\omega)$ are presented in units of $\mathrm{L} \, \mathrm{mol}^{-1} \mathrm{cm}^{-1}$.
+The resulting values for $\Delta \epsilon(\omega)$ are  given in units of $\mathrm{L} \, \mathrm{mol}^{-1} \mathrm{cm}^{-1}$.
 
 ```
 @jobs
