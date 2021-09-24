@@ -9,11 +9,11 @@ $$
 \frac{
 	16\pi^2 N_\mathrm{A} \, \omega
 }{
-	3\times
   	1000\ln\left(10\right)
-	\left(4\pi\epsilon_0\right)\hbar 
-	c^2
+	\left(4\pi\epsilon_0\right)
+	m_\mathrm{e} \hbar c^2
 }
+\frac{1}{3}
 \sum_n f(\omega; \omega_{n0},\gamma)\, 
 R_{n0} 
 $$
@@ -75,8 +75,29 @@ $$
 }{
   	\ln(10)
 }
-\frac{\omega^2 \beta(\omega)}{c^2}
+\frac{
+	\omega^2 \beta(\omega)
+}{
+	\left(4\pi\epsilon_0\right)
+	m_\mathrm{e} \hbar c^2
+}
 $$
+
+$$
+\Delta\epsilon(\omega) =
+\frac{
+	16 \pi^3 N_\mathrm{A} a_0^2
+}{
+  	100 \ln(10)
+}
+\frac{
+	\omega^2 \beta(\omega)
+}{
+	\left(4\pi\epsilon_0\right)
+	m_\mathrm{e} \hbar c^2
+}
+$$
+
 
 where the Bohr radius, $a_0$, is given in SI units whereas the optical frequency, $\omega$, the speed of light, $c$, and the molecular response property, $\beta(\omega)$, are given in atomic units. The latter is defined as
 
