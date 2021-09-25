@@ -2,7 +2,7 @@
 
 ## Rotatory strengths
 
-The strength of an ECD band is given by the anisotropy of the decadic molar extinction coefficient {cite}`Norman2018`
+The strength of an ECD band is given by the anisotropy of the [decadic molar extinction coefficient](https://en.wikipedia.org/wiki/Molar_attenuation_coefficient) {cite}`Norman2018`
 
 $$
 \Delta\epsilon(\omega) =
@@ -17,7 +17,7 @@ $$
 R_{n0} 
 $$
 
-where $N_\mathrm{A}$ is Avogadro's constant, $f$ is the [Cauchy distribution](https://en.wikipedia.org/wiki/Cauchy_distribution), and $R_{n0}$ is the rotatory strength defined as
+where $N_\mathrm{A}$ is [Avogadro's constant](https://en.wikipedia.org/wiki/Avogadro_constant), $f$ is the [Cauchy distribution](https://en.wikipedia.org/wiki/Cauchy_distribution), and $R_{n0}$ is the rotatory strength defined as
 
 $$
 R_{n0} =
