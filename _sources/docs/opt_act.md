@@ -13,7 +13,7 @@ $$
 	\left(4\pi\epsilon_0\right) c^2
 }
 \frac{\pi}{3 \hbar}
-\sum_n f(\omega; \omega_{n0},\gamma)\, 
+\sum_{n>0} f(\omega; \omega_{n0},\gamma)\, 
 R_{n0} 
 $$
 
