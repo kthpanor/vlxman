@@ -363,30 +363,25 @@
 	16\pi^2 N_\mathrm{A} \, \omega
 }{
   	\ln\left(10\right)
-	\left(4\pi\epsilon_0\right)
-	\hbar c^2
+	\left(4\pi\epsilon_0\right) c^2
 }
-\frac{1}{3}
+\frac{1}{3 \hbar}
 \sum_n f(\omega; \omega_{n0},\gamma)\, 
 R_{n0} 
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(N_\mathrm{A}\)</span> is Avogadro’s constant, <span class="math notranslate nohighlight">\(f\)</span> is the <a class="reference external" href="https://en.wikipedia.org/wiki/Cauchy_distribution">Cauchy distribution</a>, and <span class="math notranslate nohighlight">\(R_{n0}\)</span> is the rotatory strength defined as</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-R_{n0} &amp; =
-\lim_{\omega\rightarrow\omega_{n0}}
-\left(\omega_{n0}-\omega\right)
-\Im\langle \langle \hat{\mu}_\alpha
-;\hat{m}_\alpha\rangle \rangle_\omega
-= \Im 
+<div class="math notranslate nohighlight">
+\[
+R_{n0} =
+\Im 
 \langle 0 | \hat{\mu}_\alpha | n \rangle
 \langle n | \hat{m}_\alpha | 0\rangle 
-\\ &amp; =
+=
 \frac{e}{m_\mathrm{e} \omega_{n0}}
 \langle 0 | \hat{p}_\alpha | n \rangle
 \langle n | \hat{m}_\alpha | 0\rangle
-\end{align*}\]</div>
-<p>In VeloxChem, the rotatory strength is evaluated in the velocity gauge as given in the final expression and presented in units of <span class="math notranslate nohighlight">\(10^{−40} \mathrm{esu}^2 \mathrm{cm}^2\)</span>.</p>
+\]</div>
+<p>In VeloxChem, the rotatory strength is evaluated in the velocity gauge as given in the second expression.</p>
 <p>Note that there is an implied Einstein summation of the repeated tensor indices in the equations above as to refer to a situation of an isotropic sample.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
 <span class="n">task</span><span class="p">:</span> <span class="n">response</span>
@@ -420,12 +415,11 @@ R_{n0} &amp; =
 \[
 \Delta\epsilon(\omega) =
 \frac{
-	16 \pi^3 N_\mathrm{A}
+	16 \pi N_\mathrm{A}
 	\omega^2
 }{
   	\ln(10)
-	\left(4\pi\epsilon_0\right)
-	m_\mathrm{e} \hbar c^2
+	\left(4\pi\epsilon_0\right) c^2
 }
 \,
 \beta(\omega)
