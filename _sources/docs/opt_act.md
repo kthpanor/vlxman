@@ -82,7 +82,7 @@ $$
 \beta(\omega)
 $$
 
-where the molecular response property, $\beta(\omega)$, are given in atomic units. The latter is defined as
+where the molecular response property, $\beta(\omega)$ is defined as
 
 $$
 \beta(\omega) = -\frac{1}{3 \omega} (G_{xx} + G_{yy} + G_{zz})
