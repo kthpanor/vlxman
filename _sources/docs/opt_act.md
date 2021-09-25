@@ -88,7 +88,7 @@ $$
 \beta(\omega) = -\frac{1}{3 \omega} (G_{xx} + G_{yy} + G_{zz})
 $$
 
-where
+and
 
 $$
 G_{\alpha\alpha} = \Re\langle\langle\hat{\mu}_\alpha;\hat{m}_\alpha
