@@ -362,9 +362,9 @@
 \frac{
 	16\pi^2 N_\mathrm{A} \, \omega
 }{
-  	1000\ln\left(10\right)
+  	\ln\left(10\right)
 	\left(4\pi\epsilon_0\right)
-	m_\mathrm{e} \hbar c^2
+	\hbar c^2
 }
 \frac{1}{3}
 \sum_n f(\omega; \omega_{n0},\gamma)\, 
@@ -420,33 +420,17 @@ R_{n0} &amp; =
 \[
 \Delta\epsilon(\omega) =
 \frac{
-	160 \pi N_\mathrm{A} a_0^2
+	16 \pi^3 N_\mathrm{A}
+	\omega^2
 }{
   	\ln(10)
-}
-\frac{
-	\omega^2 \beta(\omega)
-}{
 	\left(4\pi\epsilon_0\right)
 	m_\mathrm{e} \hbar c^2
 }
+\,
+\beta(\omega)
 \]</div>
-<div class="math notranslate nohighlight">
-\[
-\Delta\epsilon(\omega) =
-\frac{
-	16 \pi^3 N_\mathrm{A} a_0^2
-}{
-  	100 \ln(10)
-}
-\frac{
-	\omega^2 \beta(\omega)
-}{
-	\left(4\pi\epsilon_0\right)
-	m_\mathrm{e} \hbar c^2
-}
-\]</div>
-<p>where the Bohr radius, <span class="math notranslate nohighlight">\(a_0\)</span>, is given in SI units whereas the optical frequency, <span class="math notranslate nohighlight">\(\omega\)</span>, the speed of light, <span class="math notranslate nohighlight">\(c\)</span>, and the molecular response property, <span class="math notranslate nohighlight">\(\beta(\omega)\)</span>, are given in atomic units. The latter is defined as</p>
+<p>where the molecular response property, <span class="math notranslate nohighlight">\(\beta(\omega)\)</span>, are given in atomic units. The latter is defined as</p>
 <div class="math notranslate nohighlight">
 \[
 \beta(\omega) = -\frac{1}{3 \omega} (G_{xx} + G_{yy} + G_{zz})
@@ -463,7 +447,8 @@ G_{\alpha\alpha} = \Re\langle\langle\hat{\mu}_\alpha;\hat{m}_\alpha
 \rangle\rangle_\omega^\gamma
 \]</div>
 <p>The mixed electric–magnetic dipole tensor, <span class="math notranslate nohighlight">\(G\)</span>, is evaluated in the velocity gauge as given in the final expression. Furthermore, it is complex and calculated with a damping term, <span class="math notranslate nohighlight">\(\gamma\)</span>, associated with the inverse finite lifetime of the excited states. The default program setting for this parameter is 0.124 eV (or 0.004556 a.u.).</p>
-<p>The resulting values for <span class="math notranslate nohighlight">\(\Delta \epsilon(\omega)\)</span> are  given in units of <span class="math notranslate nohighlight">\(\mathrm{L} \, \mathrm{mol}^{-1} \mathrm{cm}^{-1}\)</span>.</p>
+<p>The resulting values for <span class="math notranslate nohighlight">\(\Delta \epsilon(\omega)\)</span>
+are converted  from atomic units to units of <span class="math notranslate nohighlight">\(\mathrm{L} \, \mathrm{mol}^{-1} \mathrm{cm}^{-1}\)</span> by a multiplication of a factor of <span class="math notranslate nohighlight">\(a_0^2/10^5\)</span>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
 <span class="n">task</span><span class="p">:</span> <span class="n">response</span>
 <span class="nd">@end</span>

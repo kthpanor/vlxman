@@ -9,9 +9,9 @@ $$
 \frac{
 	16\pi^2 N_\mathrm{A} \, \omega
 }{
-  	1000\ln\left(10\right)
+  	\ln\left(10\right)
 	\left(4\pi\epsilon_0\right)
-	m_\mathrm{e} \hbar c^2
+	\hbar c^2
 }
 \frac{1}{3}
 \sum_n f(\omega; \omega_{n0},\gamma)\, 
@@ -71,35 +71,18 @@ The anisotropy of the decadic molar extinction coefficient can be determined dir
 $$
 \Delta\epsilon(\omega) =
 \frac{
-	160 \pi N_\mathrm{A} a_0^2
+	16 \pi^3 N_\mathrm{A}
+	\omega^2
 }{
   	\ln(10)
-}
-\frac{
-	\omega^2 \beta(\omega)
-}{
 	\left(4\pi\epsilon_0\right)
 	m_\mathrm{e} \hbar c^2
 }
+\,
+\beta(\omega)
 $$
 
-$$
-\Delta\epsilon(\omega) =
-\frac{
-	16 \pi^3 N_\mathrm{A} a_0^2
-}{
-  	100 \ln(10)
-}
-\frac{
-	\omega^2 \beta(\omega)
-}{
-	\left(4\pi\epsilon_0\right)
-	m_\mathrm{e} \hbar c^2
-}
-$$
-
-
-where the Bohr radius, $a_0$, is given in SI units whereas the optical frequency, $\omega$, the speed of light, $c$, and the molecular response property, $\beta(\omega)$, are given in atomic units. The latter is defined as
+where the molecular response property, $\beta(\omega)$, are given in atomic units. The latter is defined as
 
 $$
 \beta(\omega) = -\frac{1}{3 \omega} (G_{xx} + G_{yy} + G_{zz})
@@ -119,7 +102,8 @@ $$
 
 The mixed electric–magnetic dipole tensor, $G$, is evaluated in the velocity gauge as given in the final expression. Furthermore, it is complex and calculated with a damping term, $\gamma$, associated with the inverse finite lifetime of the excited states. The default program setting for this parameter is 0.124 eV (or 0.004556 a.u.).
 
-The resulting values for $\Delta \epsilon(\omega)$ are  given in units of $\mathrm{L} \, \mathrm{mol}^{-1} \mathrm{cm}^{-1}$.
+The resulting values for $\Delta \epsilon(\omega)$ 
+are converted  from atomic units to units of $\mathrm{L} \, \mathrm{mol}^{-1} \mathrm{cm}^{-1}$ by a multiplication of a factor of $a_0^2/10^5$.
 
 ```
 @jobs
