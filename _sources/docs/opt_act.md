@@ -7,12 +7,12 @@ The strength of an ECD band is given by the anisotropy of the decadic molar exti
 $$
 \Delta\epsilon(\omega) =
 \frac{
-	16\pi^2 N_\mathrm{A} \, \omega
+	16\pi N_\mathrm{A} \, \omega
 }{
   	\ln\left(10\right)
 	\left(4\pi\epsilon_0\right) c^2
 }
-\frac{1}{3 \hbar}
+\frac{\pi}{3 \hbar}
 \sum_n f(\omega; \omega_{n0},\gamma)\, 
 R_{n0} 
 $$
