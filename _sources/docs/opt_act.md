@@ -21,18 +21,18 @@ where $N_\mathrm{A}$ is [Avogadro's constant](https://en.wikipedia.org/wiki/Avog
 
 $$
 R_{n0} =
+\sum_{\alpha = x,y,z}
 \Im 
 \langle 0 | \hat{\mu}_\alpha | n \rangle
 \langle n | \hat{m}_\alpha | 0\rangle 
 =
+\sum_{\alpha = x,y,z}
 \frac{e}{m_\mathrm{e} \omega_{n0}}
 \langle 0 | \hat{p}_\alpha | n \rangle
 \langle n | \hat{m}_\alpha | 0\rangle
 $$
 
 In VeloxChem, the rotatory strength is evaluated in the velocity gauge as given in the second expression.
-
-Note that there is an implied Einstein summation of the repeated tensor indices in the equations above as to refer to a situation of an isotropic sample.
 
 ```
 @jobs
@@ -85,12 +85,12 @@ $$
 and
 
 $$
-G_{\alpha\alpha} = \Re\langle\langle\hat{\mu}_\alpha;\hat{m}_\alpha
+G_{\alpha\beta} = \Re\langle\langle\hat{\mu}_\alpha;\hat{m}_\beta
 \rangle\rangle_\omega^\gamma = 
 \frac{e}{\omega m_e}
 \Im 
 \langle\langle\hat{p}_\alpha;
-\hat{m}_\alpha
+\hat{m}_\beta
 \rangle\rangle_\omega^\gamma
 $$
 

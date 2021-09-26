@@ -373,16 +373,17 @@ R_{n0}
 <div class="math notranslate nohighlight">
 \[
 R_{n0} =
+\sum_{\alpha = x,y,z}
 \Im 
 \langle 0 | \hat{\mu}_\alpha | n \rangle
 \langle n | \hat{m}_\alpha | 0\rangle 
 =
+\sum_{\alpha = x,y,z}
 \frac{e}{m_\mathrm{e} \omega_{n0}}
 \langle 0 | \hat{p}_\alpha | n \rangle
 \langle n | \hat{m}_\alpha | 0\rangle
 \]</div>
 <p>In VeloxChem, the rotatory strength is evaluated in the velocity gauge as given in the second expression.</p>
-<p>Note that there is an implied Einstein summation of the repeated tensor indices in the equations above as to refer to a situation of an isotropic sample.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
 <span class="n">task</span><span class="p">:</span> <span class="n">response</span>
 <span class="nd">@end</span>
@@ -432,12 +433,12 @@ R_{n0} =
 <p>and</p>
 <div class="math notranslate nohighlight">
 \[
-G_{\alpha\alpha} = \Re\langle\langle\hat{\mu}_\alpha;\hat{m}_\alpha
+G_{\alpha\beta} = \Re\langle\langle\hat{\mu}_\alpha;\hat{m}_\beta
 \rangle\rangle_\omega^\gamma = 
 \frac{e}{\omega m_e}
 \Im 
 \langle\langle\hat{p}_\alpha;
-\hat{m}_\alpha
+\hat{m}_\beta
 \rangle\rangle_\omega^\gamma
 \]</div>
 <p>The mixed electric–magnetic dipole tensor, <span class="math notranslate nohighlight">\(G\)</span>, is evaluated in the velocity gauge as given in the second expression. Furthermore, it is complex and calculated with a damping term, <span class="math notranslate nohighlight">\(\hbar \gamma\)</span>, associated with the inverse finite lifetime of the excited states. The default program setting for this parameter is 0.124 eV (or 0.004556 a.u.).</p>

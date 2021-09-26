@@ -14,7 +14,6 @@ $$
   f_{n0} = \frac{2 m_\mathrm{e} \omega_{n0}}{3\hbar e^2}
   \sum_{\alpha = x,y,z}
   |\langle 0 | \hat{\mu}_\alpha | n \rangle |^2
-  = \frac{2 m_\mathrm{e} \omega_{n0}}{3\hbar e^2}\boldsymbol{\mu}_{0n}\cdot\boldsymbol{\mu}_{n0}
 $$
 
 
@@ -45,7 +44,7 @@ xyz:
 
 ## Complex polarization propagator approach
 
-Absorption spectra are also available from the imaginary part of the isotropic complex polarizability {cite}`Norman2018`
+Absorption spectra are also available from the imaginary part of the polarizability {cite}`Norman2018`
 
 $$
 \sigma(\omega) =
@@ -55,7 +54,30 @@ $$
 \right\}
 $$
 
-In this case an arbitrary frequency region is specified together with a requested frequency resolution.
+where 
+
+$$
+\overline{\alpha} =
+\frac{1}{3}
+\big(
+\alpha_{xx} + 
+\alpha_{yy} + 
+\alpha_{zz}
+\big)
+$$
+
+and 
+
+$$
+\alpha_{\alpha\beta}(-\omega;\omega) =
+- \langle \langle 
+\hat{\mu}_\alpha ; \hat{\mu}_\alpha
+\rangle \rangle^\gamma_\omega
+$$
+
+The polarizability is complex and calculated with a damping term, $\hbar \gamma$, associated with the inverse finite lifetime of the excited states. The default program setting for this parameter is 0.124 eV (or 0.004556 a.u.).
+
+The arbitrary frequency region is specified together with a requested frequency resolution.
 
 ```
 @jobs
@@ -70,7 +92,8 @@ basis: def2-svp
 @response
 property: absorption (cpp)
 # frequency region (and resolution)
-frequencies: 0-0.25 (0.05)
+frequencies: 0.0-0.15 (0.0025)
+damping: 0.0045563  # this is the default value
 @end
 
 @molecule

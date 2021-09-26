@@ -359,7 +359,6 @@
   f_{n0} = \frac{2 m_\mathrm{e} \omega_{n0}}{3\hbar e^2}
   \sum_{\alpha = x,y,z}
   |\langle 0 | \hat{\mu}_\alpha | n \rangle |^2
-  = \frac{2 m_\mathrm{e} \omega_{n0}}{3\hbar e^2}\boldsymbol{\mu}_{0n}\cdot\boldsymbol{\mu}_{n0}
 \]</div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
 <span class="n">task</span><span class="p">:</span> <span class="n">response</span>
@@ -388,7 +387,7 @@
 </div>
 <div class="section" id="complex-polarization-propagator-approach">
 <h2>Complex polarization propagator approach<a class="headerlink" href="#complex-polarization-propagator-approach" title="Permalink to this headline">¶</a></h2>
-<p>Absorption spectra are also available from the imaginary part of the isotropic complex polarizability <span id="id2">[<a class="reference internal" href="refs.html#id49">NRS18</a>]</span></p>
+<p>Absorption spectra are also available from the imaginary part of the polarizability <span id="id2">[<a class="reference internal" href="refs.html#id49">NRS18</a>]</span></p>
 <div class="math notranslate nohighlight">
 \[
 \sigma(\omega) =
@@ -397,7 +396,27 @@
 \overline{\alpha}(-\omega;\omega)
 \right\}
 \]</div>
-<p>In this case an arbitrary frequency region is specified together with a requested frequency resolution.</p>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[
+\overline{\alpha} =
+\frac{1}{3}
+\big(
+\alpha_{xx} + 
+\alpha_{yy} + 
+\alpha_{zz}
+\big)
+\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
+\alpha_{\alpha\beta}(-\omega;\omega) =
+- \langle \langle 
+\hat{\mu}_\alpha ; \hat{\mu}_\alpha
+\rangle \rangle^\gamma_\omega
+\]</div>
+<p>The polarizability is complex and calculated with a damping term, <span class="math notranslate nohighlight">\(\hbar \gamma\)</span>, associated with the inverse finite lifetime of the excited states. The default program setting for this parameter is 0.124 eV (or 0.004556 a.u.).</p>
+<p>The arbitrary frequency region is specified together with a requested frequency resolution.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
 <span class="n">task</span><span class="p">:</span> <span class="n">response</span>
 <span class="nd">@end</span>
@@ -410,7 +429,8 @@
 <span class="nd">@response</span>
 <span class="nb">property</span><span class="p">:</span> <span class="n">absorption</span> <span class="p">(</span><span class="n">cpp</span><span class="p">)</span>
 <span class="c1"># frequency region (and resolution)</span>
-<span class="n">frequencies</span><span class="p">:</span> <span class="mi">0</span><span class="o">-</span><span class="mf">0.25</span> <span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="n">frequencies</span><span class="p">:</span> <span class="mf">0.0</span><span class="o">-</span><span class="mf">0.15</span> <span class="p">(</span><span class="mf">0.0025</span><span class="p">)</span>
+<span class="n">damping</span><span class="p">:</span> <span class="mf">0.0045563</span>  <span class="c1"># this is the default value</span>
 <span class="nd">@end</span>
 
 <span class="nd">@molecule</span>
