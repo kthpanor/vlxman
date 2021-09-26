@@ -2,40 +2,35 @@
 
 ## Rotatory strengths
 
-The strength of an ECD band is given by the anisotropy of the decadic molar extinction coefficient {cite}`Norman2018`
+The strength of an ECD band is given by the anisotropy of the [decadic molar extinction coefficient](https://en.wikipedia.org/wiki/Molar_attenuation_coefficient) {cite}`Norman2018`
 
 $$
 \Delta\epsilon(\omega) =
 \frac{
-	16\pi^2 N_\mathrm{A} \, \omega
+	16\pi N_\mathrm{A} \, \omega
 }{
-	3\times
-  	1000\ln\left(10\right)
-	\left(4\pi\epsilon_0\right)\hbar 
-	c^2
+  	\ln\left(10\right)
+	\left(4\pi\epsilon_0\right) c^2
 }
-\sum_n f(\omega; \omega_{n0},\gamma)\, 
+\frac{\pi}{3 \hbar}
+\sum_{n>0} f(\omega; \omega_{n0},\gamma)\, 
 R_{n0} 
 $$
 
-where $N_\mathrm{A}$ is Avogadro's constant, $f$ is the [Cauchy distribution](https://en.wikipedia.org/wiki/Cauchy_distribution), and $R_{n0}$ is the rotatory strength defined as
+where $N_\mathrm{A}$ is [Avogadro's constant](https://en.wikipedia.org/wiki/Avogadro_constant), $f$ is the [Cauchy distribution](https://en.wikipedia.org/wiki/Cauchy_distribution), and $R_{n0}$ is the rotatory strength defined as
 
-\begin{align*}
-R_{n0} & =
-\lim_{\omega\rightarrow\omega_{n0}}
-\left(\omega_{n0}-\omega\right)
-\Im\langle \langle \hat{\mu}_\alpha
-;\hat{m}_\alpha\rangle \rangle_\omega
-= \Im 
+$$
+R_{n0} =
+\Im 
 \langle 0 | \hat{\mu}_\alpha | n \rangle
 \langle n | \hat{m}_\alpha | 0\rangle 
-\\ & =
+=
 \frac{e}{m_\mathrm{e} \omega_{n0}}
 \langle 0 | \hat{p}_\alpha | n \rangle
 \langle n | \hat{m}_\alpha | 0\rangle
-\end{align*}
+$$
 
-In VeloxChem, the rotatory strength is evaluated in the velocity gauge as given in the final expression and presented in units of $10^{−40} \mathrm{esu}^2 \mathrm{cm}^2$.
+In VeloxChem, the rotatory strength is evaluated in the velocity gauge as given in the second expression.
 
 Note that there is an implied Einstein summation of the repeated tensor indices in the equations above as to refer to a situation of an isotropic sample.
 
@@ -71,20 +66,23 @@ The anisotropy of the decadic molar extinction coefficient can be determined dir
 $$
 \Delta\epsilon(\omega) =
 \frac{
-	160 \pi N_\mathrm{A} a_0^2
+	16 \pi N_\mathrm{A}
+	\omega^2
 }{
   	\ln(10)
+	\left(4\pi\epsilon_0\right) c^2
 }
-\frac{\omega^2 \beta(\omega)}{c^2}
+\,
+\beta(\omega)
 $$
 
-where the Bohr radius, $a_0$, is given in SI units whereas the optical frequency, $\omega$, the speed of light, $c$, and the molecular response property, $\beta(\omega)$, are given in atomic units. The latter is defined as
+where the molecular response property, $\beta(\omega)$, is defined as
 
 $$
 \beta(\omega) = -\frac{1}{3 \omega} (G_{xx} + G_{yy} + G_{zz})
 $$
 
-where
+and
 
 $$
 G_{\alpha\alpha} = \Re\langle\langle\hat{\mu}_\alpha;\hat{m}_\alpha
@@ -96,9 +94,10 @@ G_{\alpha\alpha} = \Re\langle\langle\hat{\mu}_\alpha;\hat{m}_\alpha
 \rangle\rangle_\omega^\gamma
 $$
 
-The mixed electric–magnetic dipole tensor, $G$, is evaluated in the velocity gauge as given in the final expression. Furthermore, it is complex and calculated with a damping term, $\gamma$, associated with the inverse finite lifetime of the excited states. The default program setting for this parameter is 0.124 eV (or 0.004556 a.u.).
+The mixed electric–magnetic dipole tensor, $G$, is evaluated in the velocity gauge as given in the second expression. Furthermore, it is complex and calculated with a damping term, $\hbar \gamma$, associated with the inverse finite lifetime of the excited states. The default program setting for this parameter is 0.124 eV (or 0.004556 a.u.).
 
-The resulting values for $\Delta \epsilon(\omega)$ are  given in units of $\mathrm{L} \, \mathrm{mol}^{-1} \mathrm{cm}^{-1}$.
+The resulting values for $\Delta \epsilon(\omega)$ 
+are converted  from atomic units to units of L mol$^{-1}$ cm$^{-1}$ by multiplying with a factor of $10\, a_0^2$.
 
 ```
 @jobs
@@ -113,6 +112,7 @@ xcfun: b3lyp
 
 @response
 property: ecd (cpp)
+# frequency region (and resolution)
 frequencies: 0.05-0.15 (0.0025)
 damping: 0.0045563  # this is the default value
 @end

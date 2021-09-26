@@ -11,7 +11,7 @@ VeloxChem features interactive program access through Jupyter notebooks as well 
 - Kohn–Sham Density Functional Theory (DFT)
 - Time-dependent DFT (TDDFT)
 - Optical and X-ray absorption
-- Electric circular dichroism (ECD)
+- Electronic circular dichroism (ECD)
 - Polarizabilities and dispersion coefficients
 - Complex polarization propagator (CPP)
 - Response theory for pulses

@@ -1,6 +1,6 @@
 # Pushing the limits
 
-VeloxChem has the stated goal to be *science-enabling*. Behind this term science-enabling there are a multitude of software requirements that we find important and strive against, including:
+VeloxChem has the stated goal to be *science-enabling*. Behind this term there are a multitude of software requirements that we find important and strive against, including:
 
 - coverage of dense 3D system of sizes up to and beyond 500 atoms in the quantum region
 
