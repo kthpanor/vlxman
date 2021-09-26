@@ -71,7 +71,7 @@ and
 $$
 \alpha_{\alpha\beta}(-\omega;\omega) =
 - \langle \langle 
-\hat{\mu}_\alpha ; \hat{\mu}_\alpha
+\hat{\mu}_\alpha ; \hat{\mu}_\beta
 \rangle \rangle^\gamma_\omega
 $$
 
