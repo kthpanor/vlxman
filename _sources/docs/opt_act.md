@@ -94,7 +94,7 @@ G_{\alpha\alpha} = \Re\langle\langle\hat{\mu}_\alpha;\hat{m}_\alpha
 \rangle\rangle_\omega^\gamma
 $$
 
-The mixed electric–magnetic dipole tensor, $G$, is evaluated in the velocity gauge as given in the final expression. Furthermore, it is complex and calculated with a damping term, $\hbar \gamma$, associated with the inverse finite lifetime of the excited states. The default program setting for this parameter is 0.124 eV (or 0.004556 a.u.).
+The mixed electric–magnetic dipole tensor, $G$, is evaluated in the velocity gauge as given in the second expression. Furthermore, it is complex and calculated with a damping term, $\hbar \gamma$, associated with the inverse finite lifetime of the excited states. The default program setting for this parameter is 0.124 eV (or 0.004556 a.u.).
 
 The resulting values for $\Delta \epsilon(\omega)$ 
 are converted  from atomic units to units of L mol$^{-1}$ cm$^{-1}$ by multiplying with a factor of $10\, a_0^2$.
@@ -112,6 +112,7 @@ xcfun: b3lyp
 
 @response
 property: ecd (cpp)
+# frequency region (and resolution)
 frequencies: 0.05-0.15 (0.0025)
 damping: 0.0045563  # this is the default value
 @end

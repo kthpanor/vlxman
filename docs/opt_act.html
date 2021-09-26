@@ -440,7 +440,7 @@ G_{\alpha\alpha} = \Re\langle\langle\hat{\mu}_\alpha;\hat{m}_\alpha
 \hat{m}_\alpha
 \rangle\rangle_\omega^\gamma
 \]</div>
-<p>The mixed electric–magnetic dipole tensor, <span class="math notranslate nohighlight">\(G\)</span>, is evaluated in the velocity gauge as given in the final expression. Furthermore, it is complex and calculated with a damping term, <span class="math notranslate nohighlight">\(\hbar \gamma\)</span>, associated with the inverse finite lifetime of the excited states. The default program setting for this parameter is 0.124 eV (or 0.004556 a.u.).</p>
+<p>The mixed electric–magnetic dipole tensor, <span class="math notranslate nohighlight">\(G\)</span>, is evaluated in the velocity gauge as given in the second expression. Furthermore, it is complex and calculated with a damping term, <span class="math notranslate nohighlight">\(\hbar \gamma\)</span>, associated with the inverse finite lifetime of the excited states. The default program setting for this parameter is 0.124 eV (or 0.004556 a.u.).</p>
 <p>The resulting values for <span class="math notranslate nohighlight">\(\Delta \epsilon(\omega)\)</span>
 are converted  from atomic units to units of L mol<span class="math notranslate nohighlight">\(^{-1}\)</span> cm<span class="math notranslate nohighlight">\(^{-1}\)</span> by multiplying with a factor of <span class="math notranslate nohighlight">\(10\, a_0^2\)</span>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
@@ -455,6 +455,7 @@ are converted  from atomic units to units of L mol<span class="math notranslate 
 
 <span class="nd">@response</span>
 <span class="nb">property</span><span class="p">:</span> <span class="n">ecd</span> <span class="p">(</span><span class="n">cpp</span><span class="p">)</span>
+<span class="c1"># frequency region (and resolution)</span>
 <span class="n">frequencies</span><span class="p">:</span> <span class="mf">0.05</span><span class="o">-</span><span class="mf">0.15</span> <span class="p">(</span><span class="mf">0.0025</span><span class="p">)</span>
 <span class="n">damping</span><span class="p">:</span> <span class="mf">0.0045563</span>  <span class="c1"># this is the default value</span>
 <span class="nd">@end</span>

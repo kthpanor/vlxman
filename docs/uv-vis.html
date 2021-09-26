@@ -353,7 +353,7 @@
 <p>The standard method to calculate UV/vis absorption and emission spectra is to solve the generalized eigenvalue equation <span id="id1">[<a class="reference internal" href="refs.html#id49">NRS18</a>]</span>.</p>
 <p>In the case of SCF theory, it is commonly referred to as the time-dependent density functional theory or Hartree–Fock (TDDFT or TDHF) approach. TDHF is also known as the Random Phase Approximation (RPA).</p>
 <p>If electron de-excitations are ignored in the formation of the electronic Hessian, then one arrives at the Tamm–Dancoff approximation and which can be invoked with a keyword in the input file.</p>
-<p>VeloxChem implements a reduced-space Davidson algorithm to solve the equation for the <em>N</em> lowest eigenvalues (bottom-up). Based on these eigenvalues, or transition frequencies, and the associated transition moments, the diensionless oscillator strengths are calculated according to</p>
+<p>VeloxChem implements a reduced-space Davidson algorithm to solve the equation for the <em>N</em> lowest eigenvalues (bottom-up). Based on these eigenvalues, or transition frequencies, and the associated transition moments, the dimensionless oscillator strengths are calculated according to</p>
 <div class="math notranslate nohighlight">
 \[
   f_{n0} = \frac{2 m_\mathrm{e} \omega_{n0}}{3\hbar e^2}
@@ -381,16 +381,14 @@
 <span class="n">multiplicity</span><span class="p">:</span> <span class="mi">1</span>
 <span class="n">units</span><span class="p">:</span> <span class="n">au</span>
 <span class="n">xyz</span><span class="p">:</span>  
-<span class="n">O</span>   <span class="mf">0.0</span>   <span class="mf">0.0</span>   <span class="mf">0.0</span>
-<span class="n">H</span>   <span class="mf">0.0</span>   <span class="mf">1.4</span>   <span class="mf">1.1</span>
-<span class="n">H</span>   <span class="mf">0.0</span>  <span class="o">-</span><span class="mf">1.4</span>   <span class="mf">1.1</span>
+<span class="o">...</span>
 <span class="nd">@end</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="complex-polarization-propagator-approach">
 <h2>Complex polarization propagator approach<a class="headerlink" href="#complex-polarization-propagator-approach" title="Permalink to this headline">¶</a></h2>
-<p>Absorption spectra are also available from the imaginary part of the complex polarizability <span id="id2">[<a class="reference internal" href="refs.html#id49">NRS18</a>]</span></p>
+<p>Absorption spectra are also available from the imaginary part of the isotropic complex polarizability <span id="id2">[<a class="reference internal" href="refs.html#id49">NRS18</a>]</span></p>
 <div class="math notranslate nohighlight">
 \[
 \sigma(\omega) =
@@ -420,9 +418,7 @@
 <span class="n">multiplicity</span><span class="p">:</span> <span class="mi">1</span>
 <span class="n">units</span><span class="p">:</span> <span class="n">au</span>
 <span class="n">xyz</span><span class="p">:</span>  
-<span class="n">O</span>   <span class="mf">0.0</span>   <span class="mf">0.0</span>   <span class="mf">0.0</span>
-<span class="n">H</span>   <span class="mf">0.0</span>   <span class="mf">1.4</span>   <span class="mf">1.1</span>
-<span class="n">H</span>   <span class="mf">0.0</span>  <span class="o">-</span><span class="mf">1.4</span>   <span class="mf">1.1</span>
+<span class="o">...</span>
 <span class="nd">@end</span> 
 </pre></div>
 </div>

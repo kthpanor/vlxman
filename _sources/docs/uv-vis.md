@@ -8,7 +8,7 @@ In the case of SCF theory, it is commonly referred to as the time-dependent dens
 
 If electron de-excitations are ignored in the formation of the electronic Hessian, then one arrives at the Tamm–Dancoff approximation and which can be invoked with a keyword in the input file.
 
-VeloxChem implements a reduced-space Davidson algorithm to solve the equation for the *N* lowest eigenvalues (bottom-up). Based on these eigenvalues, or transition frequencies, and the associated transition moments, the diensionless oscillator strengths are calculated according to
+VeloxChem implements a reduced-space Davidson algorithm to solve the equation for the *N* lowest eigenvalues (bottom-up). Based on these eigenvalues, or transition frequencies, and the associated transition moments, the dimensionless oscillator strengths are calculated according to
 
 $$
   f_{n0} = \frac{2 m_\mathrm{e} \omega_{n0}}{3\hbar e^2}
@@ -39,15 +39,13 @@ charge: 0
 multiplicity: 1
 units: au
 xyz:  
-O   0.0   0.0   0.0
-H   0.0   1.4   1.1
-H   0.0  -1.4   1.1
+...
 @end
 ```
 
 ## Complex polarization propagator approach
 
-Absorption spectra are also available from the imaginary part of the complex polarizability {cite}`Norman2018`
+Absorption spectra are also available from the imaginary part of the isotropic complex polarizability {cite}`Norman2018`
 
 $$
 \sigma(\omega) =
@@ -80,8 +78,6 @@ charge: 0
 multiplicity: 1
 units: au
 xyz:  
-O   0.0   0.0   0.0
-H   0.0   1.4   1.1
-H   0.0  -1.4   1.1
+...
 @end 
 ```
