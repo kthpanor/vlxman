@@ -387,7 +387,7 @@
 </div>
 <div class="section" id="complex-polarization-propagator-approach">
 <h2>Complex polarization propagator approach<a class="headerlink" href="#complex-polarization-propagator-approach" title="Permalink to this headline">¶</a></h2>
-<p>Absorption spectra are also available from the imaginary part of the polarizability <span id="id2">[<a class="reference internal" href="refs.html#id49">NRS18</a>]</span></p>
+<p>The linear absorption cross section can be determined directly from the imaginary part of the polarizability <span id="id2">[<a class="reference internal" href="refs.html#id49">NRS18</a>]</span></p>
 <div class="math notranslate nohighlight">
 \[
 \sigma(\omega) =
@@ -416,7 +416,8 @@
 \rangle \rangle^\gamma_\omega
 \]</div>
 <p>The polarizability is complex and calculated with a damping term, <span class="math notranslate nohighlight">\(\hbar \gamma\)</span>, associated with the inverse finite lifetime of the excited states. The default program setting for this parameter is 0.124 eV (or 0.004556 a.u.).</p>
-<p>The arbitrary frequency region is specified together with a requested frequency resolution.</p>
+<p>The resulting values for <span class="math notranslate nohighlight">\(\sigma(\omega)\)</span> are presented in atomic units and can be converted to the SI unit of m<span class="math notranslate nohighlight">\(^2\)</span> by multiplying with a factor of <span class="math notranslate nohighlight">\(a_0^2\)</span>.</p>
+<p>The arbitrary frequency region is specified in the input file together with a requested frequency resolution.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
 <span class="n">task</span><span class="p">:</span> <span class="n">response</span>
 <span class="nd">@end</span>

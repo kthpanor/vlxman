@@ -44,7 +44,7 @@ xyz:
 
 ## Complex polarization propagator approach
 
-Absorption spectra are also available from the imaginary part of the polarizability {cite}`Norman2018`
+The linear absorption cross section can be determined directly from the imaginary part of the polarizability {cite}`Norman2018`
 
 $$
 \sigma(\omega) =
@@ -77,7 +77,10 @@ $$
 
 The polarizability is complex and calculated with a damping term, $\hbar \gamma$, associated with the inverse finite lifetime of the excited states. The default program setting for this parameter is 0.124 eV (or 0.004556 a.u.).
 
-The arbitrary frequency region is specified together with a requested frequency resolution.
+The resulting values for $\sigma(\omega)$ are presented in atomic units and can be converted to the SI unit of m$^2$ by multiplying with a factor of $a_0^2$.
+
+
+The arbitrary frequency region is specified in the input file together with a requested frequency resolution.
 
 ```
 @jobs
