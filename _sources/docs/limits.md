@@ -6,7 +6,7 @@ VeloxChem has the stated goal to be *science-enabling*. Behind this term there a
 
 - accurate description of electronically excited states that show a more diffuse character than the ground state
 
-- stable and reliable convergence of iterative equation solvers also with use of diffuse basis sets
+- stable and reliable convergence of iterative equation solvers also with use of diffuse basis functions
 
 - time-efficient prototyping of novel scientific approaches
 
