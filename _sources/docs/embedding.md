@@ -61,7 +61,7 @@ and
 b_J = \sum_{a} \frac{V_a}{r_{aJ}}
 \end{equation*}
 
-The ESP cahrges are detemined with VeloxChem with use of an input file as below
+The ESP charges are detemined with VeloxChem with use of an input file as below
 
 ```
 @jobs
