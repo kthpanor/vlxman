@@ -293,11 +293,11 @@
         aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
     <div class="dropdown-buttons sourcebuttons">
         <a class="repository-button"
-            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+            href="https://github.com/kthpanor/vlxman"><button type="button" class="btn btn-secondary topbarbtn"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fdocs/program_struct.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/kthpanor/vlxman/issues/new?title=Issue%20on%20page%20%2Fdocs/program_struct.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -318,7 +318,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/docs/program_struct.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/kthpanor/vlxman/master?urlpath=tree/docs/docs/program_struct.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -371,7 +371,7 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Warning * Environment variable OMP_NUM_THREADS not set.
-* Warning * Setting OMP_NUM_THREADS to 4.
+* Warning * Setting OMP_NUM_THREADS to 8.
 </pre></div>
 </div>
 </div>
@@ -389,32 +389,7 @@
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on package veloxchem:
 
 NAME
-    veloxchem
-
-DESCRIPTION
-    #                           VELOXCHEM 1.0-RC2
-    #         ----------------------------------------------------
-    #                     An Electronic Structure Code
-    #
-    #  Copyright © 2018-2021 by VeloxChem developers. All rights reserved.
-    #  Contact: https://veloxchem.org/contact
-    #
-    #  SPDX-License-Identifier: LGPL-3.0-or-later
-    #
-    #  This file is part of VeloxChem.
-    #
-    #  VeloxChem is free software: you can redistribute it and/or modify it under
-    #  the terms of the GNU Lesser General Public License as published by the Free
-    #  Software Foundation, either version 3 of the License, or (at your option)
-    #  any later version.
-    #
-    #  VeloxChem is distributed in the hope that it will be useful, but WITHOUT
-    #  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-    #  FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
-    #  License for more details.
-    #
-    #  You should have received a copy of the GNU Lesser General Public License
-    #  along with VeloxChem. If not, see &lt;https://www.gnu.org/licenses/&gt;.
+    veloxchem - # C++ classes
 
 PACKAGE CONTENTS
     __main__
@@ -429,7 +404,6 @@ PACKAGE CONTENTS
     cppsolver
     cubicgrid
     denguess
-    deprecations
     distributedarray
     environ
     errorhandler
@@ -506,13 +480,14 @@ FUNCTIONS
         mpi_master() -&gt; int
 
 DATA
-    __deployed__ = {&#39;author&#39;: &#39;Roberto Di Remigio&#39;, &#39;commit&#39;: &#39;ffa16d355ed...
+    VLX_BASIS_PATH = PosixPath(&#39;/opt/miniconda3/envs/vlxdev/lib/python3.9/...
+    __deployed__ = {&#39;author&#39;: &#39;Roberto Di Remigio&#39;, &#39;commit&#39;: &#39;24027cd439d...
 
 VERSION
-    1.0rc2
+    1.0rc1.dev1
 
 FILE
-    /opt/miniconda3/envs/vlxr02/lib/python3.9/site-packages/veloxchem/__init__.py
+    /opt/miniconda3/envs/vlxdev/lib/python3.9/site-packages/veloxchem/__init__.py
 </pre></div>
 </div>
 </div>
@@ -540,7 +515,6 @@ FILE
  &#39;CubicGrid&#39;,
  &#39;CustomProperty&#39;,
  &#39;DenseMatrix&#39;,
- &#39;DispersionModel&#39;,
  &#39;ElectricDipoleIntegralsDriver&#39;,
  &#39;ElectronRepulsionIntegralsDriver&#39;,
  &#39;ExcitationVector&#39;,
@@ -573,6 +547,7 @@ FILE
  &#39;SubCommunicators&#39;,
  &#39;TDAExciDriver&#39;,
  &#39;TwoIndexes&#39;,
+ &#39;VLX_BASIS_PATH&#39;,
  &#39;VisualizationDriver&#39;,
  &#39;XTBDriver&#39;,
  &#39;XTBGradientDriver&#39;,
@@ -602,14 +577,12 @@ FILE
  &#39;cubicgrid&#39;,
  &#39;denguess&#39;,
  &#39;denmat&#39;,
- &#39;deprecations&#39;,
  &#39;distributedarray&#39;,
  &#39;environ&#39;,
  &#39;ericut&#39;,
  &#39;errorhandler&#39;,
  &#39;excitondriver&#39;,
  &#39;fockmat&#39;,
- &#39;get_basis_path&#39;,
  &#39;get_qq_scheme&#39;,
  &#39;get_qq_type&#39;,
  &#39;gradientdriver&#39;,
