@@ -135,7 +135,7 @@ A_{JJ} =
 \sum_{a} \frac{1}{r_{aJ}^2} + \alpha \, (q_J^2+\beta^2)^{-1/2}
 \end{equation*}
 
-with a dependency on the partial charge. Consequently, RESP charges are obtained by solving the matrix equation iteratively until the charges and Lagrange multipliers become self-consistent. In addition to that, the RESP charge model proposes constraints on charges of equivalent atoms due to symmetry operations or bond rotations.
+with a dependency on the partial charge. Consequently, RESP charges are obtained by solving the matrix equation iteratively until the charges and Lagrange multipliers become self-consistent. In addition to that, the RESP charge model allows for the introduction of constraints on charges of equivalent atoms due to symmetry operations or bond rotations.
 
 The RESP cahrges are detemined with VeloxChem with use of an input file as below
 
@@ -149,7 +149,7 @@ basis: 6-31g_d_
 @end
 
 @resp charges
-equal charges: 2 = 3
+equal charges: 2 = 3    # with reference to the atom ordering below
 @end
 
 @molecule

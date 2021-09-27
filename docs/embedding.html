@@ -482,7 +482,7 @@ A_{JJ} =
 \frac{1}{4\pi\varepsilon_0}
 \sum_{a} \frac{1}{r_{aJ}^2} + \alpha \, (q_J^2+\beta^2)^{-1/2}
 \end{equation*}\]</div>
-<p>with a dependency on the partial charge. Consequently, RESP charges are obtained by solving the matrix equation iteratively until the charges and Lagrange multipliers become self-consistent. In addition to that, the RESP charge model proposes constraints on charges of equivalent atoms due to symmetry operations or bond rotations.</p>
+<p>with a dependency on the partial charge. Consequently, RESP charges are obtained by solving the matrix equation iteratively until the charges and Lagrange multipliers become self-consistent. In addition to that, the RESP charge model allows for the introduction of constraints on charges of equivalent atoms due to symmetry operations or bond rotations.</p>
 <p>The RESP cahrges are detemined with VeloxChem with use of an input file as below</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
 <span class="n">task</span><span class="p">:</span> <span class="n">resp</span> <span class="n">charges</span>
@@ -493,7 +493,7 @@ A_{JJ} =
 <span class="nd">@end</span>
 
 <span class="nd">@resp</span> <span class="n">charges</span>
-<span class="n">equal</span> <span class="n">charges</span><span class="p">:</span> <span class="mi">2</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">equal</span> <span class="n">charges</span><span class="p">:</span> <span class="mi">2</span> <span class="o">=</span> <span class="mi">3</span>    <span class="c1"># with reference to the atom ordering below</span>
 <span class="nd">@end</span>
 
 <span class="nd">@molecule</span>
