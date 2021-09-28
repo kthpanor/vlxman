@@ -85,8 +85,8 @@ $$
 and
 
 $$
-G_{\alpha\beta} = \Re\langle\langle\hat{\mu}_\alpha;\hat{m}_\beta
-\rangle\rangle_\omega^\gamma = 
+G_{\alpha\beta} = - \Re\langle\langle\hat{\mu}_\alpha;\hat{m}_\beta
+\rangle\rangle_\omega^\gamma = -
 \frac{e}{\omega m_e}
 \Im 
 \langle\langle\hat{p}_\alpha;
