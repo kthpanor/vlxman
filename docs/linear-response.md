@@ -11,7 +11,7 @@ $$
 \rangle \rangle_\omega
 $$
 
-The frequencies of the perturbing electric field is specfied as a `list` or in terms of a frequency region with a frequency point sepation in parenthesis.
+The frequencies of the perturbing electric field is specfied as a `list` or in terms of a frequency region with a frequency point separation in parenthesis.
 
 ```
 @jobs
