@@ -56,7 +56,7 @@ $$
     i\omega^I = i\omega_0 \frac{1-t}{1+t},\quad d\omega^I = \frac{-2\omega_0 dt}{(1+t)^2},
 $$
 
-where a transformation factor of $\omega_0 = 0.3$ a.u. is used. The user may specified the number of frequency grid points used in the quadrature, or otherwise a default value is adopted. The polarizabilities are calculated from the complex polarization propagator (CPP), or complex linear response function {cite}`Norman2018`.
+where a transformation factor of $\omega_0 = 0.3$ a.u. is used. The user may specify the number of frequency points used in the quadrature, or otherwise a default value is adopted. The polarizabilities are calculated from the complex polarization propagator (CPP), or complex linear response function {cite}`Norman2018`.
 
 ```
 @jobs
