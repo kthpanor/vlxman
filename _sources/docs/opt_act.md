@@ -7,14 +7,14 @@ The strength of an ECD band is given by the anisotropy of the [decadic molar ext
 $$
 \Delta\epsilon(\omega) =
 \frac{
-	16\pi N_\mathrm{A} \, \omega
+	16\pi N_\mathrm{A}
 }{
   	\ln\left(10\right)
 	\left(4\pi\epsilon_0\right) c^2
 }
 \frac{\pi}{3 \hbar}
 \sum_{n>0} f(\omega; \omega_{n0},\gamma)\, 
-R_{n0} 
+\omega_{n0} R_{n0} 
 $$
 
 where $N_\mathrm{A}$ is [Avogadro's constant](https://en.wikipedia.org/wiki/Avogadro_constant), $f$ is the [Cauchy distribution](https://en.wikipedia.org/wiki/Cauchy_distribution), and $R_{n0}$ is the rotatory strength defined as
@@ -27,7 +27,7 @@ R_{n0} =
 \langle n | \hat{m}_\alpha | 0\rangle 
 =
 \sum_{\alpha = x,y,z}
-\frac{e}{m_\mathrm{e} \omega_{n0}}
+\frac{-e}{m_\mathrm{e} \omega_{n0}}
 \langle 0 | \hat{p}_\alpha | n \rangle
 \langle n | \hat{m}_\alpha | 0\rangle
 $$
