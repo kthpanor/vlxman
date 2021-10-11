@@ -352,14 +352,28 @@
 <h2>Generalized eigenvalue equation<a class="headerlink" href="#generalized-eigenvalue-equation" title="Permalink to this headline">¶</a></h2>
 <p>The standard method to calculate UV/vis absorption and emission spectra is to solve the generalized eigenvalue equation <span id="id1">[<a class="reference internal" href="refs.html#id49">NRS18</a>]</span>.</p>
 <p>In the case of SCF theory, it is commonly referred to as the time-dependent density functional theory or Hartree–Fock (TDDFT or TDHF) approach. TDHF is also known as the Random Phase Approximation (RPA).</p>
-<p>If electron de-excitations are ignored in the formation of the electronic Hessian, then one arrives at the Tamm–Dancoff approximation and which can be invoked with a keyword in the input file.</p>
-<p>VeloxChem implements a reduced-space Davidson algorithm to solve the equation for the <em>N</em> lowest eigenvalues (bottom-up). Based on these eigenvalues, or transition frequencies, and the associated transition moments, the dimensionless oscillator strengths are calculated according to</p>
+<p>If electron de-excitations are ignored in the formation of the electronic Hessian, then one arrives at the Tamm–<a class="reference external" href="https://en.wikipedia.org/wiki/Sidney_Dancoff">Dancoff</a> approximation and which can be invoked with a keyword in the input file.</p>
+<p>VeloxChem implements a reduced-space Davidson algorithm to solve the equation for the <em>N</em> lowest eigenvalues (bottom-up). Based on these eigenvalues, or transition frequencies, and the associated transition moments, the dimensionless <a class="reference external" href="https://en.wikipedia.org/wiki/Oscillator_strength#:~:text=In%20spectroscopy%2C%20oscillator%20strength%20is,of%20an%20atom%20or%20molecule.">oscillator strengths</a> are calculated according to</p>
 <div class="math notranslate nohighlight">
 \[
   f_{n0} = \frac{2 m_\mathrm{e} \omega_{n0}}{3\hbar e^2}
   \sum_{\alpha = x,y,z}
   |\langle 0 | \hat{\mu}_\alpha | n \rangle |^2
 \]</div>
+<p>With oscillator strengths and transition frequencies, the <a class="reference external" href="https://en.wikipedia.org/wiki/Absorption_cross_section">linear absorption cross section</a> can be determined from the expression <span id="id2">[<a class="reference internal" href="refs.html#id49">NRS18</a>]</span></p>
+<div class="math notranslate nohighlight">
+\[
+\sigma(\omega) =
+\frac{2\pi^2 e^2 \omega}{(4\pi\varepsilon_0) m_\mathrm{e} c} 
+\sum_{n &gt; 0}
+f(\omega; \omega_{n0}, \gamma) 
+\frac{
+f_{n0}
+}{ 
+\omega_{n0}
+}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(f\)</span> is the <a class="reference external" href="https://en.wikipedia.org/wiki/Cauchy_distribution">Cauchy distribution</a>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
 <span class="n">task</span><span class="p">:</span> <span class="n">response</span>
 <span class="nd">@end</span>
@@ -387,7 +401,7 @@
 </div>
 <div class="section" id="complex-polarization-propagator-approach">
 <h2>Complex polarization propagator approach<a class="headerlink" href="#complex-polarization-propagator-approach" title="Permalink to this headline">¶</a></h2>
-<p>The linear absorption cross section can be determined directly from the imaginary part of the polarizability <span id="id2">[<a class="reference internal" href="refs.html#id49">NRS18</a>]</span></p>
+<p>The linear absorption cross section can be determined directly from the imaginary part of the <a class="reference external" href="https://en.wikipedia.org/wiki/Polarizability">polarizability</a> <span id="id3">[<a class="reference internal" href="refs.html#id49">NRS18</a>]</span></p>
 <div class="math notranslate nohighlight">
 \[
 \sigma(\omega) =
