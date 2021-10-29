@@ -65,7 +65,7 @@ a_operator: electric dipole
 a_components: xyz
 b_operator: electric dipole
 b_compontents: xyz
-frequencies: 0.0656
+frequencies: 0.0, 0.0656
 @end
 
 @molecule
