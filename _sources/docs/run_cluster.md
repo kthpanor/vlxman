@@ -59,7 +59,7 @@ In order to ensure that your installation of the VeloxChem program performs well
 * Property: ECD response
 * Level: B3LYP/def2-svp
 * Number basis functions: 1,252
-Number of atoms: 137
+* Number of atoms: 137
 * Number states: 20
 * Nodes: Intel Xeon Gold 6130 (dual socket)
 * Number nodes (MPI ranks): 4
