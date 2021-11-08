@@ -54,7 +54,7 @@ xyz:
 
 ## Benchmark reference
 
-In order to ensure that your installation of the VeloxChem program performs well and that you are correctly launching the program on your cluster hardware, you may wish to reproduce the following benchmark calculation. With a different hardware execution times will be different, but with use of the same *total number of cores* (i.e. 128) you should expect similar wall time.
+In order to ensure that your installation of the VeloxChem program performs well and that you are correctly launching the program on your cluster hardware, you may wish to reproduce the following benchmark calculation. With a different hardware execution times will be different, but with use of the same *total number of cores* (i.e. 128) you should expect a similar wall time.
 
 * Property: ECD response
 * Level: B3LYP/def2-svp
