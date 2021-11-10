@@ -1,0 +1,609 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Input file keywords &#8212; VeloxChem program manual</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/vlx_logo_mark.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Reference states" href="refstate.html" />
+    <link rel="prev" title="Running on a cluster" href="run_cluster.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/vlx_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">VeloxChem program manual</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Home
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Getting started
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="limits.html">
+   Pushing the limits
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="installation.html">
+   Installing the program
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="run_desktop.html">
+   Running on a desktop
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="run_cluster.html">
+   Running on a cluster
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Input file keywords
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Model chemistry
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="refstate.html">
+   Reference states
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="functionals.html">
+   Exchange–correlation functionals
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="basis_sets.html">
+   Basis sets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hamiltonian.html">
+   Hamiltonian
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="embedding.html">
+   Environment
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Properties
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="uv-vis.html">
+   UV/vis absorption/emission
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="opt_act.html">
+   Optical activity and dichroism
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="vib_spect.html">
+   Vibrational spectroscopies
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pes.html">
+   Potential energy surfaces
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="magnetic.html">
+   Magnetic resonances
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="linear-response.html">
+   Linear response
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="nlo.html">
+   Multi-photon interactions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="xray.html">
+   X-ray spectroscpies
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Visualization
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="elec_dens.html">
+   Electronic densities
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Advanced users
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="program_struct.html">
+   Program structure
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="source_struct.html">
+   Source code structure
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  References
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="refs.html">
+   References
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/docs/keywords.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/kthpanor/vlxman"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/kthpanor/vlxman/issues/new?title=Issue%20on%20page%20%2Fdocs/keywords.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/kthpanor/vlxman/master?urlpath=tree/docs/docs/keywords.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#scf-optimization">
+   SCF optimization
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#uv-vis-absorption-spectrum">
+   UV/vis absorption spectrum
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#complex-response-solver">
+   Complex response solver
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="input-file-keywords">
+<h1>Input file keywords<a class="headerlink" href="#input-file-keywords" title="Permalink to this headline">¶</a></h1>
+<p>Keywords for the various input sections in the program input file can be listed by means of the <code class="docutils literal notranslate"><span class="pre">print_keyword()</span></code> class method. Examples are given below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">veloxchem</span> <span class="k">as</span> <span class="nn">vlx</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Warning * Environment variable OMP_NUM_THREADS not set.
+* Warning * Setting OMP_NUM_THREADS to 4.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="scf-optimization">
+<h2>SCF optimization<a class="headerlink" href="#scf-optimization" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scf_drv</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">ScfRestrictedDriver</span><span class="p">()</span>
+
+<span class="n">scf_drv</span><span class="o">.</span><span class="n">print_keywords</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     ================================================================================                     
+                       @scf                                                                                               
+                     --------------------------------------------------------------------------------                     
+                       acc_type            string         type of SCF convergence accelerator                             
+                       max_iter            integer        maximum number of SCF iterations                                
+                       conv_thresh         float          SCF convergence threshold                                       
+                       qq_type             string         ERI screening scheme                                            
+                       eri_thresh          float          ERI screening threshold                                         
+                       restart             boolean        restart from checkpoint file                                    
+                       checkpoint_file     string         name of checkpoint file                                         
+                       timing              boolean        print timing information                                        
+                       profiling           boolean        print profiling information                                     
+                       memory_profiling    boolean        print memory usage                                              
+                       memory_tracing      boolean        trace memory allocation                                         
+                     ================================================================================                     
+                       @method_settings                                                                                   
+                     --------------------------------------------------------------------------------                     
+                       dispersion          boolean        use D4 dispersion correction                                    
+                       dft                 boolean        use DFT                                                         
+                       xcfun               string         exchange-correlation functional                                 
+                       grid_level          integer        accuracy level of DFT grid                                      
+                       pe                  boolean        use polarizable embedding                                       
+                       potfile             string         potential file for polarizable embedding                        
+                       electric_field      sequence       static electric field                                           
+                       use_split_comm      boolean        use split communicators                                         
+                     ================================================================================                     
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="uv-vis-absorption-spectrum">
+<h2>UV/vis absorption spectrum<a class="headerlink" href="#uv-vis-absorption-spectrum" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prop</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">Absorption</span><span class="p">()</span>
+<span class="n">prop</span><span class="o">.</span><span class="n">init_driver</span><span class="p">()</span>
+
+<span class="n">prop</span><span class="o">.</span><span class="n">print_keywords</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     ================================================================================                     
+                       @response                                                                                          
+                     --------------------------------------------------------------------------------                     
+                       eri_thresh          float          ERI screening threshold                                         
+                       qq_type             string         ERI screening scheme                                            
+                       batch_size          integer        batch size for Fock build                                       
+                       conv_thresh         float          convergence threshold                                           
+                       max_iter            integer        maximum number of iterations                                    
+                       lindep_thresh       float          threshold for linear dependence                                 
+                       restart             boolean        restart from checkpoint file                                    
+                       checkpoint_file     string         name of checkpoint file                                         
+                       timing              boolean        print timing information                                        
+                       profiling           boolean        print profiling information                                     
+                       memory_profiling    boolean        print memory usage                                              
+                       memory_tracing      boolean        trace memory allocation                                         
+                       nstates             integer        number of excited states                                        
+                       nto                 boolean        analyze natural transition orbitals                             
+                       nto_pairs           integer        number of NTO pairs in NTO analysis                             
+                       detach_attach       boolean        analyze detachment/attachment density                           
+                       cube_origin         sequence       origin of cubic grid points                                     
+                       cube_stepsize       sequence       step size of cubic grid points                                  
+                       cube_points         sequence       number of cubic grid points                                     
+                       tamm_dancoff        boolean        use Tamm-Dancoff approximation                                  
+                     ================================================================================                     
+                       @method_settings                                                                                   
+                     --------------------------------------------------------------------------------                     
+                       dft                 boolean        use DFT                                                         
+                       xcfun               string         exchange-correlation functional                                 
+                       grid_level          integer        accuracy level of DFT grid                                      
+                       pe                  boolean        use polarizable embedding                                       
+                       potfile             string         potential file for polarizable embedding                        
+                       electric_field      sequence       static electric field                                           
+                       use_split_comm      boolean        use split communicators                                         
+                     ================================================================================                     
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="complex-response-solver">
+<h2>Complex response solver<a class="headerlink" href="#complex-response-solver" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cpp_solver</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">ComplexResponse</span><span class="p">()</span>
+
+<span class="n">cpp_solver</span><span class="o">.</span><span class="n">print_keywords</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     ================================================================================                     
+                       @response                                                                                          
+                     --------------------------------------------------------------------------------                     
+                       eri_thresh          float          ERI screening threshold                                         
+                       qq_type             string         ERI screening scheme                                            
+                       batch_size          integer        batch size for Fock build                                       
+                       conv_thresh         float          convergence threshold                                           
+                       max_iter            integer        maximum number of iterations                                    
+                       lindep_thresh       float          threshold for linear dependence                                 
+                       restart             boolean        restart from checkpoint file                                    
+                       checkpoint_file     string         name of checkpoint file                                         
+                       timing              boolean        print timing information                                        
+                       profiling           boolean        print profiling information                                     
+                       memory_profiling    boolean        print memory usage                                              
+                       memory_tracing      boolean        trace memory allocation                                         
+                       a_operator          string         A operator                                                      
+                       a_components        string         Cartesian components of A operator                              
+                       b_operator          string         B operator                                                      
+                       b_components        string         Cartesian components of B operator                              
+                       frequencies         sequence       frequencies                                                     
+                       damping             float          damping parameter                                               
+                     ================================================================================                     
+                       @method_settings                                                                                   
+                     --------------------------------------------------------------------------------                     
+                       dft                 boolean        use DFT                                                         
+                       xcfun               string         exchange-correlation functional                                 
+                       grid_level          integer        accuracy level of DFT grid                                      
+                       pe                  boolean        use polarizable embedding                                       
+                       potfile             string         potential file for polarizable embedding                        
+                       electric_field      sequence       static electric field                                           
+                       use_split_comm      boolean        use split communicators                                         
+                     ================================================================================                     
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="run_cluster.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Running on a cluster</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="refstate.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Reference states</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By The VeloxChem team<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
