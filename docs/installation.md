@@ -65,25 +65,19 @@ $ git clone https://gitlab.com/veloxchem/veloxchem
 
 ### Build prerequisites
 
-- C++ compiler fully compliant with the C++11 standard
-- Installation of Python >=3.6 that includes the interpreter, the development header files, and the development libraries
 - Build tool providing the `make` utility
-- The [pybind11](https://pybind11.readthedocs.io>) (>=2.6) header-only library
-- MPI library
-- Linear algebra libraries implementing the BLAS and LAPACK interfaces
-- The following Python modules:
-  - [h5py](https://www.h5py.org/)
-  - [psutil](https://psutil.readthedocs.io/en/latest/)
-  - [MPI4Py](https://mpi4py.readthedocs.io/)
-  - [NumPy](https://numpy.org)
-  - [geomeTRIC](https://github.com/leeping/geomeTRIC)
+- C++ compiler fully compliant with the C++11 standard
+- Linear algebra libraries implementing the BLAS and LAPACK interfaces (e.g. Intel MKL, OpenBLAS or Cray LibSci)
+- MPI library (e.g. MPICH, Intel MPI or Open MPI)
+- Installation of Python >=3.6 that includes the interpreter, the development header files, and the development libraries
+- The [MPI4Py](https://mpi4py.readthedocs.io/en/stable/) module for Python
 
 Optional, add-on dependencies:
 
 - [CPPE (v0.2.1)](https://github.com/maxscheurer/cppe/releases/tag/v0.2.1)
 - [XTB](https://github.com/grimme-lab/xtb)
 
-See external-dependencies for instructions on how to get these add-ons.
+See {ref}`external-dependencies` for instructions on how to get these add-ons.
 
 To avoid clashes between dependencies, we recommend to always use a [virtual enviroment](https://docs.python.org/3.6/tutorial/venv.html).
 
@@ -120,7 +114,7 @@ To avoid clashes between dependencies, we recommend to always use a [virtual env
     - `mkl_env.yml` which installs the Intel Math Kernel Library,
     - `openblas_env.yml` which installs the OpenBLAS library.
 
-- Install MPI and [Mpi4Py](https://mpi4py.readthedocs.io/)
+- Install MPI and [MPI4Py](https://mpi4py.readthedocs.io/en/stable/)
 
   - To use [OpenMPI](https://www.open-mpi.org/)
 
@@ -270,7 +264,8 @@ To avoid clashes between dependencies, we recommend to always use a [virtual env
 - Soon to come!
 
 
-## Dependencies
+(external-dependencies)=
+## External dependencies
 
 If you wish to use functionality offered through interfaces with other software packages, you will first need to install them.  Currently, interfaces to add-on dependencies [XTB](https://github.com/grimme-lab/xtb) and [CPPE (v0.2.1)](https://github.com/maxscheurer/cppe/releases/tag/v0.2.1) are available.
 
