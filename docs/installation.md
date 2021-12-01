@@ -160,57 +160,28 @@ To avoid clashes between dependencies, we recommend to always use a [virtual env
 
   ```
   $ module swap PrgEnv-cray PrgEnv-gnu
-  $ module load cray-hdf5
-  $ module load cray-python/3.6.5.7
+  $ module load cray-python
   ```
 
 - Create and activate a [virtual enviroment](https://docs.python.org/3.6/tutorial/venv.html)
 
   ```
-  $ python3 -m venv vlx
-  $ source vlx/bin/activate
-  $ python -m pip install -U pip
+  $ python3 -m venv vlxenv
+  $ source vlxenv/bin/activate
+  $ python3 -m pip install --upgrade pip
   ```
 
-  Once the virtual environment is activated, you can just use `python` to invoke the interpreter.
+- Install [MPI4Py](https://mpi4py.readthedocs.io/en/stable/)
 
-- Install [Mpi4Py](https://mpi4py.readthedocs.io/):
-
-  1. Download a recent version of the source distribution::
-
-      ```
-      $ curl -LO https://bitbucket.org/mpi4py/mpi4py/downloads/mpi4py-X.Y.Z.tar.gz
-      ```
-
-  2. Unzip the archive:
-
-     ```
-     $ tar xf mpi4py-X.Y.Z.tar.gz
-     $ cd mpi4py-X.Y.Z
-     ```
-
-  3. Append the following lines to `mpi.cfg`:
-
-     ```
-     [cray]
-     mpicc         = cc
-     mpicxx        = CC
-     extra_compile_args   = -shared
-     extra_link_args      = -Wl,-rpath,/opt/cray/pe/mpt/7.7.9/gni/mpich-gnu/8.2/lib
-     ```
-
-  4. Build and install Mpi4Py:
-     ```
-     $ python setup.py build --mpi=cray
-     $ python setup.py install
-     ```
+  ```
+  $ CC=cc MPICC=cc python3 -m pip install --no-deps --no-binary=mpi4py mpi4py
+  ```
 
 - Use the compiler wrapper to compile VeloxChem:
 
   ```
-  $ export CXX=CC
   $ cd veloxchem
-  $ python -m pip install .
+  $ CXX=CC python3 -m pip install .
   ```
 
   This will also take care of installing the additional necessary Python modules.
