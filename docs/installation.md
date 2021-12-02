@@ -92,43 +92,21 @@ To avoid clashes between dependencies, we recommend to always use a [virtual env
   $ cd veloxchem
   ```
 
-- Create and activate the Conda environment:
+- Create and activate the conda environment:
 
   ```
-  $ conda create --name <name> python=3.x
-  $ conda activate <name>
+  $ conda env create -f <environment_file>
+  $ conda activate vlxenv
   ```
 
-  ```{note}
-  VeloxChem requires at least Python 3.6
-  ```
+  This will create and activate a conda environment named `vlxenv`. In this environment all the build dependencies will be installed from the `conda-forge` channel, including the C++ compiler, MPI, [NumPy](https://numpy.org), [MPI4Py](https://mpi4py.readthedocs.io/en/stable/), etc. We provide two options for the `<environment_file>` that specifies different linear algebra backend for your conda environment:
 
-- Install standard build dependencies:
+  - `mkl_env.yml` which installs the Intel Math Kernel Library,
+  - `openblas_env.yml` which installs the OpenBLAS library.
 
-  ```
-  $ conda env update --file <environment> --prune
-  ```
+  Note that the MPICH library will be installed by the `yml` file. If you prefer another MPI library such as Open MPI, you can edit the `yml` file and replace `mpich` by `openmpi`. Read more about the `yml` file in [this page](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#create-env-file-manually).
 
-  This will install, among other, the C++ compiler and NumPy. The `environment.yml` file specifies the packages needed.  They will be installed from the `conda-forge` channel. VeloxChem can use different linear algebra backends and we provide two environment files you can use to set up your conda environment:
-
-    - `mkl_env.yml` which installs the Intel Math Kernel Library,
-    - `openblas_env.yml` which installs the OpenBLAS library.
-
-- Install MPI and [MPI4Py](https://mpi4py.readthedocs.io/en/stable/)
-
-  - To use [OpenMPI](https://www.open-mpi.org/)
-
-    ```
-    $ conda install openmpi mpi4py -c conda-forge
-    ```
-
-  - To use [MPICH](https://www.mpich.org/)
-
-    ```
-     $ conda install mpich mpi4py -c conda-forge
-     ```
-
-- Build and install VeloxChem in the Conda environment:
+- Build and install VeloxChem in the conda environment:
 
   ```
   $ python -m pip install .
@@ -137,16 +115,16 @@ To avoid clashes between dependencies, we recommend to always use a [virtual env
   By default, the build process will use *all* available cores to compile the C++ sources in parallel. This behavior can be controlled via the `VLX_NUM_BUILD_JOBS` environment variable:
 
   ```
-  $ env VLX_NUM_BUILD_JOBS=N python -m pip install .
+  $ VLX_NUM_BUILD_JOBS=N python -m pip install .
   ```
 
-  will install VeloxChem using *N* parallel processes.
+  which will install VeloxChem using *N* cores.
 
-- The environment now contains all that is necessary to run VeloxChem. You can deactivate it by issuing:
+- The environment now contains all that is necessary to run VeloxChem. You can deactivate it by
 
-   ```
-   $ conda deactivate
-   ```
+  ```
+  $ conda deactivate
+  ```
 
 ### Cray platform (x86-64 or ARM processor)
 
