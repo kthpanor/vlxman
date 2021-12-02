@@ -158,6 +158,15 @@ To avoid clashes between dependencies, we recommend to always use a [virtual env
 
   This will also take care of installing the additional necessary Python modules.
 
+  If you are installing VeloxChem on a HPC cluster, please run the compilation on an interactive node:
+
+  ```
+  $ salloc -N 1 ...
+  $ CXX=CC VLX_NUM_BUILD_JOBS=N srun -n 1 python3 -m pip install .
+  ```
+
+  where *N* is the number of cores on the node.
+
 ### Debian-based Linux
 
 - Install Intel Math Kernel Library from `https://software.intel.com/en-us/articles/installing-intel-free-libs-and-python-apt-repo`
