@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Program structure &#8212; VeloxChem program manual</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -31,7 +31,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -55,7 +55,10 @@
     <link rel="next" title="Source code structure" href="source_struct.html" />
     <link rel="prev" title="Electronic densities" href="elec_dens.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -94,7 +97,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Getting started
  </span>
@@ -126,7 +129,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Model chemistry
  </span>
@@ -158,7 +161,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Properties
  </span>
@@ -205,7 +208,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Visualization
  </span>
@@ -217,7 +220,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Advanced users
  </span>
@@ -234,7 +237,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   References
  </span>
@@ -383,7 +386,7 @@
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Warning * Environment variable OMP_NUM_THREADS not set.
-* Warning * Setting OMP_NUM_THREADS to 12.
+* Warning * Setting OMP_NUM_THREADS to 8.
 </pre></div>
 </div>
 </div>
@@ -505,6 +508,11 @@ FUNCTIONS
         
         Transforms AO matrix from Dalton to VeloxChem format.
     
+    available_functionals(...) method of builtins.PyCapsule instance
+        available_functionals() -&gt; List[str]
+        
+        Gets a list of available exchange-correlation functionals.
+    
     bohr_in_angstroms(...) method of builtins.PyCapsule instance
         bohr_in_angstroms() -&gt; float
         
@@ -541,13 +549,13 @@ FUNCTIONS
         Gets default rank of master MPI process.
 
 DATA
-    __deployed__ = {&#39;author&#39;: &#39;Roberto Di Remigio&#39;, &#39;commit&#39;: &#39;6bb6f2d1613...
+    __deployed__ = {&#39;author&#39;: &#39;Roberto Di Remigio&#39;, &#39;commit&#39;: &#39;81ba07feb45...
 
 VERSION
     1.0rc2
 
 FILE
-    /home/xinli/anaconda3/envs/echem/lib/python3.7/site-packages/veloxchem/__init__.py
+    /Users/lixin/anaconda3/envs/echem/lib/python3.7/site-packages/veloxchem/__init__.py
 </pre></div>
 </div>
 </div>
@@ -598,6 +606,7 @@ FILE
  &#39;OutputStream&#39;,
  &#39;OverlapIntegralsDriver&#39;,
  &#39;Polarizability&#39;,
+ &#39;RespChargesDriver&#39;,
  &#39;ResponseDriver&#39;,
  &#39;ResponseProperty&#39;,
  &#39;SADGuessDriver&#39;,
@@ -627,6 +636,7 @@ FILE
  &#39;aodensitymatrix&#39;,
  &#39;aofockmatrix&#39;,
  &#39;assert_msg_critical&#39;,
+ &#39;available_functionals&#39;,
  &#39;batchsize&#39;,
  &#39;blockdavidson&#39;,
  &#39;bohr_in_angstroms&#39;,
@@ -671,6 +681,7 @@ FILE
  &#39;outputstream&#39;,
  &#39;profiler&#39;,
  &#39;qqscheme&#39;,
+ &#39;respchargesdriver&#39;,
  &#39;rspabsorption&#39;,
  &#39;rspc6&#39;,
  &#39;rspcdspec&#39;,
@@ -791,6 +802,7 @@ FILE
  &#39;print_ground_state&#39;,
  &#39;print_header&#39;,
  &#39;print_iter_data&#39;,
+ &#39;print_keywords&#39;,
  &#39;print_scf_energy&#39;,
  &#39;print_scf_finish&#39;,
  &#39;print_scf_title&#39;,
@@ -831,31 +843,22 @@ FILE
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="elec_dens.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Electronic densities</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="elec_dens.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Electronic densities</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="source_struct.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Source code structure</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="source_struct.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Source code structure</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -876,8 +879,7 @@ FILE
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>
