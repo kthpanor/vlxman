@@ -385,8 +385,11 @@
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning: importing &#39;simtk.openmm&#39; is deprecated.  Import &#39;openmm&#39; instead.
+</pre></div>
+</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Warning * Environment variable OMP_NUM_THREADS not set.
-* Warning * Setting OMP_NUM_THREADS to 4.
+* Warning * Setting OMP_NUM_THREADS to 12.
 </pre></div>
 </div>
 </div>
@@ -402,32 +405,14 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     ================================================================================                     
-                       @scf                                                                                               
-                     --------------------------------------------------------------------------------                     
-                       acc_type            string         type of SCF convergence accelerator                             
-                       max_iter            integer        maximum number of SCF iterations                                
-                       conv_thresh         float          SCF convergence threshold                                       
-                       qq_type             string         ERI screening scheme                                            
-                       eri_thresh          float          ERI screening threshold                                         
-                       restart             boolean        restart from checkpoint file                                    
-                       checkpoint_file     string         name of checkpoint file                                         
-                       timing              boolean        print timing information                                        
-                       profiling           boolean        print profiling information                                     
-                       memory_profiling    boolean        print memory usage                                              
-                       memory_tracing      boolean        trace memory allocation                                         
-                     ================================================================================                     
-                       @method_settings                                                                                   
-                     --------------------------------------------------------------------------------                     
-                       dispersion          boolean        use D4 dispersion correction                                    
-                       dft                 boolean        use DFT                                                         
-                       xcfun               string         exchange-correlation functional                                 
-                       grid_level          integer        accuracy level of DFT grid                                      
-                       pe                  boolean        use polarizable embedding                                       
-                       potfile             string         potential file for polarizable embedding                        
-                       electric_field      sequence       static electric field                                           
-                       use_split_comm      boolean        use split communicators                                         
-                     ================================================================================                     
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_16562</span><span class="o">/</span><span class="mf">3255228417.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">scf_drv</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">ScfRestrictedDriver</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> 
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">scf_drv</span><span class="o">.</span><span class="n">print_keywords</span><span class="p">()</span>
+
+<span class="ne">AttributeError</span>: &#39;ScfRestrictedDriver&#39; object has no attribute &#39;print_keywords&#39;
 </pre></div>
 </div>
 </div>

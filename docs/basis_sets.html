@@ -397,8 +397,11 @@
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning: importing &#39;simtk.openmm&#39; is deprecated.  Import &#39;openmm&#39; instead.
+</pre></div>
+</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Warning * Environment variable OMP_NUM_THREADS not set.
-* Warning * Setting OMP_NUM_THREADS to 4.
+* Warning * Setting OMP_NUM_THREADS to 12.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Molecular Geometry (Angstroms)
@@ -430,11 +433,11 @@ Basis: CC-PVDZ
 
   Atom Contracted GTOs          Primitive GTOs           
 
-  O   (3S,2P,1D)               (17S,4P,1D)              
-  C   (3S,2P,1D)               (17S,4P,1D)              
+  O   (3S,2P,1D)               (19S,5P,1D)              
+  C   (3S,2P,1D)               (19S,5P,1D)              
 
 Contracted Basis Functions : 28                       
-Primitive Basis Functions  : 68                       
+Primitive Basis Functions  : 78                       
 </pre></div>
 </div>
 </div>
@@ -451,7 +454,7 @@ Primitive Basis Functions  : 68
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Available basis sets for carbon:
- [&#39;6-31++G&#39;, &#39;6-31++G*&#39;, &#39;6-31++G**&#39;, &#39;6-31+G&#39;, &#39;6-31+G*&#39;, &#39;6-31+G**&#39;, &#39;6-311++G&#39;, &#39;6-311++G(2D,2P)&#39;, &#39;6-311++G(3DF,3PD)&#39;, &#39;6-311++G*&#39;, &#39;6-311++G**&#39;, &#39;6-311+G&#39;, &#39;6-311+G(2D,P)&#39;, &#39;6-311+G*&#39;, &#39;6-311+G**&#39;, &#39;6-311G&#39;, &#39;6-311G(2DF,2PD)&#39;, &#39;6-311G*&#39;, &#39;6-311G**&#39;, &#39;6-31G&#39;, &#39;6-31G(2DF,P)&#39;, &#39;6-31G(3DF,3PD)&#39;, &#39;6-31G*&#39;, &#39;6-31G**&#39;, &#39;ANO-L-MB&#39;, &#39;ANO-L-VDZP&#39;, &#39;ANO-L-VQZP&#39;, &#39;ANO-L-VTZP&#39;, &#39;ANO-S-MB&#39;, &#39;ANO-S-VDZP&#39;, &#39;AO-START-GUESS&#39;, &#39;AUG-CC-PCV5Z&#39;, &#39;AUG-CC-PCVDZ&#39;, &#39;AUG-CC-PCVQZ&#39;, &#39;AUG-CC-PCVTZ&#39;, &#39;AUG-CC-PV5Z&#39;, &#39;AUG-CC-PV6Z&#39;, &#39;AUG-CC-PVDZ&#39;, &#39;AUG-CC-PVQZ&#39;, &#39;AUG-CC-PVTZ&#39;, &#39;AUG-PCSEG-0&#39;, &#39;AUG-PCSEG-1&#39;, &#39;AUG-PCSEG-2&#39;, &#39;AUG-PCSEG-3&#39;, &#39;AUG-PCSEG-4&#39;, &#39;AUG-PCX-1&#39;, &#39;AUG-PCX-2&#39;, &#39;AUG-PCX-3&#39;, &#39;AUG-PCX-4&#39;, &#39;CC-PCV5Z&#39;, &#39;CC-PCVDZ&#39;, &#39;CC-PCVQZ&#39;, &#39;CC-PCVTZ&#39;, &#39;CC-PV5Z&#39;, &#39;CC-PV6Z&#39;, &#39;CC-PVDZ&#39;, &#39;CC-PVQZ&#39;, &#39;CC-PVTZ&#39;, &#39;DEF2-QZVP&#39;, &#39;DEF2-QZVPD&#39;, &#39;DEF2-QZVPP&#39;, &#39;DEF2-QZVPPD&#39;, &#39;DEF2-SV(P)&#39;, &#39;DEF2-SVP&#39;, &#39;DEF2-SVPD&#39;, &#39;DEF2-TZVP&#39;, &#39;DEF2-TZVPD&#39;, &#39;DEF2-TZVPP&#39;, &#39;DEF2-TZVPPD&#39;, &#39;PCSEG-0&#39;, &#39;PCSEG-1&#39;, &#39;PCSEG-2&#39;, &#39;PCSEG-3&#39;, &#39;PCSEG-4&#39;, &#39;PCX-1&#39;, &#39;PCX-2&#39;, &#39;PCX-3&#39;, &#39;PCX-4&#39;, &#39;SADLEJ-PVTZ&#39;, &#39;STO-3G&#39;, &#39;STO-3G-OLD&#39;, &#39;STO-6G&#39;]
+ [&#39;6-31++G&#39;, &#39;6-31++G*&#39;, &#39;6-31++G**&#39;, &#39;6-31+G&#39;, &#39;6-31+G*&#39;, &#39;6-31+G**&#39;, &#39;6-311++G&#39;, &#39;6-311++G(2D,2P)&#39;, &#39;6-311++G(3DF,3PD)&#39;, &#39;6-311++G*&#39;, &#39;6-311++G**&#39;, &#39;6-311+G&#39;, &#39;6-311+G(2D,P)&#39;, &#39;6-311+G*&#39;, &#39;6-311+G**&#39;, &#39;6-311G&#39;, &#39;6-311G(2DF,2PD)&#39;, &#39;6-311G*&#39;, &#39;6-311G**&#39;, &#39;6-31G&#39;, &#39;6-31G(2DF,P)&#39;, &#39;6-31G(3DF,3PD)&#39;, &#39;6-31G*&#39;, &#39;6-31G**&#39;, &#39;AUG-CC-PCV5Z&#39;, &#39;AUG-CC-PCVDZ&#39;, &#39;AUG-CC-PCVQZ&#39;, &#39;AUG-CC-PCVTZ&#39;, &#39;AUG-CC-PV5Z&#39;, &#39;AUG-CC-PV6Z&#39;, &#39;AUG-CC-PVDZ&#39;, &#39;AUG-CC-PVQZ&#39;, &#39;AUG-CC-PVTZ&#39;, &#39;AUG-PCSEG-0&#39;, &#39;AUG-PCSEG-1&#39;, &#39;AUG-PCSEG-2&#39;, &#39;AUG-PCSEG-3&#39;, &#39;AUG-PCSEG-4&#39;, &#39;AUG-PCX-1&#39;, &#39;AUG-PCX-2&#39;, &#39;AUG-PCX-3&#39;, &#39;AUG-PCX-4&#39;, &#39;CC-PCV5Z&#39;, &#39;CC-PCVDZ&#39;, &#39;CC-PCVQZ&#39;, &#39;CC-PCVTZ&#39;, &#39;CC-PV5Z&#39;, &#39;CC-PV6Z&#39;, &#39;CC-PVDZ&#39;, &#39;CC-PVDZ-OPTGC&#39;, &#39;CC-PVQZ&#39;, &#39;CC-PVTZ&#39;, &#39;DEF2-QZVP&#39;, &#39;DEF2-QZVPD&#39;, &#39;DEF2-QZVPP&#39;, &#39;DEF2-QZVPPD&#39;, &#39;DEF2-SV(P)&#39;, &#39;DEF2-SVP&#39;, &#39;DEF2-SVPD&#39;, &#39;DEF2-TZVP&#39;, &#39;DEF2-TZVPD&#39;, &#39;DEF2-TZVPP&#39;, &#39;DEF2-TZVPPD&#39;, &#39;MIN-CC-PVDZ&#39;, &#39;PCSEG-0&#39;, &#39;PCSEG-1&#39;, &#39;PCSEG-2&#39;, &#39;PCSEG-3&#39;, &#39;PCSEG-4&#39;, &#39;PCX-1&#39;, &#39;PCX-2&#39;, &#39;PCX-3&#39;, &#39;PCX-4&#39;, &#39;SADLEJ-PVTZ&#39;, &#39;STO-3G&#39;, &#39;STO-3G-OLD&#39;, &#39;STO-6G&#39;]
 </pre></div>
 </div>
 </div>
