@@ -10,6 +10,7 @@ parts:
   - file: docs/installation
   - file: docs/run_desktop
   - file: docs/run_cluster
+  - file: docs/keywords
 - caption: Model chemistry
   chapters:
   - file: docs/refstate

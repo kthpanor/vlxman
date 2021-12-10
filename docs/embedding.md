@@ -182,6 +182,26 @@ resp_charges = resp_drv.compute(molecule, basis, 'resp')
 
 ### LoProp charges and polarizabilities
 
+The LoProp approach {cite}`Gagliardi2004` is implemented for the determination of localized (atomic) charges and polarizabilities that enter into polarizable embedding calculations of optical spectra.
+
+````
+@jobs
+task: loprop
+@end
+
+@method settings
+xcfun: b3lyp
+basis: ANO-S-VDZP # An ANO type of basis set should be used
+@end
+
+@molecule
+charge: 0
+multiplicity: 1
+xyz:
+...
+@end
+````
+
 ## Polarizable embedding
 
 An SCF calculation with a polarizable environment is performed in VeloxChem with an input file of the form

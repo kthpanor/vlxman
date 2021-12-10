@@ -32,10 +32,50 @@ charge: 0
 multiplicity: 1
 units: au
 xyz:  
-O   0.0   0.0   0.0
-H   0.0   1.4   1.1
-H   0.0  -1.4   1.1
+...
 @end 
+```
+
+## General linear response functions
+
+A general linear response function
+
+$$
+\langle\langle \hat{\Omega}; \hat{V} 
+\rangle \rangle_\omega^\gamma
+$$
+
+can be requested, referring to the linear response of the molecular property associated with $\hat{\Omega}$ due to the perturbation associated with $\hat{V}$ and oscillating with the angular frequency $\omega$. The damping term $\gamma$ is associated with the inverse lifetime and enters into the calculation only if a complex response function is requested by setting `complex` to `yes`.
+
+```
+@jobs
+task: response
+@end
+
+@method settings
+basis: def2-SVPD
+xcfun: b3lyp
+@end
+
+@response
+property: custom
+order: linear
+complex: no
+a_operator: electric dipole
+a_components: xyz
+b_operator: electric dipole
+b_compontents: xyz
+frequencies: 0.0, 0.0656
+@end
+
+@molecule
+charge: 0
+multiplicity: 1
+units: angstrom
+xyz:
+...
+@end
+
 ```
 
 ## C6 dispersion coefficients
@@ -81,7 +121,6 @@ charge: 0
 multiplicity: 1
 units: ang
 xyz:
-C -5.8575354 3.6359158 -1.6619244
 ...
 @end
 ```
@@ -108,9 +147,7 @@ charge: 0
 multiplicity: 1
 units: au
 xyz:
-O   0.0   0.0   0.0
-H   0.0   1.4   1.1
-H   0.0  -1.4   1.1
+...
 @end
 
 @pulses
