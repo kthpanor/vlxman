@@ -10,7 +10,7 @@ $$
 	16\pi N_\mathrm{A}
 }{
   	\ln\left(10\right)
-	\left(4\pi\epsilon_0\right) c^2
+	\left(4\pi\varepsilon_0\right) c^2
 }
 \frac{\pi}{3 \hbar}
 \sum_{n>0} f(\omega; \omega_{n0},\gamma)\, 
@@ -70,7 +70,7 @@ $$
 	\omega^2
 }{
   	\ln(10)
-	\left(4\pi\epsilon_0\right) c^2
+	\left(4\pi\varepsilon_0\right) c^2
 }
 \,
 \beta(\omega)
