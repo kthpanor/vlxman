@@ -220,7 +220,7 @@ To avoid clashes between dependencies, we recommend to always use a [virtual env
 
   ```
   $ sudo yum install gcc gcc-g++ mpich mpich-devel python3 python3-devel python3-pip
-  $ export PATH=/usr/lib64/mpich/bin:$PATH
+  $ module load mpi/mpich-x86_64
   ```
 
 - Create and activate a [virtual enviroment](https://docs.python.org/3/tutorial/venv.html)
