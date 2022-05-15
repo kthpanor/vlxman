@@ -112,9 +112,9 @@ xcfun: b3lyp
 
 @response
 property: ecd (cpp)
-# frequency region (and resolution)
+! frequency region (and resolution)
 frequencies: 0.05-0.15 (0.0025)
-damping: 0.0045563  # this is the default value
+damping: 0.0045563  ! this is the default value
 @end
 
 @molecule
@@ -152,7 +152,7 @@ charge: 0
 multiplicity: 1
 xyz:
 ...
-XYZ coordinates for 40 x 55 atoms
+! XYZ coordinates for 40 x 55 atoms
 ...
 @end
 ```

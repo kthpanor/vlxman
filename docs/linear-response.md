@@ -106,7 +106,7 @@ task: response
 @method settings
 basis: DEF2-SVPD
 dft: yes
-grid_level: 4     # this is the default grid density
+grid_level: 4     ! this is the default grid density
 xcfun: b3lyp
 @end
 

@@ -149,7 +149,7 @@ basis: 6-31g_d_
 @end
 
 @resp charges
-equal charges: 2 = 3    # with reference to the atom ordering below
+equal charges: 2 = 3    ! with reference to the atom ordering below
 @end
 
 @molecule
@@ -191,7 +191,7 @@ task: loprop
 
 @method settings
 xcfun: b3lyp
-basis: ANO-S-VDZP # An ANO type of basis set should be used
+basis: ANO-S-VDZP ! An ANO type of basis set should be used
 @end
 
 @molecule
