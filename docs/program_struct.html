@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Program structure &#8212; VeloxChem program manual</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -31,23 +31,25 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="shortcut icon" href="../_static/vlx_logo_mark.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -55,7 +57,10 @@
     <link rel="next" title="Source code structure" href="source_struct.html" />
     <link rel="prev" title="Electronic densities" href="elec_dens.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -94,7 +99,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Getting started
  </span>
@@ -126,7 +131,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Model chemistry
  </span>
@@ -158,7 +163,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Properties
  </span>
@@ -205,7 +210,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Visualization
  </span>
@@ -217,7 +222,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Advanced users
  </span>
@@ -234,7 +239,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   References
  </span>
@@ -291,7 +296,7 @@
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -342,7 +347,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -367,7 +372,35 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Program structure</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#classes">
+   Classes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#methods-and-properties">
+   Methods and properties
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="program-structure">
@@ -379,8 +412,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Warning * Environment variable OMP_NUM_THREADS not set.
-* Warning * Setting OMP_NUM_THREADS to 4.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Warning * Setting MKL_THREADING_LAYER to &quot;GNU&quot;.
 </pre></div>
 </div>
 </div>
@@ -437,31 +469,42 @@ PACKAGE CONTENTS
     cli
     cppsolver
     cubicgrid
+    cubicresponsedriver
     denguess
     distributedarray
     environ
     errorhandler
     excitondriver
+    firstorderprop
+    forcefieldgenerator
     gradientdriver
+    hessiandriver
     inputparser
     linearsolver
     loprop
     lreigensolver
     lrsolver
     main
+    mklconf
     mointsdriver
     molecularbasis
     molecularorbitals
     molecule
     mp2driver
     mpitask
+    nonlinearsolver
+    numerovdriver
+    openmmdriver
+    openmmgradientdriver
     optimizationdriver
     optimizationengine
+    orbitalviewer
     outputstream
     polembed
     profiler
     pulsedrsp
     qqscheme
+    quadraticresponsedriver
     respchargesdriver
     rspabsorption
     rspc6
@@ -471,13 +514,15 @@ PACKAGE CONTENTS
     rsplinabscross
     rsppolarizability
     rspproperty
+    rspshg
     rsptpa
     scfdriver
-    scffirstorderprop
     scfgradientdriver
+    scfhessiandriver
     scfrestdriver
     scfrestopendriver
     scfunrestdriver
+    shgdriver
     signalhandler
     slurminfo
     subcommunicators
@@ -490,6 +535,7 @@ PACKAGE CONTENTS
     visualizationdriver
     xtbdriver
     xtbgradientdriver
+    xtbhessiandriver
 
 FUNCTIONS
     ao_matrix_to_dalton(...) method of builtins.PyCapsule instance
@@ -512,6 +558,21 @@ FUNCTIONS
         
         Gets Bohr value in Angstroms.
     
+    dipole_in_debye(...) method of builtins.PyCapsule instance
+        dipole_in_debye() -&gt; float
+        
+        Gets convertion factor for dipole moment (a.u. -&gt; Debye).
+    
+    extinction_coefficient_from_beta(...) method of builtins.PyCapsule instance
+        extinction_coefficient_from_beta() -&gt; float
+        
+        Gets factor needed for the calculation of the extinction coefficent from the electric-dipole magnetic-dipole polarizability beta.
+    
+    fine_structure_constant(...) method of builtins.PyCapsule instance
+        fine_structure_constant() -&gt; float
+        
+        Gets fine-structure constant.
+    
     get_basis_function_indices_for_atom(...) method of builtins.PyCapsule instance
         get_basis_function_indices_for_atom(molecule: veloxchem.veloxchemlib.Molecule, basis: veloxchem.veloxchemlib.MolecularBasis, atomIdx: int) -&gt; List[List[int]]
         
@@ -527,6 +588,11 @@ FUNCTIONS
         
         Gets Hartree value in kcal/mol.
     
+    hartree_in_wavenumbers(...) method of builtins.PyCapsule instance
+        hartree_in_wavenumbers() -&gt; float
+        
+        Gets Hartree value in reciprocal cm.
+    
     mathconst_pi(...) method of builtins.PyCapsule instance
         mathconst_pi() -&gt; float
         
@@ -541,12 +607,20 @@ FUNCTIONS
         mpi_master() -&gt; int
         
         Gets default rank of master MPI process.
+    
+    rotatory_strength_in_cgs(...) method of builtins.PyCapsule instance
+        rotatory_strength_in_cgs() -&gt; float
+        
+        Gets convertion factor for rotatory strength (a.u. -&gt; 10^-40 cgs).
+
+DATA
+    __deployed__ = {&#39;author&#39;: &#39;Roberto Di Remigio&#39;, &#39;build&#39;: &#39;9&#39;, &#39;commit&#39;...
 
 VERSION
     1.0rc2
 
 FILE
-    /opt/miniconda3/envs/vlxmp/lib/python3.9/site-packages/veloxchem/__init__.py
+    /home/lixin/anaconda3/envs/echem/lib/python3.9/site-packages/veloxchem/__init__.py
 </pre></div>
 </div>
 </div>
@@ -564,6 +638,7 @@ FILE
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;AODensityMatrix&#39;,
  &#39;AOFockMatrix&#39;,
  &#39;Absorption&#39;,
+ &#39;AngularMomentumIntegralsDriver&#39;,
  &#39;AtomBasis&#39;,
  &#39;BasisFunction&#39;,
  &#39;BlockDavidsonSolver&#39;,
@@ -572,16 +647,24 @@ FILE
  &#39;CircularDichroismSpectrum&#39;,
  &#39;ComplexResponse&#39;,
  &#39;CubicGrid&#39;,
+ &#39;CubicResponseDriver&#39;,
  &#39;CustomProperty&#39;,
  &#39;DenseMatrix&#39;,
+ &#39;DensityGridDriver&#39;,
  &#39;DispersionModel&#39;,
  &#39;ElectricDipoleIntegralsDriver&#39;,
  &#39;ElectronRepulsionIntegralsDriver&#39;,
  &#39;ExcitationVector&#39;,
  &#39;ExcitonModelDriver&#39;,
+ &#39;FirstOrderProperties&#39;,
+ &#39;ForceFieldGenerator&#39;,
+ &#39;GradientDriver&#39;,
+ &#39;GridDriver&#39;,
+ &#39;HessianDriver&#39;,
  &#39;InputParser&#39;,
  &#39;KineticEnergyIntegralsDriver&#39;,
  &#39;LinearAbsorptionCrossSection&#39;,
+ &#39;LinearMomentumIntegralsDriver&#39;,
  &#39;LinearResponseEigenSolver&#39;,
  &#39;LinearResponseSolver&#39;,
  &#39;LoPropDriver&#39;,
@@ -593,26 +676,39 @@ FILE
  &#39;Mp2Driver&#39;,
  &#39;MpiTask&#39;,
  &#39;NuclearPotentialIntegralsDriver&#39;,
+ &#39;NumerovDriver&#39;,
+ &#39;OpenMMDriver&#39;,
+ &#39;OpenMMGradientDriver&#39;,
  &#39;OptimizationDriver&#39;,
+ &#39;OrbitalViewer&#39;,
  &#39;OutputStream&#39;,
  &#39;OverlapIntegralsDriver&#39;,
  &#39;Polarizability&#39;,
+ &#39;QuadraticResponseDriver&#39;,
  &#39;RespChargesDriver&#39;,
  &#39;ResponseDriver&#39;,
  &#39;ResponseProperty&#39;,
  &#39;SADGuessDriver&#39;,
- &#39;ScfFirstOrderProperties&#39;,
+ &#39;SHG&#39;,
+ &#39;SHGDriver&#39;,
  &#39;ScfGradientDriver&#39;,
+ &#39;ScfHessianDriver&#39;,
  &#39;ScfRestrictedDriver&#39;,
+ &#39;ScfRestrictedOpenDriver&#39;,
  &#39;ScfUnrestrictedDriver&#39;,
  &#39;SubCommunicators&#39;,
  &#39;TDAExciDriver&#39;,
+ &#39;TPA&#39;,
+ &#39;TPAFullDriver&#39;,
+ &#39;TPAReducedDriver&#39;,
  &#39;TwoIndexes&#39;,
  &#39;VisualizationDriver&#39;,
  &#39;XTBDriver&#39;,
  &#39;XTBGradientDriver&#39;,
+ &#39;XTBHessianDriver&#39;,
  &#39;__builtins__&#39;,
  &#39;__cached__&#39;,
+ &#39;__deployed__&#39;,
  &#39;__doc__&#39;,
  &#39;__file__&#39;,
  &#39;__loader__&#39;,
@@ -633,16 +729,23 @@ FILE
  &#39;c2diis&#39;,
  &#39;c6solver&#39;,
  &#39;checkpoint&#39;,
+ &#39;configure_mkl_rt&#39;,
  &#39;cppsolver&#39;,
  &#39;cubicgrid&#39;,
+ &#39;cubicresponsedriver&#39;,
  &#39;denguess&#39;,
  &#39;denmat&#39;,
+ &#39;dipole_in_debye&#39;,
  &#39;distributedarray&#39;,
  &#39;environ&#39;,
  &#39;ericut&#39;,
  &#39;errorhandler&#39;,
  &#39;excitondriver&#39;,
+ &#39;extinction_coefficient_from_beta&#39;,
+ &#39;fine_structure_constant&#39;,
+ &#39;firstorderprop&#39;,
  &#39;fockmat&#39;,
+ &#39;forcefieldgenerator&#39;,
  &#39;get_basis_function_indices_for_atom&#39;,
  &#39;get_basis_path&#39;,
  &#39;get_qq_scheme&#39;,
@@ -650,12 +753,15 @@ FILE
  &#39;gradientdriver&#39;,
  &#39;hartree_in_ev&#39;,
  &#39;hartree_in_kcalpermol&#39;,
+ &#39;hartree_in_wavenumbers&#39;,
+ &#39;hessiandriver&#39;,
  &#39;inputparser&#39;,
  &#39;linearsolver&#39;,
  &#39;loprop&#39;,
  &#39;lreigensolver&#39;,
  &#39;lrsolver&#39;,
  &#39;mathconst_pi&#39;,
+ &#39;mklconf&#39;,
  &#39;moints&#39;,
  &#39;mointsdriver&#39;,
  &#39;molecularbasis&#39;,
@@ -666,12 +772,19 @@ FILE
  &#39;mpi_initialized&#39;,
  &#39;mpi_master&#39;,
  &#39;mpitask&#39;,
+ &#39;nonlinearsolver&#39;,
+ &#39;numerovdriver&#39;,
+ &#39;openmmdriver&#39;,
+ &#39;openmmgradientdriver&#39;,
  &#39;optimizationdriver&#39;,
  &#39;optimizationengine&#39;,
+ &#39;orbitalviewer&#39;,
  &#39;outputstream&#39;,
  &#39;profiler&#39;,
  &#39;qqscheme&#39;,
+ &#39;quadraticresponsedriver&#39;,
  &#39;respchargesdriver&#39;,
+ &#39;rotatory_strength_in_cgs&#39;,
  &#39;rspabsorption&#39;,
  &#39;rspc6&#39;,
  &#39;rspcdspec&#39;,
@@ -680,13 +793,17 @@ FILE
  &#39;rsplinabscross&#39;,
  &#39;rsppolarizability&#39;,
  &#39;rspproperty&#39;,
+ &#39;rspshg&#39;,
+ &#39;rsptpa&#39;,
  &#39;scfdriver&#39;,
- &#39;scffirstorderprop&#39;,
  &#39;scfgradientdriver&#39;,
+ &#39;scfhessiandriver&#39;,
  &#39;scfrestdriver&#39;,
+ &#39;scfrestopendriver&#39;,
  &#39;scfunrestdriver&#39;,
  &#39;set_omp_num_threads&#39;,
  &#39;set_vlxbasispath&#39;,
+ &#39;shgdriver&#39;,
  &#39;signalhandler&#39;,
  &#39;subcommunicators&#39;,
  &#39;szblock&#39;,
@@ -697,7 +814,8 @@ FILE
  &#39;veloxchemlib&#39;,
  &#39;visualizationdriver&#39;,
  &#39;xtbdriver&#39;,
- &#39;xtbgradientdriver&#39;]
+ &#39;xtbgradientdriver&#39;,
+ &#39;xtbhessiandriver&#39;]
 </pre></div>
 </div>
 </div>
@@ -797,6 +915,7 @@ FILE
  &#39;print_scf_finish&#39;,
  &#39;print_scf_title&#39;,
  &#39;set_skip_iter_flag&#39;,
+ &#39;set_start_orbitals&#39;,
  &#39;store_diis_data&#39;,
  &#39;update_fock_type&#39;,
  &#39;update_mol_orbs_phase&#39;,
@@ -832,54 +951,42 @@ FILE
 
               </div>
               
-        
             
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="elec_dens.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Electronic densities</p>
-            </div>
-        </a>
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="elec_dens.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Electronic densities</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="source_struct.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Source code structure</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="source_struct.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Source code structure</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By The VeloxChem team<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By The VeloxChem team<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>

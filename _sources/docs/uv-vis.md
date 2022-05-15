@@ -44,7 +44,7 @@ basis: def2-svp
 
 @response
 property: absorption
-# tamm_dancoff: yes
+! tamm_dancoff: yes
 nstates: 3
 @end
 
@@ -109,9 +109,9 @@ basis: def2-svp
 
 @response
 property: absorption (cpp)
-# frequency region (and resolution)
+! frequency region (and resolution)
 frequencies: 0.0-0.15 (0.0025)
-damping: 0.0045563  # this is the default value
+damping: 0.0045563  ! this is the default value
 @end
 
 @molecule
