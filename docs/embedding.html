@@ -732,41 +732,28 @@ xyz:
 </pre></div>
 </div>
 <p>together with a potential file <code class="docutils literal notranslate"><span class="pre">pe.pot</span></code> of the form</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@COORDINATES</span>
-<span class="mi">6</span>
-<span class="n">AA</span>
-<span class="n">O</span>   <span class="o">-</span><span class="mf">0.9957202</span>   <span class="mf">0.0160415</span>   <span class="mf">1.2422556</span>
-<span class="n">H</span>   <span class="o">-</span><span class="mf">1.4542703</span>  <span class="o">-</span><span class="mf">0.5669741</span>   <span class="mf">1.8472817</span>
-<span class="n">H</span>   <span class="o">-</span><span class="mf">0.9377950</span>  <span class="o">-</span><span class="mf">0.4817912</span>   <span class="mf">0.4267562</span>
-<span class="n">O</span>   <span class="o">-</span><span class="mf">0.2432343</span>  <span class="o">-</span><span class="mf">1.0198566</span>  <span class="o">-</span><span class="mf">1.1953808</span>
-<span class="n">H</span>    <span class="mf">0.4367536</span>  <span class="o">-</span><span class="mf">0.3759433</span>  <span class="o">-</span><span class="mf">0.9973297</span>
-<span class="n">H</span>   <span class="o">-</span><span class="mf">0.5031835</span>  <span class="o">-</span><span class="mf">0.8251492</span>  <span class="o">-</span><span class="mf">2.0957959</span>
-<span class="nd">@MULTIPOLES</span>
-<span class="n">ORDER</span> <span class="mi">0</span>
-<span class="mi">6</span>
-<span class="mi">1</span>      <span class="o">-</span><span class="mf">0.67444408</span>
-<span class="mi">2</span>       <span class="mf">0.33722206</span>
-<span class="mi">3</span>       <span class="mf">0.33722206</span>
-<span class="mi">4</span>      <span class="o">-</span><span class="mf">0.67444408</span>
-<span class="mi">5</span>       <span class="mf">0.33722206</span>
-<span class="mi">6</span>       <span class="mf">0.33722206</span>
-<span class="nd">@POLARIZABILITIES</span>
-<span class="n">ORDER</span> <span class="mi">1</span> <span class="mi">1</span>
-<span class="mi">6</span>
-<span class="mi">1</span>       <span class="mf">5.73935090</span>    <span class="mf">0.00000000</span>    <span class="mf">0.00000000</span>    <span class="mf">5.73935090</span>    <span class="mf">0.00000000</span>    <span class="mf">5.73935090</span>
-<span class="mi">2</span>       <span class="mf">2.30839051</span>    <span class="mf">0.00000000</span>    <span class="mf">0.00000000</span>    <span class="mf">2.30839051</span>    <span class="mf">0.00000000</span>    <span class="mf">2.30839051</span>
-<span class="mi">3</span>       <span class="mf">2.30839051</span>    <span class="mf">0.00000000</span>    <span class="mf">0.00000000</span>    <span class="mf">2.30839051</span>    <span class="mf">0.00000000</span>    <span class="mf">2.30839051</span>
-<span class="mi">4</span>       <span class="mf">5.73935090</span>    <span class="mf">0.00000000</span>    <span class="mf">0.00000000</span>    <span class="mf">5.73935090</span>    <span class="mf">0.00000000</span>    <span class="mf">5.73935090</span>
-<span class="mi">5</span>       <span class="mf">2.30839051</span>    <span class="mf">0.00000000</span>    <span class="mf">0.00000000</span>    <span class="mf">2.30839051</span>    <span class="mf">0.00000000</span>    <span class="mf">2.30839051</span>
-<span class="mi">6</span>       <span class="mf">2.30839051</span>    <span class="mf">0.00000000</span>    <span class="mf">0.00000000</span>    <span class="mf">2.30839051</span>    <span class="mf">0.00000000</span>    <span class="mf">2.30839051</span>
-<span class="n">EXCLISTS</span>
-<span class="mi">6</span>     <span class="mi">3</span>
-<span class="mi">1</span>     <span class="mi">2</span>     <span class="mi">3</span>   
-<span class="mi">2</span>     <span class="mi">1</span>     <span class="mi">3</span>   
-<span class="mi">3</span>     <span class="mi">1</span>     <span class="mi">2</span>   
-<span class="mi">4</span>     <span class="mi">5</span>     <span class="mi">6</span>   
-<span class="mi">5</span>     <span class="mi">4</span>     <span class="mi">6</span>   
-<span class="mi">6</span>     <span class="mi">4</span>     <span class="mi">5</span>   
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@environment</span>
+<span class="n">units</span><span class="p">:</span> <span class="n">angstrom</span>
+<span class="n">xyz</span><span class="p">:</span>
+<span class="n">O</span>   <span class="o">-</span><span class="mf">0.9957202</span>   <span class="mf">0.0160415</span>   <span class="mf">1.2422556</span>  <span class="n">water</span>  <span class="mi">1</span>
+<span class="n">H</span>   <span class="o">-</span><span class="mf">1.4542703</span>  <span class="o">-</span><span class="mf">0.5669741</span>   <span class="mf">1.8472817</span>  <span class="n">water</span>  <span class="mi">1</span>
+<span class="n">H</span>   <span class="o">-</span><span class="mf">0.9377950</span>  <span class="o">-</span><span class="mf">0.4817912</span>   <span class="mf">0.4267562</span>  <span class="n">water</span>  <span class="mi">1</span>
+<span class="n">O</span>   <span class="o">-</span><span class="mf">0.2432343</span>  <span class="o">-</span><span class="mf">1.0198566</span>  <span class="o">-</span><span class="mf">1.1953808</span>  <span class="n">water</span>  <span class="mi">2</span>
+<span class="n">H</span>    <span class="mf">0.4367536</span>  <span class="o">-</span><span class="mf">0.3759433</span>  <span class="o">-</span><span class="mf">0.9973297</span>  <span class="n">water</span>  <span class="mi">2</span>
+<span class="n">H</span>   <span class="o">-</span><span class="mf">0.5031835</span>  <span class="o">-</span><span class="mf">0.8251492</span>  <span class="o">-</span><span class="mf">2.0957959</span>  <span class="n">water</span>  <span class="mi">2</span>
+<span class="nd">@end</span>
+
+<span class="nd">@charges</span>
+<span class="n">O</span>  <span class="o">-</span><span class="mf">0.67444408</span>  <span class="n">water</span>
+<span class="n">H</span>   <span class="mf">0.33722206</span>  <span class="n">water</span>
+<span class="n">H</span>   <span class="mf">0.33722206</span>  <span class="n">water</span>
+<span class="nd">@end</span>
+
+<span class="nd">@polarizabilities</span>
+<span class="n">O</span>       <span class="mf">5.73935090</span>    <span class="mf">0.00000000</span>    <span class="mf">0.00000000</span>    <span class="mf">5.73935090</span>    <span class="mf">0.00000000</span>    <span class="mf">5.73935090</span>  <span class="n">water</span>
+<span class="n">H</span>       <span class="mf">2.30839051</span>    <span class="mf">0.00000000</span>    <span class="mf">0.00000000</span>    <span class="mf">2.30839051</span>    <span class="mf">0.00000000</span>    <span class="mf">2.30839051</span>  <span class="n">water</span>
+<span class="n">H</span>       <span class="mf">2.30839051</span>    <span class="mf">0.00000000</span>    <span class="mf">0.00000000</span>    <span class="mf">2.30839051</span>    <span class="mf">0.00000000</span>    <span class="mf">2.30839051</span>  <span class="n">water</span>
+<span class="nd">@end</span>
 </pre></div>
 </div>
 </section>
