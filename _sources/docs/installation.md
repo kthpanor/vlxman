@@ -320,7 +320,8 @@ $ export XTBHOME=/path/to/your/xtb
 ```
 ## Release versions
 
+- 1.0-rc3 (2022-11-09) Third release candidate
+
 - 1.0-rc2 (2021-04-23) Second release candidate
 
 - 1.0-rc (2020-02-28) First release candidate
-
