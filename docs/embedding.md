@@ -145,7 +145,7 @@ task: resp charges
 @end
 
 @method settings
-basis: 6-31g_d_
+basis: 6-31g*
 @end
 
 @resp charges
@@ -171,7 +171,7 @@ mol_str = """
 """
 
 molecule = vlx.Molecule.read_str(mol_str, units='au')
-basis = vlx.MolecularBasis.read(molecule, '6-31g_d_')
+basis = vlx.MolecularBasis.read(molecule, '6-31g*')
 
 resp_drv = vlx.RespChargesDriver()
 resp_drv.update_settings({
