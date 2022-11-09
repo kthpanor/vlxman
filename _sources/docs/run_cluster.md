@@ -69,7 +69,7 @@ In order to ensure that your installation of the VeloxChem program performs well
 Wall time:
 
 * SCF optimization: 456 sec
-* Total: 7,493 sec
+* Total: 7,992 sec
 
 Input file:
 ```
