@@ -517,22 +517,18 @@ title="Print to PDF"
 <span class="n">charge</span><span class="p">:</span> <span class="mi">0</span>
 <span class="n">multiplicity</span><span class="p">:</span> <span class="mi">1</span>
 <span class="n">units</span><span class="p">:</span> <span class="n">au</span>
-<span class="n">xyz</span><span class="p">:</span>  
+<span class="n">xyz</span><span class="p">:</span>
 <span class="n">O</span>   <span class="mf">0.0</span>   <span class="mf">0.0</span>   <span class="mf">0.0</span>
 <span class="n">H</span>   <span class="mf">0.0</span>   <span class="mf">1.4</span>   <span class="mf">1.1</span>
 <span class="n">H</span>   <span class="mf">0.0</span>  <span class="o">-</span><span class="mf">1.4</span>   <span class="mf">1.1</span>
-<span class="nd">@end</span> 
+<span class="nd">@end</span>
 </pre></div>
 </div>
 </section>
 <section id="restricted-open-shell">
 <h2>Restricted open-shell<a class="headerlink" href="#restricted-open-shell" title="Permalink to this headline">#</a></h2>
-<p>This model is under implementation.</p>
-</section>
-<section id="unrestricted-open-shell">
-<h2>Unrestricted open-shell<a class="headerlink" href="#unrestricted-open-shell" title="Permalink to this headline">#</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
-<span class="n">task</span><span class="p">:</span> <span class="n">scf</span>
+<span class="n">task</span><span class="p">:</span> <span class="n">roscf</span>
 <span class="nd">@end</span>
 
 <span class="nd">@method</span> <span class="n">settings</span>
@@ -543,11 +539,33 @@ title="Print to PDF"
 <span class="n">charge</span><span class="p">:</span> <span class="mi">1</span>
 <span class="n">multiplicity</span><span class="p">:</span> <span class="mi">2</span>
 <span class="n">units</span><span class="p">:</span> <span class="n">au</span>
-<span class="n">xyz</span><span class="p">:</span>  
+<span class="n">xyz</span><span class="p">:</span>
 <span class="n">O</span>   <span class="mf">0.0</span>   <span class="mf">0.0</span>   <span class="mf">0.0</span>
 <span class="n">H</span>   <span class="mf">0.0</span>   <span class="mf">1.4</span>   <span class="mf">1.1</span>
 <span class="n">H</span>   <span class="mf">0.0</span>  <span class="o">-</span><span class="mf">1.4</span>   <span class="mf">1.1</span>
-<span class="nd">@end</span> 
+<span class="nd">@end</span>
+</pre></div>
+</div>
+</section>
+<section id="unrestricted-open-shell">
+<h2>Unrestricted open-shell<a class="headerlink" href="#unrestricted-open-shell" title="Permalink to this headline">#</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
+<span class="n">task</span><span class="p">:</span> <span class="n">uscf</span>
+<span class="nd">@end</span>
+
+<span class="nd">@method</span> <span class="n">settings</span>
+<span class="n">basis</span><span class="p">:</span> <span class="n">def2</span><span class="o">-</span><span class="n">svp</span>
+<span class="nd">@end</span>
+
+<span class="nd">@molecule</span>
+<span class="n">charge</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">multiplicity</span><span class="p">:</span> <span class="mi">2</span>
+<span class="n">units</span><span class="p">:</span> <span class="n">au</span>
+<span class="n">xyz</span><span class="p">:</span>
+<span class="n">O</span>   <span class="mf">0.0</span>   <span class="mf">0.0</span>   <span class="mf">0.0</span>
+<span class="n">H</span>   <span class="mf">0.0</span>   <span class="mf">1.4</span>   <span class="mf">1.1</span>
+<span class="n">H</span>   <span class="mf">0.0</span>  <span class="o">-</span><span class="mf">1.4</span>   <span class="mf">1.1</span>
+<span class="nd">@end</span>
 </pre></div>
 </div>
 </section>

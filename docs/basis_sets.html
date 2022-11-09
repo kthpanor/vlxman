@@ -557,10 +557,6 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Warning * Environment variable OMP_NUM_THREADS not set.
-* Warning * Setting OMP_NUM_THREADS to 12.
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Molecular Geometry (Angstroms)
 ================================
 
@@ -577,29 +573,12 @@ title="Print to PDF"
 <p>A basis set is specfied with the <code class="docutils literal notranslate"><span class="pre">read</span></code> method of the <code class="docutils literal notranslate"><span class="pre">MolecularBasis</span></code> class.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">basis</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">MolecularBasis</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="s1">&#39;cc-pVDZ&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">basis</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">MolecularBasis</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="s1">&#39;cc-pVDZ&#39;</span><span class="p">,</span> <span class="n">ostream</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">basis</span><span class="o">.</span><span class="n">get_string</span><span class="p">(</span><span class="s1">&#39;cc-pVDZ&#39;</span><span class="p">,</span> <span class="n">molecule</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info * Reading basis set from file: /home/xinli/anaconda3/envs/vlxman/lib/python3.9/site-packages/veloxchem/basis/CC-PVDZ
-                                                                                                                          
-                                              Molecular Basis (Atomic Basis)                                              
-                                             ================================                                             
-                                                                                                                          
-                                  Basis: CC-PVDZ                                                                          
-                                                                                                                          
-                                  Atom Contracted GTOs          Primitive GTOs                                            
-                                                                                                                          
-                                   O   (3S,2P,1D)               (17S,4P,1D)                                               
-                                   C   (3S,2P,1D)               (17S,4P,1D)                                               
-                                                                                                                          
-                                  Contracted Basis Functions : 28                                                         
-                                  Primitive Basis Functions  : 68                                                         
-                                                                                                                          
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Molecular Basis (cc-pVDZ)
 ===========================
 
