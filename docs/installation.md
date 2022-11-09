@@ -1,6 +1,6 @@
 # Installing the program
 
-## Installing binaries
+## Installing binaries using conda
 
 Binaries are available for the three main operating systems:
 
@@ -8,15 +8,13 @@ Binaries are available for the three main operating systems:
 - MacOS
 - Linux
 
-### With Conda
-
 Conda is an open-source package and environment management system that runs on Windows, MacOS, and Linux. The conda repository contains a large number of open-source certified packages enabling scientific work. It is recommended that you install the minimal installer for conda named miniconda that includes only conda, Python, the packages they depend on, and a small number of other useful packages, including pip, zlib and a few others.
 
 Retrieve miniconda from the following website
 
 > <https://docs.conda.io/en/latest/miniconda.html>
 
-Install the version for 64 bit computers that comes with Python (>=3.6).
+Install the version for 64 bit computers that comes with Python (>=3.7).
 
 Start a conda terminal, or Anaconda Powershell as it is referred to on a Windows system. Conda supports multiple *environments* and you start in the one named `base` as is typically indicated by the prompt. To create a new and additional environment named `vlxenv` and install VeloxChem, Matplotlib, and Jupyter notebook (and package dependencies such as NumPy and SciPy) into it, you enter the following command line statement
 
@@ -65,16 +63,17 @@ $ git clone https://gitlab.com/veloxchem/veloxchem
 
 ### Build prerequisites
 
-- Build tool providing the `make` utility
-- C++ compiler fully compliant with the C++11 standard
+- [CMake](https://cmake.org/)
+- C++ compiler fully compliant with the C++17 standard
 - Linear algebra libraries implementing the BLAS and LAPACK interfaces (e.g. Intel MKL, OpenBLAS or Cray LibSci)
 - MPI library (e.g. MPICH, Intel MPI or Open MPI)
-- Installation of Python >=3.6 that includes the interpreter, the development header files, and the development libraries
-- The [MPI4Py](https://mpi4py.readthedocs.io/en/stable/) module for Python
+- Python (>=3.7) that includes the interpreter, the development header files, and the development libraries
+- [MPI4Py](https://mpi4py.readthedocs.io/en/stable/)
+- [Scikit-build](https://scikit-build.readthedocs.io/en/latest/)
 
 Optional, add-on dependencies:
 
-- [CPPE (v0.2.1)](https://github.com/maxscheurer/cppe/releases/tag/v0.2.1)
+- [CPPE](https://github.com/maxscheurer/cppe)
 - [XTB](https://github.com/grimme-lab/xtb)
 
 See {ref}`external-dependencies` for instructions on how to get these add-ons.
@@ -82,7 +81,7 @@ See {ref}`external-dependencies` for instructions on how to get these add-ons.
 To avoid clashes between dependencies, we recommend to always use a [virtual enviroment](https://docs.python.org/3/tutorial/venv.html).
 
 (with-anaconda)=
-### With Anaconda
+### Installing using Anaconda
 
 [Anaconda](https://www.anaconda.com/products/individual) and the software packaged on the [conda-forge](https://conda-forge.org/) channel provide build isolation and greatly simplify the installation of VeloxChem.
 
@@ -106,6 +105,14 @@ To avoid clashes between dependencies, we recommend to always use a [virtual env
 
   Note that the MPICH library will be installed by the `yml` file. If you prefer another MPI library such as Open MPI, you can edit the `yml` file and replace `mpich` by `openmpi`. Read more about the `yml` file in [this page](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#create-env-file-manually).
 
+- Set scikit-build configure options:
+
+  ```
+  $ export SKBUILD_CONFIGURE_OPTIONS="-DVLX_LA_VENDOR=<math_library> -DCMAKE_CXX_COMPILER=mpicxx"
+  ```
+
+  where ``<math_library>`` can be ``MKL`` or ``OpenBLAS``.
+
 - Build and install VeloxChem in the conda environment:
 
   ```
@@ -126,9 +133,9 @@ To avoid clashes between dependencies, we recommend to always use a [virtual env
   $ conda deactivate
   ```
 
-### Cray platform (x86-64 or ARM processor)
+### Installing on Cray platform (x86-64 or ARM processor)
 
-- Load cray modules:
+- Load Cray modules:
 
   ```
   $ module swap PrgEnv-cray PrgEnv-gnu
@@ -140,7 +147,8 @@ To avoid clashes between dependencies, we recommend to always use a [virtual env
   ```
   $ python3 -m venv vlxenv
   $ source vlxenv/bin/activate
-  $ python3 -m pip install --upgrade pip
+  $ python3 -m pip install --upgrade pip setuptools wheel
+  $ python3 -m pip install cmake pybind11-global scikit-build
   ```
 
 - Install [MPI4Py](https://mpi4py.readthedocs.io/en/stable/)
@@ -153,7 +161,8 @@ To avoid clashes between dependencies, we recommend to always use a [virtual env
 
   ```
   $ cd veloxchem
-  $ CXX=CC python3 -m pip install .
+  $ export SKBUILD_CONFIGURE_OPTIONS="-DVLX_LA_VENDOR=Cray -DCMAKE_CXX_COMPILER=CC"
+  $ python3 -m pip install .
   ```
 
   This will also take care of installing the additional necessary Python modules.
@@ -162,12 +171,12 @@ To avoid clashes between dependencies, we recommend to always use a [virtual env
 
   ```
   $ salloc -N 1 ...
-  $ CXX=CC VLX_NUM_BUILD_JOBS=N srun -n 1 python3 -m pip install .
+  $ VLX_NUM_BUILD_JOBS=N srun -n 1 python3 -m pip install .
   ```
 
   where *N* is the number of cores on the node.
 
-### Debian-based Linux
+### Installing on Debian-based Linux
 
 - Install Intel Math Kernel Library from 
   [this page](https://software.intel.com/en-us/articles/installing-intel-free-libs-and-python-apt-repo).
@@ -179,7 +188,6 @@ To avoid clashes between dependencies, we recommend to always use a [virtual env
   $ sudo sh -c 'echo deb https://apt.repos.intel.com/mkl all main > /etc/apt/sources.list.d/intel-mkl.list'
   $ sudo apt-get update
   $ sudo apt-get install intel-mkl-64bit-2019.1-053
-  $ source /opt/intel/mkl/bin/mklvars.sh intel64
   ```
 
 - Install MPI and Python:
@@ -193,16 +201,19 @@ To avoid clashes between dependencies, we recommend to always use a [virtual env
   ```
   $ python3 -m venv vlxenv
   $ source vlxenv/bin/activate
-  $ python3 -m pip install --upgrade pip wheel
+  $ python3 -m pip install --upgrade pip setuptools wheel
+  $ python3 -m pip install cmake pybind11-global scikit-build
   ```
 
 - Install VeloxChem:
 
   ```
+  $ source /opt/intel/mkl/bin/mklvars.sh intel64
+  $ export SKBUILD_CONFIGURE_OPTIONS="-DVLX_LA_VENDOR=MKL -DCMAKE_CXX_COMPILER=mpicxx"
   $ python3 -m pip install git+https://gitlab.com/veloxchem/veloxchem
   ```
 
-### RPM-based Linux
+### Installing on RPM-based Linux
 
 - Install Math Kernel Library from
   [this page](https://software.intel.com/en-us/articles/installing-intel-free-libs-and-python-yum-repo).
@@ -213,14 +224,12 @@ To avoid clashes between dependencies, we recommend to always use a [virtual env
   $ sudo yum-config-manager --add-repo https://yum.repos.intel.com/mkl/setup/intel-mkl.repo
   $ sudo rpm --import https://yum.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS-2019.PUB
   $ sudo yum install intel-mkl-64bit
-  $ source /opt/intel/mkl/bin/mklvars.sh intel64
   ```
 
 - Install MPI and Python:
 
   ```
   $ sudo yum install gcc gcc-g++ mpich mpich-devel python3 python3-devel python3-pip
-  $ module load mpi/mpich-x86_64
   ```
 
 - Create and activate a [virtual enviroment](https://docs.python.org/3/tutorial/venv.html)
@@ -228,24 +237,28 @@ To avoid clashes between dependencies, we recommend to always use a [virtual env
   ```
   $ python3 -m venv vlxenv
   $ source vlxenv/bin/activate
-  $ python3 -m pip install --upgrade pip wheel
+  $ python3 -m pip install --upgrade pip setuptools wheel
+  $ python3 -m pip install cmake pybind11-global scikit-build
   ```
 
-- Install VeloxChem:
+- Install VeloxChem (you may need to open a new terminal to run the ``module`` command):
 
   ```
+  $ module load mpi/mpich-x86_64
+  $ source /opt/intel/mkl/bin/mklvars.sh intel64
+  $ export SKBUILD_CONFIGURE_OPTIONS="-DVLX_LA_VENDOR=MKL -DCMAKE_CXX_COMPILER=mpicxx"
   $ python3 -m pip install git+https://gitlab.com/veloxchem/veloxchem
   ```
 
-### PowerLinux
+### Installing on PowerLinux
 
-- See installation instructions [With Anaconda](with-anaconda)
+- See installation instructions [using Anaconda](with-anaconda)
 
-### MacOS
+### Installing on MacOS
 
-- See installation instructions [With Anaconda](with-anaconda)
+- See installation instructions [using Anaconda](with-anaconda)
 
-### Windows
+### Installing on Windows
 
 - Soon to come!
 
@@ -253,7 +266,7 @@ To avoid clashes between dependencies, we recommend to always use a [virtual env
 (external-dependencies)=
 ## External dependencies
 
-If you wish to use functionality offered through interfaces with other software packages, you will first need to install them.  Currently, interfaces to add-on dependencies [XTB](https://github.com/grimme-lab/xtb) and [CPPE (v0.2.1)](https://github.com/maxscheurer/cppe/releases/tag/v0.2.1) are available.
+If you wish to use functionality offered through interfaces with other software packages, you will first need to install them.  Currently, interfaces to add-on dependencies [XTB](https://github.com/grimme-lab/xtb) and [CPPE](https://github.com/maxscheurer/cppe) are available.
 
 ### The CPPE library for polarizable embedding
 
@@ -262,7 +275,7 @@ There are few ways to install the CPPE library for polarizable embedding. Note t
 You can install it via `pip` in your virtual environment:
 
 ```
-$ python -m pip install cppe==0.2.1
+$ python -m pip install cppe
 ```
 
 or as an extra during compilation of VeloxChem:
@@ -275,7 +288,7 @@ Alternatively, you can compile it without using `pip`:
 
 ```
 # Build CPPE
-$ git clone -b v0.2.1 https://github.com/maxscheurer/cppe
+$ git clone https://github.com/maxscheurer/cppe
 $ cd cppe; mkdir build; cd build
 $ cmake -DENABLE_PYTHON_INTERFACE=ON ..
 $ make
@@ -296,7 +309,7 @@ Alternatively, you can compile it using ``cmake``:
 
 ```
 # Build XTB
-$ git clone -b v6.3.3 https://github.com/grimme-lab/xtb
+$ git clone https://github.com/grimme-lab/xtb
 $ cd xtb; mkdir build; cd build
 $ cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX:PATH=/path/to/your/xtb ..
 $ make
@@ -307,7 +320,8 @@ $ export XTBHOME=/path/to/your/xtb
 ```
 ## Release versions
 
+- 1.0-rc3 (2022-11-09) Third release candidate
+
 - 1.0-rc2 (2021-04-23) Second release candidate
 
 - 1.0-rc (2020-02-28) First release candidate
-
