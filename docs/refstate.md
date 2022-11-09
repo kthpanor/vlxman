@@ -15,22 +15,18 @@ basis: def2-svp
 charge: 0
 multiplicity: 1
 units: au
-xyz:  
+xyz:
 O   0.0   0.0   0.0
 H   0.0   1.4   1.1
 H   0.0  -1.4   1.1
-@end 
+@end
 ```
 
 ## Restricted open-shell
 
-This model is under implementation.
-
-## Unrestricted open-shell
-
 ```
 @jobs
-task: scf
+task: roscf
 @end
 
 @method settings
@@ -41,9 +37,31 @@ basis: def2-svp
 charge: 1
 multiplicity: 2
 units: au
-xyz:  
+xyz:
 O   0.0   0.0   0.0
 H   0.0   1.4   1.1
 H   0.0  -1.4   1.1
-@end 
+@end
+```
+
+## Unrestricted open-shell
+
+```
+@jobs
+task: uscf
+@end
+
+@method settings
+basis: def2-svp
+@end
+
+@molecule
+charge: 1
+multiplicity: 2
+units: au
+xyz:
+O   0.0   0.0   0.0
+H   0.0   1.4   1.1
+H   0.0  -1.4   1.1
+@end
 ```
