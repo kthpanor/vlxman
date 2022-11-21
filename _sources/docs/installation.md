@@ -202,6 +202,7 @@ To avoid clashes between dependencies, we recommend to always use a [virtual env
   $ python3 -m venv vlxenv
   $ source vlxenv/bin/activate
   $ python3 -m pip install --upgrade pip setuptools wheel
+  $ python3 -m pip install numpy mpi4py h5py
   $ python3 -m pip install cmake pybind11-global scikit-build
   ```
 
@@ -238,6 +239,7 @@ To avoid clashes between dependencies, we recommend to always use a [virtual env
   $ python3 -m venv vlxenv
   $ source vlxenv/bin/activate
   $ python3 -m pip install --upgrade pip setuptools wheel
+  $ python3 -m pip install numpy mpi4py h5py
   $ python3 -m pip install cmake pybind11-global scikit-build
   ```
 
