@@ -70,6 +70,7 @@ $ git clone https://gitlab.com/veloxchem/veloxchem
 - Python (>=3.7) that includes the interpreter, the development header files, and the development libraries
 - [MPI4Py](https://mpi4py.readthedocs.io/en/stable/)
 - [Scikit-build](https://scikit-build.readthedocs.io/en/latest/)
+- [Libxc](https://tddft.org/programs/libxc/)
 
 Optional, add-on dependencies:
 
@@ -157,11 +158,23 @@ To avoid clashes between dependencies, we recommend to always use a [virtual env
   $ CC=cc MPICC=cc python3 -m pip install --no-deps --no-binary=mpi4py mpi4py
   ```
 
+- Install [Libxc](https://tddft.org/programs/libxc/)
+
+  ```
+  cd libxc-6.0.0
+  mkdir build && cd build
+  cmake -DCMAKE_INSTALL_LIBDIR=lib -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX:PATH=/path/to/your/libxc ..
+  make && make test
+  make install
+  cd ../..
+  ```
+
 - Use the compiler wrapper to compile VeloxChem:
 
   ```
   $ cd veloxchem
   $ export SKBUILD_CONFIGURE_OPTIONS="-DVLX_LA_VENDOR=Cray -DCMAKE_CXX_COMPILER=CC"
+  $ export CMAKE_PREFIX_PATH=/path/to/your/libxc/:$CMAKE_PREFIX_PATH
   $ python3 -m pip install .
   ```
 
@@ -206,11 +219,23 @@ To avoid clashes between dependencies, we recommend to always use a [virtual env
   $ python3 -m pip install cmake pybind11-global scikit-build
   ```
 
+- Install [Libxc](https://tddft.org/programs/libxc/)
+
+  ```
+  cd libxc-6.0.0
+  mkdir build && cd build
+  cmake -DCMAKE_INSTALL_LIBDIR=lib -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX:PATH=/path/to/your/libxc ..
+  make && make test
+  make install
+  cd ../..
+  ```
+
 - Install VeloxChem:
 
   ```
   $ source /opt/intel/mkl/bin/mklvars.sh intel64
   $ export SKBUILD_CONFIGURE_OPTIONS="-DVLX_LA_VENDOR=MKL -DCMAKE_CXX_COMPILER=mpicxx"
+  $ export CMAKE_PREFIX_PATH=/path/to/your/libxc/:$CMAKE_PREFIX_PATH
   $ python3 -m pip install git+https://gitlab.com/veloxchem/veloxchem
   ```
 
@@ -243,12 +268,24 @@ To avoid clashes between dependencies, we recommend to always use a [virtual env
   $ python3 -m pip install cmake pybind11-global scikit-build
   ```
 
+- Install [Libxc](https://tddft.org/programs/libxc/)
+
+  ```
+  cd libxc-6.0.0
+  mkdir build && cd build
+  cmake -DCMAKE_INSTALL_LIBDIR=lib -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX:PATH=/path/to/your/libxc ..
+  make && make test
+  make install
+  cd ../..
+  ```
+
 - Install VeloxChem (you may need to open a new terminal to run the ``module`` command):
 
   ```
   $ module load mpi/mpich-x86_64
   $ source /opt/intel/mkl/bin/mklvars.sh intel64
   $ export SKBUILD_CONFIGURE_OPTIONS="-DVLX_LA_VENDOR=MKL -DCMAKE_CXX_COMPILER=mpicxx"
+  $ export CMAKE_PREFIX_PATH=/path/to/your/libxc/:$CMAKE_PREFIX_PATH
   $ python3 -m pip install git+https://gitlab.com/veloxchem/veloxchem
   ```
 
