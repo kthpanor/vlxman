@@ -163,7 +163,7 @@ To avoid clashes between dependencies, we recommend to always use a [virtual env
   ```
   cd libxc-6.0.0
   mkdir build && cd build
-  cmake -DCMAKE_INSTALL_LIBDIR=lib -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX:PATH=/path/to/your/libxc ..
+  cmake -DDISABLE_KXC=OFF -DDISABLE_LXC=OFF -DCMAKE_INSTALL_LIBDIR=lib -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX:PATH=/path/to/your/libxc ..
   make && make test
   make install
   cd ../..
@@ -224,7 +224,7 @@ To avoid clashes between dependencies, we recommend to always use a [virtual env
   ```
   cd libxc-6.0.0
   mkdir build && cd build
-  cmake -DCMAKE_INSTALL_LIBDIR=lib -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX:PATH=/path/to/your/libxc ..
+  cmake -DDISABLE_KXC=OFF -DDISABLE_LXC=OFF -DCMAKE_INSTALL_LIBDIR=lib -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX:PATH=/path/to/your/libxc ..
   make && make test
   make install
   cd ../..
@@ -273,7 +273,7 @@ To avoid clashes between dependencies, we recommend to always use a [virtual env
   ```
   cd libxc-6.0.0
   mkdir build && cd build
-  cmake -DCMAKE_INSTALL_LIBDIR=lib -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX:PATH=/path/to/your/libxc ..
+  cmake -DDISABLE_KXC=OFF -DDISABLE_LXC=OFF -DCMAKE_INSTALL_LIBDIR=lib -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX:PATH=/path/to/your/libxc ..
   make && make test
   make install
   cd ../..
