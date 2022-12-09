@@ -5,10 +5,10 @@
 Binaries are available for the three main operating systems:
 
 - Windows
-- MacOS
+- macOS
 - Linux
 
-Conda is an open-source package and environment management system that runs on Windows, MacOS, and Linux. The conda repository contains a large number of open-source certified packages enabling scientific work. It is recommended that you install the minimal installer for conda named miniconda that includes only conda, Python, the packages they depend on, and a small number of other useful packages, including pip, zlib and a few others.
+Conda is an open-source package and environment management system that runs on Windows, macOS, and Linux. The conda repository contains a large number of open-source certified packages enabling scientific work. It is recommended that you install the minimal installer for conda named miniconda that includes only conda, Python, the packages they depend on, and a small number of other useful packages, including pip, zlib and a few others.
 
 Retrieve miniconda from the following website
 
@@ -293,9 +293,31 @@ To avoid clashes between dependencies, we recommend to always use a [virtual env
 
 - See installation instructions [using Anaconda](with-anaconda)
 
-### Installing on MacOS
+### Installing on macOS
 
 - See installation instructions [using Anaconda](with-anaconda)
+
+- Known issue
+
+  On macOS you may encounter the following error at the end of the ``pip install`` step:
+
+  ```
+  ...
+      base_version = tuple(int(x) for x in base_version.split("."))
+  ValueError: invalid literal for int() with base 10: ''
+  error: subprocess-exited-with-error
+  ...
+  ```
+
+  One workaround is to manually add the ``CMAKE_OSX_DEPLOYMENT_TARGET`` option
+  to ``CMAKE_ARGS`` and redo the ``pip install`` step:
+
+  ```
+  $ python3 -c 'import sysconfig; print(sysconfig.get_platform())'
+  macosx-10.9-x86_64
+
+  $ CMAKE_ARGS="-DCMAKE_OSX_DEPLOYMENT_TARGET:STRING=10.9" python -m pip install .
+  ```
 
 ### Installing on Windows
 

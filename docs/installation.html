@@ -489,7 +489,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#installing-on-macos">
-     Installing on MacOS
+     Installing on macOS
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -587,7 +587,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#installing-on-macos">
-     Installing on MacOS
+     Installing on macOS
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -636,10 +636,10 @@ title="Print to PDF"
 <p>Binaries are available for the three main operating systems:</p>
 <ul class="simple">
 <li><p>Windows</p></li>
-<li><p>MacOS</p></li>
+<li><p>macOS</p></li>
 <li><p>Linux</p></li>
 </ul>
-<p>Conda is an open-source package and environment management system that runs on Windows, MacOS, and Linux. The conda repository contains a large number of open-source certified packages enabling scientific work. It is recommended that you install the minimal installer for conda named miniconda that includes only conda, Python, the packages they depend on, and a small number of other useful packages, including pip, zlib and a few others.</p>
+<p>Conda is an open-source package and environment management system that runs on Windows, macOS, and Linux. The conda repository contains a large number of open-source certified packages enabling scientific work. It is recommended that you install the minimal installer for conda named miniconda that includes only conda, Python, the packages they depend on, and a small number of other useful packages, including pip, zlib and a few others.</p>
 <p>Retrieve miniconda from the following website</p>
 <blockquote>
 <div><p><a class="reference external" href="https://docs.conda.io/en/latest/miniconda.html">https://docs.conda.io/en/latest/miniconda.html</a></p>
@@ -893,9 +893,27 @@ $ python3 -m pip install git+https://gitlab.com/veloxchem/veloxchem
 </ul>
 </section>
 <section id="installing-on-macos">
-<h3>Installing on MacOS<a class="headerlink" href="#installing-on-macos" title="Permalink to this headline">#</a></h3>
-<ul class="simple">
+<h3>Installing on macOS<a class="headerlink" href="#installing-on-macos" title="Permalink to this headline">#</a></h3>
+<ul>
 <li><p>See installation instructions <a class="reference internal" href="#with-anaconda"><span class="std std-ref">using Anaconda</span></a></p></li>
+<li><p>Known issue</p>
+<p>On macOS you may encounter the following error at the end of the <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span></code> step:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
+    <span class="n">base_version</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">base_version</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">))</span>
+<span class="ne">ValueError</span><span class="p">:</span> <span class="n">invalid</span> <span class="n">literal</span> <span class="k">for</span> <span class="nb">int</span><span class="p">()</span> <span class="k">with</span> <span class="n">base</span> <span class="mi">10</span><span class="p">:</span> <span class="s1">&#39;&#39;</span>
+<span class="n">error</span><span class="p">:</span> <span class="n">subprocess</span><span class="o">-</span><span class="n">exited</span><span class="o">-</span><span class="k">with</span><span class="o">-</span><span class="n">error</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+<p>One workaround is to manually add the <code class="docutils literal notranslate"><span class="pre">CMAKE_OSX_DEPLOYMENT_TARGET</span></code> option
+to <code class="docutils literal notranslate"><span class="pre">CMAKE_ARGS</span></code> and redo the <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span></code> step:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python3 -c &#39;import sysconfig; print(sysconfig.get_platform())&#39;
+macosx-10.9-x86_64
+
+$ CMAKE_ARGS=&quot;-DCMAKE_OSX_DEPLOYMENT_TARGET:STRING=10.9&quot; python -m pip install .
+</pre></div>
+</div>
+</li>
 </ul>
 </section>
 <section id="installing-on-windows">
