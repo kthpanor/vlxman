@@ -161,12 +161,12 @@ To avoid clashes between dependencies, we recommend to always use a [virtual env
 - Install [Libxc](https://tddft.org/programs/libxc/)
 
   ```
-  cd libxc-6.0.0
-  mkdir build && cd build
-  cmake -DDISABLE_KXC=OFF -DDISABLE_LXC=OFF -DCMAKE_INSTALL_LIBDIR=lib -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX:PATH=/path/to/your/libxc ..
-  make && make test
-  make install
-  cd ../..
+  $ cd libxc-6.0.0
+  $ mkdir build && cd build
+  $ cmake -DDISABLE_KXC=OFF -DDISABLE_LXC=OFF -DCMAKE_INSTALL_LIBDIR=lib -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX:PATH=/path/to/your/libxc ..
+  $ make && make test
+  $ make install
+  $ cd ../..
   ```
 
 - Use the compiler wrapper to compile VeloxChem:
@@ -222,12 +222,12 @@ To avoid clashes between dependencies, we recommend to always use a [virtual env
 - Install [Libxc](https://tddft.org/programs/libxc/)
 
   ```
-  cd libxc-6.0.0
-  mkdir build && cd build
-  cmake -DDISABLE_KXC=OFF -DDISABLE_LXC=OFF -DCMAKE_INSTALL_LIBDIR=lib -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX:PATH=/path/to/your/libxc ..
-  make && make test
-  make install
-  cd ../..
+  $ cd libxc-6.0.0
+  $ mkdir build && cd build
+  $ cmake -DDISABLE_KXC=OFF -DDISABLE_LXC=OFF -DCMAKE_INSTALL_LIBDIR=lib -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX:PATH=/path/to/your/libxc ..
+  $ make && make test
+  $ make install
+  $ cd ../..
   ```
 
 - Install VeloxChem:
@@ -271,12 +271,12 @@ To avoid clashes between dependencies, we recommend to always use a [virtual env
 - Install [Libxc](https://tddft.org/programs/libxc/)
 
   ```
-  cd libxc-6.0.0
-  mkdir build && cd build
-  cmake -DDISABLE_KXC=OFF -DDISABLE_LXC=OFF -DCMAKE_INSTALL_LIBDIR=lib -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX:PATH=/path/to/your/libxc ..
-  make && make test
-  make install
-  cd ../..
+  $ cd libxc-6.0.0
+  $ mkdir build && cd build
+  $ cmake -DDISABLE_KXC=OFF -DDISABLE_LXC=OFF -DCMAKE_INSTALL_LIBDIR=lib -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX:PATH=/path/to/your/libxc ..
+  $ make && make test
+  $ make install
+  $ cd ../..
   ```
 
 - Install VeloxChem (you may need to open a new terminal to run the ``module`` command):

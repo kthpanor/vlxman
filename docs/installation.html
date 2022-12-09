@@ -764,12 +764,12 @@ $ python3 -m pip install cmake pybind11-global scikit-build
 </div>
 </li>
 <li><p>Install <a class="reference external" href="https://tddft.org/programs/libxc/">Libxc</a></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">libxc</span><span class="o">-</span><span class="mf">6.0.0</span>
-<span class="n">mkdir</span> <span class="n">build</span> <span class="o">&amp;&amp;</span> <span class="n">cd</span> <span class="n">build</span>
-<span class="n">cmake</span> <span class="o">-</span><span class="n">DDISABLE_KXC</span><span class="o">=</span><span class="n">OFF</span> <span class="o">-</span><span class="n">DDISABLE_LXC</span><span class="o">=</span><span class="n">OFF</span> <span class="o">-</span><span class="n">DCMAKE_INSTALL_LIBDIR</span><span class="o">=</span><span class="n">lib</span> <span class="o">-</span><span class="n">DBUILD_SHARED_LIBS</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DCMAKE_INSTALL_PREFIX</span><span class="p">:</span><span class="n">PATH</span><span class="o">=/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">your</span><span class="o">/</span><span class="n">libxc</span> <span class="o">..</span>
-<span class="n">make</span> <span class="o">&amp;&amp;</span> <span class="n">make</span> <span class="n">test</span>
-<span class="n">make</span> <span class="n">install</span>
-<span class="n">cd</span> <span class="o">../..</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd libxc-6.0.0
+$ mkdir build &amp;&amp; cd build
+$ cmake -DDISABLE_KXC=OFF -DDISABLE_LXC=OFF -DCMAKE_INSTALL_LIBDIR=lib -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX:PATH=/path/to/your/libxc ..
+$ make &amp;&amp; make test
+$ make install
+$ cd ../..
 </pre></div>
 </div>
 </li>
@@ -819,12 +819,12 @@ $ python3 -m pip install cmake pybind11-global scikit-build
 </div>
 </li>
 <li><p>Install <a class="reference external" href="https://tddft.org/programs/libxc/">Libxc</a></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">libxc</span><span class="o">-</span><span class="mf">6.0.0</span>
-<span class="n">mkdir</span> <span class="n">build</span> <span class="o">&amp;&amp;</span> <span class="n">cd</span> <span class="n">build</span>
-<span class="n">cmake</span> <span class="o">-</span><span class="n">DDISABLE_KXC</span><span class="o">=</span><span class="n">OFF</span> <span class="o">-</span><span class="n">DDISABLE_LXC</span><span class="o">=</span><span class="n">OFF</span> <span class="o">-</span><span class="n">DCMAKE_INSTALL_LIBDIR</span><span class="o">=</span><span class="n">lib</span> <span class="o">-</span><span class="n">DBUILD_SHARED_LIBS</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DCMAKE_INSTALL_PREFIX</span><span class="p">:</span><span class="n">PATH</span><span class="o">=/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">your</span><span class="o">/</span><span class="n">libxc</span> <span class="o">..</span>
-<span class="n">make</span> <span class="o">&amp;&amp;</span> <span class="n">make</span> <span class="n">test</span>
-<span class="n">make</span> <span class="n">install</span>
-<span class="n">cd</span> <span class="o">../..</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd libxc-6.0.0
+$ mkdir build &amp;&amp; cd build
+$ cmake -DDISABLE_KXC=OFF -DDISABLE_LXC=OFF -DCMAKE_INSTALL_LIBDIR=lib -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX:PATH=/path/to/your/libxc ..
+$ make &amp;&amp; make test
+$ make install
+$ cd ../..
 </pre></div>
 </div>
 </li>
@@ -866,12 +866,12 @@ $ python3 -m pip install cmake pybind11-global scikit-build
 </div>
 </li>
 <li><p>Install <a class="reference external" href="https://tddft.org/programs/libxc/">Libxc</a></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">libxc</span><span class="o">-</span><span class="mf">6.0.0</span>
-<span class="n">mkdir</span> <span class="n">build</span> <span class="o">&amp;&amp;</span> <span class="n">cd</span> <span class="n">build</span>
-<span class="n">cmake</span> <span class="o">-</span><span class="n">DDISABLE_KXC</span><span class="o">=</span><span class="n">OFF</span> <span class="o">-</span><span class="n">DDISABLE_LXC</span><span class="o">=</span><span class="n">OFF</span> <span class="o">-</span><span class="n">DCMAKE_INSTALL_LIBDIR</span><span class="o">=</span><span class="n">lib</span> <span class="o">-</span><span class="n">DBUILD_SHARED_LIBS</span><span class="o">=</span><span class="n">ON</span> <span class="o">-</span><span class="n">DCMAKE_INSTALL_PREFIX</span><span class="p">:</span><span class="n">PATH</span><span class="o">=/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">your</span><span class="o">/</span><span class="n">libxc</span> <span class="o">..</span>
-<span class="n">make</span> <span class="o">&amp;&amp;</span> <span class="n">make</span> <span class="n">test</span>
-<span class="n">make</span> <span class="n">install</span>
-<span class="n">cd</span> <span class="o">../..</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd libxc-6.0.0
+$ mkdir build &amp;&amp; cd build
+$ cmake -DDISABLE_KXC=OFF -DDISABLE_LXC=OFF -DCMAKE_INSTALL_LIBDIR=lib -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX:PATH=/path/to/your/libxc ..
+$ make &amp;&amp; make test
+$ make install
+$ cd ../..
 </pre></div>
 </div>
 </li>
