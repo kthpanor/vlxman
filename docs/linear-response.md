@@ -104,10 +104,9 @@ task: response
 @end
 
 @method settings
-basis: DEF2-SVPD
-dft: yes
-grid_level: 4     ! this is the default grid density
 xcfun: b3lyp
+grid_level: 4
+basis: def2-svpd
 @end
 
 @response
@@ -135,7 +134,7 @@ An example of an input file that when run will carry out such a calculation is g
 
 ```
 @jobs
-task: hf
+task: pulses
 @end
 
 @method settings
