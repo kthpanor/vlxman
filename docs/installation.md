@@ -117,13 +117,13 @@ To avoid clashes between dependencies, we recommend to always use a [virtual env
 - Build and install VeloxChem in the conda environment:
 
   ```
-  $ python -m pip install .
+  $ python3 -m pip install .
   ```
 
   By default, the build process will use *all* available cores to compile the C++ sources in parallel. This behavior can be controlled via the `VLX_NUM_BUILD_JOBS` environment variable:
 
   ```
-  $ VLX_NUM_BUILD_JOBS=N python -m pip install .
+  $ VLX_NUM_BUILD_JOBS=N python3 -m pip install .
   ```
 
   which will install VeloxChem using *N* cores.
@@ -316,7 +316,17 @@ To avoid clashes between dependencies, we recommend to always use a [virtual env
   $ python3 -c 'import sysconfig; print(sysconfig.get_platform())'
   macosx-10.9-x86_64
 
-  $ CMAKE_ARGS="-DCMAKE_OSX_DEPLOYMENT_TARGET:STRING=10.9" python -m pip install .
+  $ export CMAKE_ARGS="-DCMAKE_OSX_DEPLOYMENT_TARGET:STRING=10.9"
+  $ python3 -m pip install .
+  ```
+
+  Another issue that one may encounter on macOS is that the ``-march=native``
+  flag is not supported by the compiler. The workaround is to add
+  ``-DENABLE_ARCH_FLAGS=OFF`` to ``CMAKE_ARGS``. For example:
+
+  ```
+  $ export CMAKE_ARGS="-DCMAKE_OSX_DEPLOYMENT_TARGET:STRING=10.9 -DENABLE_ARCH_FLAGS=OFF"
+  $ python3 -m pip install .
   ```
 
 ### Installing on Windows
@@ -336,13 +346,13 @@ There are few ways to install the CPPE library for polarizable embedding. Note t
 You can install it via `pip` in your virtual environment:
 
 ```
-$ python -m pip install cppe
+$ python3 -m pip install cppe
 ```
 
 or as an extra during compilation of VeloxChem:
 
 ```
-$ python -m pip install .[qmmm]
+$ python3 -m pip install .[qmmm]
 ```
 
 Alternatively, you can compile it without using `pip`:
