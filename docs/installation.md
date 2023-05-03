@@ -114,6 +114,12 @@ To avoid clashes between dependencies, we recommend to always use a [virtual env
 
   where ``<math_library>`` can be ``MKL`` or ``OpenBLAS``.
 
+- Set XTBHOME if you would like to enable xTB:
+
+  ```
+  $ export XTBHOME=/path/to/your/vlxenv
+  ```
+
 - Build and install VeloxChem in the conda environment:
 
   ```
