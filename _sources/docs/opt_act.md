@@ -41,7 +41,6 @@ task: response
 
 @method settings
 basis: def2-SVPD
-dft: yes
 xcfun: b3lyp
 @end
 
@@ -106,7 +105,6 @@ task: response
 
 @method settings
 basis: def2-SVPD
-dft: yes
 xcfun: b3lyp
 @end
 

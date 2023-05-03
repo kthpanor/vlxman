@@ -1,35 +1,44 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Installing the program &#8212; VeloxChem program manual</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -37,12 +46,12 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -50,62 +59,94 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/installation';</script>
     <link rel="shortcut icon" href="../_static/vlx_logo_mark.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Running on a desktop" href="run_desktop.html" />
     <link rel="prev" title="Pushing the limits" href="limits.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
-
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../_static/vlx_logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">VeloxChem program manual</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="../_static/vlx_logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/vlx_logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -114,524 +155,271 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Getting started
- </span>
-</p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="limits.html">
-   Pushing the limits
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Installing the program
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="run_desktop.html">
-   Running on a desktop
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="run_cluster.html">
-   Running on a cluster
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="keywords.html">
-   Input file keywords
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="limits.html">Pushing the limits</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Installing the program</a></li>
+<li class="toctree-l1"><a class="reference internal" href="run_desktop.html">Running on a desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="run_cluster.html">Running on a cluster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="keywords.html">Input file keywords</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Model chemistry
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Model chemistry</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="refstate.html">
-   Reference states
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="functionals.html">
-   Exchange–correlation functionals
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="basis_sets.html">
-   Basis sets
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="hamiltonian.html">
-   Hamiltonian
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="embedding.html">
-   Environment
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="refstate.html">Reference states</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functionals.html">Exchange–correlation functionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basis_sets.html">Basis sets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hamiltonian.html">Hamiltonian</a></li>
+<li class="toctree-l1"><a class="reference internal" href="embedding.html">Environment</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Properties
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Properties</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="uv-vis.html">
-   UV/vis absorption/emission
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="opt_act.html">
-   Optical activity and dichroism
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="vib_spect.html">
-   Vibrational spectroscopies
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="pes.html">
-   Potential energy surfaces
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="magnetic.html">
-   Magnetic resonances
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="linear-response.html">
-   Linear response
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="nlo.html">
-   Multi-photon interactions
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="xray.html">
-   X-ray spectroscpies
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="uv-vis.html">UV/vis absorption/emission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="opt_act.html">Optical activity and dichroism</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vib_spect.html">Vibrational spectroscopies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pes.html">Potential energy surfaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="magnetic.html">Magnetic resonances</a></li>
+<li class="toctree-l1"><a class="reference internal" href="linear-response.html">Linear response</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nlo.html">Multi-photon interactions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xray.html">X-ray spectroscpies</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Visualization
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Visualization</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="elec_dens.html">
-   Electronic densities
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="elec_dens.html">Electronic densities</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Advanced users
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced users</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="program_struct.html">
-   Program structure
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="source_struct.html">
-   Source code structure
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="program_struct.html">Program structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="source_struct.html">Source code structure</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  References
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="refs.html">
-   References
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="refs.html">References</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/kthpanor/vlxman" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/kthpanor/vlxman/issues/new?title=Issue%20on%20page%20%2Fdocs/installation.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
 
 
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
 
 
 
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/docs/installation.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
   </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/kthpanor/vlxman"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/kthpanor/vlxman/issues/new?title=Issue%20on%20page%20%2Fdocs/installation.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/docs/installation.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.md</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#installing-binaries-using-conda">
-   Installing binaries using conda
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#installing-from-source">
-   Installing from source
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#obtaining-the-source-code">
-     Obtaining the source code
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#build-prerequisites">
-     Build prerequisites
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#installing-using-anaconda">
-     Installing using Anaconda
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#installing-on-cray-platform-x86-64-or-arm-processor">
-     Installing on Cray platform (x86-64 or ARM processor)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#installing-on-debian-based-linux">
-     Installing on Debian-based Linux
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#installing-on-rpm-based-linux">
-     Installing on RPM-based Linux
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#installing-on-powerlinux">
-     Installing on PowerLinux
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#installing-on-macos">
-     Installing on macOS
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#installing-on-windows">
-     Installing on Windows
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#external-dependencies">
-   External dependencies
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-cppe-library-for-polarizable-embedding">
-     The CPPE library for polarizable embedding
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-xtb-package-for-semiempirical-methods">
-     The XTB package for semiempirical methods
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#release-versions">
-   Release versions
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Installing the program</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#installing-binaries-using-conda">
-   Installing binaries using conda
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#installing-from-source">
-   Installing from source
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#obtaining-the-source-code">
-     Obtaining the source code
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#build-prerequisites">
-     Build prerequisites
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#installing-using-anaconda">
-     Installing using Anaconda
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#installing-on-cray-platform-x86-64-or-arm-processor">
-     Installing on Cray platform (x86-64 or ARM processor)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#installing-on-debian-based-linux">
-     Installing on Debian-based Linux
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#installing-on-rpm-based-linux">
-     Installing on RPM-based Linux
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#installing-on-powerlinux">
-     Installing on PowerLinux
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#installing-on-macos">
-     Installing on macOS
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#installing-on-windows">
-     Installing on Windows
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#external-dependencies">
-   External dependencies
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-cppe-library-for-polarizable-embedding">
-     The CPPE library for polarizable embedding
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-xtb-package-for-semiempirical-methods">
-     The XTB package for semiempirical methods
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#release-versions">
-   Release versions
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Installing the program</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-binaries-using-conda">Installing binaries using conda</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-from-source">Installing from source</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#obtaining-the-source-code">Obtaining the source code</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-prerequisites">Build prerequisites</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-using-anaconda">Installing using Anaconda</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-on-cray-platform-x86-64-or-arm-processor">Installing on Cray platform (x86-64 or ARM processor)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-on-debian-based-linux">Installing on Debian-based Linux</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-on-rpm-based-linux">Installing on RPM-based Linux</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-on-powerlinux">Installing on PowerLinux</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-on-macos">Installing on macOS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-on-windows">Installing on Windows</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#external-dependencies">External dependencies</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-cppe-library-for-polarizable-embedding">The CPPE library for polarizable embedding</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-xtb-package-for-semiempirical-methods">The XTB package for semiempirical methods</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#release-versions">Release versions</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
-  <section class="tex2jax_ignore mathjax_ignore" id="installing-the-program">
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="tex2jax_ignore mathjax_ignore section" id="installing-the-program">
 <h1>Installing the program<a class="headerlink" href="#installing-the-program" title="Permalink to this headline">#</a></h1>
-<section id="installing-binaries-using-conda">
+<div class="section" id="installing-binaries-using-conda">
 <h2>Installing binaries using conda<a class="headerlink" href="#installing-binaries-using-conda" title="Permalink to this headline">#</a></h2>
 <p>Binaries are available for the three main operating systems:</p>
 <ul class="simple">
@@ -667,17 +455,17 @@ title="Print to PDF"
 </pre></div>
 </div>
 <p>and start calculations. See the <a class="reference external" href="https://kthpanor.github.io/echem">eChem</a> book for a multitude of examples.</p>
-</section>
-<section id="installing-from-source">
+</div>
+<div class="section" id="installing-from-source">
 <h2>Installing from source<a class="headerlink" href="#installing-from-source" title="Permalink to this headline">#</a></h2>
-<section id="obtaining-the-source-code">
+<div class="section" id="obtaining-the-source-code">
 <h3>Obtaining the source code<a class="headerlink" href="#obtaining-the-source-code" title="Permalink to this headline">#</a></h3>
 <p>The source code can be downloaded from the <a class="reference external" href="https://gitlab.com/veloxchem/veloxchem">GitLab repository</a>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone https://gitlab.com/veloxchem/veloxchem
 </pre></div>
 </div>
-</section>
-<section id="build-prerequisites">
+</div>
+<div class="section" id="build-prerequisites">
 <h3>Build prerequisites<a class="headerlink" href="#build-prerequisites" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://cmake.org/">CMake</a></p></li>
@@ -696,8 +484,8 @@ title="Print to PDF"
 </ul>
 <p>See <a class="reference internal" href="#external-dependencies"><span class="std std-ref">External dependencies</span></a> for instructions on how to get these add-ons.</p>
 <p>To avoid clashes between dependencies, we recommend to always use a <a class="reference external" href="https://docs.python.org/3/tutorial/venv.html">virtual enviroment</a>.</p>
-</section>
-<section id="installing-using-anaconda">
+</div>
+<div class="section" id="installing-using-anaconda">
 <span id="with-anaconda"></span><h3>Installing using Anaconda<a class="headerlink" href="#installing-using-anaconda" title="Permalink to this headline">#</a></h3>
 <p><a class="reference external" href="https://www.anaconda.com/products/individual">Anaconda</a> and the software packaged on the <a class="reference external" href="https://conda-forge.org/">conda-forge</a> channel provide build isolation and greatly simplify the installation of VeloxChem.</p>
 <ul>
@@ -724,12 +512,17 @@ $ conda activate vlxenv
 </div>
 <p>where <code class="docutils literal notranslate"><span class="pre">&lt;math_library&gt;</span></code> can be <code class="docutils literal notranslate"><span class="pre">MKL</span></code> or <code class="docutils literal notranslate"><span class="pre">OpenBLAS</span></code>.</p>
 </li>
+<li><p>Set XTBHOME if you would like to enable xTB:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ export XTBHOME=/path/to/your/vlxenv
+</pre></div>
+</div>
+</li>
 <li><p>Build and install VeloxChem in the conda environment:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python -m pip install .
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python3 -m pip install .
 </pre></div>
 </div>
 <p>By default, the build process will use <em>all</em> available cores to compile the C++ sources in parallel. This behavior can be controlled via the <code class="docutils literal notranslate"><span class="pre">VLX_NUM_BUILD_JOBS</span></code> environment variable:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ VLX_NUM_BUILD_JOBS=N python -m pip install .
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ VLX_NUM_BUILD_JOBS=N python3 -m pip install .
 </pre></div>
 </div>
 <p>which will install VeloxChem using <em>N</em> cores.</p>
@@ -740,8 +533,8 @@ $ conda activate vlxenv
 </div>
 </li>
 </ul>
-</section>
-<section id="installing-on-cray-platform-x86-64-or-arm-processor">
+</div>
+<div class="section" id="installing-on-cray-platform-x86-64-or-arm-processor">
 <h3>Installing on Cray platform (x86-64 or ARM processor)<a class="headerlink" href="#installing-on-cray-platform-x86-64-or-arm-processor" title="Permalink to this headline">#</a></h3>
 <ul>
 <li><p>Load Cray modules:</p>
@@ -789,8 +582,8 @@ $ VLX_NUM_BUILD_JOBS=N srun -n 1 python3 -m pip install .
 <p>where <em>N</em> is the number of cores on the node.</p>
 </li>
 </ul>
-</section>
-<section id="installing-on-debian-based-linux">
+</div>
+<div class="section" id="installing-on-debian-based-linux">
 <h3>Installing on Debian-based Linux<a class="headerlink" href="#installing-on-debian-based-linux" title="Permalink to this headline">#</a></h3>
 <ul>
 <li><p>Install Intel Math Kernel Library from
@@ -837,8 +630,8 @@ $ python3 -m pip install git+https://gitlab.com/veloxchem/veloxchem
 </div>
 </li>
 </ul>
-</section>
-<section id="installing-on-rpm-based-linux">
+</div>
+<div class="section" id="installing-on-rpm-based-linux">
 <h3>Installing on RPM-based Linux<a class="headerlink" href="#installing-on-rpm-based-linux" title="Permalink to this headline">#</a></h3>
 <ul>
 <li><p>Install Math Kernel Library from
@@ -885,14 +678,14 @@ $ python3 -m pip install git+https://gitlab.com/veloxchem/veloxchem
 </div>
 </li>
 </ul>
-</section>
-<section id="installing-on-powerlinux">
+</div>
+<div class="section" id="installing-on-powerlinux">
 <h3>Installing on PowerLinux<a class="headerlink" href="#installing-on-powerlinux" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>See installation instructions <a class="reference internal" href="#with-anaconda"><span class="std std-ref">using Anaconda</span></a></p></li>
 </ul>
-</section>
-<section id="installing-on-macos">
+</div>
+<div class="section" id="installing-on-macos">
 <h3>Installing on macOS<a class="headerlink" href="#installing-on-macos" title="Permalink to this headline">#</a></h3>
 <ul>
 <li><p>See installation instructions <a class="reference internal" href="#with-anaconda"><span class="std std-ref">using Anaconda</span></a></p></li>
@@ -910,31 +703,39 @@ to <code class="docutils literal notranslate"><span class="pre">CMAKE_ARGS</span
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python3 -c &#39;import sysconfig; print(sysconfig.get_platform())&#39;
 macosx-10.9-x86_64
 
-$ CMAKE_ARGS=&quot;-DCMAKE_OSX_DEPLOYMENT_TARGET:STRING=10.9&quot; python -m pip install .
+$ export CMAKE_ARGS=&quot;-DCMAKE_OSX_DEPLOYMENT_TARGET:STRING=10.9&quot;
+$ python3 -m pip install .
+</pre></div>
+</div>
+<p>Another issue that one may encounter on macOS is that the <code class="docutils literal notranslate"><span class="pre">-march=native</span></code>
+flag is not supported by the compiler. The workaround is to add
+<code class="docutils literal notranslate"><span class="pre">-DENABLE_ARCH_FLAGS=OFF</span></code> to <code class="docutils literal notranslate"><span class="pre">CMAKE_ARGS</span></code>. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ export CMAKE_ARGS=&quot;-DCMAKE_OSX_DEPLOYMENT_TARGET:STRING=10.9 -DENABLE_ARCH_FLAGS=OFF&quot;
+$ python3 -m pip install .
 </pre></div>
 </div>
 </li>
 </ul>
-</section>
-<section id="installing-on-windows">
+</div>
+<div class="section" id="installing-on-windows">
 <h3>Installing on Windows<a class="headerlink" href="#installing-on-windows" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Soon to come!</p></li>
 </ul>
-</section>
-</section>
-<section id="external-dependencies">
+</div>
+</div>
+<div class="section" id="external-dependencies">
 <span id="id1"></span><h2>External dependencies<a class="headerlink" href="#external-dependencies" title="Permalink to this headline">#</a></h2>
 <p>If you wish to use functionality offered through interfaces with other software packages, you will first need to install them.  Currently, interfaces to add-on dependencies <a class="reference external" href="https://github.com/grimme-lab/xtb">XTB</a> and <a class="reference external" href="https://github.com/maxscheurer/cppe">CPPE</a> are available.</p>
-<section id="the-cppe-library-for-polarizable-embedding">
+<div class="section" id="the-cppe-library-for-polarizable-embedding">
 <h3>The CPPE library for polarizable embedding<a class="headerlink" href="#the-cppe-library-for-polarizable-embedding" title="Permalink to this headline">#</a></h3>
 <p>There are few ways to install the CPPE library for polarizable embedding. Note that you will need a C++ compiler compliant with the C++14 standard and CMake.</p>
 <p>You can install it via <code class="docutils literal notranslate"><span class="pre">pip</span></code> in your virtual environment:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python -m pip install cppe
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python3 -m pip install cppe
 </pre></div>
 </div>
 <p>or as an extra during compilation of VeloxChem:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python -m pip install .[qmmm]
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python3 -m pip install .[qmmm]
 </pre></div>
 </div>
 <p>Alternatively, you can compile it without using <code class="docutils literal notranslate"><span class="pre">pip</span></code>:</p>
@@ -948,8 +749,8 @@ $ make
 $ export PYTHONPATH=/path/to/your/cppe/build/stage/lib:$PYTHONPATH
 </pre></div>
 </div>
-</section>
-<section id="the-xtb-package-for-semiempirical-methods">
+</div>
+<div class="section" id="the-xtb-package-for-semiempirical-methods">
 <h3>The XTB package for semiempirical methods<a class="headerlink" href="#the-xtb-package-for-semiempirical-methods" title="Permalink to this headline">#</a></h3>
 <p>It is recommended to install the XTB package in a conda environment:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ conda install xtb -c conda-forge
@@ -967,17 +768,17 @@ $ make install
 $ export XTBHOME=/path/to/your/xtb
 </pre></div>
 </div>
-</section>
-</section>
-<section id="release-versions">
+</div>
+</div>
+<div class="section" id="release-versions">
 <h2>Release versions<a class="headerlink" href="#release-versions" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>1.0-rc3 (2022-11-09) Third release candidate</p></li>
 <li><p>1.0-rc2 (2021-04-23) Second release candidate</p></li>
 <li><p>1.0-rc (2020-02-28) First release candidate</p></li>
 </ul>
-</section>
-</section>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -991,7 +792,7 @@ $ export XTBHOME=/path/to/your/xtb
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./docs"
         },
         predefinedOutput: true
@@ -999,50 +800,123 @@ $ export XTBHOME=/path/to/your/xtb
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="limits.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Pushing the limits</p>
-        </div>
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="limits.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Pushing the limits</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="run_desktop.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="run_desktop.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Running on a desktop</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
-  
-    By The VeloxChem team<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
-    
-</div>
-
-
       </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-binaries-using-conda">Installing binaries using conda</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-from-source">Installing from source</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#obtaining-the-source-code">Obtaining the source code</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-prerequisites">Build prerequisites</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-using-anaconda">Installing using Anaconda</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-on-cray-platform-x86-64-or-arm-processor">Installing on Cray platform (x86-64 or ARM processor)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-on-debian-based-linux">Installing on Debian-based Linux</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-on-rpm-based-linux">Installing on RPM-based Linux</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-on-powerlinux">Installing on PowerLinux</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-on-macos">Installing on macOS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-on-windows">Installing on Windows</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#external-dependencies">External dependencies</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-cppe-library-for-polarizable-embedding">The CPPE library for polarizable embedding</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-xtb-package-for-semiempirical-methods">The XTB package for semiempirical methods</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#release-versions">Release versions</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The VeloxChem team
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
