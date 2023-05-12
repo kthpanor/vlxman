@@ -14,7 +14,7 @@ Retrieve miniconda from the following website
 
 > <https://docs.conda.io/en/latest/miniconda.html>
 
-Install the version for 64 bit computers that comes with Python (>=3.7).
+Install the version for 64 bit computers that comes with Python (>=3.8).
 
 Start a conda terminal, or Anaconda Powershell as it is referred to on a Windows system. Conda supports multiple *environments* and you start in the one named `base` as is typically indicated by the prompt. To create a new and additional environment named `vlxenv` and install VeloxChem, Matplotlib, and Jupyter notebook (and package dependencies such as NumPy and SciPy) into it, you enter the following command line statement
 
@@ -67,7 +67,7 @@ $ git clone https://gitlab.com/veloxchem/veloxchem
 - C++ compiler fully compliant with the C++17 standard
 - Linear algebra libraries implementing the BLAS and LAPACK interfaces (e.g. Intel MKL, OpenBLAS or Cray LibSci)
 - MPI library (e.g. MPICH, Intel MPI or Open MPI)
-- Python (>=3.7) that includes the interpreter, the development header files, and the development libraries
+- Python (>=3.8) that includes the interpreter, the development header files, and the development libraries
 - [MPI4Py](https://mpi4py.readthedocs.io/en/stable/)
 - [Scikit-build](https://scikit-build.readthedocs.io/en/latest/)
 - [Libxc](https://tddft.org/programs/libxc/)
