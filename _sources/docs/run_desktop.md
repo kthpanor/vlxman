@@ -5,21 +5,21 @@
 ```
 import veloxchem as vlx
 
-molecule_string = """
-    O 0 0 0
-    H 0 0 1.795239827225189
-    H 1.693194615993441 0 -0.599043184453037"""
+water_xyz_string = """
+3
+water
+O  0.00000  0.00000  0.00000
+H  0.00000  0.00000  1.79524
+H  1.69319  0.00000 -0.59904
+"""
 
-molecule = vlx.Molecule.read_str(molecule_string, units='angstrom')
-
+molecule = vlx.Molecule.read_xyz_string(water_xyz_string)
 basis = vlx.MolecularBasis.read(molecule, 'def2-svp')
 
-scf_settings = {'conv_thresh': 1.0e-6}
-method_settings = {'xcfun': 'b3lyp', 'grid_level': 4}
-
 scfdrv = vlx.ScfRestrictedDriver()
-scfdrv.update_settings(scf_settings, method_settings)
-scfdrv.compute(molecule, basis)
+scfdrv.conv_thresh = 1.0e-6
+scfdrv.xcfun = 'b3lyp'
+scf_results = scfdrv.compute(molecule, basis)
 ```
 
 A comprehensive presenation of how to interact and run the VeloxChem program in a Jupyter notebook is provided in the [eChem book](https://kthpanor.github.io/echem).
@@ -34,7 +34,7 @@ $ vlx water.inp [water.out]
 
 If the optional output file name is omitted, the output will be sent to standard output.
 
-The input file (here assumed to be named `water.inp`) consists of multiple groups marked with `@group name` and `@end`. For example, the following input file has three groups: `jobs`, `method settings`, and `molecule`.
+The input file (here assumed to be named `water.inp`) consists of multiple groups marked with `@group name` and `@end`. For example, the following input file has three groups: `jobs`, `method settings`, and `molecule`. In the `molecule` group, the default unit for Cartesian coordinates is Angstrom.
 
 ```
 @jobs
@@ -49,12 +49,9 @@ basis: def2-svp
 @molecule
 charge: 0
 multiplicity: 1
-units: au
 xyz:
-O   0.0   0.0   0.0
-H   0.0   1.4   1.1
-H   0.0  -1.4   1.1
+O  0.00000  0.00000  0.00000
+H  0.00000  0.00000  1.79524
+H  1.69319  0.00000 -0.59904
 @end
 ```
-
-

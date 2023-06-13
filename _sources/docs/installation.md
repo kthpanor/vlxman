@@ -8,13 +8,25 @@ Binaries are available for the three main operating systems:
 - macOS
 - Linux
 
-Conda is an open-source package and environment management system that runs on Windows, macOS, and Linux. The conda repository contains a large number of open-source certified packages enabling scientific work. It is recommended that you install the minimal installer for conda named miniconda that includes only conda, Python, the packages they depend on, and a small number of other useful packages, including pip, zlib and a few others.
+[Conda](https://docs.conda.io/en/latest/) is an open-source package and environment management system that runs on Windows, macOS, and Linux. The conda repository contains a large number of open-source certified packages enabling scientific work. It is recommended that you install the minimal installer for conda named miniconda that includes only conda, Python, the packages they depend on, and a small number of other useful packages, including pip, zlib and a few others.
 
 Retrieve miniconda from the following website
 
 > <https://docs.conda.io/en/latest/miniconda.html>
 
 Install the version for 64 bit computers that comes with Python (>=3.8).
+
+````{admonition} Faster conda solver
+:class: tip
+
+The new `conda-libmamba-solver` run much faster than the default, as discussed in [this blog post](https://www.anaconda.com/blog/conda-is-fast-now). We recommend that you use this solver, which is done by updating conda, installing the new solver to your base environment, and configuring your solver selection:
+
+```
+conda update -n base conda
+conda install -n base conda-libmamba-solver
+conda config --set solver libmamba
+```
+````
 
 Start a conda terminal, or Anaconda Powershell as it is referred to on a Windows system. Conda supports multiple *environments* and you start in the one named `base` as is typically indicated by the prompt. To create a new and additional environment named `vlxenv` and install VeloxChem, Matplotlib, and Jupyter notebook (and package dependencies such as NumPy and SciPy) into it, you enter the following command line statement
 
@@ -67,7 +79,7 @@ $ git clone https://gitlab.com/veloxchem/veloxchem
 - C++ compiler fully compliant with the C++17 standard
 - Linear algebra libraries implementing the BLAS and LAPACK interfaces (e.g. Intel MKL, OpenBLAS or Cray LibSci)
 - MPI library (e.g. MPICH, Intel MPI or Open MPI)
-- Python (>=3.8) that includes the interpreter, the development header files, and the development libraries
+- [Python](https://www.python.org/) (>=3.8) that includes the interpreter, the development header files, and the development libraries
 - [MPI4Py](https://mpi4py.readthedocs.io/en/stable/)
 - [Scikit-build](https://scikit-build.readthedocs.io/en/latest/)
 - [Libxc](https://tddft.org/programs/libxc/)
@@ -81,10 +93,10 @@ See {ref}`external-dependencies` for instructions on how to get these add-ons.
 
 To avoid clashes between dependencies, we recommend to always use a [virtual enviroment](https://docs.python.org/3/tutorial/venv.html).
 
-(with-anaconda)=
-### Installing using Anaconda
+(with-conda)=
+### Installing using conda
 
-[Anaconda](https://www.anaconda.com/products/individual) and the software packaged on the [conda-forge](https://conda-forge.org/) channel provide build isolation and greatly simplify the installation of VeloxChem.
+[Conda](https://docs.conda.io/en/latest/) and the software packaged on the [conda-forge](https://conda-forge.org/) channel provide build isolation and greatly simplify the installation of VeloxChem.
 
 - Move to the folder containing the source code:
 
@@ -297,13 +309,13 @@ To avoid clashes between dependencies, we recommend to always use a [virtual env
 
 ### Installing on PowerLinux
 
-- See installation instructions [using Anaconda](with-anaconda)
+- See installation instructions [using conda](with-conda)
 
 ### Installing on macOS
 
-- See installation instructions [using Anaconda](with-anaconda)
+- See installation instructions [using conda](with-conda)
 
-- Known issue
+- Known issues
 
   On macOS you may encounter the following error at the end of the ``pip install`` step:
 

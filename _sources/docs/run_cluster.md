@@ -46,7 +46,6 @@ basis: def2-svp
 @molecule
 charge: 0
 multiplicity: 1
-units: au
 xyz:
 ...
 @end

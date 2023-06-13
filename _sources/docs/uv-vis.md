@@ -51,7 +51,6 @@ nstates: 3
 @molecule
 charge: 0
 multiplicity: 1
-units: au
 xyz:  
 ...
 @end
@@ -117,7 +116,6 @@ damping: 0.0045563  ! this is the default value
 @molecule
 charge: 0
 multiplicity: 1
-units: au
 xyz:  
 ...
 @end 
