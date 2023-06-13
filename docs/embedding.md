@@ -80,7 +80,6 @@ density: 10.0
 @molecule
 charge: 0
 multiplicity: 1
-units: au
 xyz:  
 ...
 @end
@@ -91,11 +90,11 @@ or in a Jupyter notebook according to
 ```
 import veloxchem as vlx
 
-mol_str = """
+xyz_str = """
 ...
 """
 
-molecule = vlx.Molecule.read_str(mol_str, units='au')
+molecule = vlx.Molecule.read_xyz_string(xyz_str)
 basis = vlx.MolecularBasis.read(molecule, '6-31g')
 
 esp_drv = vlx.RespChargesDriver()
@@ -155,7 +154,6 @@ equal charges: 2 = 3    ! with reference to the atom ordering below
 @molecule
 charge: 0
 multiplicity: 1
-units: au
 xyz:  
 ...
 @end 
@@ -166,11 +164,11 @@ or in a Jupyter notebook according to
 ```
 import veloxchem as vlx
 
-mol_str = """
+xyz_str = """
 ...
 """
 
-molecule = vlx.Molecule.read_str(mol_str, units='au')
+molecule = vlx.Molecule.read_xyz_string(xyz_str)
 basis = vlx.MolecularBasis.read(molecule, '6-31g*')
 
 resp_drv = vlx.RespChargesDriver()

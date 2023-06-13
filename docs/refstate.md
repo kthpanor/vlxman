@@ -14,11 +14,10 @@ basis: def2-svp
 @molecule
 charge: 0
 multiplicity: 1
-units: au
 xyz:
-O   0.0   0.0   0.0
-H   0.0   1.4   1.1
-H   0.0  -1.4   1.1
+O  0.00000  0.00000  0.00000
+H  0.00000  0.00000  1.79524
+H  1.69319  0.00000 -0.59904
 @end
 ```
 
@@ -36,11 +35,10 @@ basis: def2-svp
 @molecule
 charge: 1
 multiplicity: 2
-units: au
 xyz:
-O   0.0   0.0   0.0
-H   0.0   1.4   1.1
-H   0.0  -1.4   1.1
+O  0.00000  0.00000  0.00000
+H  0.00000  0.00000  1.79524
+H  1.69319  0.00000 -0.59904
 @end
 ```
 
@@ -58,10 +56,9 @@ basis: def2-svp
 @molecule
 charge: 1
 multiplicity: 2
-units: au
 xyz:
-O   0.0   0.0   0.0
-H   0.0   1.4   1.1
-H   0.0  -1.4   1.1
+O  0.00000  0.00000  0.00000
+H  0.00000  0.00000  1.79524
+H  1.69319  0.00000 -0.59904
 @end
 ```

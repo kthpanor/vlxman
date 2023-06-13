@@ -34,7 +34,7 @@ $ vlx water.inp [water.out]
 
 If the optional output file name is omitted, the output will be sent to standard output.
 
-The input file (here assumed to be named `water.inp`) consists of multiple groups marked with `@group name` and `@end`. For example, the following input file has three groups: `jobs`, `method settings`, and `molecule`.
+The input file (here assumed to be named `water.inp`) consists of multiple groups marked with `@group name` and `@end`. For example, the following input file has three groups: `jobs`, `method settings`, and `molecule`. In the `molecule` group, the default unit for Cartesian coordinates is Angstrom.
 
 ```
 @jobs
@@ -49,10 +49,9 @@ basis: def2-svp
 @molecule
 charge: 0
 multiplicity: 1
-units: au
 xyz:
-O   0.0   0.0   0.0
-H   0.0   1.4   1.1
-H   0.0  -1.4   1.1
+O  0.00000  0.00000  0.00000
+H  0.00000  0.00000  1.79524
+H  1.69319  0.00000 -0.59904
 @end
 ```

@@ -30,7 +30,6 @@ frequencies: 0-0.25 (0.05)
 @molecule
 charge: 0
 multiplicity: 1
-units: au
 xyz:  
 ...
 @end 
@@ -53,7 +52,7 @@ task: response
 @end
 
 @method settings
-basis: def2-SVPD
+basis: def2-svpd
 xcfun: b3lyp
 @end
 
@@ -71,7 +70,6 @@ frequencies: 0.0, 0.0656
 @molecule
 charge: 0
 multiplicity: 1
-units: angstrom
 xyz:
 ...
 @end
@@ -118,7 +116,6 @@ n_points: 7
 @molecule
 charge: 0
 multiplicity: 1
-units: ang
 xyz:
 ...
 @end
@@ -144,7 +141,6 @@ basis: aug-cc-pvdz
 @molecule
 charge: 0
 multiplicity: 1
-units: au
 xyz:
 ...
 @end
