@@ -16,6 +16,18 @@ Retrieve miniconda from the following website
 
 Install the version for 64 bit computers that comes with Python (>=3.8).
 
+````{admonition} Faster conda solver
+:class: tip
+
+The new `conda-libmamba-solver` run much faster than the default, as discussed in [this blog post](https://www.anaconda.com/blog/conda-is-fast-now). We recommend that you use this solver, which is done by updating conda, installing the new solver to your base environment, and configuring your solver selection:
+
+```
+conda update -n base conda
+conda install -n base conda-libmamba-solver
+conda config --set solver libmamba
+```
+````
+
 Start a conda terminal, or Anaconda Powershell as it is referred to on a Windows system. Conda supports multiple *environments* and you start in the one named `base` as is typically indicated by the prompt. To create a new and additional environment named `vlxenv` and install VeloxChem, Matplotlib, and Jupyter notebook (and package dependencies such as NumPy and SciPy) into it, you enter the following command line statement
 
 ```
