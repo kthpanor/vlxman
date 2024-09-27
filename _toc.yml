@@ -35,6 +35,7 @@ parts:
   chapters:
   - file: docs/program_struct
   - file: docs/source_struct
+  - file: docs/programming_style
 - caption: References
   chapters:
   - file: docs/refs
