@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Program structure &#8212; VeloxChem program manual</title>
   
@@ -15,59 +14,57 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/program_struct';</script>
-    <link rel="shortcut icon" href="../_static/vlx_logo_mark.png"/>
+    <link rel="icon" href="../_static/vlx_logo_mark.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Source code structure" href="source_struct.html" />
     <link rel="prev" title="Electronic densities" href="elec_dens.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -75,19 +72,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -109,12 +110,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -129,9 +138,13 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="intro.html">
+  
   
   
   
@@ -141,12 +154,23 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../_static/vlx_logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/vlx_logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../_static/vlx_logo.png" class="logo__image only-light" alt="VeloxChem program manual - Home"/>
+    <script>document.write(`<img src="../_static/vlx_logo.png" class="logo__image only-dark" alt="VeloxChem program manual - Home"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -191,6 +215,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Program structure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="source_struct.html">Source code structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="programming_style.html">Programming style</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
 <ul class="nav bd-sidenav">
@@ -210,7 +235,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -219,14 +244,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -348,26 +373,28 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -399,10 +426,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="program-structure">
-<h1>Program structure<a class="headerlink" href="#program-structure" title="Permalink to this headline">#</a></h1>
+<h1>Program structure<a class="headerlink" href="#program-structure" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">veloxchem</span> <span class="k">as</span> <span class="nn">vlx</span>
@@ -454,6 +481,7 @@ PACKAGE CONTENTS
     __main__
     aodensitymatrix
     aofockmatrix
+    atomtypeidentifier
     batchsize
     blockdavidson
     c2diis
@@ -483,6 +511,8 @@ PACKAGE CONTENTS
     lrsolver
     main
     mklconf
+    mmdriver
+    mmgradientdriver
     mointsdriver
     molecularbasis
     molecularorbitals
@@ -512,6 +542,7 @@ PACKAGE CONTENTS
     rspproperty
     rspshg
     rsptpa
+    rsptpatransition
     sanitychecks
     scfdriver
     scfgradientdriver
@@ -519,17 +550,22 @@ PACKAGE CONTENTS
     scfrestdriver
     scfrestopendriver
     scfunrestdriver
+    seminario
     shgdriver
     signalhandler
     subcommunicators
+    symmetryanalyzer
+    symmetryoperations
     tdaeigensolver
     tddftgradientdriver
     tests (package)
     tpadriver
     tpafulldriver
     tpareddriver
+    tpatransitiondriver
     trajectorydriver
     treeblock
+    uffparameters
     utils
     veloxchemlib
     visualizationdriver
@@ -549,7 +585,7 @@ FUNCTIONS
         Transforms AO matrix from Dalton to VeloxChem format.
     
     available_functionals(...) method of builtins.PyCapsule instance
-        available_functionals() -&gt; List[str]
+        available_functionals() -&gt; list[str]
         
         Gets a list of available exchange-correlation functionals.
     
@@ -579,7 +615,7 @@ FUNCTIONS
         Gets fine-structure constant.
     
     get_basis_function_indices_for_atom(...) method of builtins.PyCapsule instance
-        get_basis_function_indices_for_atom(molecule: veloxchem.veloxchemlib.Molecule, basis: veloxchem.veloxchemlib.MolecularBasis, atomIdx: int) -&gt; List[List[int]]
+        get_basis_function_indices_for_atom(molecule: veloxchem.veloxchemlib.Molecule, basis: veloxchem.veloxchemlib.MolecularBasis, atomIdx: int) -&gt; list[list[int]]
         
         Gets basis function indices for an atom.
     
@@ -634,19 +670,19 @@ FUNCTIONS
         Gets convertion factor for rotatory strength (a.u. -&gt; 10^-40 cgs).
 
 DATA
-    __deployed__ = {&#39;author&#39;: &#39;Roberto Di Remigio&#39;, &#39;build&#39;: &#39;98&#39;, &#39;commit...
+    __deployed__ = {&#39;author&#39;: &#39;Xin&#39;, &#39;build&#39;: &#39;166&#39;, &#39;commit&#39;: &#39;f38722e654...
 
 VERSION
     1.0rc3
 
 FILE
-    /Users/lixin/miniconda3-x86_64/envs/vlxman/lib/python3.11/site-packages/veloxchem/__init__.py
+    /Users/lixin/miniforge3/envs/vlxman/lib/python3.11/site-packages/veloxchem/__init__.py
 </pre></div>
 </div>
 </div>
 </div>
 <section id="classes">
-<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">#</a></h2>
+<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">#</a></h2>
 <p>The functionality of VeloxChem is built into the classes it implements. An overview of the available classes is provided with the <code class="docutils literal notranslate"><span class="pre">dir</span></code> function.</p>
 <div class="cell tag_output_scroll docutils container">
 <div class="cell_input docutils container">
@@ -660,6 +696,7 @@ FILE
  &#39;Absorption&#39;,
  &#39;AngularMomentumIntegralsDriver&#39;,
  &#39;AtomBasis&#39;,
+ &#39;AtomTypeIdentifier&#39;,
  &#39;BasisFunction&#39;,
  &#39;BlockDavidsonSolver&#39;,
  &#39;C6&#39;,
@@ -687,6 +724,8 @@ FILE
  &#39;LinearResponseEigenSolver&#39;,
  &#39;LinearResponseSolver&#39;,
  &#39;LoPropDriver&#39;,
+ &#39;MMDriver&#39;,
+ &#39;MMGradientDriver&#39;,
  &#39;MOIntegralsDriver&#39;,
  &#39;MOIntsBatch&#39;,
  &#39;MolecularBasis&#39;,
@@ -714,8 +753,10 @@ FILE
  &#39;ScfRestrictedDriver&#39;,
  &#39;ScfRestrictedOpenDriver&#39;,
  &#39;ScfUnrestrictedDriver&#39;,
+ &#39;Seminario&#39;,
  &#39;ShgDriver&#39;,
  &#39;SubCommunicators&#39;,
+ &#39;SymmetryAnalyzer&#39;,
  &#39;TDAExciDriver&#39;,
  &#39;TPA&#39;,
  &#39;TPAFullDriver&#39;,
@@ -724,6 +765,7 @@ FILE
  &#39;TddftGradientDriver&#39;,
  &#39;TpaFullDriver&#39;,
  &#39;TpaReducedDriver&#39;,
+ &#39;TpaTransitionDriver&#39;,
  &#39;TwoIndexes&#39;,
  &#39;VisualizationDriver&#39;,
  &#39;XCFunctional&#39;,
@@ -750,6 +792,7 @@ FILE
  &#39;aodensitymatrix&#39;,
  &#39;aofockmatrix&#39;,
  &#39;assert_msg_critical&#39;,
+ &#39;atomtypeidentifier&#39;,
  &#39;available_functionals&#39;,
  &#39;batchsize&#39;,
  &#39;blockdavidson&#39;,
@@ -794,6 +837,8 @@ FILE
  &#39;lrsolver&#39;,
  &#39;mathconst_pi&#39;,
  &#39;mklconf&#39;,
+ &#39;mmdriver&#39;,
+ &#39;mmgradientdriver&#39;,
  &#39;moints&#39;,
  &#39;mointsdriver&#39;,
  &#39;molecularbasis&#39;,
@@ -836,17 +881,22 @@ FILE
  &#39;scfrestdriver&#39;,
  &#39;scfrestopendriver&#39;,
  &#39;scfunrestdriver&#39;,
+ &#39;seminario&#39;,
  &#39;set_omp_num_threads&#39;,
  &#39;set_vlxbasispath&#39;,
  &#39;shgdriver&#39;,
  &#39;signalhandler&#39;,
  &#39;subcommunicators&#39;,
+ &#39;symmetryanalyzer&#39;,
+ &#39;symmetryoperations&#39;,
  &#39;szblock&#39;,
  &#39;tdaeigensolver&#39;,
  &#39;tddftgradientdriver&#39;,
  &#39;tpadriver&#39;,
  &#39;tpafulldriver&#39;,
  &#39;tpareddriver&#39;,
+ &#39;tpatransitiondriver&#39;,
+ &#39;uffparameters&#39;,
  &#39;veloxchemlib&#39;,
  &#39;visualizationdriver&#39;,
  &#39;xtbdriver&#39;,
@@ -878,7 +928,7 @@ FILE
 </div>
 </section>
 <section id="methods-and-properties">
-<h2>Methods and properties<a class="headerlink" href="#methods-and-properties" title="Permalink to this headline">#</a></h2>
+<h2>Methods and properties<a class="headerlink" href="#methods-and-properties" title="Link to this heading">#</a></h2>
 <p>The actual calculations are performed by the methods in the classes. To list the properties and methods of a class, the <code class="docutils literal notranslate"><span class="pre">dir</span></code> function can be used as follows.</p>
 <div class="cell tag_output_scroll docutils container">
 <div class="cell_input docutils container">
@@ -927,10 +977,10 @@ FILE
  &#39;_comp_gradient&#39;,
  &#39;_comp_guess_density&#39;,
  &#39;_comp_npot_mat_split_comm&#39;,
+ &#39;_comp_number_of_electrons&#39;,
  &#39;_comp_one_ints&#39;,
  &#39;_delete_mos&#39;,
  &#39;_gen_molecular_orbitals&#39;,
- &#39;_gen_new_density&#39;,
  &#39;_get_acc_type&#39;,
  &#39;_get_dyn_threshold&#39;,
  &#39;_get_effective_fock&#39;,
@@ -958,6 +1008,7 @@ FILE
  &#39;density&#39;,
  &#39;get_scf_energy&#39;,
  &#39;get_scf_type_str&#39;,
+ &#39;history&#39;,
  &#39;is_converged&#39;,
  &#39;maximum_overlap&#39;,
  &#39;mol_orbs&#39;,
@@ -1007,11 +1058,10 @@ FILE
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer d-print-none">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="elec_dens.html"
@@ -1031,10 +1081,7 @@ FILE
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -1042,6 +1089,7 @@ FILE
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1072,9 +1120,10 @@ By The VeloxChem team
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -1098,8 +1147,8 @@ By The VeloxChem team
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

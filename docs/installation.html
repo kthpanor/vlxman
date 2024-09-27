@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Installing the program &#8212; VeloxChem program manual</title>
   
@@ -15,59 +14,57 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/installation';</script>
-    <link rel="shortcut icon" href="../_static/vlx_logo_mark.png"/>
+    <link rel="icon" href="../_static/vlx_logo_mark.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Running on a desktop" href="run_desktop.html" />
     <link rel="prev" title="Pushing the limits" href="limits.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -75,19 +72,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -109,12 +110,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -129,9 +138,13 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="intro.html">
+  
   
   
   
@@ -141,12 +154,23 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../_static/vlx_logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/vlx_logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../_static/vlx_logo.png" class="logo__image only-light" alt="VeloxChem program manual - Home"/>
+    <script>document.write(`<img src="../_static/vlx_logo.png" class="logo__image only-dark" alt="VeloxChem program manual - Home"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -191,6 +215,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="program_struct.html">Program structure</a></li>
 <li class="toctree-l1"><a class="reference internal" href="source_struct.html">Source code structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="programming_style.html">Programming style</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
 <ul class="nav bd-sidenav">
@@ -210,7 +235,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -219,14 +244,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -348,26 +373,28 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -416,12 +443,12 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="installing-the-program">
-<h1>Installing the program<a class="headerlink" href="#installing-the-program" title="Permalink to this headline">#</a></h1>
+<h1>Installing the program<a class="headerlink" href="#installing-the-program" title="Link to this heading">#</a></h1>
 <section id="installing-binaries-using-conda">
-<h2>Installing binaries using conda<a class="headerlink" href="#installing-binaries-using-conda" title="Permalink to this headline">#</a></h2>
+<h2>Installing binaries using conda<a class="headerlink" href="#installing-binaries-using-conda" title="Link to this heading">#</a></h2>
 <p>Binaries are available for the three main operating systems:</p>
 <ul class="simple">
 <li><p>Windows</p></li>
@@ -467,16 +494,16 @@ document.write(`
 <p>and start calculations. See the <a class="reference external" href="https://kthpanor.github.io/echem">eChem</a> book for a multitude of examples.</p>
 </section>
 <section id="installing-from-source">
-<h2>Installing from source<a class="headerlink" href="#installing-from-source" title="Permalink to this headline">#</a></h2>
+<h2>Installing from source<a class="headerlink" href="#installing-from-source" title="Link to this heading">#</a></h2>
 <section id="obtaining-the-source-code">
-<h3>Obtaining the source code<a class="headerlink" href="#obtaining-the-source-code" title="Permalink to this headline">#</a></h3>
+<h3>Obtaining the source code<a class="headerlink" href="#obtaining-the-source-code" title="Link to this heading">#</a></h3>
 <p>The source code can be downloaded from the <a class="reference external" href="https://gitlab.com/veloxchem/veloxchem">GitLab repository</a>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone https://gitlab.com/veloxchem/veloxchem
 </pre></div>
 </div>
 </section>
 <section id="build-prerequisites">
-<h3>Build prerequisites<a class="headerlink" href="#build-prerequisites" title="Permalink to this headline">#</a></h3>
+<h3>Build prerequisites<a class="headerlink" href="#build-prerequisites" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://cmake.org/">CMake</a></p></li>
 <li><p>C++ compiler fully compliant with the C++17 standard</p></li>
@@ -496,7 +523,7 @@ document.write(`
 <p>To avoid clashes between dependencies, we recommend to always use a <a class="reference external" href="https://docs.python.org/3/tutorial/venv.html">virtual enviroment</a>.</p>
 </section>
 <section id="installing-using-conda">
-<span id="with-conda"></span><h3>Installing using conda<a class="headerlink" href="#installing-using-conda" title="Permalink to this headline">#</a></h3>
+<span id="with-conda"></span><h3>Installing using conda<a class="headerlink" href="#installing-using-conda" title="Link to this heading">#</a></h3>
 <p><a class="reference external" href="https://docs.conda.io/en/latest/">Conda</a> and the software packaged on the <a class="reference external" href="https://conda-forge.org/">conda-forge</a> channel provide build isolation and greatly simplify the installation of VeloxChem.</p>
 <ul>
 <li><p>Move to the folder containing the source code:</p>
@@ -545,7 +572,7 @@ $ conda activate vlxenv
 </ul>
 </section>
 <section id="installing-on-cray-platform-x86-64-or-arm-processor">
-<h3>Installing on Cray platform (x86-64 or ARM processor)<a class="headerlink" href="#installing-on-cray-platform-x86-64-or-arm-processor" title="Permalink to this headline">#</a></h3>
+<h3>Installing on Cray platform (x86-64 or ARM processor)<a class="headerlink" href="#installing-on-cray-platform-x86-64-or-arm-processor" title="Link to this heading">#</a></h3>
 <ul>
 <li><p>Load Cray modules:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module swap PrgEnv-cray PrgEnv-gnu
@@ -594,7 +621,7 @@ $ VLX_NUM_BUILD_JOBS=N srun -n 1 python3 -m pip install .
 </ul>
 </section>
 <section id="installing-on-debian-based-linux">
-<h3>Installing on Debian-based Linux<a class="headerlink" href="#installing-on-debian-based-linux" title="Permalink to this headline">#</a></h3>
+<h3>Installing on Debian-based Linux<a class="headerlink" href="#installing-on-debian-based-linux" title="Link to this heading">#</a></h3>
 <ul>
 <li><p>Install Intel Math Kernel Library from
 <a class="reference external" href="https://software.intel.com/en-us/articles/installing-intel-free-libs-and-python-apt-repo">this page</a>.
@@ -642,7 +669,7 @@ $ python3 -m pip install git+https://gitlab.com/veloxchem/veloxchem
 </ul>
 </section>
 <section id="installing-on-rpm-based-linux">
-<h3>Installing on RPM-based Linux<a class="headerlink" href="#installing-on-rpm-based-linux" title="Permalink to this headline">#</a></h3>
+<h3>Installing on RPM-based Linux<a class="headerlink" href="#installing-on-rpm-based-linux" title="Link to this heading">#</a></h3>
 <ul>
 <li><p>Install Math Kernel Library from
 <a class="reference external" href="https://software.intel.com/en-us/articles/installing-intel-free-libs-and-python-yum-repo">this page</a>.
@@ -690,13 +717,13 @@ $ python3 -m pip install git+https://gitlab.com/veloxchem/veloxchem
 </ul>
 </section>
 <section id="installing-on-powerlinux">
-<h3>Installing on PowerLinux<a class="headerlink" href="#installing-on-powerlinux" title="Permalink to this headline">#</a></h3>
+<h3>Installing on PowerLinux<a class="headerlink" href="#installing-on-powerlinux" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>See installation instructions <a class="reference internal" href="#with-conda"><span class="std std-ref">using conda</span></a></p></li>
 </ul>
 </section>
 <section id="installing-on-macos">
-<h3>Installing on macOS<a class="headerlink" href="#installing-on-macos" title="Permalink to this headline">#</a></h3>
+<h3>Installing on macOS<a class="headerlink" href="#installing-on-macos" title="Link to this heading">#</a></h3>
 <ul>
 <li><p>See installation instructions <a class="reference internal" href="#with-conda"><span class="std std-ref">using conda</span></a></p></li>
 <li><p>Known issues</p>
@@ -728,17 +755,17 @@ $ python3 -m pip install .
 </ul>
 </section>
 <section id="installing-on-windows">
-<h3>Installing on Windows<a class="headerlink" href="#installing-on-windows" title="Permalink to this headline">#</a></h3>
+<h3>Installing on Windows<a class="headerlink" href="#installing-on-windows" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Soon to come!</p></li>
 </ul>
 </section>
 </section>
 <section id="external-dependencies">
-<span id="id1"></span><h2>External dependencies<a class="headerlink" href="#external-dependencies" title="Permalink to this headline">#</a></h2>
+<span id="id1"></span><h2>External dependencies<a class="headerlink" href="#external-dependencies" title="Link to this heading">#</a></h2>
 <p>If you wish to use functionality offered through interfaces with other software packages, you will first need to install them.  Currently, interfaces to add-on dependencies <a class="reference external" href="https://github.com/grimme-lab/xtb">XTB</a> and <a class="reference external" href="https://github.com/maxscheurer/cppe">CPPE</a> are available.</p>
 <section id="the-cppe-library-for-polarizable-embedding">
-<h3>The CPPE library for polarizable embedding<a class="headerlink" href="#the-cppe-library-for-polarizable-embedding" title="Permalink to this headline">#</a></h3>
+<h3>The CPPE library for polarizable embedding<a class="headerlink" href="#the-cppe-library-for-polarizable-embedding" title="Link to this heading">#</a></h3>
 <p>There are few ways to install the CPPE library for polarizable embedding. Note that you will need a C++ compiler compliant with the C++14 standard and CMake.</p>
 <p>You can install it via <code class="docutils literal notranslate"><span class="pre">pip</span></code> in your virtual environment:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python3 -m pip install cppe
@@ -761,7 +788,7 @@ $ export PYTHONPATH=/path/to/your/cppe/build/stage/lib:$PYTHONPATH
 </div>
 </section>
 <section id="the-xtb-package-for-semiempirical-methods">
-<h3>The XTB package for semiempirical methods<a class="headerlink" href="#the-xtb-package-for-semiempirical-methods" title="Permalink to this headline">#</a></h3>
+<h3>The XTB package for semiempirical methods<a class="headerlink" href="#the-xtb-package-for-semiempirical-methods" title="Link to this heading">#</a></h3>
 <p>It is recommended to install the XTB package in a conda environment:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ conda install xtb -c conda-forge
 </pre></div>
@@ -781,7 +808,7 @@ $ export XTBHOME=/path/to/your/xtb
 </section>
 </section>
 <section id="release-versions">
-<h2>Release versions<a class="headerlink" href="#release-versions" title="Permalink to this headline">#</a></h2>
+<h2>Release versions<a class="headerlink" href="#release-versions" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>1.0-rc3 (2022-11-09) Third release candidate</p></li>
 <li><p>1.0-rc2 (2021-04-23) Second release candidate</p></li>
@@ -815,11 +842,10 @@ $ export XTBHOME=/path/to/your/xtb
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer d-print-none">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="limits.html"
@@ -839,10 +865,7 @@ $ export XTBHOME=/path/to/your/xtb
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -850,6 +873,7 @@ $ export XTBHOME=/path/to/your/xtb
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -897,9 +921,10 @@ By The VeloxChem team
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -923,8 +948,8 @@ By The VeloxChem team
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
