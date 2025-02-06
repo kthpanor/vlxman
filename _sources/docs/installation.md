@@ -82,7 +82,7 @@ $ git clone https://gitlab.com/veloxchem/veloxchem
 - [Python](https://www.python.org/) (>=3.8) that includes the interpreter, the development header files, and the development libraries
 - [MPI4Py](https://mpi4py.readthedocs.io/en/stable/)
 - [Scikit-build](https://scikit-build.readthedocs.io/en/latest/)
-- [Libxc](https://tddft.org/programs/libxc/)
+- [Libxc](https://libxc.gitlab.io/)
 
 Optional, add-on dependencies:
 

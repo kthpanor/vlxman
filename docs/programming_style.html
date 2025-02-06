@@ -432,10 +432,11 @@ document.write(`
 <h1>Programming style<a class="headerlink" href="#programming-style" title="Link to this heading">#</a></h1>
 <section id="python-style">
 <h2>Python style<a class="headerlink" href="#python-style" title="Link to this heading">#</a></h2>
-<p>We follow the <a class="reference external" href="https://www.python.org/dev/peps/pep-0008/">PEP8</a> style guide and use <a class="reference external" href="https://pypi.org/project/yapf/">yapf</a> and <a class="reference external" href="https://pypi.org/project/flake8/">flake8</a> to format the code. We have the following setting in <code class="docutils literal notranslate"><span class="pre">setup.cfg</span></code>:</p>
+<p>We follow the <a class="reference external" href="https://www.python.org/dev/peps/pep-0008/">PEP8</a> style guide and use <a class="reference external" href="https://pypi.org/project/yapf/">yapf</a> and <a class="reference external" href="https://pypi.org/project/flake8/">flake8</a> to format the code. We have the following settings in <code class="docutils literal notranslate"><span class="pre">setup.cfg</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">yapf</span><span class="p">]</span>
 <span class="n">based_on_style</span> <span class="o">=</span> <span class="n">google</span>
 <span class="n">allow_split_before_dict_value</span> <span class="o">=</span> <span class="kc">False</span>
+
 <span class="p">[</span><span class="n">flake8</span><span class="p">]</span>
 <span class="nb">max</span><span class="o">-</span><span class="n">line</span><span class="o">-</span><span class="n">length</span> <span class="o">=</span> <span class="mi">80</span>
 </pre></div>
@@ -443,7 +444,7 @@ document.write(`
 </section>
 <section id="c-style">
 <h2>C++ style<a class="headerlink" href="#c-style" title="Link to this heading">#</a></h2>
-<p>The C++ code should be formatted using <a class="reference external" href="https://clang.llvm.org/docs/ClangFormat.html">clang-format</a>. We have the following setting in <code class="docutils literal notranslate"><span class="pre">.clang-format</span></code>:</p>
+<p>The C++ code should be formatted using <a class="reference external" href="https://clang.llvm.org/docs/ClangFormat.html">clang-format</a>. We have the following settings in <code class="docutils literal notranslate"><span class="pre">.clang-format</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---</span>
 <span class="n">BasedOnStyle</span><span class="p">:</span> <span class="n">Google</span>
 <span class="n">AlignAfterOpenBracket</span><span class="p">:</span> <span class="n">Align</span>
