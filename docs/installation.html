@@ -28,11 +28,11 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -415,25 +415,21 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-binaries-using-conda">Installing binaries using conda</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-precompiled-binaries-using-conda">Installing precompiled binaries using conda</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-from-source">Installing from source</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#obtaining-the-source-code">Obtaining the source code</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-prerequisites">Build prerequisites</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-using-conda">Installing using conda</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-on-cray-platform-x86-64-or-arm-processor">Installing on Cray platform (x86-64 or ARM processor)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-on-debian-based-linux">Installing on Debian-based Linux</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-on-rpm-based-linux">Installing on RPM-based Linux</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-on-unix-like-systems-using-conda">Installing on Unix-like systems using conda</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-on-cray-system">Installing on Cray system</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-on-ubuntu">Installing on Ubuntu</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-on-powerlinux">Installing on PowerLinux</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-on-macos">Installing on macOS</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-on-windows">Installing on Windows</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#external-dependencies">External dependencies</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-cppe-library-for-polarizable-embedding">The CPPE library for polarizable embedding</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-xtb-package-for-semiempirical-methods">The XTB package for semiempirical methods</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-dftd4-python-package-for-dispersion-correction">The dftd4-python package for dispersion correction</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#release-versions">Release versions</a></li>
 </ul>
             </nav>
         </div>
@@ -447,30 +443,21 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="installing-the-program">
 <h1>Installing the program<a class="headerlink" href="#installing-the-program" title="Link to this heading">#</a></h1>
-<section id="installing-binaries-using-conda">
-<h2>Installing binaries using conda<a class="headerlink" href="#installing-binaries-using-conda" title="Link to this heading">#</a></h2>
+<section id="installing-precompiled-binaries-using-conda">
+<h2>Installing precompiled binaries using conda<a class="headerlink" href="#installing-precompiled-binaries-using-conda" title="Link to this heading">#</a></h2>
 <p>Binaries are available for the three main operating systems:</p>
 <ul class="simple">
 <li><p>Windows</p></li>
 <li><p>macOS</p></li>
 <li><p>Linux</p></li>
 </ul>
-<p><a class="reference external" href="https://docs.conda.io/en/latest/">Conda</a> is an open-source package and environment management system that runs on Windows, macOS, and Linux. The conda repository contains a large number of open-source certified packages enabling scientific work. It is recommended that you install the minimal installer for conda named miniconda that includes only conda, Python, the packages they depend on, and a small number of other useful packages, including pip, zlib and a few others.</p>
-<p>Retrieve miniconda from the following website</p>
+<p><a class="reference external" href="https://docs.conda.io/en/latest/">Conda</a> is an open-source package and environment management system that runs on Windows, macOS, and Linux. The <a class="reference external" href="https://conda-forge.org/">conda-forge</a> channel contains a large number of open-source certified packages enabling scientific work. It is recommended that you install the minimal installer for conda named miniconda, or the community-driven installer named miniforge, that includes only conda, Python, the packages they depend on, and a small number of other useful packages, including pip, zlib and a few others.</p>
+<p>Retrieve miniconda or miniforge from the following website</p>
 <blockquote>
-<div><p><a class="reference external" href="https://docs.conda.io/en/latest/miniconda.html">https://docs.conda.io/en/latest/miniconda.html</a></p>
+<div><p><a class="reference external" href="https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html">https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html</a></p>
 </div></blockquote>
-<p>Install the version for 64 bit computers that comes with Python (&gt;=3.8).</p>
-<div class="tip admonition">
-<p class="admonition-title">Faster conda solver</p>
-<p>The new <code class="docutils literal notranslate"><span class="pre">conda-libmamba-solver</span></code> run much faster than the default, as discussed in <a class="reference external" href="https://www.anaconda.com/blog/conda-is-fast-now">this blog post</a>. We recommend that you use this solver, which is done by updating conda, installing the new solver to your base environment, and configuring your solver selection:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">update</span> <span class="o">-</span><span class="n">n</span> <span class="n">base</span> <span class="n">conda</span>
-<span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">n</span> <span class="n">base</span> <span class="n">conda</span><span class="o">-</span><span class="n">libmamba</span><span class="o">-</span><span class="n">solver</span>
-<span class="n">conda</span> <span class="n">config</span> <span class="o">--</span><span class="nb">set</span> <span class="n">solver</span> <span class="n">libmamba</span>
-</pre></div>
-</div>
-</div>
-<p>Start a conda terminal, or Anaconda Powershell as it is referred to on a Windows system. Conda supports multiple <em>environments</em> and you start in the one named <code class="docutils literal notranslate"><span class="pre">base</span></code> as is typically indicated by the prompt. To create a new and additional environment named <code class="docutils literal notranslate"><span class="pre">vlxenv</span></code> and install VeloxChem, Matplotlib, and Jupyter notebook (and package dependencies such as NumPy and SciPy) into it, you enter the following command line statement</p>
+<p>Install the version for 64-bit computers that comes with Python (&gt;=3.9).</p>
+<p>Start a conda terminal, or Anaconda Prompt / Miniconda Prompt as it is referred to on a Windows system. Conda supports multiple <em>environments</em> and you start in the one named <code class="docutils literal notranslate"><span class="pre">base</span></code> as is typically indicated by the prompt. To create a new and additional environment named <code class="docutils literal notranslate"><span class="pre">vlxenv</span></code> and install VeloxChem, Matplotlib, and Jupyter notebook (and package dependencies such as NumPy and SciPy) into it, you enter the following command line statement</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ conda create -n vlxenv veloxchem matplotlib jupyterlab -c veloxchem -c conda-forge
 </pre></div>
 </div>
@@ -483,12 +470,12 @@ document.write(`
 </pre></div>
 </div>
 <p>as should be indicated by getting a modified prompt.</p>
-<p>Inside this newly created environment, you should now be ready to start a Jupyter notebook with the command</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ jupyter-notebook
+<p>Inside this newly created environment, you should now be ready to start JupyterLab with the command</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ jupyter-lab
 </pre></div>
 </div>
-<p>which should open in your default web browser. A notebook allows for interactive execution of Python code written into cells. You should now be able to import the VeloxChem module in a cell:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">veloxchem</span> <span class="k">as</span> <span class="nn">vlx</span>
+<p>which should open in your default web browser. A notebook in JupyterLab allows for interactive execution of Python code written into cells. You should now be able to import the VeloxChem module in a cell:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">veloxchem</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">vlx</span>
 </pre></div>
 </div>
 <p>and start calculations. See the <a class="reference external" href="https://kthpanor.github.io/echem">eChem</a> book for a multitude of examples.</p>
@@ -497,8 +484,8 @@ document.write(`
 <h2>Installing from source<a class="headerlink" href="#installing-from-source" title="Link to this heading">#</a></h2>
 <section id="obtaining-the-source-code">
 <h3>Obtaining the source code<a class="headerlink" href="#obtaining-the-source-code" title="Link to this heading">#</a></h3>
-<p>The source code can be downloaded from the <a class="reference external" href="https://gitlab.com/veloxchem/veloxchem">GitLab repository</a>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone https://gitlab.com/veloxchem/veloxchem
+<p>The source code can be downloaded from the <a class="reference external" href="https://github.com/VeloxChem/VeloxChem">GitHub repository</a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/VeloxChem/VeloxChem.git
 </pre></div>
 </div>
 </section>
@@ -506,28 +493,28 @@ document.write(`
 <h3>Build prerequisites<a class="headerlink" href="#build-prerequisites" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://cmake.org/">CMake</a></p></li>
-<li><p>C++ compiler fully compliant with the C++17 standard</p></li>
-<li><p>Linear algebra libraries implementing the BLAS and LAPACK interfaces (e.g. Intel MKL, OpenBLAS or Cray LibSci)</p></li>
-<li><p>MPI library (e.g. MPICH, Intel MPI or Open MPI)</p></li>
-<li><p><a class="reference external" href="https://www.python.org/">Python</a> (&gt;=3.8) that includes the interpreter, the development header files, and the development libraries</p></li>
+<li><p>C++ compiler fully compliant with the C++20 standard</p></li>
+<li><p>Linear algebra libraries implementing the BLAS and LAPACK interfaces (e.g. OpenBLAS)</p></li>
+<li><p>MPI library (e.g. MPICH)</p></li>
+<li><p><a class="reference external" href="https://www.python.org/">Python</a> (&gt;=3.9) that includes the interpreter, the development header files, and the development libraries</p></li>
 <li><p><a class="reference external" href="https://mpi4py.readthedocs.io/en/stable/">MPI4Py</a></p></li>
 <li><p><a class="reference external" href="https://scikit-build.readthedocs.io/en/latest/">Scikit-build</a></p></li>
 <li><p><a class="reference external" href="https://libxc.gitlab.io/">Libxc</a></p></li>
+<li><p><a class="reference external" href="https://gitlab.com/libeigen/eigen">Eigen</a></p></li>
 </ul>
 <p>Optional, add-on dependencies:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/maxscheurer/cppe">CPPE</a></p></li>
-<li><p><a class="reference external" href="https://github.com/grimme-lab/xtb">XTB</a></p></li>
+<li><p><a class="reference external" href="https://github.com/dftd4/dftd4">dftd4-python</a></p></li>
 </ul>
 <p>See <a class="reference internal" href="#external-dependencies"><span class="std std-ref">External dependencies</span></a> for instructions on how to get these add-ons.</p>
 <p>To avoid clashes between dependencies, we recommend to always use a <a class="reference external" href="https://docs.python.org/3/tutorial/venv.html">virtual enviroment</a>.</p>
 </section>
-<section id="installing-using-conda">
-<span id="with-conda"></span><h3>Installing using conda<a class="headerlink" href="#installing-using-conda" title="Link to this heading">#</a></h3>
+<section id="installing-on-unix-like-systems-using-conda">
+<span id="with-conda"></span><h3>Installing on Unix-like systems using conda<a class="headerlink" href="#installing-on-unix-like-systems-using-conda" title="Link to this heading">#</a></h3>
 <p><a class="reference external" href="https://docs.conda.io/en/latest/">Conda</a> and the software packaged on the <a class="reference external" href="https://conda-forge.org/">conda-forge</a> channel provide build isolation and greatly simplify the installation of VeloxChem.</p>
 <ul>
 <li><p>Move to the folder containing the source code:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd veloxchem
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd VeloxChem
 </pre></div>
 </div>
 </li>
@@ -536,12 +523,12 @@ document.write(`
 $ conda activate vlxenv
 </pre></div>
 </div>
-<p>This will create and activate a conda environment named <code class="docutils literal notranslate"><span class="pre">vlxenv</span></code>. In this environment all the build dependencies will be installed from the <code class="docutils literal notranslate"><span class="pre">conda-forge</span></code> channel, including the C++ compiler, MPI, <a class="reference external" href="https://numpy.org">NumPy</a>, <a class="reference external" href="https://mpi4py.readthedocs.io/en/stable/">MPI4Py</a>, etc. We provide two options for the <code class="docutils literal notranslate"><span class="pre">&lt;environment_file&gt;</span></code> that specifies different linear algebra backend for your conda environment:</p>
+<p>This will create and activate a conda environment named <code class="docutils literal notranslate"><span class="pre">vlxenv</span></code>. In this environment all the build dependencies will be installed from the conda-forge channel, including the C++ compiler, MPI, <a class="reference external" href="https://numpy.org">NumPy</a>, <a class="reference external" href="https://mpi4py.readthedocs.io/en/stable/">MPI4Py</a>, etc. We provide two options for the <code class="docutils literal notranslate"><span class="pre">&lt;environment_file&gt;</span></code> that specifies different linear algebra backend for your conda environment:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">mkl_env.yml</span></code> which installs the Intel Math Kernel Library,</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">openblas_env.yml</span></code> which installs the OpenBLAS library.</p></li>
 </ul>
-<p>Note that the MPICH library will be installed by the <code class="docutils literal notranslate"><span class="pre">yml</span></code> file. If you prefer another MPI library such as Open MPI, you can edit the <code class="docutils literal notranslate"><span class="pre">yml</span></code> file and replace <code class="docutils literal notranslate"><span class="pre">mpich</span></code> by <code class="docutils literal notranslate"><span class="pre">openmpi</span></code>. Read more about the <code class="docutils literal notranslate"><span class="pre">yml</span></code> file in <a class="reference external" href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#create-env-file-manually">this page</a>.</p>
+<p>Note that the MPICH library will be installed by the .yml file. If you prefer another MPI library such as Open MPI, you can edit the .yml file and replace mpich by openmpi. Read more about the .yml file in <a class="reference external" href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#create-env-file-manually">this page</a>.</p>
 </li>
 <li><p>Set scikit-build configure options:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ export SKBUILD_CONFIGURE_OPTIONS=&quot;-DVLX_LA_VENDOR=&lt;math_library&gt; -DCMAKE_CXX_COMPILER=mpicxx&quot;
@@ -549,17 +536,12 @@ $ conda activate vlxenv
 </div>
 <p>where <code class="docutils literal notranslate"><span class="pre">&lt;math_library&gt;</span></code> can be <code class="docutils literal notranslate"><span class="pre">MKL</span></code> or <code class="docutils literal notranslate"><span class="pre">OpenBLAS</span></code>.</p>
 </li>
-<li><p>Set XTBHOME if you would like to enable xTB:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ export XTBHOME=/path/to/your/vlxenv
-</pre></div>
-</div>
-</li>
 <li><p>Build and install VeloxChem in the conda environment:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python3 -m pip install .
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python3 -m pip install --no-build-isolation -v .
 </pre></div>
 </div>
 <p>By default, the build process will use <em>all</em> available cores to compile the C++ sources in parallel. This behavior can be controlled via the <code class="docutils literal notranslate"><span class="pre">VLX_NUM_BUILD_JOBS</span></code> environment variable:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ VLX_NUM_BUILD_JOBS=N python3 -m pip install .
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ VLX_NUM_BUILD_JOBS=N python3 -m pip install --no-build-isolation -v .
 </pre></div>
 </div>
 <p>which will install VeloxChem using <em>N</em> cores.</p>
@@ -571,30 +553,32 @@ $ conda activate vlxenv
 </li>
 </ul>
 </section>
-<section id="installing-on-cray-platform-x86-64-or-arm-processor">
-<h3>Installing on Cray platform (x86-64 or ARM processor)<a class="headerlink" href="#installing-on-cray-platform-x86-64-or-arm-processor" title="Link to this heading">#</a></h3>
+<section id="installing-on-cray-system">
+<h3>Installing on Cray system<a class="headerlink" href="#installing-on-cray-system" title="Link to this heading">#</a></h3>
 <ul>
 <li><p>Load Cray modules:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module swap PrgEnv-cray PrgEnv-gnu
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module load PrgEnv-gnu
+$ module load cpe
 $ module load cray-python
 </pre></div>
 </div>
 </li>
-<li><p>Create and activate a <a class="reference external" href="https://docs.python.org/3/tutorial/venv.html">virtual enviroment</a></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python3 -m venv vlxenv
+<li><p>Create and activate a <a class="reference external" href="https://docs.python.org/3/tutorial/venv.html">virtual enviroment</a> with <code class="docutils literal notranslate"><span class="pre">--system-site-packages</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python3 -m venv --system-site-packages vlxenv
 $ source vlxenv/bin/activate
 $ python3 -m pip install --upgrade pip setuptools wheel
-$ python3 -m pip install cmake pybind11-global scikit-build
+$ python3 -m pip install h5py pytest psutil geometric cmake pybind11-global scikit-build ninja rdkit
 </pre></div>
 </div>
 </li>
-<li><p>Install <a class="reference external" href="https://mpi4py.readthedocs.io/en/stable/">MPI4Py</a></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ CC=cc MPICC=cc python3 -m pip install --no-deps --no-binary=mpi4py mpi4py
+<li><p>Clone <a class="reference external" href="https://gitlab.com/libeigen/eigen">Eigen</a> and set environment variable <code class="docutils literal notranslate"><span class="pre">EIGEN_INCLUDE_DIR</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ git clone -b 3.4.0 https://gitlab.com/libeigen/eigen.git
+$ export EIGEN_INCLUDE_DIR=/path/to/your/eigen
 </pre></div>
 </div>
 </li>
 <li><p>Install <a class="reference external" href="https://tddft.org/programs/libxc/">Libxc</a></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd libxc-6.0.0
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd libxc-7.0.0
 $ mkdir build &amp;&amp; cd build
 $ cmake -DDISABLE_KXC=OFF -DDISABLE_LXC=OFF -DCMAKE_INSTALL_LIBDIR=lib -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX:PATH=/path/to/your/libxc ..
 $ make &amp;&amp; make test
@@ -602,42 +586,53 @@ $ make install
 $ cd ../..
 </pre></div>
 </div>
+<p>Note that compiling Libxc with <code class="docutils literal notranslate"><span class="pre">-DDISABLE_KXC=OFF</span> <span class="pre">-DDISABLE_LXC=OFF</span></code> takes a
+long time. If you do not need the third- and fourth-order derivatives you can
+remove them to speed up the compilation.</p>
 </li>
-<li><p>Use the compiler wrapper to compile VeloxChem:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd veloxchem
+<li><p>Compile VeloxChem</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd VeloxChem
 $ export SKBUILD_CONFIGURE_OPTIONS=&quot;-DVLX_LA_VENDOR=Cray -DCMAKE_CXX_COMPILER=CC&quot;
-$ export CMAKE_PREFIX_PATH=/path/to/your/libxc/:$CMAKE_PREFIX_PATH
-$ python3 -m pip install .
+$ export CMAKE_PREFIX_PATH=/path/to/your/libxc:$CMAKE_PREFIX_PATH
+$ python3 -m pip install --no-build-isolation -v .
 </pre></div>
 </div>
-<p>This will also take care of installing the additional necessary Python modules.</p>
-<p>If you are installing VeloxChem on a HPC cluster, please run the compilation on an interactive node:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ salloc -N 1 ...
-$ VLX_NUM_BUILD_JOBS=N srun -n 1 python3 -m pip install .
+<p>If you are installing VeloxChem on a HPC cluster, please make sure to run the
+above compilations on an interactive node.</p>
+</li>
+<li><p>CrayBLAS environment variables</p>
+<p>When running VeloxChem on Cray systems, we recommend setting the following environment
+variables:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">CRAYBLAS_LEVEL1_LEGACY</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">export</span> <span class="n">CRAYBLAS_LEVEL2_LEGACY</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">export</span> <span class="n">CRAYBLAS_LEVEL3_LEGACY</span><span class="o">=</span><span class="mi">1</span>
 </pre></div>
 </div>
-<p>where <em>N</em> is the number of cores on the node.</p>
 </li>
 </ul>
 </section>
-<section id="installing-on-debian-based-linux">
-<h3>Installing on Debian-based Linux<a class="headerlink" href="#installing-on-debian-based-linux" title="Link to this heading">#</a></h3>
+<section id="installing-on-ubuntu">
+<h3>Installing on Ubuntu<a class="headerlink" href="#installing-on-ubuntu" title="Link to this heading">#</a></h3>
 <ul>
-<li><p>Install Intel Math Kernel Library from
-<a class="reference external" href="https://software.intel.com/en-us/articles/installing-intel-free-libs-and-python-apt-repo">this page</a>.
-Note that this requires superuser privileges:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ wget https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS-2019.PUB
-$ sudo apt-key add GPG-PUB-KEY-INTEL-SW-PRODUCTS-2019.PUB
-$ sudo sh -c &#39;echo deb https://apt.repos.intel.com/mkl all main &gt; /etc/apt/sources.list.d/intel-mkl.list&#39;
-$ sudo apt-get update
-$ sudo apt-get install intel-mkl-64bit-2019.1-053
+<li><p>Install dependencies using apt</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo apt update
+$ sudo apt install build-essential wget cmake git python3 python3-pip python3-venv
+$ sudo apt install libopenblas-openmp-dev liblapacke-dev libeigen3-dev mpich
 </pre></div>
 </div>
 </li>
-<li><p>Install MPI and Python:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo apt-get install git mpich python3 python3-dev python3-pip python3-venv
+<li><p>Install <a class="reference external" href="https://tddft.org/programs/libxc/">Libxc</a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd libxc-7.0.0
+$ mkdir build &amp;&amp; cd build
+$ cmake -DDISABLE_KXC=OFF -DDISABLE_LXC=OFF -DCMAKE_INSTALL_LIBDIR=lib -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX:PATH=/path/to/your/libxc ..
+$ make &amp;&amp; make test
+$ make install
+$ cd ../..
 </pre></div>
 </div>
+<p>Note that compiling Libxc with <code class="docutils literal notranslate"><span class="pre">-DDISABLE_KXC=OFF</span> <span class="pre">-DDISABLE_LXC=OFF</span></code> takes a
+long time. If you do not need the third- and fourth-order derivatives you can
+remove them to speed up the compilation.</p>
 </li>
 <li><p>Create and activate a <a class="reference external" href="https://docs.python.org/3/tutorial/venv.html">virtual enviroment</a></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python3 -m venv vlxenv
@@ -645,72 +640,14 @@ $ source vlxenv/bin/activate
 $ python3 -m pip install --upgrade pip setuptools wheel
 $ python3 -m pip install numpy mpi4py h5py
 $ python3 -m pip install cmake pybind11-global scikit-build
-</pre></div>
-</div>
-</li>
-<li><p>Install <a class="reference external" href="https://tddft.org/programs/libxc/">Libxc</a></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd libxc-6.0.0
-$ mkdir build &amp;&amp; cd build
-$ cmake -DDISABLE_KXC=OFF -DDISABLE_LXC=OFF -DCMAKE_INSTALL_LIBDIR=lib -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX:PATH=/path/to/your/libxc ..
-$ make &amp;&amp; make test
-$ make install
-$ cd ../..
 </pre></div>
 </div>
 </li>
 <li><p>Install VeloxChem:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ source /opt/intel/mkl/bin/mklvars.sh intel64
-$ export SKBUILD_CONFIGURE_OPTIONS=&quot;-DVLX_LA_VENDOR=MKL -DCMAKE_CXX_COMPILER=mpicxx&quot;
-$ export CMAKE_PREFIX_PATH=/path/to/your/libxc/:$CMAKE_PREFIX_PATH
-$ python3 -m pip install git+https://gitlab.com/veloxchem/veloxchem
-</pre></div>
-</div>
-</li>
-</ul>
-</section>
-<section id="installing-on-rpm-based-linux">
-<h3>Installing on RPM-based Linux<a class="headerlink" href="#installing-on-rpm-based-linux" title="Link to this heading">#</a></h3>
-<ul>
-<li><p>Install Math Kernel Library from
-<a class="reference external" href="https://software.intel.com/en-us/articles/installing-intel-free-libs-and-python-yum-repo">this page</a>.
-Note that this requires superuser privileges:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo yum install yum-utils
-$ sudo yum-config-manager --add-repo https://yum.repos.intel.com/mkl/setup/intel-mkl.repo
-$ sudo rpm --import https://yum.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS-2019.PUB
-$ sudo yum install intel-mkl-64bit
-</pre></div>
-</div>
-</li>
-<li><p>Install MPI and Python:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo yum install gcc gcc-g++ mpich mpich-devel python3 python3-devel python3-pip
-</pre></div>
-</div>
-</li>
-<li><p>Create and activate a <a class="reference external" href="https://docs.python.org/3/tutorial/venv.html">virtual enviroment</a></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python3 -m venv vlxenv
-$ source vlxenv/bin/activate
-$ python3 -m pip install --upgrade pip setuptools wheel
-$ python3 -m pip install numpy mpi4py h5py
-$ python3 -m pip install cmake pybind11-global scikit-build
-</pre></div>
-</div>
-</li>
-<li><p>Install <a class="reference external" href="https://tddft.org/programs/libxc/">Libxc</a></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd libxc-6.0.0
-$ mkdir build &amp;&amp; cd build
-$ cmake -DDISABLE_KXC=OFF -DDISABLE_LXC=OFF -DCMAKE_INSTALL_LIBDIR=lib -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX:PATH=/path/to/your/libxc ..
-$ make &amp;&amp; make test
-$ make install
-$ cd ../..
-</pre></div>
-</div>
-</li>
-<li><p>Install VeloxChem (you may need to open a new terminal to run the <code class="docutils literal notranslate"><span class="pre">module</span></code> command):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ module load mpi/mpich-x86_64
-$ source /opt/intel/mkl/bin/mklvars.sh intel64
-$ export SKBUILD_CONFIGURE_OPTIONS=&quot;-DVLX_LA_VENDOR=MKL -DCMAKE_CXX_COMPILER=mpicxx&quot;
-$ export CMAKE_PREFIX_PATH=/path/to/your/libxc/:$CMAKE_PREFIX_PATH
-$ python3 -m pip install git+https://gitlab.com/veloxchem/veloxchem
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd VeloxChem
+$ export SKBUILD_CONFIGURE_OPTIONS=&quot;-DVLX_LA_VENDOR=OpenBLAS -DCMAKE_CXX_COMPILER=mpicxx&quot;
+$ export CMAKE_PREFIX_PATH=/path/to/your/libxc:$CMAKE_PREFIX_PATH
+$ python3 -m pip install --no-build-isolation -v .
 </pre></div>
 </div>
 </li>
@@ -741,79 +678,46 @@ to <code class="docutils literal notranslate"><span class="pre">CMAKE_ARGS</span
 macosx-10.9-x86_64
 
 $ export CMAKE_ARGS=&quot;-DCMAKE_OSX_DEPLOYMENT_TARGET:STRING=10.9&quot;
-$ python3 -m pip install .
+$ python3 -m pip install --no-build-isolation .
 </pre></div>
 </div>
 <p>Another issue that one may encounter on macOS is that the <code class="docutils literal notranslate"><span class="pre">-march=native</span></code>
 flag is not supported by the compiler. The workaround is to add
 <code class="docutils literal notranslate"><span class="pre">-DENABLE_ARCH_FLAGS=OFF</span></code> to <code class="docutils literal notranslate"><span class="pre">CMAKE_ARGS</span></code>. For example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ export CMAKE_ARGS=&quot;-DCMAKE_OSX_DEPLOYMENT_TARGET:STRING=10.9 -DENABLE_ARCH_FLAGS=OFF&quot;
-$ python3 -m pip install .
+$ python3 -m pip install --no-build-isolation .
 </pre></div>
 </div>
 </li>
 </ul>
 </section>
-<section id="installing-on-windows">
-<h3>Installing on Windows<a class="headerlink" href="#installing-on-windows" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>Soon to come!</p></li>
-</ul>
-</section>
 </section>
 <section id="external-dependencies">
 <span id="id1"></span><h2>External dependencies<a class="headerlink" href="#external-dependencies" title="Link to this heading">#</a></h2>
-<p>If you wish to use functionality offered through interfaces with other software packages, you will first need to install them.  Currently, interfaces to add-on dependencies <a class="reference external" href="https://github.com/grimme-lab/xtb">XTB</a> and <a class="reference external" href="https://github.com/maxscheurer/cppe">CPPE</a> are available.</p>
-<section id="the-cppe-library-for-polarizable-embedding">
-<h3>The CPPE library for polarizable embedding<a class="headerlink" href="#the-cppe-library-for-polarizable-embedding" title="Link to this heading">#</a></h3>
-<p>There are few ways to install the CPPE library for polarizable embedding. Note that you will need a C++ compiler compliant with the C++14 standard and CMake.</p>
-<p>You can install it via <code class="docutils literal notranslate"><span class="pre">pip</span></code> in your virtual environment:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python3 -m pip install cppe
+<p>If you wish to use functionality offered through interfaces with other software packages, you will first need to install them.  Currently, interface to add-on dependency <a class="reference external" href="https://github.com/dftd4/dftd4">dftd4-python</a> is available.</p>
+<section id="the-dftd4-python-package-for-dispersion-correction">
+<h3>The dftd4-python package for dispersion correction<a class="headerlink" href="#the-dftd4-python-package-for-dispersion-correction" title="Link to this heading">#</a></h3>
+<p>It is recommended to install the dftd4-python package in a conda environment:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ conda install dftd4-python -c conda-forge
 </pre></div>
 </div>
-<p>or as an extra during compilation of VeloxChem:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python3 -m pip install .[qmmm]
+<p>Alternatively, you can compile it using <code class="docutils literal notranslate"><span class="pre">meson</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python3 -m pip install meson ninja cffi
+$ cd dftd4-3.7.0/
+$ meson setup _build -Dpython=true -Dpython_version=$(which python3)
+$ meson test -C _build --print-errorlogs
+$ meson configure _build --prefix=/path/to/your/dftd4
+$ meson install -C _build
 </pre></div>
 </div>
-<p>Alternatively, you can compile it without using <code class="docutils literal notranslate"><span class="pre">pip</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Build CPPE
-$ git clone https://github.com/maxscheurer/cppe
-$ cd cppe; mkdir build; cd build
-$ cmake -DENABLE_PYTHON_INTERFACE=ON ..
-$ make
-
-# Set up python path
-$ export PYTHONPATH=/path/to/your/cppe/build/stage/lib:$PYTHONPATH
-</pre></div>
-</div>
-</section>
-<section id="the-xtb-package-for-semiempirical-methods">
-<h3>The XTB package for semiempirical methods<a class="headerlink" href="#the-xtb-package-for-semiempirical-methods" title="Link to this heading">#</a></h3>
-<p>It is recommended to install the XTB package in a conda environment:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ conda install xtb -c conda-forge
-</pre></div>
-</div>
-<p>Alternatively, you can compile it using <code class="docutils literal notranslate"><span class="pre">cmake</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Build XTB
-$ git clone https://github.com/grimme-lab/xtb
-$ cd xtb; mkdir build; cd build
-$ cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX:PATH=/path/to/your/xtb ..
-$ make
-$ make install
-
-# Set XTBHOME prior to installing VeloxChem
-$ export XTBHOME=/path/to/your/xtb
+<p>In case you want to use custom math library, add <code class="docutils literal notranslate"><span class="pre">-Dlapack=custom</span></code> and
+<code class="docutils literal notranslate"><span class="pre">-Dcustom_libraries=...</span></code> to the <code class="docutils literal notranslate"><span class="pre">meson</span> <span class="pre">setup</span></code> command.</p>
+<p>After installation, add the dftd4 package to <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code>. You may need to
+replace “python3.11” with the version of Python installed on your system.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ export PYTHONPATH=$PYTHONPATH:/path/to/your/dftd4/lib/python3.11/site-packages
 </pre></div>
 </div>
 </section>
-</section>
-<section id="release-versions">
-<h2>Release versions<a class="headerlink" href="#release-versions" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>1.0-rc3 (2022-11-09) Third release candidate</p></li>
-<li><p>1.0-rc2 (2021-04-23) Second release candidate</p></li>
-<li><p>1.0-rc (2020-02-28) First release candidate</p></li>
-</ul>
 </section>
 </section>
 
@@ -881,25 +785,21 @@ $ export XTBHOME=/path/to/your/xtb
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-binaries-using-conda">Installing binaries using conda</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-precompiled-binaries-using-conda">Installing precompiled binaries using conda</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-from-source">Installing from source</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#obtaining-the-source-code">Obtaining the source code</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-prerequisites">Build prerequisites</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-using-conda">Installing using conda</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-on-cray-platform-x86-64-or-arm-processor">Installing on Cray platform (x86-64 or ARM processor)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-on-debian-based-linux">Installing on Debian-based Linux</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-on-rpm-based-linux">Installing on RPM-based Linux</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-on-unix-like-systems-using-conda">Installing on Unix-like systems using conda</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-on-cray-system">Installing on Cray system</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-on-ubuntu">Installing on Ubuntu</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-on-powerlinux">Installing on PowerLinux</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-on-macos">Installing on macOS</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-on-windows">Installing on Windows</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#external-dependencies">External dependencies</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-cppe-library-for-polarizable-embedding">The CPPE library for polarizable embedding</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-xtb-package-for-semiempirical-methods">The XTB package for semiempirical methods</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-dftd4-python-package-for-dispersion-correction">The dftd4-python package for dispersion correction</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#release-versions">Release versions</a></li>
 </ul>
   </nav></div>
 

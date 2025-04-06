@@ -28,8 +28,8 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
@@ -432,13 +432,14 @@ document.write(`
 <h1>Program structure<a class="headerlink" href="#program-structure" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">veloxchem</span> <span class="k">as</span> <span class="nn">vlx</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">veloxchem</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">vlx</span>
 </pre></div>
 </div>
 </div>
 </div>
 <p>The VeloxChem program adopts a layered Python/C++ language structure.</p>
-<a class="bg-primary mb-1 reference internal image-reference" href="../_images/code-structure.png"><img alt="veloxchem-structure" class="bg-primary mb-1 align-center" src="../_images/code-structure.png" style="width: 600px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/code-structure.png"><img alt="veloxchem-structure" class="bg-primary mb-1 align-center" src="../_images/code-structure.png" style="width: 600px;" />
+</a>
 <p>You can use the standard functions to get a more detailed view of the Python layer. The <code class="docutils literal notranslate"><span class="pre">help</span></code> function will give you a package description, stating the copyright agreement.</p>
 <div class="cell tag_output_scroll docutils container">
 <div class="cell_input docutils container">
@@ -453,12 +454,11 @@ NAME
     veloxchem
 
 DESCRIPTION
-    #                           VELOXCHEM 1.0-RC3
+    #                              VELOXCHEM
     #         ----------------------------------------------------
     #                     An Electronic Structure Code
     #
-    #  Copyright © 2018-2022 by VeloxChem developers. All rights reserved.
-    #  Contact: https://veloxchem.org/contact
+    #  Copyright © 2018-2024 by VeloxChem developers. All rights reserved.
     #
     #  SPDX-License-Identifier: LGPL-3.0-or-later
     #
@@ -480,7 +480,7 @@ DESCRIPTION
 PACKAGE CONTENTS
     __main__
     aodensitymatrix
-    aofockmatrix
+    aoindices
     atomtypeidentifier
     batchsize
     blockdavidson
@@ -488,31 +488,56 @@ PACKAGE CONTENTS
     c6driver
     checkpoint
     cli
-    cnadriver
+    conformergenerator
+    cpcmdriver
+    cphfsolver
     cppsolver
     cubicgrid
     cubicresponsedriver
-    denguess
+    densityviewer
     dftutils
+    dispersionmodel
     distributedarray
+    embedding
     environment
     errorhandler
+    evbdataprocessing
+    evbdriver
+    evbfepdriver
+    evbffbuilder
+    evbreporter
+    evbsystembuilder
+    excitedstateanalysisdriver
     excitondriver
     features
     firstorderprop
-    forcefieldgenerator
-    gopdriver
+    fockdriver
     gradientdriver
+    griddriver
     hessiandriver
+    hessianorbitalresponse
+    imdatabasedriver
+    imdatabasepointcollecter
+    imforcefieldgenerator
+    impescoordinates
+    impesdriver
     inputparser
+    interpolationdatapoint
+    interpolationdriver
     linearsolver
-    loprop
     lreigensolver
     lrsolver
     main
+    matrices
+    matrix
     mklconf
     mmdriver
+    mmforcefieldgenerator
     mmgradientdriver
+    mofbuilder
+    mofoptimizer
+    mofpreparer
+    mofutils
     mointsdriver
     molecularbasis
     molecularorbitals
@@ -521,18 +546,24 @@ PACKAGE CONTENTS
     mpitask
     nonlinearsolver
     numerovdriver
+    oneeints
     openmmdriver
+    openmmdynamics
     openmmgradientdriver
     optimizationdriver
     optimizationengine
     orbitalviewer
     outputstream
-    polembed
+    peforcefieldgenerator
+    polarizabilitygradient
+    polorbitalresponse
     profiler
     pulsedrsp
-    qqscheme
     quadraticresponsedriver
+    reactionmatcher
     respchargesdriver
+    rifockdriver
+    rigradientdriver
     rspabsorption
     rspc6
     rspcdspec
@@ -543,6 +574,7 @@ PACKAGE CONTENTS
     rspshg
     rsptpa
     rsptpatransition
+    sadguessdriver
     sanitychecks
     scfdriver
     scfgradientdriver
@@ -552,131 +584,202 @@ PACKAGE CONTENTS
     scfunrestdriver
     seminario
     shgdriver
-    signalhandler
+    solvationbuilder
+    solvationfepdriver
     subcommunicators
+    submatrix
     symmetryanalyzer
     symmetryoperations
     tdaeigensolver
     tddftgradientdriver
-    tests (package)
+    tddftorbitalresponse
+    tdhfhessiandriver
+    threepatransitiondriver
     tpadriver
     tpafulldriver
     tpareddriver
     tpatransitiondriver
     trajectorydriver
-    treeblock
     uffparameters
-    utils
     veloxchemlib
+    vibrationalanalysis
     visualizationdriver
     xtbdriver
     xtbgradientdriver
     xtbhessiandriver
 
 FUNCTIONS
-    ao_matrix_to_dalton(...) method of builtins.PyCapsule instance
-        ao_matrix_to_dalton(matrix: CDenseMatrix, basis: veloxchem.veloxchemlib.MolecularBasis, molecule: veloxchem.veloxchemlib.Molecule) -&gt; CDenseMatrix
-        
-        Transforms AO matrix from VeloxChem to Dalton format.
-    
-    ao_matrix_to_veloxchem(...) method of builtins.PyCapsule instance
-        ao_matrix_to_veloxchem(matrix: CDenseMatrix, basis: veloxchem.veloxchemlib.MolecularBasis, molecule: veloxchem.veloxchemlib.Molecule) -&gt; CDenseMatrix
-        
-        Transforms AO matrix from Dalton to VeloxChem format.
-    
     available_functionals(...) method of builtins.PyCapsule instance
         available_functionals() -&gt; list[str]
-        
+
         Gets a list of available exchange-correlation functionals.
-    
+
+    available_pdft_functionals(...) method of builtins.PyCapsule instance
+        available_pdft_functionals() -&gt; list[str]
+
+        Gets a list of available pdft exchange-correlation functionals components.
+
     bohr_in_angstrom(...) method of builtins.PyCapsule instance
         bohr_in_angstrom() -&gt; float
-        
+
         Gets Bohr value in Angstroms.
-    
-    bohr_in_angstroms(...) method of builtins.PyCapsule instance
-        bohr_in_angstroms() -&gt; float
-        
-        Gets Bohr value in Angstroms.
-    
+
+    chemical_element_identifier(...) method of builtins.PyCapsule instance
+        chemical_element_identifier(arg0: str) -&gt; int
+
+        Gets chemical element identifier.
+
+    chemical_element_label(...) method of builtins.PyCapsule instance
+        chemical_element_label(arg0: int) -&gt; str
+
+        Gets chemical element label.
+
+    chemical_element_mass(...) method of builtins.PyCapsule instance
+        chemical_element_mass(arg0: int) -&gt; float
+
+        Gets chemical element mass.
+
+    chemical_element_max_angular_momentum(...) method of builtins.PyCapsule instance
+        chemical_element_max_angular_momentum(arg0: int) -&gt; int
+
+        Gets maximum angular momentum of atomic shell in chemical element.
+
+    chemical_element_name(...) method of builtins.PyCapsule instance
+        chemical_element_name(arg0: int) -&gt; str
+
+        Gets chemical element name.
+
+    compute_angular_momentum_integrals(...) method of builtins.PyCapsule instance
+        compute_angular_momentum_integrals(molecule: veloxchem.veloxchemlib.Molecule, basis: veloxchem.veloxchemlib.MolecularBasis, origin: list[float] = [0.0, 0.0, 0.0]) -&gt; list
+
+        Computes angular momentum integrals.
+
+    compute_linear_momentum_integrals(...) method of builtins.PyCapsule instance
+        compute_linear_momentum_integrals(molecule: veloxchem.veloxchemlib.Molecule, basis: veloxchem.veloxchemlib.MolecularBasis) -&gt; list
+
+        Computes linear momentum integrals.
+
     dipole_in_debye(...) method of builtins.PyCapsule instance
         dipole_in_debye() -&gt; float
-        
+
         Gets convertion factor for dipole moment (a.u. -&gt; Debye).
-    
+
     extinction_coefficient_from_beta(...) method of builtins.PyCapsule instance
         extinction_coefficient_from_beta() -&gt; float
-        
+
         Gets factor needed for the calculation of the extinction coefficent from the electric-dipole magnetic-dipole polarizability beta.
-    
+
     fine_structure_constant(...) method of builtins.PyCapsule instance
         fine_structure_constant() -&gt; float
-        
+
         Gets fine-structure constant.
-    
-    get_basis_function_indices_for_atom(...) method of builtins.PyCapsule instance
-        get_basis_function_indices_for_atom(molecule: veloxchem.veloxchemlib.Molecule, basis: veloxchem.veloxchemlib.MolecularBasis, atomIdx: int) -&gt; list[list[int]]
-        
-        Gets basis function indices for an atom.
-    
+
     hartree_in_ev(...) method of builtins.PyCapsule instance
         hartree_in_ev() -&gt; float
-        
+
         Gets Hartree value in electronvolts.
-    
+
     hartree_in_kcalpermol(...) method of builtins.PyCapsule instance
         hartree_in_kcalpermol() -&gt; float
-        
+
         Gets Hartree value in kcal/mol.
-    
+
+    hartree_in_kjpermol(...) method of builtins.PyCapsule instance
+        hartree_in_kjpermol() -&gt; float
+
+        Gets Hartree value in kJ/mol.
+
     hartree_in_wavenumber(...) method of builtins.PyCapsule instance
         hartree_in_wavenumber() -&gt; float
-        
+
         Gets Hartree value in reciprocal cm.
-    
+
     hartree_in_wavenumbers(...) method of builtins.PyCapsule instance
         hartree_in_wavenumbers() -&gt; float
-        
+
         Gets Hartree value in reciprocal cm.
-    
-    mathconst_pi(...) method of builtins.PyCapsule instance
-        mathconst_pi() -&gt; float
-        
-        Gets value of PI constant.
-    
-    mpi_initialized(...) method of builtins.PyCapsule instance
-        mpi_initialized() -&gt; bool
-        
-        Check if MPI has been initialized.
-    
+
+    is_chemical_element(...) method of builtins.PyCapsule instance
+        is_chemical_element(arg0: int) -&gt; bool
+
+        Checks if identifier is chemical element number.
+
+    make_matrices(...) method of builtins.PyCapsule instance
+        make_matrices(*args, **kwargs)
+        Overloaded function.
+
+        1. make_matrices(arg0: int, arg1: CMolecularBasis, arg2: veloxchem.veloxchemlib.mat_t) -&gt; CMatrices
+
+        Creates matrices for given basis.
+
+        2. make_matrices(arg0: Annotated[list[int], FixedSize(2)], arg1: CMolecularBasis, arg2: veloxchem.veloxchemlib.mat_t) -&gt; CMatrices
+
+        Creates matrices for given basis.
+
+        3. make_matrices(arg0: Annotated[list[int], FixedSize(3)], arg1: CMolecularBasis, arg2: veloxchem.veloxchemlib.mat_t) -&gt; CMatrices
+
+        Creates matrices for given basis.
+
+        4. make_matrices(arg0: Annotated[list[int], FixedSize(4)], arg1: CMolecularBasis, arg2: veloxchem.veloxchemlib.mat_t) -&gt; CMatrices
+
+        Creates matrices for given basis.
+
+        5. make_matrices(arg0: int, arg1: CMolecularBasis, arg2: CMolecularBasis) -&gt; CMatrices
+
+        Creates matrices for given basis.
+
+        6. make_matrices(arg0: Annotated[list[int], FixedSize(2)], arg1: CMolecularBasis, arg2: CMolecularBasis) -&gt; CMatrices
+
+        Creates matrices for given basis.
+
+        7. make_matrices(arg0: Annotated[list[int], FixedSize(3)], arg1: CMolecularBasis, arg2: CMolecularBasis) -&gt; CMatrices
+
+        Creates matrices for given basis.
+
+        8. make_matrices(arg0: Annotated[list[int], FixedSize(4)], arg1: CMolecularBasis, arg2: CMolecularBasis) -&gt; CMatrices
+
+        Creates matrices for given basis.
+
+    make_matrix(...) method of builtins.PyCapsule instance
+        make_matrix(*args, **kwargs)
+        Overloaded function.
+
+        1. make_matrix(arg0: CMolecularBasis, arg1: veloxchem.veloxchemlib.mat_t) -&gt; CMatrix
+
+        Creates matrix for given basis.
+
+        2. make_matrix(arg0: CMolecularBasis, arg1: CMolecularBasis) -&gt; CMatrix
+
+        Creates matrix for given pair of bases.
+
     mpi_master(...) method of builtins.PyCapsule instance
         mpi_master() -&gt; int
-        
-        Gets default rank of master MPI process.
-    
-    new_parse_xc_func = parse_xc_func(...) method of builtins.PyCapsule instance
-        parse_xc_func(xcLabel: str) -&gt; veloxchem.veloxchemlib.XCFunctional
-        
-        Converts exchange-correlation functional label to exchange-correlation functional object.
-    
+
+        Gets the rank of MPI master process.
+
     parse_xc_func(...) method of builtins.PyCapsule instance
         parse_xc_func(xcLabel: str) -&gt; veloxchem.veloxchemlib.XCFunctional
-        
+
         Converts exchange-correlation functional label to exchange-correlation functional object.
-    
+
+    partition_atoms(...) method of builtins.PyCapsule instance
+        partition_atoms(arg0: int, arg1: int, arg2: int) -&gt; list[int]
+
+        Get atomic indices of partitioned atoms list.
+
     rotatory_strength_in_cgs(...) method of builtins.PyCapsule instance
         rotatory_strength_in_cgs() -&gt; float
-        
+
         Gets convertion factor for rotatory strength (a.u. -&gt; 10^-40 cgs).
 
 DATA
-    __deployed__ = {&#39;author&#39;: &#39;Xin&#39;, &#39;build&#39;: &#39;166&#39;, &#39;commit&#39;: &#39;f38722e654...
+    __deployed__ = {&#39;author&#39;: &#39;Xin Li&#39;, &#39;build&#39;: &#39;194&#39;, &#39;commit&#39;: &#39;7a73cc7...
 
 VERSION
     1.0rc3
 
 FILE
-    /Users/lixin/miniforge3/envs/vlxman/lib/python3.11/site-packages/veloxchem/__init__.py
+    /Users/lixin/miniforge3/envs/vlxman2/lib/python3.12/site-packages/veloxchem/__init__.py
 </pre></div>
 </div>
 </div>
@@ -692,62 +795,101 @@ FILE
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;AODensityMatrix&#39;,
- &#39;AOFockMatrix&#39;,
  &#39;Absorption&#39;,
- &#39;AngularMomentumIntegralsDriver&#39;,
  &#39;AtomBasis&#39;,
  &#39;AtomTypeIdentifier&#39;,
  &#39;BasisFunction&#39;,
  &#39;BlockDavidsonSolver&#39;,
+ &#39;BlockedGtoPairBlock&#39;,
  &#39;C6&#39;,
  &#39;C6Driver&#39;,
  &#39;CircularDichroismSpectrum&#39;,
  &#39;ComplexResponse&#39;,
+ &#39;ConformerGenerator&#39;,
+ &#39;CpcmDriver&#39;,
+ &#39;CphfSolver&#39;,
  &#39;CubicGrid&#39;,
  &#39;CubicResponseDriver&#39;,
- &#39;CustomProperty&#39;,
- &#39;DenseMatrix&#39;,
+ &#39;DensityViewer&#39;,
  &#39;DispersionModel&#39;,
  &#39;ElectricDipoleIntegralsDriver&#39;,
- &#39;ElectronRepulsionIntegralsDriver&#39;,
- &#39;ExcitationVector&#39;,
+ &#39;ElectricDipoleMomentDriver&#39;,
+ &#39;ElectricDipoleMomentGeom100Driver&#39;,
+ &#39;EvbDataProcessing&#39;,
+ &#39;EvbDriver&#39;,
+ &#39;EvbFepDriver&#39;,
+ &#39;EvbForceFieldBuilder&#39;,
+ &#39;EvbReporter&#39;,
+ &#39;EvbSystemBuilder&#39;,
+ &#39;ExcitedStateAnalysisDriver&#39;,
  &#39;ExcitonModelDriver&#39;,
  &#39;FirstOrderProperties&#39;,
- &#39;ForceFieldGenerator&#39;,
+ &#39;FockDriver&#39;,
+ &#39;FockGeom1000Driver&#39;,
+ &#39;FockGeom1010Driver&#39;,
+ &#39;FockGeom1100Driver&#39;,
+ &#39;FockGeom2000Driver&#39;,
  &#39;GradientDriver&#39;,
  &#39;GridDriver&#39;,
+ &#39;GtoBlock&#39;,
+ &#39;GtoPairBlock&#39;,
  &#39;HessianDriver&#39;,
+ &#39;HessianOrbitalResponse&#39;,
+ &#39;IMDatabasePointCollecter&#39;,
+ &#39;IMForceFieldGenerator&#39;,
  &#39;InputParser&#39;,
- &#39;KineticEnergyIntegralsDriver&#39;,
+ &#39;InterpolationDatapoint&#39;,
+ &#39;InterpolationDriver&#39;,
+ &#39;KineticEnergyDriver&#39;,
+ &#39;KineticEnergyGeom100Driver&#39;,
+ &#39;KineticEnergyGeom101Driver&#39;,
+ &#39;KineticEnergyGeom200Driver&#39;,
  &#39;LinearAbsorptionCrossSection&#39;,
- &#39;LinearMomentumIntegralsDriver&#39;,
  &#39;LinearResponseEigenSolver&#39;,
  &#39;LinearResponseSolver&#39;,
  &#39;LoPropDriver&#39;,
  &#39;MMDriver&#39;,
+ &#39;MMForceFieldGenerator&#39;,
  &#39;MMGradientDriver&#39;,
  &#39;MOIntegralsDriver&#39;,
- &#39;MOIntsBatch&#39;,
+ &#39;Matrices&#39;,
+ &#39;Matrix&#39;,
+ &#39;MofBuilder&#39;,
  &#39;MolecularBasis&#39;,
  &#39;MolecularOrbitals&#39;,
  &#39;Molecule&#39;,
  &#39;Mp2Driver&#39;,
  &#39;MpiTask&#39;,
- &#39;NuclearPotentialIntegralsDriver&#39;,
+ &#39;NuclearPotentialDriver&#39;,
+ &#39;NuclearPotentialErfDriver&#39;,
+ &#39;NuclearPotentialErfGeom010Driver&#39;,
+ &#39;NuclearPotentialErfGeom100Driver&#39;,
+ &#39;NuclearPotentialGeom010Driver&#39;,
+ &#39;NuclearPotentialGeom100Driver&#39;,
+ &#39;NuclearPotentialGeom101Driver&#39;,
+ &#39;NuclearPotentialGeom110Driver&#39;,
+ &#39;NuclearPotentialGeom200Driver&#39;,
  &#39;NumerovDriver&#39;,
  &#39;OpenMMDriver&#39;,
+ &#39;OpenMMDynamics&#39;,
  &#39;OpenMMGradientDriver&#39;,
  &#39;OptimizationDriver&#39;,
  &#39;OrbitalViewer&#39;,
  &#39;OutputStream&#39;,
- &#39;OverlapIntegralsDriver&#39;,
+ &#39;OverlapDriver&#39;,
+ &#39;OverlapGeom100Driver&#39;,
+ &#39;OverlapGeom101Driver&#39;,
+ &#39;OverlapGeom200Driver&#39;,
+ &#39;PEForceFieldGenerator&#39;,
+ &#39;PolOrbitalResponse&#39;,
  &#39;Polarizability&#39;,
+ &#39;PolarizabilityGradient&#39;,
  &#39;QuadraticResponseDriver&#39;,
+ &#39;RIFockDriver&#39;,
+ &#39;RIFockGradDriver&#39;,
  &#39;RespChargesDriver&#39;,
  &#39;ResponseProperty&#39;,
- &#39;SADGuessDriver&#39;,
  &#39;SHG&#39;,
- &#39;SHGDriver&#39;,
  &#39;ScfGradientDriver&#39;,
  &#39;ScfHessianDriver&#39;,
  &#39;ScfRestrictedDriver&#39;,
@@ -755,24 +897,33 @@ FILE
  &#39;ScfUnrestrictedDriver&#39;,
  &#39;Seminario&#39;,
  &#39;ShgDriver&#39;,
+ &#39;SolvationBuilder&#39;,
+ &#39;SolvationFepDriver&#39;,
  &#39;SubCommunicators&#39;,
+ &#39;SubMatrix&#39;,
  &#39;SymmetryAnalyzer&#39;,
- &#39;TDAExciDriver&#39;,
+ &#39;T3FlatBuffer&#39;,
+ &#39;T4CScreener&#39;,
  &#39;TPA&#39;,
- &#39;TPAFullDriver&#39;,
- &#39;TPAReducedDriver&#39;,
  &#39;TdaEigenSolver&#39;,
  &#39;TddftGradientDriver&#39;,
+ &#39;TddftOrbitalResponse&#39;,
+ &#39;TdhfHessianDriver&#39;,
+ &#39;ThreeCenterElectronRepulsionDriver&#39;,
+ &#39;ThreeCenterElectronRepulsionGeom010Driver&#39;,
+ &#39;ThreeCenterElectronRepulsionGeom100Driver&#39;,
+ &#39;ThreeCenterOverlapDriver&#39;,
+ &#39;ThreePATransitionDriver&#39;,
  &#39;TpaFullDriver&#39;,
  &#39;TpaReducedDriver&#39;,
  &#39;TpaTransitionDriver&#39;,
- &#39;TwoIndexes&#39;,
+ &#39;TwoCenterElectronRepulsionDriver&#39;,
+ &#39;TwoCenterElectronRepulsionGeom100Driver&#39;,
+ &#39;VibrationalAnalysis&#39;,
  &#39;VisualizationDriver&#39;,
  &#39;XCFunctional&#39;,
  &#39;XCIntegrator&#39;,
- &#39;XCNewFunctional&#39;,
- &#39;XCNewIntegrator&#39;,
- &#39;XTBDriver&#39;,
+ &#39;XCMolecularGradient&#39;,
  &#39;XtbDriver&#39;,
  &#39;XtbGradientDriver&#39;,
  &#39;XtbHessianDriver&#39;,
@@ -787,93 +938,128 @@ FILE
  &#39;__path__&#39;,
  &#39;__spec__&#39;,
  &#39;__version__&#39;,
- &#39;ao_matrix_to_dalton&#39;,
- &#39;ao_matrix_to_veloxchem&#39;,
  &#39;aodensitymatrix&#39;,
- &#39;aofockmatrix&#39;,
+ &#39;aoindices&#39;,
  &#39;assert_msg_critical&#39;,
  &#39;atomtypeidentifier&#39;,
  &#39;available_functionals&#39;,
+ &#39;available_pdft_functionals&#39;,
  &#39;batchsize&#39;,
  &#39;blockdavidson&#39;,
  &#39;bohr_in_angstrom&#39;,
- &#39;bohr_in_angstroms&#39;,
  &#39;c2diis&#39;,
  &#39;c6driver&#39;,
  &#39;checkpoint&#39;,
+ &#39;chemical_element_identifier&#39;,
+ &#39;chemical_element_label&#39;,
+ &#39;chemical_element_mass&#39;,
+ &#39;chemical_element_max_angular_momentum&#39;,
+ &#39;chemical_element_name&#39;,
+ &#39;compute_angular_momentum_integrals&#39;,
+ &#39;compute_electric_dipole_integrals&#39;,
+ &#39;compute_kinetic_energy_integrals&#39;,
+ &#39;compute_linear_momentum_integrals&#39;,
+ &#39;compute_nuclear_potential_integrals&#39;,
+ &#39;compute_overlap_integrals&#39;,
  &#39;configure_mkl_rt&#39;,
+ &#39;conformergenerator&#39;,
+ &#39;cpcmdriver&#39;,
+ &#39;cphfsolver&#39;,
  &#39;cppsolver&#39;,
  &#39;cubicgrid&#39;,
  &#39;cubicresponsedriver&#39;,
- &#39;denguess&#39;,
  &#39;denmat&#39;,
+ &#39;densityviewer&#39;,
  &#39;dftutils&#39;,
  &#39;dipole_in_debye&#39;,
+ &#39;dispersionmodel&#39;,
  &#39;distributedarray&#39;,
  &#39;environment&#39;,
- &#39;ericut&#39;,
  &#39;errorhandler&#39;,
+ &#39;evbdataprocessing&#39;,
+ &#39;evbdriver&#39;,
+ &#39;evbfepdriver&#39;,
+ &#39;evbffbuilder&#39;,
+ &#39;evbreporter&#39;,
+ &#39;evbsystembuilder&#39;,
+ &#39;excitedstateanalysisdriver&#39;,
  &#39;excitondriver&#39;,
  &#39;extinction_coefficient_from_beta&#39;,
  &#39;features&#39;,
  &#39;fine_structure_constant&#39;,
  &#39;firstorderprop&#39;,
- &#39;fockmat&#39;,
- &#39;forcefieldgenerator&#39;,
- &#39;get_basis_function_indices_for_atom&#39;,
+ &#39;fockdriver&#39;,
  &#39;get_basis_path&#39;,
- &#39;get_qq_scheme&#39;,
- &#39;get_qq_type&#39;,
+ &#39;get_data_path&#39;,
  &#39;gradientdriver&#39;,
+ &#39;griddriver&#39;,
  &#39;hartree_in_ev&#39;,
  &#39;hartree_in_kcalpermol&#39;,
+ &#39;hartree_in_kjpermol&#39;,
  &#39;hartree_in_wavenumber&#39;,
  &#39;hartree_in_wavenumbers&#39;,
  &#39;hessiandriver&#39;,
+ &#39;hessianorbitalresponse&#39;,
+ &#39;imdatabasepointcollecter&#39;,
+ &#39;imforcefieldgenerator&#39;,
  &#39;inputparser&#39;,
+ &#39;interpolationdatapoint&#39;,
+ &#39;interpolationdriver&#39;,
+ &#39;is_chemical_element&#39;,
  &#39;linearsolver&#39;,
- &#39;loprop&#39;,
  &#39;lreigensolver&#39;,
  &#39;lrsolver&#39;,
- &#39;mathconst_pi&#39;,
+ &#39;make_matrices&#39;,
+ &#39;make_matrix&#39;,
+ &#39;mat_t&#39;,
+ &#39;matrices&#39;,
+ &#39;matrix&#39;,
  &#39;mklconf&#39;,
  &#39;mmdriver&#39;,
+ &#39;mmforcefieldgenerator&#39;,
  &#39;mmgradientdriver&#39;,
- &#39;moints&#39;,
+ &#39;mofbuilder&#39;,
+ &#39;mofoptimizer&#39;,
+ &#39;mofpreparer&#39;,
+ &#39;mofutils&#39;,
  &#39;mointsdriver&#39;,
  &#39;molecularbasis&#39;,
  &#39;molecularorbitals&#39;,
  &#39;molecule&#39;,
  &#39;molorb&#39;,
  &#39;mp2driver&#39;,
- &#39;mpi_initialized&#39;,
  &#39;mpi_master&#39;,
  &#39;mpitask&#39;,
- &#39;new_parse_xc_func&#39;,
  &#39;nonlinearsolver&#39;,
  &#39;numerovdriver&#39;,
+ &#39;oneeints&#39;,
  &#39;openmmdriver&#39;,
+ &#39;openmmdynamics&#39;,
  &#39;openmmgradientdriver&#39;,
  &#39;optimizationdriver&#39;,
  &#39;optimizationengine&#39;,
  &#39;orbitalviewer&#39;,
  &#39;outputstream&#39;,
  &#39;parse_xc_func&#39;,
+ &#39;partition_atoms&#39;,
+ &#39;peforcefieldgenerator&#39;,
+ &#39;polarizabilitygradient&#39;,
+ &#39;polorbitalresponse&#39;,
  &#39;print_features&#39;,
  &#39;profiler&#39;,
- &#39;qqscheme&#39;,
  &#39;quadraticresponsedriver&#39;,
+ &#39;reactionmatcher&#39;,
  &#39;respchargesdriver&#39;,
  &#39;rotatory_strength_in_cgs&#39;,
  &#39;rspabsorption&#39;,
  &#39;rspc6&#39;,
  &#39;rspcdspec&#39;,
- &#39;rspcustomproperty&#39;,
  &#39;rsplinabscross&#39;,
  &#39;rsppolarizability&#39;,
  &#39;rspproperty&#39;,
  &#39;rspshg&#39;,
  &#39;rsptpa&#39;,
+ &#39;sadguessdriver&#39;,
  &#39;sanitychecks&#39;,
  &#39;scfdriver&#39;,
  &#39;scfgradientdriver&#39;,
@@ -884,20 +1070,25 @@ FILE
  &#39;seminario&#39;,
  &#39;set_omp_num_threads&#39;,
  &#39;set_vlxbasispath&#39;,
+ &#39;set_vlxdatapath&#39;,
  &#39;shgdriver&#39;,
- &#39;signalhandler&#39;,
+ &#39;solvationbuilder&#39;,
+ &#39;solvationfepdriver&#39;,
  &#39;subcommunicators&#39;,
  &#39;symmetryanalyzer&#39;,
  &#39;symmetryoperations&#39;,
- &#39;szblock&#39;,
  &#39;tdaeigensolver&#39;,
  &#39;tddftgradientdriver&#39;,
+ &#39;tddftorbitalresponse&#39;,
+ &#39;tdhfhessiandriver&#39;,
+ &#39;threepatransitiondriver&#39;,
  &#39;tpadriver&#39;,
  &#39;tpafulldriver&#39;,
  &#39;tpareddriver&#39;,
  &#39;tpatransitiondriver&#39;,
  &#39;uffparameters&#39;,
  &#39;veloxchemlib&#39;,
+ &#39;vibrationalanalysis&#39;,
  &#39;visualizationdriver&#39;,
  &#39;xtbdriver&#39;,
  &#39;xtbgradientdriver&#39;,
@@ -969,14 +1160,12 @@ FILE
  &#39;_check_convergence&#39;,
  &#39;_comp_2e_fock&#39;,
  &#39;_comp_2e_fock_single_comm&#39;,
- &#39;_comp_2e_fock_split_comm&#39;,
  &#39;_comp_density_change&#39;,
  &#39;_comp_diis&#39;,
  &#39;_comp_energy&#39;,
  &#39;_comp_full_fock&#39;,
  &#39;_comp_gradient&#39;,
- &#39;_comp_guess_density&#39;,
- &#39;_comp_npot_mat_split_comm&#39;,
+ &#39;_comp_npot_mat_parallel&#39;,
  &#39;_comp_number_of_electrons&#39;,
  &#39;_comp_one_ints&#39;,
  &#39;_delete_mos&#39;,
@@ -985,12 +1174,10 @@ FILE
  &#39;_get_dyn_threshold&#39;,
  &#39;_get_effective_fock&#39;,
  &#39;_get_guess_type&#39;,
- &#39;_get_qq_dyn&#39;,
  &#39;_get_scaled_fock&#39;,
  &#39;_get_scf_range&#39;,
  &#39;_graceful_exit&#39;,
  &#39;_need_graceful_exit&#39;,
- &#39;_pe_sanity_check&#39;,
  &#39;_print_energy_components&#39;,
  &#39;_print_ground_state&#39;,
  &#39;_print_header&#39;,
@@ -999,13 +1186,15 @@ FILE
  &#39;_print_scf_finish&#39;,
  &#39;_print_scf_title&#39;,
  &#39;_store_diis_data&#39;,
- &#39;_update_fock_type&#39;,
  &#39;_update_mol_orbs_phase&#39;,
  &#39;_write_final_hdf5&#39;,
  &#39;comm&#39;,
  &#39;compute&#39;,
  &#39;compute_s2&#39;,
  &#39;density&#39;,
+ &#39;gen_initial_density_proj&#39;,
+ &#39;gen_initial_density_restart&#39;,
+ &#39;gen_initial_density_sad&#39;,
  &#39;get_scf_energy&#39;,
  &#39;get_scf_type_str&#39;,
  &#39;history&#39;,
@@ -1025,6 +1214,7 @@ FILE
  &#39;scf_type&#39;,
  &#39;set_start_orbitals&#39;,
  &#39;update_settings&#39;,
+ &#39;validate_checkpoint&#39;,
  &#39;write_checkpoint&#39;]
 </pre></div>
 </div>

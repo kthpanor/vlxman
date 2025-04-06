@@ -28,8 +28,8 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
@@ -435,7 +435,7 @@ document.write(`
 <p>Let us consider an example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">veloxchem</span> <span class="k">as</span> <span class="nn">vlx</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">veloxchem</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">vlx</span>
 
 <span class="n">co_xyz_str</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">2</span>
@@ -458,25 +458,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info * Reading basis set from file: /Users/lixin/miniforge3/envs/vlxman/lib/python3.11/site-packages/veloxchem/basis/CC-PVDZ
-                                                                                                                          
-                                              Molecular Basis (Atomic Basis)                                              
-                                             ================================                                             
-                                                                                                                          
-                               Basis: CC-PVDZ                                                                             
-                                                                                                                          
-                               Atom Contracted GTOs           Primitive GTOs                                              
-                                                                                                                          
-                                O   (3S,2P,1D)                (17S,4P,1D)                                                 
-                                C   (3S,2P,1D)                (17S,4P,1D)                                                 
-                                                                                                                          
-                               Contracted Basis Functions : 28                                                            
-                               Primitive Basis Functions  : 68                                                            
-                                                                                                                          
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="available-basis-sets">
@@ -490,7 +471,7 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Available basis sets for carbon:
- [&#39;6-31++G&#39;, &#39;6-31++G*&#39;, &#39;6-31++G**&#39;, &#39;6-31+G&#39;, &#39;6-31+G*&#39;, &#39;6-31+G**&#39;, &#39;6-311++G&#39;, &#39;6-311++G(2D,2P)&#39;, &#39;6-311++G(3DF,3PD)&#39;, &#39;6-311++G*&#39;, &#39;6-311++G**&#39;, &#39;6-311+G&#39;, &#39;6-311+G(2D,P)&#39;, &#39;6-311+G*&#39;, &#39;6-311+G**&#39;, &#39;6-311G&#39;, &#39;6-311G(2DF,2PD)&#39;, &#39;6-311G*&#39;, &#39;6-311G**&#39;, &#39;6-31G&#39;, &#39;6-31G(2DF,P)&#39;, &#39;6-31G(3DF,3PD)&#39;, &#39;6-31G*&#39;, &#39;6-31G**&#39;, &#39;ANO-L-MB&#39;, &#39;ANO-L-VDZP&#39;, &#39;ANO-L-VQZP&#39;, &#39;ANO-L-VTZP&#39;, &#39;ANO-S-MB&#39;, &#39;ANO-S-VDZP&#39;, &#39;AO-START-GUESS&#39;, &#39;AUG-CC-PCV5Z&#39;, &#39;AUG-CC-PCVDZ&#39;, &#39;AUG-CC-PCVQZ&#39;, &#39;AUG-CC-PCVTZ&#39;, &#39;AUG-CC-PV5Z&#39;, &#39;AUG-CC-PV6Z&#39;, &#39;AUG-CC-PVDZ&#39;, &#39;AUG-CC-PVQZ&#39;, &#39;AUG-CC-PVTZ&#39;, &#39;AUG-PCSEG-0&#39;, &#39;AUG-PCSEG-1&#39;, &#39;AUG-PCSEG-2&#39;, &#39;AUG-PCSEG-3&#39;, &#39;AUG-PCSEG-4&#39;, &#39;AUG-PCX-1&#39;, &#39;AUG-PCX-2&#39;, &#39;AUG-PCX-3&#39;, &#39;AUG-PCX-4&#39;, &#39;CC-PCV5Z&#39;, &#39;CC-PCVDZ&#39;, &#39;CC-PCVQZ&#39;, &#39;CC-PCVTZ&#39;, &#39;CC-PV5Z&#39;, &#39;CC-PV6Z&#39;, &#39;CC-PVDZ&#39;, &#39;CC-PVQZ&#39;, &#39;CC-PVTZ&#39;, &#39;DAUG-CC-PCV5Z&#39;, &#39;DAUG-CC-PCVDZ&#39;, &#39;DAUG-CC-PCVQZ&#39;, &#39;DAUG-CC-PCVTZ&#39;, &#39;DAUG-CC-PV5Z&#39;, &#39;DAUG-CC-PV6Z&#39;, &#39;DAUG-CC-PVDZ&#39;, &#39;DAUG-CC-PVQZ&#39;, &#39;DAUG-CC-PVTZ&#39;, &#39;DEF2-QZVP&#39;, &#39;DEF2-QZVPD&#39;, &#39;DEF2-QZVPP&#39;, &#39;DEF2-QZVPPD&#39;, &#39;DEF2-SV(P)&#39;, &#39;DEF2-SVP&#39;, &#39;DEF2-SVPD&#39;, &#39;DEF2-TZVP&#39;, &#39;DEF2-TZVPD&#39;, &#39;DEF2-TZVPP&#39;, &#39;DEF2-TZVPPD&#39;, &#39;PCSEG-0&#39;, &#39;PCSEG-1&#39;, &#39;PCSEG-2&#39;, &#39;PCSEG-3&#39;, &#39;PCSEG-4&#39;, &#39;PCX-1&#39;, &#39;PCX-2&#39;, &#39;PCX-3&#39;, &#39;PCX-4&#39;, &#39;SADLEJ-PVTZ&#39;, &#39;STO-3G&#39;, &#39;STO-3G-OLD&#39;, &#39;STO-6G&#39;, &#39;TAUG-CC-PCV5Z&#39;, &#39;TAUG-CC-PCVDZ&#39;, &#39;TAUG-CC-PCVQZ&#39;, &#39;TAUG-CC-PCVTZ&#39;, &#39;TAUG-CC-PV5Z&#39;, &#39;TAUG-CC-PV6Z&#39;, &#39;TAUG-CC-PVDZ&#39;, &#39;TAUG-CC-PVQZ&#39;, &#39;TAUG-CC-PVTZ&#39;]
+ [&#39;6-31++G&#39;, &#39;6-31++G*&#39;, &#39;6-31++G**&#39;, &#39;6-31+G&#39;, &#39;6-31+G*&#39;, &#39;6-31+G**&#39;, &#39;6-311++G&#39;, &#39;6-311++G(2D,2P)&#39;, &#39;6-311++G(3DF,3PD)&#39;, &#39;6-311++G*&#39;, &#39;6-311++G**&#39;, &#39;6-311+G&#39;, &#39;6-311+G(2D,P)&#39;, &#39;6-311+G*&#39;, &#39;6-311+G**&#39;, &#39;6-311G&#39;, &#39;6-311G(2DF,2PD)&#39;, &#39;6-311G*&#39;, &#39;6-311G**&#39;, &#39;6-31G&#39;, &#39;6-31G(2DF,P)&#39;, &#39;6-31G(3DF,3PD)&#39;, &#39;6-31G*&#39;, &#39;6-31G**&#39;, &#39;ANO-L-MB&#39;, &#39;ANO-L-VDZP&#39;, &#39;ANO-L-VQZP&#39;, &#39;ANO-L-VTZP&#39;, &#39;ANO-RCC-MB&#39;, &#39;ANO-S-MB&#39;, &#39;ANO-S-VDZP&#39;, &#39;AO-START-GUESS&#39;, &#39;AUG-CC-PCV5Z&#39;, &#39;AUG-CC-PCVDZ&#39;, &#39;AUG-CC-PCVQZ&#39;, &#39;AUG-CC-PCVTZ&#39;, &#39;AUG-CC-PV5Z&#39;, &#39;AUG-CC-PV6Z&#39;, &#39;AUG-CC-PVDZ&#39;, &#39;AUG-CC-PVQZ&#39;, &#39;AUG-CC-PVTZ&#39;, &#39;AUG-PCSEG-0&#39;, &#39;AUG-PCSEG-1&#39;, &#39;AUG-PCSEG-2&#39;, &#39;AUG-PCSEG-3&#39;, &#39;AUG-PCSEG-4&#39;, &#39;AUG-PCX-1&#39;, &#39;AUG-PCX-2&#39;, &#39;AUG-PCX-3&#39;, &#39;AUG-PCX-4&#39;, &#39;CC-PCV5Z&#39;, &#39;CC-PCVDZ&#39;, &#39;CC-PCVQZ&#39;, &#39;CC-PCVTZ&#39;, &#39;CC-PV5Z&#39;, &#39;CC-PV6Z&#39;, &#39;CC-PV6Z-NO-OPT-GC&#39;, &#39;CC-PVDZ&#39;, &#39;CC-PVQZ&#39;, &#39;CC-PVTZ&#39;, &#39;DAUG-CC-PCV5Z&#39;, &#39;DAUG-CC-PCVDZ&#39;, &#39;DAUG-CC-PCVQZ&#39;, &#39;DAUG-CC-PCVTZ&#39;, &#39;DAUG-CC-PV5Z&#39;, &#39;DAUG-CC-PV6Z&#39;, &#39;DAUG-CC-PVDZ&#39;, &#39;DAUG-CC-PVQZ&#39;, &#39;DAUG-CC-PVTZ&#39;, &#39;DEF2-QZVP&#39;, &#39;DEF2-QZVPD&#39;, &#39;DEF2-QZVPP&#39;, &#39;DEF2-QZVPPD&#39;, &#39;DEF2-SV(P)&#39;, &#39;DEF2-SVP&#39;, &#39;DEF2-SVPD&#39;, &#39;DEF2-TZVP&#39;, &#39;DEF2-TZVPD&#39;, &#39;DEF2-TZVPP&#39;, &#39;DEF2-TZVPPD&#39;, &#39;DEF2-UNIVERSAL-JFIT&#39;, &#39;DEF2-UNIVERSAL-JKFIT&#39;, &#39;PCSEG-0&#39;, &#39;PCSEG-1&#39;, &#39;PCSEG-2&#39;, &#39;PCSEG-3&#39;, &#39;PCSEG-4&#39;, &#39;PCX-1&#39;, &#39;PCX-2&#39;, &#39;PCX-3&#39;, &#39;PCX-4&#39;, &#39;SADLEJ-PVTZ&#39;, &#39;STO-3G&#39;, &#39;STO-3G-OLD&#39;, &#39;STO-6G&#39;, &#39;TAUG-CC-PCV5Z&#39;, &#39;TAUG-CC-PCVDZ&#39;, &#39;TAUG-CC-PCVQZ&#39;, &#39;TAUG-CC-PCVTZ&#39;, &#39;TAUG-CC-PV5Z&#39;, &#39;TAUG-CC-PV6Z&#39;, &#39;TAUG-CC-PVDZ&#39;, &#39;TAUG-CC-PVQZ&#39;, &#39;TAUG-CC-PVTZ&#39;]
 </pre></div>
 </div>
 </div>

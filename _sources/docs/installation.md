@@ -1,6 +1,6 @@
 # Installing the program
 
-## Installing binaries using conda
+## Installing precompiled binaries using conda
 
 Binaries are available for the three main operating systems:
 
@@ -8,27 +8,15 @@ Binaries are available for the three main operating systems:
 - macOS
 - Linux
 
-[Conda](https://docs.conda.io/en/latest/) is an open-source package and environment management system that runs on Windows, macOS, and Linux. The conda repository contains a large number of open-source certified packages enabling scientific work. It is recommended that you install the minimal installer for conda named miniconda that includes only conda, Python, the packages they depend on, and a small number of other useful packages, including pip, zlib and a few others.
+[Conda](https://docs.conda.io/en/latest/) is an open-source package and environment management system that runs on Windows, macOS, and Linux. The [conda-forge](https://conda-forge.org/) channel contains a large number of open-source certified packages enabling scientific work. It is recommended that you install the minimal installer for conda named miniconda, or the community-driven installer named miniforge, that includes only conda, Python, the packages they depend on, and a small number of other useful packages, including pip, zlib and a few others.
 
-Retrieve miniconda from the following website
+Retrieve miniconda or miniforge from the following website
 
-> <https://docs.conda.io/en/latest/miniconda.html>
+> <https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html>
 
-Install the version for 64 bit computers that comes with Python (>=3.8).
+Install the version for 64-bit computers that comes with Python (>=3.9).
 
-````{admonition} Faster conda solver
-:class: tip
-
-The new `conda-libmamba-solver` run much faster than the default, as discussed in [this blog post](https://www.anaconda.com/blog/conda-is-fast-now). We recommend that you use this solver, which is done by updating conda, installing the new solver to your base environment, and configuring your solver selection:
-
-```
-conda update -n base conda
-conda install -n base conda-libmamba-solver
-conda config --set solver libmamba
-```
-````
-
-Start a conda terminal, or Anaconda Powershell as it is referred to on a Windows system. Conda supports multiple *environments* and you start in the one named `base` as is typically indicated by the prompt. To create a new and additional environment named `vlxenv` and install VeloxChem, Matplotlib, and Jupyter notebook (and package dependencies such as NumPy and SciPy) into it, you enter the following command line statement
+Start a conda terminal, or Anaconda Prompt / Miniconda Prompt as it is referred to on a Windows system. Conda supports multiple *environments* and you start in the one named `base` as is typically indicated by the prompt. To create a new and additional environment named `vlxenv` and install VeloxChem, Matplotlib, and Jupyter notebook (and package dependencies such as NumPy and SciPy) into it, you enter the following command line statement
 
 ```
 $ conda create -n vlxenv veloxchem matplotlib jupyterlab -c veloxchem -c conda-forge
@@ -48,13 +36,13 @@ $ conda activate vlxenv
 
 as should be indicated by getting a modified prompt.
 
-Inside this newly created environment, you should now be ready to start a Jupyter notebook with the command
+Inside this newly created environment, you should now be ready to start JupyterLab with the command
 
 ```
-$ jupyter-notebook
+$ jupyter-lab
 ```
 
-which should open in your default web browser. A notebook allows for interactive execution of Python code written into cells. You should now be able to import the VeloxChem module in a cell:
+which should open in your default web browser. A notebook in JupyterLab allows for interactive execution of Python code written into cells. You should now be able to import the VeloxChem module in a cell:
 
 ```
 import veloxchem as vlx
@@ -67,41 +55,41 @@ and start calculations. See the [eChem](https://kthpanor.github.io/echem) book f
 
 ### Obtaining the source code
 
-The source code can be downloaded from the [GitLab repository](https://gitlab.com/veloxchem/veloxchem):
+The source code can be downloaded from the [GitHub repository](https://github.com/VeloxChem/VeloxChem):
 
 ```
-$ git clone https://gitlab.com/veloxchem/veloxchem
+$ git clone https://github.com/VeloxChem/VeloxChem.git
 ```
 
 ### Build prerequisites
 
 - [CMake](https://cmake.org/)
-- C++ compiler fully compliant with the C++17 standard
-- Linear algebra libraries implementing the BLAS and LAPACK interfaces (e.g. Intel MKL, OpenBLAS or Cray LibSci)
-- MPI library (e.g. MPICH, Intel MPI or Open MPI)
-- [Python](https://www.python.org/) (>=3.8) that includes the interpreter, the development header files, and the development libraries
+- C++ compiler fully compliant with the C++20 standard
+- Linear algebra libraries implementing the BLAS and LAPACK interfaces (e.g. OpenBLAS)
+- MPI library (e.g. MPICH)
+- [Python](https://www.python.org/) (>=3.9) that includes the interpreter, the development header files, and the development libraries
 - [MPI4Py](https://mpi4py.readthedocs.io/en/stable/)
 - [Scikit-build](https://scikit-build.readthedocs.io/en/latest/)
 - [Libxc](https://libxc.gitlab.io/)
+- [Eigen](https://gitlab.com/libeigen/eigen)
 
 Optional, add-on dependencies:
 
-- [CPPE](https://github.com/maxscheurer/cppe)
-- [XTB](https://github.com/grimme-lab/xtb)
+- [dftd4-python](https://github.com/dftd4/dftd4)
 
 See {ref}`external-dependencies` for instructions on how to get these add-ons.
 
 To avoid clashes between dependencies, we recommend to always use a [virtual enviroment](https://docs.python.org/3/tutorial/venv.html).
 
 (with-conda)=
-### Installing using conda
+### Installing on Unix-like systems using conda
 
 [Conda](https://docs.conda.io/en/latest/) and the software packaged on the [conda-forge](https://conda-forge.org/) channel provide build isolation and greatly simplify the installation of VeloxChem.
 
 - Move to the folder containing the source code:
 
   ```
-  $ cd veloxchem
+  $ cd VeloxChem
   ```
 
 - Create and activate the conda environment:
@@ -111,12 +99,12 @@ To avoid clashes between dependencies, we recommend to always use a [virtual env
   $ conda activate vlxenv
   ```
 
-  This will create and activate a conda environment named `vlxenv`. In this environment all the build dependencies will be installed from the `conda-forge` channel, including the C++ compiler, MPI, [NumPy](https://numpy.org), [MPI4Py](https://mpi4py.readthedocs.io/en/stable/), etc. We provide two options for the `<environment_file>` that specifies different linear algebra backend for your conda environment:
+  This will create and activate a conda environment named `vlxenv`. In this environment all the build dependencies will be installed from the conda-forge channel, including the C++ compiler, MPI, [NumPy](https://numpy.org), [MPI4Py](https://mpi4py.readthedocs.io/en/stable/), etc. We provide two options for the `<environment_file>` that specifies different linear algebra backend for your conda environment:
 
   - `mkl_env.yml` which installs the Intel Math Kernel Library,
   - `openblas_env.yml` which installs the OpenBLAS library.
 
-  Note that the MPICH library will be installed by the `yml` file. If you prefer another MPI library such as Open MPI, you can edit the `yml` file and replace `mpich` by `openmpi`. Read more about the `yml` file in [this page](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#create-env-file-manually).
+  Note that the MPICH library will be installed by the .yml file. If you prefer another MPI library such as Open MPI, you can edit the .yml file and replace mpich by openmpi. Read more about the .yml file in [this page](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#create-env-file-manually).
 
 - Set scikit-build configure options:
 
@@ -126,22 +114,16 @@ To avoid clashes between dependencies, we recommend to always use a [virtual env
 
   where ``<math_library>`` can be ``MKL`` or ``OpenBLAS``.
 
-- Set XTBHOME if you would like to enable xTB:
-
-  ```
-  $ export XTBHOME=/path/to/your/vlxenv
-  ```
-
 - Build and install VeloxChem in the conda environment:
 
   ```
-  $ python3 -m pip install .
+  $ python3 -m pip install --no-build-isolation -v .
   ```
 
   By default, the build process will use *all* available cores to compile the C++ sources in parallel. This behavior can be controlled via the `VLX_NUM_BUILD_JOBS` environment variable:
 
   ```
-  $ VLX_NUM_BUILD_JOBS=N python3 -m pip install .
+  $ VLX_NUM_BUILD_JOBS=N python3 -m pip install --no-build-isolation -v .
   ```
 
   which will install VeloxChem using *N* cores.
@@ -152,34 +134,36 @@ To avoid clashes between dependencies, we recommend to always use a [virtual env
   $ conda deactivate
   ```
 
-### Installing on Cray platform (x86-64 or ARM processor)
+### Installing on Cray system
 
 - Load Cray modules:
 
   ```
-  $ module swap PrgEnv-cray PrgEnv-gnu
+  $ module load PrgEnv-gnu
+  $ module load cpe
   $ module load cray-python
   ```
 
-- Create and activate a [virtual enviroment](https://docs.python.org/3/tutorial/venv.html)
+- Create and activate a [virtual enviroment](https://docs.python.org/3/tutorial/venv.html) with `--system-site-packages`
 
   ```
-  $ python3 -m venv vlxenv
+  $ python3 -m venv --system-site-packages vlxenv
   $ source vlxenv/bin/activate
   $ python3 -m pip install --upgrade pip setuptools wheel
-  $ python3 -m pip install cmake pybind11-global scikit-build
+  $ python3 -m pip install h5py pytest psutil geometric cmake pybind11-global scikit-build ninja rdkit
   ```
 
-- Install [MPI4Py](https://mpi4py.readthedocs.io/en/stable/)
+- Clone [Eigen](https://gitlab.com/libeigen/eigen) and set environment variable `EIGEN_INCLUDE_DIR`
 
   ```
-  $ CC=cc MPICC=cc python3 -m pip install --no-deps --no-binary=mpi4py mpi4py
+  $ git clone -b 3.4.0 https://gitlab.com/libeigen/eigen.git
+  $ export EIGEN_INCLUDE_DIR=/path/to/your/eigen
   ```
 
 - Install [Libxc](https://tddft.org/programs/libxc/)
 
   ```
-  $ cd libxc-6.0.0
+  $ cd libxc-7.0.0
   $ mkdir build && cd build
   $ cmake -DDISABLE_KXC=OFF -DDISABLE_LXC=OFF -DCMAKE_INSTALL_LIBDIR=lib -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX:PATH=/path/to/your/libxc ..
   $ make && make test
@@ -187,45 +171,57 @@ To avoid clashes between dependencies, we recommend to always use a [virtual env
   $ cd ../..
   ```
 
-- Use the compiler wrapper to compile VeloxChem:
+  Note that compiling Libxc with `-DDISABLE_KXC=OFF -DDISABLE_LXC=OFF` takes a
+  long time. If you do not need the third- and fourth-order derivatives you can
+  remove them to speed up the compilation. 
+
+- Compile VeloxChem
 
   ```
-  $ cd veloxchem
+  $ cd VeloxChem
   $ export SKBUILD_CONFIGURE_OPTIONS="-DVLX_LA_VENDOR=Cray -DCMAKE_CXX_COMPILER=CC"
-  $ export CMAKE_PREFIX_PATH=/path/to/your/libxc/:$CMAKE_PREFIX_PATH
-  $ python3 -m pip install .
+  $ export CMAKE_PREFIX_PATH=/path/to/your/libxc:$CMAKE_PREFIX_PATH
+  $ python3 -m pip install --no-build-isolation -v .
   ```
 
-  This will also take care of installing the additional necessary Python modules.
+  If you are installing VeloxChem on a HPC cluster, please make sure to run the
+  above compilations on an interactive node.
 
-  If you are installing VeloxChem on a HPC cluster, please run the compilation on an interactive node:
+- CrayBLAS environment variables
 
-  ```
-  $ salloc -N 1 ...
-  $ VLX_NUM_BUILD_JOBS=N srun -n 1 python3 -m pip install .
-  ```
-
-  where *N* is the number of cores on the node.
-
-### Installing on Debian-based Linux
-
-- Install Intel Math Kernel Library from 
-  [this page](https://software.intel.com/en-us/articles/installing-intel-free-libs-and-python-apt-repo).
-  Note that this requires superuser privileges:
+  When running VeloxChem on Cray systems, we recommend setting the following environment
+  variables:
 
   ```
-  $ wget https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS-2019.PUB
-  $ sudo apt-key add GPG-PUB-KEY-INTEL-SW-PRODUCTS-2019.PUB
-  $ sudo sh -c 'echo deb https://apt.repos.intel.com/mkl all main > /etc/apt/sources.list.d/intel-mkl.list'
-  $ sudo apt-get update
-  $ sudo apt-get install intel-mkl-64bit-2019.1-053
+  export CRAYBLAS_LEVEL1_LEGACY=1
+  export CRAYBLAS_LEVEL2_LEGACY=1
+  export CRAYBLAS_LEVEL3_LEGACY=1
   ```
 
-- Install MPI and Python:
+### Installing on Ubuntu
+
+- Install dependencies using apt
 
   ```
-  $ sudo apt-get install git mpich python3 python3-dev python3-pip python3-venv
+  $ sudo apt update
+  $ sudo apt install build-essential wget cmake git python3 python3-pip python3-venv
+  $ sudo apt install libopenblas-openmp-dev liblapacke-dev libeigen3-dev mpich
   ```
+
+- Install [Libxc](https://tddft.org/programs/libxc/)
+
+  ```
+  $ cd libxc-7.0.0
+  $ mkdir build && cd build
+  $ cmake -DDISABLE_KXC=OFF -DDISABLE_LXC=OFF -DCMAKE_INSTALL_LIBDIR=lib -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX:PATH=/path/to/your/libxc ..
+  $ make && make test
+  $ make install
+  $ cd ../..
+  ```
+
+  Note that compiling Libxc with `-DDISABLE_KXC=OFF -DDISABLE_LXC=OFF` takes a
+  long time. If you do not need the third- and fourth-order derivatives you can
+  remove them to speed up the compilation. 
 
 - Create and activate a [virtual enviroment](https://docs.python.org/3/tutorial/venv.html)
 
@@ -235,76 +231,15 @@ To avoid clashes between dependencies, we recommend to always use a [virtual env
   $ python3 -m pip install --upgrade pip setuptools wheel
   $ python3 -m pip install numpy mpi4py h5py
   $ python3 -m pip install cmake pybind11-global scikit-build
-  ```
-
-- Install [Libxc](https://tddft.org/programs/libxc/)
-
-  ```
-  $ cd libxc-6.0.0
-  $ mkdir build && cd build
-  $ cmake -DDISABLE_KXC=OFF -DDISABLE_LXC=OFF -DCMAKE_INSTALL_LIBDIR=lib -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX:PATH=/path/to/your/libxc ..
-  $ make && make test
-  $ make install
-  $ cd ../..
   ```
 
 - Install VeloxChem:
 
   ```
-  $ source /opt/intel/mkl/bin/mklvars.sh intel64
-  $ export SKBUILD_CONFIGURE_OPTIONS="-DVLX_LA_VENDOR=MKL -DCMAKE_CXX_COMPILER=mpicxx"
-  $ export CMAKE_PREFIX_PATH=/path/to/your/libxc/:$CMAKE_PREFIX_PATH
-  $ python3 -m pip install git+https://gitlab.com/veloxchem/veloxchem
-  ```
-
-### Installing on RPM-based Linux
-
-- Install Math Kernel Library from
-  [this page](https://software.intel.com/en-us/articles/installing-intel-free-libs-and-python-yum-repo).
-  Note that this requires superuser privileges:
-
-  ```
-  $ sudo yum install yum-utils
-  $ sudo yum-config-manager --add-repo https://yum.repos.intel.com/mkl/setup/intel-mkl.repo
-  $ sudo rpm --import https://yum.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS-2019.PUB
-  $ sudo yum install intel-mkl-64bit
-  ```
-
-- Install MPI and Python:
-
-  ```
-  $ sudo yum install gcc gcc-g++ mpich mpich-devel python3 python3-devel python3-pip
-  ```
-
-- Create and activate a [virtual enviroment](https://docs.python.org/3/tutorial/venv.html)
-
-  ```
-  $ python3 -m venv vlxenv
-  $ source vlxenv/bin/activate
-  $ python3 -m pip install --upgrade pip setuptools wheel
-  $ python3 -m pip install numpy mpi4py h5py
-  $ python3 -m pip install cmake pybind11-global scikit-build
-  ```
-
-- Install [Libxc](https://tddft.org/programs/libxc/)
-
-  ```
-  $ cd libxc-6.0.0
-  $ mkdir build && cd build
-  $ cmake -DDISABLE_KXC=OFF -DDISABLE_LXC=OFF -DCMAKE_INSTALL_LIBDIR=lib -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX:PATH=/path/to/your/libxc ..
-  $ make && make test
-  $ make install
-  $ cd ../..
-  ```
-
-- Install VeloxChem (you may need to open a new terminal to run the ``module`` command):
-
-  ```
-  $ module load mpi/mpich-x86_64
-  $ source /opt/intel/mkl/bin/mklvars.sh intel64
-  $ export SKBUILD_CONFIGURE_OPTIONS="-DVLX_LA_VENDOR=MKL -DCMAKE_CXX_COMPILER=mpicxx"
-  $ export CMAKE_PREFIX_PATH=/path/to/your/libxc/:$CMAKE_PREFIX_PATH
-  $ python3 -m pip install git+https://gitlab.com/veloxchem/veloxchem
+  $ cd VeloxChem
+  $ export SKBUILD_CONFIGURE_OPTIONS="-DVLX_LA_VENDOR=OpenBLAS -DCMAKE_CXX_COMPILER=mpicxx"
+  $ export CMAKE_PREFIX_PATH=/path/to/your/libxc:$CMAKE_PREFIX_PATH
+  $ python3 -m pip install --no-build-isolation -v .
   ```
 
 ### Installing on PowerLinux
@@ -335,7 +270,7 @@ To avoid clashes between dependencies, we recommend to always use a [virtual env
   macosx-10.9-x86_64
 
   $ export CMAKE_ARGS="-DCMAKE_OSX_DEPLOYMENT_TARGET:STRING=10.9"
-  $ python3 -m pip install .
+  $ python3 -m pip install --no-build-isolation .
   ```
 
   Another issue that one may encounter on macOS is that the ``-march=native``
@@ -344,73 +279,39 @@ To avoid clashes between dependencies, we recommend to always use a [virtual env
 
   ```
   $ export CMAKE_ARGS="-DCMAKE_OSX_DEPLOYMENT_TARGET:STRING=10.9 -DENABLE_ARCH_FLAGS=OFF"
-  $ python3 -m pip install .
+  $ python3 -m pip install --no-build-isolation .
   ```
-
-### Installing on Windows
-
-- Soon to come!
-
 
 (external-dependencies)=
 ## External dependencies
 
-If you wish to use functionality offered through interfaces with other software packages, you will first need to install them.  Currently, interfaces to add-on dependencies [XTB](https://github.com/grimme-lab/xtb) and [CPPE](https://github.com/maxscheurer/cppe) are available.
+If you wish to use functionality offered through interfaces with other software packages, you will first need to install them.  Currently, interface to add-on dependency [dftd4-python](https://github.com/dftd4/dftd4) is available.
 
-### The CPPE library for polarizable embedding
+### The dftd4-python package for dispersion correction
 
-There are few ways to install the CPPE library for polarizable embedding. Note that you will need a C++ compiler compliant with the C++14 standard and CMake.
-
-You can install it via `pip` in your virtual environment:
+It is recommended to install the dftd4-python package in a conda environment:
 
 ```
-$ python3 -m pip install cppe
+$ conda install dftd4-python -c conda-forge
 ```
 
-or as an extra during compilation of VeloxChem:
+Alternatively, you can compile it using ``meson``:
 
 ```
-$ python3 -m pip install .[qmmm]
+$ python3 -m pip install meson ninja cffi
+$ cd dftd4-3.7.0/
+$ meson setup _build -Dpython=true -Dpython_version=$(which python3)
+$ meson test -C _build --print-errorlogs
+$ meson configure _build --prefix=/path/to/your/dftd4
+$ meson install -C _build
 ```
 
-Alternatively, you can compile it without using `pip`:
+In case you want to use custom math library, add `-Dlapack=custom` and
+`-Dcustom_libraries=...` to the `meson setup` command.
+
+After installation, add the dftd4 package to `PYTHONPATH`. You may need to
+replace "python3.11" with the version of Python installed on your system.
 
 ```
-# Build CPPE
-$ git clone https://github.com/maxscheurer/cppe
-$ cd cppe; mkdir build; cd build
-$ cmake -DENABLE_PYTHON_INTERFACE=ON ..
-$ make
-
-# Set up python path
-$ export PYTHONPATH=/path/to/your/cppe/build/stage/lib:$PYTHONPATH
+$ export PYTHONPATH=$PYTHONPATH:/path/to/your/dftd4/lib/python3.11/site-packages
 ```
-
-### The XTB package for semiempirical methods
-
-It is recommended to install the XTB package in a conda environment:
-
-```
-$ conda install xtb -c conda-forge
-```
-
-Alternatively, you can compile it using ``cmake``:
-
-```
-# Build XTB
-$ git clone https://github.com/grimme-lab/xtb
-$ cd xtb; mkdir build; cd build
-$ cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX:PATH=/path/to/your/xtb ..
-$ make
-$ make install
-
-# Set XTBHOME prior to installing VeloxChem
-$ export XTBHOME=/path/to/your/xtb
-```
-## Release versions
-
-- 1.0-rc3 (2022-11-09) Third release candidate
-
-- 1.0-rc2 (2021-04-23) Second release candidate
-
-- 1.0-rc (2020-02-28) First release candidate
