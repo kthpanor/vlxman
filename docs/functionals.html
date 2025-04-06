@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -437,12 +437,23 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">veloxchem</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">vlx</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">vlx</span><span class="o">.</span><span class="n">available_functionals</span><span class="p">())</span>
+<span class="n">avail_funcs</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">available_functionals</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Available functionals:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">avail_funcs</span><span class="p">),</span> <span class="mi">8</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">avail_funcs</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="mi">8</span><span class="p">]))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;SLATER&#39;, &#39;SLDA&#39;, &#39;B88X&#39;, &#39;BLYP&#39;, &#39;B3LYP&#39;, &#39;BHANDH&#39;, &#39;BHANDHLYP&#39;, &#39;PBE&#39;, &#39;PBE0&#39;, &#39;REVPBE&#39;, &#39;BP86&#39;, &#39;PW91&#39;, &#39;MPW1K&#39;, &#39;OLYP&#39;, &#39;O3LYP&#39;, &#39;X3LYP&#39;, &#39;B97&#39;, &#39;B97-1&#39;, &#39;B97-2&#39;, &#39;B97-3&#39;, &#39;LRC-WPBEH&#39;, &#39;CAM-B3LYP&#39;, &#39;TPSS&#39;, &#39;TPSSH&#39;, &#39;REVTPSS&#39;, &#39;PKZB&#39;, &#39;SCAN&#39;, &#39;RSCAN&#39;, &#39;R2SCAN&#39;, &#39;M05&#39;, &#39;M05-2X&#39;, &#39;M06&#39;, &#39;M06-2X&#39;, &#39;M06-HF&#39;, &#39;M06-L&#39;, &#39;M11-L&#39;, &#39;MPW1B95&#39;, &#39;MPWB1K&#39;, &#39;PW6B95&#39;, &#39;PWB6K&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Available functionals:
+
+SLATER, SLDA, B88X, BLYP, B3LYP, BHANDH, BHANDHLYP, PBE
+PBE0, REVPBE, BP86, PW91, MPW1K, OLYP, O3LYP, X3LYP
+B97, B97-1, B97-2, B97-3, LRC-WPBEH, CAM-B3LYP, TPSS, TPSSH
+REVTPSS, PKZB, SCAN, RSCAN, R2SCAN, M05, M05-2X, M06
+M06-2X, M06-HF, M06-L, M11-L, MPW1B95, MPWB1K, PW6B95, PWB6K
 </pre></div>
 </div>
 </div>
