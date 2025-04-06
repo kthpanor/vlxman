@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -530,11 +530,14 @@ $ conda activate vlxenv
 </ul>
 <p>Note that the MPICH library will be installed by the .yml file. If you prefer another MPI library such as Open MPI, you can edit the .yml file and replace mpich by openmpi. Read more about the .yml file in <a class="reference external" href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#create-env-file-manually">this page</a>.</p>
 </li>
-<li><p>Set scikit-build configure options:</p>
+<li><p>Set scikit-build and cmake options:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ export SKBUILD_CONFIGURE_OPTIONS=&quot;-DVLX_LA_VENDOR=&lt;math_library&gt; -DCMAKE_CXX_COMPILER=mpicxx&quot;
 </pre></div>
 </div>
 <p>where <code class="docutils literal notranslate"><span class="pre">&lt;math_library&gt;</span></code> can be <code class="docutils literal notranslate"><span class="pre">MKL</span></code> or <code class="docutils literal notranslate"><span class="pre">OpenBLAS</span></code>.</p>
+<p>If you are installing VeloxChem on macOS you may also need to set the
+<code class="docutils literal notranslate"><span class="pre">CMAKE_ARGS</span></code> environment variable. See <a class="reference internal" href="#on-macos"><span class="std std-ref">Installing on macOS</span></a> for
+details.</p>
 </li>
 <li><p>Build and install VeloxChem in the conda environment:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python3 -m pip install --no-build-isolation -v .
@@ -660,7 +663,7 @@ $ python3 -m pip install --no-build-isolation -v .
 </ul>
 </section>
 <section id="installing-on-macos">
-<h3>Installing on macOS<a class="headerlink" href="#installing-on-macos" title="Link to this heading">#</a></h3>
+<span id="on-macos"></span><h3>Installing on macOS<a class="headerlink" href="#installing-on-macos" title="Link to this heading">#</a></h3>
 <ul>
 <li><p>See installation instructions <a class="reference internal" href="#with-conda"><span class="std std-ref">using conda</span></a></p></li>
 <li><p>Known issues</p>
@@ -712,8 +715,9 @@ $ meson install -C _build
 </div>
 <p>In case you want to use custom math library, add <code class="docutils literal notranslate"><span class="pre">-Dlapack=custom</span></code> and
 <code class="docutils literal notranslate"><span class="pre">-Dcustom_libraries=...</span></code> to the <code class="docutils literal notranslate"><span class="pre">meson</span> <span class="pre">setup</span></code> command.</p>
-<p>After installation, add the dftd4 package to <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code>. You may need to
-replace “python3.11” with the version of Python installed on your system.</p>
+<p>After installation, add the dftd4 package to <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code>.  Make sure to
+replace “python3.11” with the version of Python used in your virtual
+environment.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ export PYTHONPATH=$PYTHONPATH:/path/to/your/dftd4/lib/python3.11/site-packages
 </pre></div>
 </div>

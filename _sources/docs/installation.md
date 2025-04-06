@@ -106,13 +106,17 @@ To avoid clashes between dependencies, we recommend to always use a [virtual env
 
   Note that the MPICH library will be installed by the .yml file. If you prefer another MPI library such as Open MPI, you can edit the .yml file and replace mpich by openmpi. Read more about the .yml file in [this page](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#create-env-file-manually).
 
-- Set scikit-build configure options:
+- Set scikit-build and cmake options:
 
   ```
   $ export SKBUILD_CONFIGURE_OPTIONS="-DVLX_LA_VENDOR=<math_library> -DCMAKE_CXX_COMPILER=mpicxx"
   ```
 
   where ``<math_library>`` can be ``MKL`` or ``OpenBLAS``.
+
+  If you are installing VeloxChem on macOS you may also need to set the
+  `CMAKE_ARGS` environment variable. See [Installing on macOS](on-macos) for
+  details.
 
 - Build and install VeloxChem in the conda environment:
 
@@ -246,6 +250,7 @@ To avoid clashes between dependencies, we recommend to always use a [virtual env
 
 - See installation instructions [using conda](with-conda)
 
+(on-macos)=
 ### Installing on macOS
 
 - See installation instructions [using conda](with-conda)
@@ -309,8 +314,9 @@ $ meson install -C _build
 In case you want to use custom math library, add `-Dlapack=custom` and
 `-Dcustom_libraries=...` to the `meson setup` command.
 
-After installation, add the dftd4 package to `PYTHONPATH`. You may need to
-replace "python3.11" with the version of Python installed on your system.
+After installation, add the dftd4 package to `PYTHONPATH`.  Make sure to
+replace "python3.11" with the version of Python used in your virtual
+environment.
 
 ```
 $ export PYTHONPATH=$PYTHONPATH:/path/to/your/dftd4/lib/python3.11/site-packages
