@@ -536,7 +536,7 @@ $ conda activate vlxenv
 </div>
 <p>where <code class="docutils literal notranslate"><span class="pre">&lt;math_library&gt;</span></code> can be <code class="docutils literal notranslate"><span class="pre">MKL</span></code> or <code class="docutils literal notranslate"><span class="pre">OpenBLAS</span></code>.</p>
 <p>If you are installing VeloxChem on macOS you may also need to set the
-<code class="docutils literal notranslate"><span class="pre">CMAKE_ARGS</span></code> environment variable. See <a class="reference internal" href="#on-macos"><span class="std std-ref">Installing on macOS</span></a> for
+<code class="docutils literal notranslate"><span class="pre">CMAKE_ARGS</span></code> environment variable. See <a class="reference internal" href="#known-issues-macos"><span class="std std-ref">Known issues</span></a> for
 details.</p>
 </li>
 <li><p>Build and install VeloxChem in the conda environment:</p>
@@ -663,9 +663,11 @@ $ python3 -m pip install --no-build-isolation -v .
 </ul>
 </section>
 <section id="installing-on-macos">
-<span id="on-macos"></span><h3>Installing on macOS<a class="headerlink" href="#installing-on-macos" title="Link to this heading">#</a></h3>
-<ul>
+<h3>Installing on macOS<a class="headerlink" href="#installing-on-macos" title="Link to this heading">#</a></h3>
+<ul class="simple">
 <li><p>See installation instructions <a class="reference internal" href="#with-conda"><span class="std std-ref">using conda</span></a></p></li>
+</ul>
+<ul id="known-issues-macos">
 <li><p>Known issues</p>
 <p>On macOS you may encounter the following error at the end of the <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span></code> step:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
@@ -713,7 +715,7 @@ $ meson configure _build --prefix=/path/to/your/dftd4
 $ meson install -C _build
 </pre></div>
 </div>
-<p>In case you want to use custom math library, add <code class="docutils literal notranslate"><span class="pre">-Dlapack=custom</span></code> and
+<p>If you want to use custom math library, add <code class="docutils literal notranslate"><span class="pre">-Dlapack=custom</span></code> and
 <code class="docutils literal notranslate"><span class="pre">-Dcustom_libraries=...</span></code> to the <code class="docutils literal notranslate"><span class="pre">meson</span> <span class="pre">setup</span></code> command.</p>
 <p>After installation, add the dftd4 package to <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code>.  Make sure to
 replace “python3.11” with the version of Python used in your virtual
