@@ -16,7 +16,7 @@ Retrieve miniconda or miniforge from the following website
 
 Install the version for 64-bit computers that comes with Python (>=3.9).
 
-Start a conda terminal, or Anaconda Prompt / Miniconda Prompt as it is referred to on a Windows system. Conda supports multiple *environments* and you start in the one named `base` as is typically indicated by the prompt. To create a new and additional environment named `vlxenv` and install VeloxChem, Matplotlib, and Jupyter notebook (and package dependencies such as NumPy and SciPy) into it, you enter the following command line statement
+Start a conda terminal, or Anaconda Prompt / Miniforge Prompt as it is referred to on a Windows system. Conda supports multiple *environments* and you start in the one named `base` as is typically indicated by the prompt. To create a new and additional environment named `vlxenv` and install VeloxChem, Matplotlib, and Jupyter notebook (and package dependencies such as NumPy and SciPy) into it, you enter the following command line statement
 
 ```
 $ conda create -n vlxenv veloxchem matplotlib jupyterlab -c veloxchem -c conda-forge
