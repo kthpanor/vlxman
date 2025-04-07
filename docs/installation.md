@@ -115,7 +115,7 @@ To avoid clashes between dependencies, we recommend to always use a [virtual env
   where ``<math_library>`` can be ``MKL`` or ``OpenBLAS``.
 
   If you are installing VeloxChem on macOS you may also need to set the
-  `CMAKE_ARGS` environment variable. See [Installing on macOS](on-macos) for
+  `CMAKE_ARGS` environment variable. See [Known issues](known-issues-macos) for
   details.
 
 - Build and install VeloxChem in the conda environment:
@@ -250,11 +250,11 @@ To avoid clashes between dependencies, we recommend to always use a [virtual env
 
 - See installation instructions [using conda](with-conda)
 
-(on-macos)=
 ### Installing on macOS
 
 - See installation instructions [using conda](with-conda)
 
+(known-issues-macos)=
 - Known issues
 
   On macOS you may encounter the following error at the end of the ``pip install`` step:
@@ -311,7 +311,7 @@ $ meson configure _build --prefix=/path/to/your/dftd4
 $ meson install -C _build
 ```
 
-In case you want to use custom math library, add `-Dlapack=custom` and
+If you want to use custom math library, add `-Dlapack=custom` and
 `-Dcustom_libraries=...` to the `meson setup` command.
 
 After installation, add the dftd4 package to `PYTHONPATH`.  Make sure to
