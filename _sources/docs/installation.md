@@ -164,7 +164,7 @@ To avoid clashes between dependencies, we recommend to always use a [virtual env
   $ export EIGEN_INCLUDE_DIR=/path/to/your/eigen
   ```
 
-- Install [Libxc](https://tddft.org/programs/libxc/)
+- Install [Libxc](https://libxc.gitlab.io/)
 
   ```
   $ cd libxc-7.0.0
@@ -212,7 +212,7 @@ To avoid clashes between dependencies, we recommend to always use a [virtual env
   $ sudo apt install libopenblas-openmp-dev liblapacke-dev libeigen3-dev mpich
   ```
 
-- Install [Libxc](https://tddft.org/programs/libxc/)
+- Install [Libxc](https://libxc.gitlab.io/)
 
   ```
   $ cd libxc-7.0.0
