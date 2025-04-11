@@ -22,6 +22,12 @@ Start a conda terminal, or Anaconda Prompt / Miniforge Prompt as it is referred 
 $ conda create -n vlxenv veloxchem matplotlib jupyterlab -c veloxchem -c conda-forge
 ```
 
+````{admonition} Considerations for NumPy performance
+:class: tip
+
+On Linux, we recommend installing `veloxchem` alongside `libopenblas` to ensure that `numpy` uses a high-performance backend for linear algebra operations.
+````
+
 You can list your conda environments
 
 ```
