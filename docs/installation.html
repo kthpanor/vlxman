@@ -461,6 +461,10 @@ document.write(`
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ conda create -n vlxenv veloxchem matplotlib jupyterlab -c veloxchem -c conda-forge
 </pre></div>
 </div>
+<div class="tip admonition">
+<p class="admonition-title">Considerations for NumPy performance</p>
+<p>On Linux, we recommend installing <code class="docutils literal notranslate"><span class="pre">veloxchem</span></code> alongside <code class="docutils literal notranslate"><span class="pre">libopenblas</span></code> to ensure that <code class="docutils literal notranslate"><span class="pre">numpy</span></code> uses a high-performance backend for linear algebra operations.</p>
+</div>
 <p>You can list your conda environments</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ conda env list
 </pre></div>
