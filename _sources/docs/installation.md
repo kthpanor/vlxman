@@ -175,13 +175,14 @@ To avoid clashes between dependencies, we recommend to always use a [virtual env
   ```
   $ cd libxc-7.0.0
   $ mkdir build && cd build
-  $ cmake -DDISABLE_KXC=OFF -DDISABLE_LXC=OFF -DCMAKE_INSTALL_LIBDIR=lib -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX:PATH=/path/to/your/libxc ..
+  $ cmake -DDISABLE_KXC=OFF -DDISABLE_LXC=OFF -DCMAKE_C_COMPILER=gcc-12 -DCMAKE_INSTALL_LIBDIR=lib -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX:PATH=/path/to/your/libxc ..
   $ make && make test
   $ make install
   $ cd ../..
   ```
 
-  Note that compiling Libxc with `-DDISABLE_KXC=OFF -DDISABLE_LXC=OFF` takes a
+  Make sure to replace `gcc-12` with the C compiler you are using. Please also
+  note that compiling Libxc with `-DDISABLE_KXC=OFF -DDISABLE_LXC=OFF` takes a
   long time. If you do not need the third- and fourth-order derivatives you can
   remove them to speed up the compilation. 
 
@@ -191,6 +192,7 @@ To avoid clashes between dependencies, we recommend to always use a [virtual env
   $ cd VeloxChem
   $ export SKBUILD_CONFIGURE_OPTIONS="-DVLX_LA_VENDOR=Cray -DCMAKE_CXX_COMPILER=CC"
   $ export CMAKE_PREFIX_PATH=/path/to/your/libxc:$CMAKE_PREFIX_PATH
+  $ export LD_LIBRARY_PATH=/path/to/your/libxc/lib:$LD_LIBRARY_PATH
   $ python3 -m pip install --no-build-isolation -v .
   ```
 
@@ -223,13 +225,14 @@ To avoid clashes between dependencies, we recommend to always use a [virtual env
   ```
   $ cd libxc-7.0.0
   $ mkdir build && cd build
-  $ cmake -DDISABLE_KXC=OFF -DDISABLE_LXC=OFF -DCMAKE_INSTALL_LIBDIR=lib -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX:PATH=/path/to/your/libxc ..
+  $ cmake -DDISABLE_KXC=OFF -DDISABLE_LXC=OFF -DCMAKE_C_COMPILER=gcc-12 -DCMAKE_INSTALL_LIBDIR=lib -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX:PATH=/path/to/your/libxc ..
   $ make && make test
   $ make install
   $ cd ../..
   ```
 
-  Note that compiling Libxc with `-DDISABLE_KXC=OFF -DDISABLE_LXC=OFF` takes a
+  Make sure to replace `gcc-12` with the C compiler you are using. Please also
+  note that compiling Libxc with `-DDISABLE_KXC=OFF -DDISABLE_LXC=OFF` takes a
   long time. If you do not need the third- and fourth-order derivatives you can
   remove them to speed up the compilation. 
 
@@ -249,6 +252,7 @@ To avoid clashes between dependencies, we recommend to always use a [virtual env
   $ cd VeloxChem
   $ export SKBUILD_CONFIGURE_OPTIONS="-DVLX_LA_VENDOR=OpenBLAS -DCMAKE_CXX_COMPILER=mpicxx"
   $ export CMAKE_PREFIX_PATH=/path/to/your/libxc:$CMAKE_PREFIX_PATH
+  $ export LD_LIBRARY_PATH=/path/to/your/libxc/lib:$LD_LIBRARY_PATH
   $ python3 -m pip install --no-build-isolation -v .
   ```
 
@@ -320,10 +324,11 @@ $ meson install -C _build
 If you want to use custom math library, add `-Dlapack=custom` and
 `-Dcustom_libraries=...` to the `meson setup` command.
 
-After installation, add the dftd4 package to `PYTHONPATH`.  Make sure to
+After installation, add the dftd4 package to `PYTHONPATH` and `LD_LIBRARY_PATH`. Make sure to
 replace "python3.11" with the version of Python used in your virtual
 environment.
 
 ```
 $ export PYTHONPATH=$PYTHONPATH:/path/to/your/dftd4/lib/python3.11/site-packages
+$ export LD_LIBRARY_PATH=/path/to/your/dftd4/lib64:$LD_LIBRARY_PATH
 ```

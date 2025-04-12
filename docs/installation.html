@@ -587,13 +587,14 @@ $ export EIGEN_INCLUDE_DIR=/path/to/your/eigen
 <li><p>Install <a class="reference external" href="https://libxc.gitlab.io/">Libxc</a></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd libxc-7.0.0
 $ mkdir build &amp;&amp; cd build
-$ cmake -DDISABLE_KXC=OFF -DDISABLE_LXC=OFF -DCMAKE_INSTALL_LIBDIR=lib -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX:PATH=/path/to/your/libxc ..
+$ cmake -DDISABLE_KXC=OFF -DDISABLE_LXC=OFF -DCMAKE_C_COMPILER=gcc-12 -DCMAKE_INSTALL_LIBDIR=lib -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX:PATH=/path/to/your/libxc ..
 $ make &amp;&amp; make test
 $ make install
 $ cd ../..
 </pre></div>
 </div>
-<p>Note that compiling Libxc with <code class="docutils literal notranslate"><span class="pre">-DDISABLE_KXC=OFF</span> <span class="pre">-DDISABLE_LXC=OFF</span></code> takes a
+<p>Make sure to replace <code class="docutils literal notranslate"><span class="pre">gcc-12</span></code> with the C compiler you are using. Please also
+note that compiling Libxc with <code class="docutils literal notranslate"><span class="pre">-DDISABLE_KXC=OFF</span> <span class="pre">-DDISABLE_LXC=OFF</span></code> takes a
 long time. If you do not need the third- and fourth-order derivatives you can
 remove them to speed up the compilation.</p>
 </li>
@@ -601,6 +602,7 @@ remove them to speed up the compilation.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd VeloxChem
 $ export SKBUILD_CONFIGURE_OPTIONS=&quot;-DVLX_LA_VENDOR=Cray -DCMAKE_CXX_COMPILER=CC&quot;
 $ export CMAKE_PREFIX_PATH=/path/to/your/libxc:$CMAKE_PREFIX_PATH
+$ export LD_LIBRARY_PATH=/path/to/your/libxc/lib:$LD_LIBRARY_PATH
 $ python3 -m pip install --no-build-isolation -v .
 </pre></div>
 </div>
@@ -631,13 +633,14 @@ $ sudo apt install libopenblas-openmp-dev liblapacke-dev libeigen3-dev mpich
 <li><p>Install <a class="reference external" href="https://libxc.gitlab.io/">Libxc</a></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd libxc-7.0.0
 $ mkdir build &amp;&amp; cd build
-$ cmake -DDISABLE_KXC=OFF -DDISABLE_LXC=OFF -DCMAKE_INSTALL_LIBDIR=lib -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX:PATH=/path/to/your/libxc ..
+$ cmake -DDISABLE_KXC=OFF -DDISABLE_LXC=OFF -DCMAKE_C_COMPILER=gcc-12 -DCMAKE_INSTALL_LIBDIR=lib -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX:PATH=/path/to/your/libxc ..
 $ make &amp;&amp; make test
 $ make install
 $ cd ../..
 </pre></div>
 </div>
-<p>Note that compiling Libxc with <code class="docutils literal notranslate"><span class="pre">-DDISABLE_KXC=OFF</span> <span class="pre">-DDISABLE_LXC=OFF</span></code> takes a
+<p>Make sure to replace <code class="docutils literal notranslate"><span class="pre">gcc-12</span></code> with the C compiler you are using. Please also
+note that compiling Libxc with <code class="docutils literal notranslate"><span class="pre">-DDISABLE_KXC=OFF</span> <span class="pre">-DDISABLE_LXC=OFF</span></code> takes a
 long time. If you do not need the third- and fourth-order derivatives you can
 remove them to speed up the compilation.</p>
 </li>
@@ -654,6 +657,7 @@ $ python3 -m pip install cmake pybind11-global scikit-build
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd VeloxChem
 $ export SKBUILD_CONFIGURE_OPTIONS=&quot;-DVLX_LA_VENDOR=OpenBLAS -DCMAKE_CXX_COMPILER=mpicxx&quot;
 $ export CMAKE_PREFIX_PATH=/path/to/your/libxc:$CMAKE_PREFIX_PATH
+$ export LD_LIBRARY_PATH=/path/to/your/libxc/lib:$LD_LIBRARY_PATH
 $ python3 -m pip install --no-build-isolation -v .
 </pre></div>
 </div>
@@ -721,10 +725,11 @@ $ meson install -C _build
 </div>
 <p>If you want to use custom math library, add <code class="docutils literal notranslate"><span class="pre">-Dlapack=custom</span></code> and
 <code class="docutils literal notranslate"><span class="pre">-Dcustom_libraries=...</span></code> to the <code class="docutils literal notranslate"><span class="pre">meson</span> <span class="pre">setup</span></code> command.</p>
-<p>After installation, add the dftd4 package to <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code>.  Make sure to
+<p>After installation, add the dftd4 package to <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code> and <code class="docutils literal notranslate"><span class="pre">LD_LIBRARY_PATH</span></code>. Make sure to
 replace “python3.11” with the version of Python used in your virtual
 environment.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ export PYTHONPATH=$PYTHONPATH:/path/to/your/dftd4/lib/python3.11/site-packages
+$ export LD_LIBRARY_PATH=/path/to/your/dftd4/lib64:$LD_LIBRARY_PATH
 </pre></div>
 </div>
 </section>
