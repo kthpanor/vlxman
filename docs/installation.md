@@ -326,9 +326,11 @@ If you want to use custom math library, add `-Dlapack=custom` and
 
 After installation, add the dftd4 package to `PYTHONPATH` and `LD_LIBRARY_PATH`. Make sure to
 replace "python3.11" with the version of Python used in your virtual
-environment.
+environment. For large molecules, it may also be necessary to set the `OMP_STACKSIZE`
+environment variable to an appropriate value.
 
 ```
 $ export PYTHONPATH=$PYTHONPATH:/path/to/your/dftd4/lib/python3.11/site-packages
 $ export LD_LIBRARY_PATH=/path/to/your/dftd4/lib64:$LD_LIBRARY_PATH
+$ export OMP_STACKSIZE=16M
 ```
