@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Optical activity and dichroism &#8212; VeloxChem program manual</title>
+    <title>Input files &#8212; VeloxChem program manual</title>
   
   
   
@@ -57,14 +57,10 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/opt_act';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/input_files';</script>
     <link rel="icon" href="../_static/vlx_logo_mark.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Vibrational spectroscopies" href="vib_spect.html" />
-    <link rel="prev" title="UV/vis absorption/emission" href="uv-vis.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -126,6 +122,8 @@
     <div class="bd-container__inner bd-page-width">
       
       
+      
+        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -189,7 +187,6 @@
 <li class="toctree-l1"><a class="reference internal" href="run_desktop.html">Running on a desktop</a></li>
 <li class="toctree-l1"><a class="reference internal" href="run_cluster.html">Running on a cluster</a></li>
 <li class="toctree-l1"><a class="reference internal" href="keywords.html">Input file keywords</a></li>
-<li class="toctree-l1"><a class="reference internal" href="input_files.html">Input files</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Model chemistry</span></p>
 <ul class="nav bd-sidenav">
@@ -200,9 +197,9 @@
 <li class="toctree-l1"><a class="reference internal" href="embedding.html">Environment</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Properties</span></p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="uv-vis.html">UV/vis absorption/emission</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Optical activity and dichroism</a></li>
+<li class="toctree-l1"><a class="reference internal" href="opt_act.html">Optical activity and dichroism</a></li>
 <li class="toctree-l1"><a class="reference internal" href="vib_spect.html">Vibrational spectroscopies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pes.html">Potential energy surfaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="magnetic.html">Magnetic resonances</a></li>
@@ -294,7 +291,7 @@
       
       
       
-      <li><a href="https://github.com/kthpanor/vlxman/issues/new?title=Issue%20on%20page%20%2Fdocs/opt_act.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/kthpanor/vlxman/issues/new?title=Issue%20on%20page%20%2Fdocs/input_files.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -324,7 +321,7 @@
       
       
       
-      <li><a href="../_sources/docs/opt_act.md" target="_blank"
+      <li><a href="../_sources/docs/input_files.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -408,7 +405,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Optical activity and dichroism</h1>
+    <h1>Input files</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -418,9 +415,13 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rotatory-strengths">Rotatory strengths</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extinction-coefficient">Extinction coefficient</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exciton-coupling-model">Exciton coupling model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scf-calculation">SCF calculation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geometry-optimization">Geometry optimization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uv-vis-ecd-absorption-with-linear-response">UV-VIS (ECD) absorption with Linear Response</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uv-vis-absorption-with-complex-polarization-propagator">UV-VIS absorption with Complex Polarization Propagator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ecd-absorption-with-complex-polarization-propagator">ECD absorption with Complex Polarization Propagator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vibrational-spectroscopy">Vibrational spectroscopy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resonance-raman">Resonance Raman</a></li>
 </ul>
             </nav>
         </div>
@@ -432,51 +433,19 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="optical-activity-and-dichroism">
-<h1>Optical activity and dichroism<a class="headerlink" href="#optical-activity-and-dichroism" title="Link to this heading">#</a></h1>
-<section id="rotatory-strengths">
-<h2>Rotatory strengths<a class="headerlink" href="#rotatory-strengths" title="Link to this heading">#</a></h2>
-<p>The strength of an ECD band is given by the anisotropy of the <a class="reference external" href="https://en.wikipedia.org/wiki/Molar_attenuation_coefficient">decadic molar extinction coefficient</a> <span id="id1">[<a class="reference internal" href="refs.html#id50" title="Patrick Norman, Kenneth Ruud, and Trond Saue. Principles and practices of molecular properties. John Wiley &amp; Sons, Ltd, Chichester, UK, 2018.">NRS18</a>]</span></p>
-<div class="math notranslate nohighlight">
-\[
-\Delta\epsilon(\omega) =
-\frac{
-	16\pi N_\mathrm{A}
-}{
-  	\ln\left(10\right)
-	\left(4\pi\varepsilon_0\right) c^2
-}
-\frac{\pi}{3 \hbar}
-\sum_{n&gt;0} f(\omega; \omega_{n0},\gamma)\, 
-\omega_{n0} R_{n0} 
-\]</div>
-<p>where <span class="math notranslate nohighlight">\(N_\mathrm{A}\)</span> is <a class="reference external" href="https://en.wikipedia.org/wiki/Avogadro_constant">Avogadro’s constant</a>, <span class="math notranslate nohighlight">\(f\)</span> is the <a class="reference external" href="https://en.wikipedia.org/wiki/Cauchy_distribution">Cauchy distribution</a>, and <span class="math notranslate nohighlight">\(R_{n0}\)</span> is the rotatory strength defined as</p>
-<div class="math notranslate nohighlight">
-\[
-R_{n0} =
-\sum_{\alpha = x,y,z}
-\Im 
-\langle 0 | \hat{\mu}_\alpha | n \rangle
-\langle n | \hat{m}_\alpha | 0\rangle 
-=
-\sum_{\alpha = x,y,z}
-\frac{-e}{m_\mathrm{e} \omega_{n0}}
-\langle 0 | \hat{p}_\alpha | n \rangle
-\langle n | \hat{m}_\alpha | 0\rangle
-\]</div>
-<p>In VeloxChem, the rotatory strength is evaluated in the velocity gauge as given in the second expression.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="input-files">
+<h1>Input files<a class="headerlink" href="#input-files" title="Link to this heading">#</a></h1>
+<p>In this section, we provide a series of input files for different task.</p>
+<section id="scf-calculation">
+<h2>SCF calculation<a class="headerlink" href="#scf-calculation" title="Link to this heading">#</a></h2>
+<p>This example is for a restricted closed-shell , use <code class="docutils literal notranslate"><span class="pre">task:</span> <span class="pre">uscf</span></code> for unrestricted open-shell and <code class="docutils literal notranslate"><span class="pre">task:</span> <span class="pre">roscf</span></code> for restricted open-shell</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
-<span class="n">task</span><span class="p">:</span> <span class="n">response</span>
+<span class="n">task</span><span class="p">:</span> <span class="n">scf</span>
 <span class="nd">@end</span>
 
 <span class="nd">@method</span> <span class="n">settings</span>
-<span class="n">basis</span><span class="p">:</span> <span class="n">def2</span><span class="o">-</span><span class="n">svpd</span>
 <span class="n">xcfun</span><span class="p">:</span> <span class="n">b3lyp</span>
-<span class="nd">@end</span>
-
-<span class="nd">@response</span>
-<span class="nb">property</span><span class="p">:</span> <span class="n">ecd</span>
-<span class="n">nstates</span><span class="p">:</span> <span class="mi">20</span>
+<span class="n">basis</span><span class="p">:</span> <span class="n">def2</span><span class="o">-</span><span class="n">svp</span>
 <span class="nd">@end</span>
 
 <span class="nd">@molecule</span>
@@ -485,59 +454,71 @@ R_{n0} =
 <span class="n">xyz</span><span class="p">:</span>
 <span class="o">...</span>
 <span class="nd">@end</span>
-
 </pre></div>
 </div>
 </section>
-<section id="extinction-coefficient">
-<h2>Extinction coefficient<a class="headerlink" href="#extinction-coefficient" title="Link to this heading">#</a></h2>
-<p>The anisotropy of the decadic molar extinction coefficient can be determined directly from the complex polarization propagator evaluated for mixed electric- and magnetic-dipole operators <span id="id2">[<a class="reference internal" href="refs.html#id4" title="Auayporn Jiemchooroj and Patrick Norman. Electronic circular dichroism spectra from the complex polarization propagator. J. Chem. Phys., 126(13):134102, 2007. doi:10.1063/1.2716660.">JN07</a>]</span></p>
-<div class="math notranslate nohighlight">
-\[
-\Delta\epsilon(\omega) =
-\frac{
-	16 \pi N_\mathrm{A}
-	\omega^2
-}{
-  	\ln(10)
-	\left(4\pi\varepsilon_0\right) c^2
-}
-\,
-\beta(\omega)
-\]</div>
-<p>where the molecular response property, <span class="math notranslate nohighlight">\(\beta(\omega)\)</span>, is defined as</p>
-<div class="math notranslate nohighlight">
-\[
-\beta(\omega) = -\frac{1}{3 \omega} (G_{xx} + G_{yy} + G_{zz})
-\]</div>
-<p>and</p>
-<div class="math notranslate nohighlight">
-\[
-G_{\alpha\beta} = - \Re\langle\langle\hat{\mu}_\alpha;\hat{m}_\beta
-\rangle\rangle_\omega^\gamma = -
-\frac{e}{\omega m_e}
-\Im 
-\langle\langle\hat{p}_\alpha;
-\hat{m}_\beta
-\rangle\rangle_\omega^\gamma
-\]</div>
-<p>The mixed electric–magnetic dipole tensor, <span class="math notranslate nohighlight">\(G\)</span>, is evaluated in the velocity gauge as given in the second expression. Furthermore, it is complex and calculated with a damping term, <span class="math notranslate nohighlight">\(\hbar \gamma\)</span>, associated with the inverse finite lifetime of the excited states. The default program setting for this parameter is 0.124 eV (or 0.004556 a.u.).</p>
-<p>The resulting values for <span class="math notranslate nohighlight">\(\Delta \epsilon(\omega)\)</span>
-are converted  from atomic units to units of L mol<span class="math notranslate nohighlight">\(^{-1}\)</span> cm<span class="math notranslate nohighlight">\(^{-1}\)</span> by multiplying with a factor of <span class="math notranslate nohighlight">\(10\, a_0^2\)</span>.</p>
+<section id="geometry-optimization">
+<h2>Geometry optimization<a class="headerlink" href="#geometry-optimization" title="Link to this heading">#</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
+<span class="n">task</span><span class="p">:</span> <span class="n">optimize</span>
+<span class="nd">@end</span>
+
+<span class="nd">@method</span> <span class="n">settings</span>
+<span class="n">xcfun</span><span class="p">:</span> <span class="n">b3lyp</span>
+<span class="n">basis</span><span class="p">:</span> <span class="n">def2</span><span class="o">-</span><span class="n">svp</span>
+<span class="n">dispersion</span><span class="p">:</span> <span class="n">yes</span> <span class="c1"># use dft-d4 correction</span>
+<span class="nd">@end</span>
+
+<span class="nd">@molecule</span>
+<span class="n">charge</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">multiplicity</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">xyz</span><span class="p">:</span>
+<span class="o">...</span>
+<span class="nd">@end</span>
+</pre></div>
+</div>
+</section>
+<section id="uv-vis-ecd-absorption-with-linear-response">
+<h2>UV-VIS (ECD) absorption with Linear Response<a class="headerlink" href="#uv-vis-ecd-absorption-with-linear-response" title="Link to this heading">#</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
+<span class="n">task</span><span class="p">:</span> <span class="n">response</span>
+<span class="nd">@end</span>
+
+<span class="nd">@method</span> <span class="n">settings</span>
+<span class="n">xcfun</span><span class="p">:</span> <span class="n">b3lyp</span>
+<span class="n">basis</span><span class="p">:</span> <span class="n">def2</span><span class="o">-</span><span class="n">svp</span>
+<span class="nd">@end</span>
+
+<span class="nd">@response</span>
+<span class="nb">property</span><span class="p">:</span> <span class="n">absorption</span>
+<span class="n">nstates</span><span class="p">:</span> <span class="mi">5</span>
+<span class="n">nto</span><span class="p">:</span> <span class="n">yes</span>
+<span class="nd">@end</span>
+
+<span class="nd">@molecule</span>
+<span class="n">charge</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">multiplicity</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">xyz</span><span class="p">:</span>
+<span class="o">...</span>
+<span class="nd">@end</span>
+</pre></div>
+</div>
+</section>
+<section id="uv-vis-absorption-with-complex-polarization-propagator">
+<h2>UV-VIS absorption with Complex Polarization Propagator<a class="headerlink" href="#uv-vis-absorption-with-complex-polarization-propagator" title="Link to this heading">#</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@jobs
 task: response
 @end
 
 @method settings
-basis: def2-svpd
 xcfun: b3lyp
+basis: def2-svp
 @end
 
 @response
-property: ecd (cpp)
+property: absorption (cpp)
 ! frequency region (and resolution)
-frequencies: 0.05-0.15 (0.0025)
-damping: 0.0045563  ! this is the default value
+frequencies: 0.0-0.15 (0.0025)
 @end
 
 @molecule
@@ -549,24 +530,21 @@ xyz:
 </pre></div>
 </div>
 </section>
-<section id="exciton-coupling-model">
-<h2>Exciton coupling model<a class="headerlink" href="#exciton-coupling-model" title="Link to this heading">#</a></h2>
-<p>VeloxChem implements the exciton coupling model to determine circular dichroism spectra.</p>
+<section id="ecd-absorption-with-complex-polarization-propagator">
+<h2>ECD absorption with Complex Polarization Propagator<a class="headerlink" href="#ecd-absorption-with-complex-polarization-propagator" title="Link to this heading">#</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@jobs
-task: exciton
+task: response
 @end
 
 @method settings
 xcfun: b3lyp
-basis: cc-pvdz
+basis: def2-svp
 @end
 
-@exciton
-fragments: 40
-atoms_per_fragment: 55
-nstates: 5
-ct_nocc: 0
-ct_nvir: 0
+@response
+property: ecd (cpp)
+! frequency region (and resolution)
+frequencies: 0.0-0.15 (0.0025)
 @end
 
 @molecule
@@ -574,9 +552,67 @@ charge: 0
 multiplicity: 1
 xyz:
 ...
-! XYZ coordinates for 40 x 55 atoms
-...
 @end
+</pre></div>
+</div>
+</section>
+<section id="vibrational-spectroscopy">
+<h2>Vibrational spectroscopy<a class="headerlink" href="#vibrational-spectroscopy" title="Link to this heading">#</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
+<span class="n">task</span><span class="p">:</span> <span class="n">vibrational</span>
+<span class="nd">@end</span>
+
+<span class="nd">@method</span> <span class="n">settings</span>
+<span class="n">xcfun</span><span class="p">:</span> <span class="n">b3lyp</span>
+<span class="n">basis</span><span class="p">:</span> <span class="n">def2</span><span class="o">-</span><span class="n">svp</span>
+<span class="nd">@end</span>
+
+<span class="nd">@vibrational</span>
+<span class="n">do_ir</span><span class="p">:</span> <span class="n">yes</span>
+<span class="n">do_raman</span><span class="p">:</span> <span class="n">yes</span>
+<span class="nd">@end</span>
+
+<span class="nd">@molecule</span>
+<span class="n">charge</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">multiplicity</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">xyz</span><span class="p">:</span>
+<span class="o">...</span>                
+<span class="nd">@end</span>
+
+</pre></div>
+</div>
+</section>
+<section id="resonance-raman">
+<h2>Resonance Raman<a class="headerlink" href="#resonance-raman" title="Link to this heading">#</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
+<span class="n">task</span><span class="p">:</span> <span class="n">vibrational</span>
+<span class="nd">@end</span>
+
+<span class="nd">@method</span> <span class="n">settings</span>
+<span class="n">xcfun</span><span class="p">:</span> <span class="n">b3lyp</span>
+<span class="n">basis</span><span class="p">:</span> <span class="n">def2</span><span class="o">-</span><span class="n">svp</span>
+<span class="nd">@end</span>
+
+<span class="nd">@vibrational</span>
+<span class="n">do_ir</span><span class="p">:</span> <span class="n">yes</span>
+<span class="n">do_raman</span><span class="p">:</span> <span class="n">yes</span>
+<span class="n">do_resonance_raman</span><span class="p">:</span> <span class="n">yes</span>
+<span class="n">frequencies</span><span class="p">:</span> <span class="mf">0.05</span><span class="o">-</span><span class="mf">0.25</span> <span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="nd">@end</span>
+
+<span class="nd">@molecule</span>
+<span class="n">charge</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">multiplicity</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">xyz</span><span class="p">:</span>
+<span class="o">...</span>                  
+<span class="nd">@end</span>
+
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </section>
@@ -612,24 +648,6 @@ xyz:
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="uv-vis.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">UV/vis absorption/emission</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="vib_spect.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Vibrational spectroscopies</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -646,9 +664,13 @@ xyz:
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rotatory-strengths">Rotatory strengths</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extinction-coefficient">Extinction coefficient</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exciton-coupling-model">Exciton coupling model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scf-calculation">SCF calculation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geometry-optimization">Geometry optimization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uv-vis-ecd-absorption-with-linear-response">UV-VIS (ECD) absorption with Linear Response</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uv-vis-absorption-with-complex-polarization-propagator">UV-VIS absorption with Complex Polarization Propagator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ecd-absorption-with-complex-polarization-propagator">ECD absorption with Complex Polarization Propagator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vibrational-spectroscopy">Vibrational spectroscopy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resonance-raman">Resonance Raman</a></li>
 </ul>
   </nav></div>
 

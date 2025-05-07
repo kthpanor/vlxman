@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -418,6 +418,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scf-optimization">SCF optimization</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uv-vis-absorption-spectrum">UV/vis absorption spectrum</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-response-solver">Complex response solver</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimization-driver">Optimization Driver</a></li>
 </ul>
             </nav>
         </div>
@@ -612,6 +613,63 @@ document.write(`
 </div>
 </div>
 </section>
+<section id="optimization-driver">
+<h2>Optimization Driver<a class="headerlink" href="#optimization-driver" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">opt_drv</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">OptimizationDriver</span><span class="p">(</span><span class="n">scf_drv</span><span class="p">)</span>
+
+<span class="n">opt_drv</span><span class="o">.</span><span class="n">print_keywords</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                ==========================================================================================                
+                  @optimize                                                                                               
+                ------------------------------------------------------------------------------------------                
+                  coordsys                      string         coordinate system                                          
+                  constraints                   multi-line     constraints                                                
+                  check_interval                integer        interval for checking coordinate system                    
+                  trust                         float          trust radius to begin with                                 
+                  tmax                          float          maximum value of trust radius                              
+                  max_iter                      integer        maximum number of optimization steps                       
+                  transition                    boolean        transition state search                                    
+                  hessian                       string         hessian flag                                               
+                  ref_xyz                       string         reference geometry                                         
+                  keep_files                    boolean        flag to keep output files                                  
+                  conv_maxiter                  boolean        consider converged if max_iter is reached                  
+                  conv_energy                   float                                                                     
+                  conv_grms                     float                                                                     
+                  conv_gmax                     float                                                                     
+                  conv_drms                     float                                                                     
+                  conv_dmax                     float                                                                     
+                ==========================================================================================                
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mol</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">Molecule</span><span class="p">()</span>
+<span class="n">mol</span><span class="o">.</span><span class="n">print_keywords</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                ==========================================================================================                
+                  @molecule                                                                                               
+                ------------------------------------------------------------------------------------------                
+                  charge                        integer        net charge                                                 
+                  multiplicity                  integer        spin multiplicity                                          
+                  units                         string         unit of coordinates, default is Angstrom                   
+                  xyz                           multi-line     atom and Cartesian coordinates                             
+                  xyzfile                       string         XYZ file name (conflicts with units/xyz)                   
+                ==========================================================================================                
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -681,6 +739,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scf-optimization">SCF optimization</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uv-vis-absorption-spectrum">UV/vis absorption spectrum</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-response-solver">Complex response solver</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimization-driver">Optimization Driver</a></li>
 </ul>
   </nav></div>
 

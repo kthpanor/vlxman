@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -445,12 +445,13 @@ document.write(`
 <span class="n">charge</span><span class="p">:</span> <span class="mi">0</span>
 <span class="n">multiplicity</span><span class="p">:</span> <span class="mi">1</span>
 <span class="n">xyz</span><span class="p">:</span>
-<span class="n">O</span>  <span class="mf">0.00000</span>  <span class="mf">0.00000</span>  <span class="mf">0.00000</span>
-<span class="n">H</span>  <span class="mf">0.00000</span>  <span class="mf">0.00000</span>  <span class="mf">1.79524</span>
-<span class="n">H</span>  <span class="mf">1.69319</span>  <span class="mf">0.00000</span> <span class="o">-</span><span class="mf">0.59904</span>
+<span class="o">...</span>
 <span class="nd">@end</span>
 </pre></div>
 </div>
+<p><a class="reference download internal" download="" href="../_downloads/de54fd808bcad7e7ada9a09f0e9db659/biphenyl-scf.inp"><span class="xref download myst">Download</span></a> an input file to perfom a restricted closed-shell calculation for the biphenyl molecule.</p>
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/biphenyl.png"><img alt="cover" class="bg-primary mb-1 align-center" src="../_images/biphenyl.png" style="width: 400px;" />
+</a>
 </section>
 <section id="restricted-open-shell">
 <h2>Restricted open-shell<a class="headerlink" href="#restricted-open-shell" title="Link to this heading">#</a></h2>
@@ -466,12 +467,13 @@ document.write(`
 <span class="n">charge</span><span class="p">:</span> <span class="mi">1</span>
 <span class="n">multiplicity</span><span class="p">:</span> <span class="mi">2</span>
 <span class="n">xyz</span><span class="p">:</span>
-<span class="n">O</span>  <span class="mf">0.00000</span>  <span class="mf">0.00000</span>  <span class="mf">0.00000</span>
-<span class="n">H</span>  <span class="mf">0.00000</span>  <span class="mf">0.00000</span>  <span class="mf">1.79524</span>
-<span class="n">H</span>  <span class="mf">1.69319</span>  <span class="mf">0.00000</span> <span class="o">-</span><span class="mf">0.59904</span>
+<span class="o">...</span>
 <span class="nd">@end</span>
 </pre></div>
 </div>
+<p><a class="reference download internal" download="" href="../_downloads/1e2bc1c308af34442a468efbf394e29f/tempo-roscf.inp"><span class="xref download myst">Download</span></a> the input file to perfom a restricted open-shell calculation for the tempo molecule.</p>
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/tempo.png"><img alt="cover" class="bg-primary mb-1 align-center" src="../_images/tempo.png" style="width: 400px;" />
+</a>
 </section>
 <section id="unrestricted-open-shell">
 <h2>Unrestricted open-shell<a class="headerlink" href="#unrestricted-open-shell" title="Link to this heading">#</a></h2>
@@ -487,12 +489,32 @@ document.write(`
 <span class="n">charge</span><span class="p">:</span> <span class="mi">1</span>
 <span class="n">multiplicity</span><span class="p">:</span> <span class="mi">2</span>
 <span class="n">xyz</span><span class="p">:</span>
-<span class="n">O</span>  <span class="mf">0.00000</span>  <span class="mf">0.00000</span>  <span class="mf">0.00000</span>
-<span class="n">H</span>  <span class="mf">0.00000</span>  <span class="mf">0.00000</span>  <span class="mf">1.79524</span>
-<span class="n">H</span>  <span class="mf">1.69319</span>  <span class="mf">0.00000</span> <span class="o">-</span><span class="mf">0.59904</span>
+<span class="o">...</span>
 <span class="nd">@end</span>
 </pre></div>
 </div>
+<p><a class="reference download internal" download="" href="../_downloads/18efa1ff3aee0ba995371de36abd832e/tritylradical-uscf.inp"><span class="xref download myst">Download</span></a> the input file to perfom a unrestricted open-shell calculation for the triphenylmethyl radical molecule (also called trityl radical).</p>
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/trityl.png"><img alt="cover" class="bg-primary mb-1 align-center" src="../_images/trityl.png" style="width: 400px;" />
+</a>
+<p>By default, all the calculations presented at this page have been performed at the Hartree-Fock level. To use DFT, several functionals are available and should be specified in the <code class="docutils literal notranslate"><span class="pre">&#64;method</span> <span class="pre">settings</span></code> section by using the keyword <code class="docutils literal notranslate"><span class="pre">xcfun</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
+<span class="n">task</span><span class="p">:</span> <span class="n">scf</span>
+<span class="nd">@end</span>
+
+<span class="nd">@method</span> <span class="n">settings</span>
+<span class="n">xcfun</span><span class="p">:</span> <span class="n">b3lyp</span>
+<span class="n">basis</span><span class="p">:</span> <span class="n">def2</span><span class="o">-</span><span class="n">svp</span>
+<span class="nd">@end</span>
+
+<span class="nd">@molecule</span>
+<span class="n">charge</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">multiplicity</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">xyz</span><span class="p">:</span>
+<span class="o">...</span>
+<span class="nd">@end</span>
+</pre></div>
+</div>
+<p>See the <a class="reference internal" href="functionals.html"><span class="std std-doc">Exchange-correlation functionnals</span></a> page for a complete list of functionnal available</p>
 </section>
 </section>
 
