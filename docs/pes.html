@@ -61,8 +61,8 @@
     <link rel="icon" href="../_static/vlx_logo_mark.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Magnetic resonances" href="magnetic.html" />
-    <link rel="prev" title="Vibrational spectroscopies" href="vib_spect.html" />
+    <link rel="next" title="UV/vis absorption/emission" href="uv-vis.html" />
+    <link rel="prev" title="Environment" href="embedding.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -187,7 +187,6 @@
 <li class="toctree-l1"><a class="reference internal" href="run_desktop.html">Running on a desktop</a></li>
 <li class="toctree-l1"><a class="reference internal" href="run_cluster.html">Running on a cluster</a></li>
 <li class="toctree-l1"><a class="reference internal" href="keywords.html">Input file keywords</a></li>
-<li class="toctree-l1"><a class="reference internal" href="input_files.html">Input files</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Model chemistry</span></p>
 <ul class="nav bd-sidenav">
@@ -199,10 +198,10 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Properties</span></p>
 <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Potential energy surfaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="uv-vis.html">UV/vis absorption/emission</a></li>
 <li class="toctree-l1"><a class="reference internal" href="opt_act.html">Optical activity and dichroism</a></li>
 <li class="toctree-l1"><a class="reference internal" href="vib_spect.html">Vibrational spectroscopies</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Potential energy surfaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="magnetic.html">Magnetic resonances</a></li>
 <li class="toctree-l1"><a class="reference internal" href="linear-response.html">Linear response</a></li>
 <li class="toctree-l1"><a class="reference internal" href="nlo.html">Multi-photon interactions</a></li>
@@ -393,7 +392,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -409,6 +410,21 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ground-state-optimization">Ground state optimization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#excited-state-optimization">Excited state optimization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constrained-optimization">Constrained optimization</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#freeze-coordinate">Freeze coordinate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-coordinate">Set coordinate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scan-coordinate">Scan coordinate</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -420,6 +436,76 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="potential-energy-surfaces">
 <h1>Potential energy surfaces<a class="headerlink" href="#potential-energy-surfaces" title="Link to this heading">#</a></h1>
+<section id="ground-state-optimization">
+<h2>Ground state optimization<a class="headerlink" href="#ground-state-optimization" title="Link to this heading">#</a></h2>
+<p>A detailed list of keyword can be found in the <a class="reference internal" href="keywords.html#optimization-driver"><span class="std std-ref">Optimization driver section</span></a> of the <a class="reference internal" href="keywords.html"><span class="std std-doc">Input file keywords page</span></a>. Dispersion can be activated in the <code class="docutils literal notranslate"><span class="pre">&#64;method</span> <span class="pre">settings</span></code> section by using the keyword <code class="docutils literal notranslate"><span class="pre">dispersion</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
+<span class="n">task</span><span class="p">:</span> <span class="n">optimize</span>
+<span class="nd">@end</span>
+
+<span class="nd">@method</span> <span class="n">settings</span>
+<span class="n">xcfun</span><span class="p">:</span> <span class="n">b3lyp</span>
+<span class="n">basis</span><span class="p">:</span> <span class="n">def2</span><span class="o">-</span><span class="n">svp</span>
+<span class="n">dispersion</span><span class="p">:</span> <span class="n">yes</span> <span class="c1"># use dft-d4 correction</span>
+<span class="nd">@end</span>
+
+<span class="nd">@molecule</span>
+<span class="n">charge</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">multiplicity</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">xyz</span><span class="p">:</span>
+<span class="o">...</span>
+<span class="nd">@end</span>
+</pre></div>
+</div>
+<p><a class="reference download internal" download="" href="../_downloads/9ad919335f0e1bf38fae2f9b22eeccce/bithio-S0-opt.inp"><span class="xref download myst">Download</span></a> an input file to perfom a optimization for the bithiophene molecule at the B3LYP+D4/def2-svp level of theory.</p>
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/bithio-S0-opt.gif"><img alt="cover" class="bg-primary mb-1 align-center" src="../_images/bithio-S0-opt.gif" style="width: 400px;" />
+</a>
+</section>
+<section id="excited-state-optimization">
+<h2>Excited state optimization<a class="headerlink" href="#excited-state-optimization" title="Link to this heading">#</a></h2>
+<p>To optimize an excited state, you need to use the task optimize and to specify which state you want to optimize with the <code class="docutils literal notranslate"><span class="pre">state_deriv_index:</span></code> keyword in the <code class="docutils literal notranslate"><span class="pre">&#64;gradient</span></code> section.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
+<span class="n">task</span><span class="p">:</span> <span class="n">optimize</span>
+<span class="nd">@end</span>
+
+<span class="nd">@response</span>
+<span class="nb">property</span><span class="p">:</span> <span class="n">absorption</span>
+<span class="n">nstates</span><span class="p">:</span> <span class="mi">2</span>
+<span class="nd">@end</span>
+
+<span class="nd">@gradient</span>
+<span class="n">state_deriv_index</span><span class="p">:</span> <span class="mi">1</span>
+<span class="nd">@end</span>
+
+<span class="nd">@method</span> <span class="n">settings</span>
+<span class="n">xcfun</span><span class="p">:</span> <span class="n">b3lyp</span>
+<span class="n">basis</span><span class="p">:</span> <span class="n">def2</span><span class="o">-</span><span class="n">svp</span>
+<span class="nd">@end</span>
+
+<span class="nd">@molecule</span>
+<span class="n">charge</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">multiplicity</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">xyz</span><span class="p">:</span>
+<span class="o">...</span>
+<span class="nd">@end</span>
+</pre></div>
+</div>
+<p><a class="reference download internal" download="" href="../_downloads/b11167c718b3ccb5e7ea06abdb2ae911/bithio-S1-opt.inp"><span class="xref download myst">Download</span></a> an input file to perfom a optimization of the first excited state of bithiophene molecule at the B3LYP/def2-svp level of theory.</p>
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/bithio-S1-opt.gif"><img alt="cover" class="bg-primary mb-1 align-center" src="../_images/bithio-S1-opt.gif" style="width: 400px;" />
+</a>
+</section>
+<section id="constrained-optimization">
+<h2>Constrained optimization<a class="headerlink" href="#constrained-optimization" title="Link to this heading">#</a></h2>
+<section id="freeze-coordinate">
+<h3>Freeze coordinate<a class="headerlink" href="#freeze-coordinate" title="Link to this heading">#</a></h3>
+</section>
+<section id="set-coordinate">
+<h3>Set coordinate<a class="headerlink" href="#set-coordinate" title="Link to this heading">#</a></h3>
+</section>
+<section id="scan-coordinate">
+<h3>Scan coordinate<a class="headerlink" href="#scan-coordinate" title="Link to this heading">#</a></h3>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -453,20 +539,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="vib_spect.html"
+       href="embedding.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Vibrational spectroscopies</p>
+        <p class="prev-next-title">Environment</p>
       </div>
     </a>
     <a class="right-next"
-       href="magnetic.html"
+       href="uv-vis.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Magnetic resonances</p>
+        <p class="prev-next-title">UV/vis absorption/emission</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -476,6 +562,28 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ground-state-optimization">Ground state optimization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#excited-state-optimization">Excited state optimization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constrained-optimization">Constrained optimization</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#freeze-coordinate">Freeze coordinate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-coordinate">Set coordinate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scan-coordinate">Scan coordinate</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

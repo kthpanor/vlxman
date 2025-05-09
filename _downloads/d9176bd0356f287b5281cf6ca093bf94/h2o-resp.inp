@@ -1,0 +1,20 @@
+@jobs
+task: resp charges
+@end
+
+@method settings
+basis: 6-31g*
+@end
+
+@resp charges
+equal charges: 2 = 3    ! with reference to the atom ordering below
+@end
+
+@molecule
+charge: 0
+multiplicity: 1
+xyz:  
+O    0.0000000    0.0000000   -0.1653507
+H    0.7493682    0.0000000    0.4424329
+H   -0.7493682    0.0000000    0.4424329
+@end

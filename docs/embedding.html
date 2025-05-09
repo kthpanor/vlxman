@@ -63,7 +63,7 @@
     <link rel="icon" href="../_static/vlx_logo_mark.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="UV/vis absorption/emission" href="uv-vis.html" />
+    <link rel="next" title="Potential energy surfaces" href="pes.html" />
     <link rel="prev" title="Hamiltonian" href="hamiltonian.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -189,7 +189,6 @@
 <li class="toctree-l1"><a class="reference internal" href="run_desktop.html">Running on a desktop</a></li>
 <li class="toctree-l1"><a class="reference internal" href="run_cluster.html">Running on a cluster</a></li>
 <li class="toctree-l1"><a class="reference internal" href="keywords.html">Input file keywords</a></li>
-<li class="toctree-l1"><a class="reference internal" href="input_files.html">Input files</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Model chemistry</span></p>
 <ul class="current nav bd-sidenav">
@@ -201,10 +200,10 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Properties</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="pes.html">Potential energy surfaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="uv-vis.html">UV/vis absorption/emission</a></li>
 <li class="toctree-l1"><a class="reference internal" href="opt_act.html">Optical activity and dichroism</a></li>
 <li class="toctree-l1"><a class="reference internal" href="vib_spect.html">Vibrational spectroscopies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pes.html">Potential energy surfaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="magnetic.html">Magnetic resonances</a></li>
 <li class="toctree-l1"><a class="reference internal" href="linear-response.html">Linear response</a></li>
 <li class="toctree-l1"><a class="reference internal" href="nlo.html">Multi-photon interactions</a></li>
@@ -493,7 +492,25 @@ A_{JI} =
 \[\begin{equation*}
 b_J = \sum_{a} \frac{V_a}{r_{aJ}}
 \end{equation*}\]</div>
-<p>The ESP charges are detemined with VeloxChem with use of an input file as below</p>
+<p>The ESP charges are detemined with VeloxChem in a Jupyter notebook according to</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">veloxchem</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">vlx</span>
+
+<span class="n">xyz_str</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">...</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">molecule</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">Molecule</span><span class="o">.</span><span class="n">read_xyz_string</span><span class="p">(</span><span class="n">xyz_str</span><span class="p">)</span>
+<span class="n">basis</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">MolecularBasis</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="s1">&#39;6-31g&#39;</span><span class="p">)</span>
+
+<span class="n">esp_drv</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">RespChargesDriver</span><span class="p">()</span>
+<span class="n">esp_drv</span><span class="o">.</span><span class="n">update_settings</span><span class="p">({</span>
+    <span class="s1">&#39;number_layers&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="s1">&#39;density&#39;</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">,</span>
+<span class="p">})</span>
+<span class="n">esp_charges</span> <span class="o">=</span> <span class="n">esp_drv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">basis</span><span class="p">,</span> <span class="s1">&#39;esp&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Or with use of an input file as below</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
 <span class="n">task</span><span class="p">:</span> <span class="n">esp</span> <span class="n">charges</span>
 <span class="nd">@end</span>
@@ -515,25 +532,8 @@ b_J = \sum_{a} \frac{V_a}{r_{aJ}}
 <span class="nd">@end</span>
 </pre></div>
 </div>
-<p>or in a Jupyter notebook according to</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">veloxchem</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">vlx</span>
-
-<span class="n">xyz_str</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">...</span>
-<span class="s2">&quot;&quot;&quot;</span>
-
-<span class="n">molecule</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">Molecule</span><span class="o">.</span><span class="n">read_xyz_string</span><span class="p">(</span><span class="n">xyz_str</span><span class="p">)</span>
-<span class="n">basis</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">MolecularBasis</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="s1">&#39;6-31g&#39;</span><span class="p">)</span>
-
-<span class="n">esp_drv</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">RespChargesDriver</span><span class="p">()</span>
-<span class="n">esp_drv</span><span class="o">.</span><span class="n">update_settings</span><span class="p">({</span>
-    <span class="s1">&#39;number_layers&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-    <span class="s1">&#39;density&#39;</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">,</span>
-<span class="p">})</span>
-<span class="n">esp_charges</span> <span class="o">=</span> <span class="n">esp_drv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">basis</span><span class="p">,</span> <span class="s1">&#39;esp&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
 <p>In both cases, the user needs to specify the number of layers of the molecular surface as well as the surface grid point density in these layers (in units of Å<span class="math notranslate nohighlight">\(^{-2}\)</span>).</p>
+<p><a class="reference download internal" download="" href="../_downloads/e3d3357df1a28d04a4d3c4820e1f6b6b/h2o-esp.inp"><span class="xref download myst">Download</span></a> the input file to calculate the ESP charges for the water molecule at the HF/6-31G level of theory.</p>
 </section>
 <section id="resp-charges">
 <h3>RESP charges<a class="headerlink" href="#resp-charges" title="Link to this heading">#</a></h3>
@@ -558,7 +558,24 @@ A_{JJ} =
 \sum_{a} \frac{1}{r_{aJ}^2} + \alpha \, (q_J^2+\beta^2)^{-1/2}
 \end{equation*}\]</div>
 <p>with a dependency on the partial charge. Consequently, RESP charges are obtained by solving the matrix equation iteratively until the charges and Lagrange multipliers become self-consistent. In addition to that, the RESP charge model allows for the introduction of constraints on charges of equivalent atoms due to symmetry operations or bond rotations.</p>
-<p>The RESP cahrges are detemined with VeloxChem with use of an input file as below</p>
+<p>The RESP charges are detemined with VeloxChem in a Jupyter notebook according to</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">veloxchem</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">vlx</span>
+
+<span class="n">xyz_str</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">...</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">molecule</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">Molecule</span><span class="o">.</span><span class="n">read_xyz_string</span><span class="p">(</span><span class="n">xyz_str</span><span class="p">)</span>
+<span class="n">basis</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">MolecularBasis</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="s1">&#39;6-31g*&#39;</span><span class="p">)</span>
+
+<span class="n">resp_drv</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">RespChargesDriver</span><span class="p">()</span>
+<span class="n">resp_drv</span><span class="o">.</span><span class="n">update_settings</span><span class="p">({</span>
+    <span class="s1">&#39;equal_charges&#39;</span><span class="p">:</span> <span class="s1">&#39;2 = 3&#39;</span>
+<span class="p">})</span>
+<span class="n">resp_charges</span> <span class="o">=</span> <span class="n">resp_drv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">basis</span><span class="p">,</span> <span class="s1">&#39;resp&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Or with use of an input file as below</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@jobs
 task: resp charges
 @end
@@ -579,23 +596,7 @@ xyz:
 @end 
 </pre></div>
 </div>
-<p>or in a Jupyter notebook according to</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">veloxchem</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">vlx</span>
-
-<span class="n">xyz_str</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">...</span>
-<span class="s2">&quot;&quot;&quot;</span>
-
-<span class="n">molecule</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">Molecule</span><span class="o">.</span><span class="n">read_xyz_string</span><span class="p">(</span><span class="n">xyz_str</span><span class="p">)</span>
-<span class="n">basis</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">MolecularBasis</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="s1">&#39;6-31g*&#39;</span><span class="p">)</span>
-
-<span class="n">resp_drv</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">RespChargesDriver</span><span class="p">()</span>
-<span class="n">resp_drv</span><span class="o">.</span><span class="n">update_settings</span><span class="p">({</span>
-    <span class="s1">&#39;equal_charges&#39;</span><span class="p">:</span> <span class="s1">&#39;2 = 3&#39;</span>
-<span class="p">})</span>
-<span class="n">resp_charges</span> <span class="o">=</span> <span class="n">resp_drv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">basis</span><span class="p">,</span> <span class="s1">&#39;resp&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
+<p><a class="reference download internal" download="" href="../_downloads/d9176bd0356f287b5281cf6ca093bf94/h2o-resp.inp"><span class="xref download myst">Download</span></a> the input file to calculate the RESP charges for the water molecule at the HF/6-31G* level of theory.</p>
 </section>
 <section id="loprop-charges-and-polarizabilities">
 <h3>LoProp charges and polarizabilities<a class="headerlink" href="#loprop-charges-and-polarizabilities" title="Link to this heading">#</a></h3>
@@ -617,6 +618,45 @@ xyz:
 @end
 </pre></div>
 </div>
+<p><a class="reference download internal" download="" href="../_downloads/6346fa7a6c938a23b77b9c407da481c3/h2o-loprop.inp"><span class="xref download myst">Download</span></a> the input file to calculate the RESP charges for the water molecule at the B3LYP/ANO-S-VDPZ level of theory.</p>
+<p>With the three input files provided above, you should get the following charges for the water molecule.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Charges</p></th>
+<th class="head text-center"><p>ESP</p></th>
+<th class="head text-center"><p>RESP</p></th>
+<th class="head text-center"><p>LOPROP</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>O</p></td>
+<td class="text-center"><p>-0.924862</p></td>
+<td class="text-center"><p>-0.792355</p></td>
+<td class="text-center"><p>-0.6791</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>H1</p></td>
+<td class="text-center"><p>0.462365</p></td>
+<td class="text-center"><p>0.396178</p></td>
+<td class="text-center"><p>0.3396</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>H2</p></td>
+<td class="text-center"><p>0.462497</p></td>
+<td class="text-center"><p>0.396178</p></td>
+<td class="text-center"><p>0.3396</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/water.png"><img alt="cover" class="bg-primary mb-1 align-center" src="../_images/water.png" style="width: 400px;" />
+</a>
+<p>And the following anisotropic atomic polarizabilities are obtained from the LOPROP calculation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>             <span class="n">xx</span>         <span class="n">xy</span>         <span class="n">xz</span>         <span class="n">yy</span>         <span class="n">yz</span>         <span class="n">zz</span>
+<span class="n">O</span>    <span class="p">:</span>     <span class="mf">4.0255</span>    <span class="o">-</span><span class="mf">0.0000</span>    <span class="o">-</span><span class="mf">0.0000</span>     <span class="mf">3.1646</span>    <span class="o">-</span><span class="mf">0.0000</span>     <span class="mf">3.9143</span>
+<span class="n">H1</span>   <span class="p">:</span>     <span class="mf">1.8695</span>    <span class="o">-</span><span class="mf">0.0000</span>     <span class="mf">1.1639</span>     <span class="mf">1.3817</span>    <span class="o">-</span><span class="mf">0.0000</span>     <span class="mf">1.6858</span>
+<span class="n">H2</span>   <span class="p">:</span>     <span class="mf">1.8695</span>     <span class="mf">0.0000</span>    <span class="o">-</span><span class="mf">1.1639</span>     <span class="mf">1.3817</span>    <span class="o">-</span><span class="mf">0.0000</span>     <span class="mf">1.6858</span>
+</pre></div>
+</div>
+<p>Those charges and polarizabilities can be used for polarizable embedding</p>
 </section>
 </section>
 <section id="polarizable-embedding">
@@ -639,7 +679,7 @@ xyz:
 <span class="nd">@end</span>
 </pre></div>
 </div>
-<p>together with a potential file <code class="docutils literal notranslate"><span class="pre">pe.pot</span></code> of the form</p>
+<p>together with a potential file <code class="docutils literal notranslate"><span class="pre">pe.pot</span></code> using Isotropic LOPROP parameters.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@environment</span>
 <span class="n">units</span><span class="p">:</span> <span class="n">angstrom</span>
 <span class="n">xyz</span><span class="p">:</span>
@@ -707,11 +747,11 @@ xyz:
       </div>
     </a>
     <a class="right-next"
-       href="uv-vis.html"
+       href="pes.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">UV/vis absorption/emission</p>
+        <p class="prev-next-title">Potential energy surfaces</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
