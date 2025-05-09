@@ -146,7 +146,7 @@ xyz:
 @end
 
 ```
-[Download](../input_files/bithio-scan.inp) an input file to perfom a relaxed scan of the bithiophene molecule at the B3LYP/def2-svp level of theory where the inter-ring dihedral (S-C-C-S) is scan from 180° to 0° in 9 steps.
+[Download](../input_files/bithio-scan.inp) an input file to perfom a relaxed scan of the bithiophene molecule at the B3LYP/def2-svp level of theory where the inter-ring dihedral (S-C-C-S) is scanned from 180° to 0° in 9 steps.
 
 ```{image} ../images/bithio-scan.gif
 :alt: cover
