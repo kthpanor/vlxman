@@ -33,6 +33,7 @@ xyz:
 ...                     
 @end
 ```
+[Download](../input_files/acro-ir.inp) an input file to perfom an IR spectra calculation of the acroleine molecule at the B3LYP/def2-svp level of theory.
 
 ## Raman
 ```
@@ -56,25 +57,15 @@ xyz:
 ...                     
 @end
 ```
+[Download](../input_files/acro-raman.inp) an input file to perfom a Raman spectra calculation of the acroleine molecule at the B3LYP/def2-svp level of theory.
 
 ## Resonance raman
-@jobs
-task: vibrational
-@end
 
-@method settings
-xcfun: b3lyp
-basis: def2-svp
-@end
+This is under construction
 
-@vibrational
-do_resonance_raman: yes
-frequencies: 0.05-0.25 (0.05)
-@end
-
-@molecule
-charge: 0
-multiplicity: 1
-xyz:
-...                         
-@end
+```{image} ../images/acro.png
+:alt: cover
+:class: bg-primary mb-1
+:width: 400px
+:align: center
+```
