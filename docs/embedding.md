@@ -202,7 +202,7 @@ xyz:
 ...
 @end
 ````
-[Download](../input_files/h2o-loprop.inp) the input file to calculate the RESP charges for the water molecule at the B3LYP/ANO-S-VDPZ level of theory.
+[Download](../input_files/h2o-loprop.inp) the input file to calculate the LOPROP charges and atomic polarizabilities for the water molecule at the B3LYP/ANO-S-VDPZ level of theory.
 
 With the three input files provided above, you should get the following charges for the water molecule.
 
