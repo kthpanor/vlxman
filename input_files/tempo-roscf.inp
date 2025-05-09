@@ -3,7 +3,7 @@ task: roscf
 @end
 
 @method settings
-basis: def2-svp
+basis: 6-31+G* 
 xcfun: b3lyp
 @end
 

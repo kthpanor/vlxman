@@ -3,7 +3,7 @@ task: uscf
 @end
 
 @method settings
-basis: def2-svp
+basis: CC-PVDZ 
 xcfun: PBE0
 @end
 

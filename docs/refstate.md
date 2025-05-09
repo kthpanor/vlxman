@@ -4,6 +4,8 @@ A detailed list of keyword can be found in the [SCF optimization section](./keyw
 
 By default, Hartree-Fock is used if not specified otherwise. To use DFT, several functionals are available and should be specified in the ```@method settings``` section by using the keyword ```xcfun```. See the [Exchange-correlation functionnals](./functionals.ipynb) page for a complete list of functionnals available.
 
+The basis set needs to be specified in the ```@method settings``` section by using the keyword ```basis```. See the [Available basis sets section](./basis_sets.ipynb#available-basis-sets) of the [Input file keywords page](./basis_sets.ipynb).
+
 ## Restricted closed-shell
 
 ```
@@ -22,7 +24,7 @@ xyz:
 ...
 @end
 ```
-[Download](../input_files/biphenyl-scf.inp) an input file to perfom a restricted closed-shell calculation for the biphenyl molecule.
+[Download](../input_files/biphenyl-scf.inp) an input file to perfom a restricted closed-shell calculation for the biphenyl molecule at the HF/def2-svp level of theory.
 
 ```{image} ../images/biphenyl.png
 :alt: cover
@@ -39,7 +41,7 @@ task: roscf
 @end
 
 @method settings
-basis: def2-svp
+basis: 6-31+G*
 xcfun: b3lyp
 @end
 
@@ -50,7 +52,7 @@ xyz:
 ...
 @end
 ```
-[Download](../input_files/tempo-roscf.inp) the input file to perfom a restricted open-shell calculation for the tempo molecule.
+[Download](../input_files/tempo-roscf.inp) the input file to perfom a restricted open-shell calculation for the tempo molecule at the B3LYP/6-31+G* level of theory.
 
 ```{image} ../images/tempo.png
 :alt: cover
@@ -67,7 +69,7 @@ task: uscf
 @end
 
 @method settings
-basis: def2-svp
+basis: CC-PVDZ
 xcfun: PBE0
 @end
 
@@ -78,7 +80,7 @@ xyz:
 ...
 @end
 ```
-[Download](../input_files/tritylradical-uscf.inp) the input file to perfom a unrestricted open-shell calculation for the triphenylmethyl radical molecule (also called trityl radical).
+[Download](../input_files/tritylradical-uscf.inp) the input file to perfom a unrestricted open-shell calculation for the triphenylmethyl radical molecule (also called trityl radical) at the PBE0/CC-PVDZ level of theory.
 
 ```{image} ../images/trityl.png
 :alt: cover

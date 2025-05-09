@@ -1,0 +1,17 @@
+@jobs
+task: loprop        
+@end
+
+@method settings
+xcfun: b3lyp
+basis: ANO-S-VDZP ! An ANO type of basis set should be used
+@end
+
+@molecule
+charge: 0
+multiplicity: 1
+xyz:  
+O    0.0000000    0.0000000   -0.1653507
+H    0.7493682    0.0000000    0.4424329
+H   -0.7493682    0.0000000    0.4424329
+@end

@@ -61,7 +61,27 @@ and
 b_J = \sum_{a} \frac{V_a}{r_{aJ}}
 \end{equation*}
 
-The ESP charges are detemined with VeloxChem with use of an input file as below
+The ESP charges are detemined with VeloxChem in a Jupyter notebook according to
+
+```
+import veloxchem as vlx
+
+xyz_str = """
+...
+"""
+
+molecule = vlx.Molecule.read_xyz_string(xyz_str)
+basis = vlx.MolecularBasis.read(molecule, '6-31g')
+
+esp_drv = vlx.RespChargesDriver()
+esp_drv.update_settings({
+    'number_layers': 5,
+    'density': 10.0,
+})
+esp_charges = esp_drv.compute(molecule, basis, 'esp')
+```
+
+Or with use of an input file as below
 
 ```
 @jobs
@@ -85,27 +105,9 @@ xyz:
 @end
 ```
 
-or in a Jupyter notebook according to
-
-```
-import veloxchem as vlx
-
-xyz_str = """
-...
-"""
-
-molecule = vlx.Molecule.read_xyz_string(xyz_str)
-basis = vlx.MolecularBasis.read(molecule, '6-31g')
-
-esp_drv = vlx.RespChargesDriver()
-esp_drv.update_settings({
-    'number_layers': 5,
-    'density': 10.0,
-})
-esp_charges = esp_drv.compute(molecule, basis, 'esp')
-```
-
 In both cases, the user needs to specify the number of layers of the molecular surface as well as the surface grid point density in these layers (in units of Å$^{-2}$).
+
+[Download](../input_files/h2o-esp.inp) the input file to calculate the ESP charges for the water molecule at the HF/6-31G level of theory.
 
 ### RESP charges
 
@@ -136,7 +138,25 @@ A_{JJ} =
 
 with a dependency on the partial charge. Consequently, RESP charges are obtained by solving the matrix equation iteratively until the charges and Lagrange multipliers become self-consistent. In addition to that, the RESP charge model allows for the introduction of constraints on charges of equivalent atoms due to symmetry operations or bond rotations.
 
-The RESP cahrges are detemined with VeloxChem with use of an input file as below
+The RESP charges are detemined with VeloxChem in a Jupyter notebook according to
+
+```
+import veloxchem as vlx
+
+xyz_str = """
+...
+"""
+
+molecule = vlx.Molecule.read_xyz_string(xyz_str)
+basis = vlx.MolecularBasis.read(molecule, '6-31g*')
+
+resp_drv = vlx.RespChargesDriver()
+resp_drv.update_settings({
+    'equal_charges': '2 = 3'
+})
+resp_charges = resp_drv.compute(molecule, basis, 'resp')
+```
+Or with use of an input file as below
 
 ```
 @jobs
@@ -158,25 +178,8 @@ xyz:
 ...
 @end 
 ```
+[Download](../input_files/h2o-resp.inp) the input file to calculate the RESP charges for the water molecule at the HF/6-31G* level of theory.
 
-or in a Jupyter notebook according to
-
-```
-import veloxchem as vlx
-
-xyz_str = """
-...
-"""
-
-molecule = vlx.Molecule.read_xyz_string(xyz_str)
-basis = vlx.MolecularBasis.read(molecule, '6-31g*')
-
-resp_drv = vlx.RespChargesDriver()
-resp_drv.update_settings({
-    'equal_charges': '2 = 3'
-})
-resp_charges = resp_drv.compute(molecule, basis, 'resp')
-```
 
 ### LoProp charges and polarizabilities
 
@@ -199,6 +202,33 @@ xyz:
 ...
 @end
 ````
+[Download](../input_files/h2o-loprop.inp) the input file to calculate the RESP charges for the water molecule at the B3LYP/ANO-S-VDPZ level of theory.
+
+With the three input files provided above, you should get the following charges for the water molecule.
+
+
+| Charges |  ESP  | RESP | LOPROP |
+|:------:|:------:| :------:| :------:|
+|  O | -0.924862 |   -0.792355 | -0.6791 |
+|  H1 |  0.462365 | 0.396178 | 0.3396 |
+|  H2 |  0.462497 | 0.396178 | 0.3396 |
+
+
+```{image} ../images/water.png
+:alt: cover
+:class: bg-primary mb-1
+:width: 400px
+:align: center
+```
+And the following anisotropic atomic polarizabilities are obtained from the LOPROP calculation:
+```
+             xx         xy         xz         yy         yz         zz
+O    :     4.0255    -0.0000    -0.0000     3.1646    -0.0000     3.9143
+H1   :     1.8695    -0.0000     1.1639     1.3817    -0.0000     1.6858
+H2   :     1.8695     0.0000    -1.1639     1.3817    -0.0000     1.6858
+```
+
+Those charges and polarizabilities can be used for polarizable embedding
 
 ## Polarizable embedding
 
@@ -222,7 +252,7 @@ xyz:
 @end
 ```
 
-together with a potential file `pe.pot` of the form
+together with a potential file `pe.pot` using Isotropic LOPROP parameters.
 
 ```
 @environment

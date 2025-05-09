@@ -20,10 +20,10 @@ parts:
   - file: docs/embedding
 - caption: Properties
   chapters:
+  - file: docs/pes
   - file: docs/uv-vis
   - file: docs/opt_act
   - file: docs/vib_spect
-  - file: docs/pes
   - file: docs/magnetic
   - file: docs/linear-response
   - file: docs/nlo
