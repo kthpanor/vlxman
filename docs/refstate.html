@@ -433,6 +433,7 @@ document.write(`
 <h1>Reference states<a class="headerlink" href="#reference-states" title="Link to this heading">#</a></h1>
 <p>A detailed list of keyword can be found in the <a class="reference internal" href="keywords.html#scf-optimization"><span class="std std-ref">SCF optimization section</span></a> of the <a class="reference internal" href="keywords.html"><span class="std std-doc">Input file keywords page</span></a>.</p>
 <p>By default, Hartree-Fock is used if not specified otherwise. To use DFT, several functionals are available and should be specified in the <code class="docutils literal notranslate"><span class="pre">&#64;method</span> <span class="pre">settings</span></code> section by using the keyword <code class="docutils literal notranslate"><span class="pre">xcfun</span></code>. See the <a class="reference internal" href="functionals.html"><span class="std std-doc">Exchange-correlation functionnals</span></a> page for a complete list of functionnals available.</p>
+<p>The basis set needs to be specified in the <code class="docutils literal notranslate"><span class="pre">&#64;method</span> <span class="pre">settings</span></code> section by using the keyword <code class="docutils literal notranslate"><span class="pre">basis</span></code>. See the <a class="reference internal" href="basis_sets.html#available-basis-sets"><span class="std std-ref">Available basis sets section</span></a> of the <a class="reference internal" href="basis_sets.html"><span class="std std-doc">Input file keywords page</span></a>.</p>
 <section id="restricted-closed-shell">
 <h2>Restricted closed-shell<a class="headerlink" href="#restricted-closed-shell" title="Link to this heading">#</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
@@ -451,7 +452,7 @@ document.write(`
 <span class="nd">@end</span>
 </pre></div>
 </div>
-<p><a class="reference download internal" download="" href="../_downloads/de54fd808bcad7e7ada9a09f0e9db659/biphenyl-scf.inp"><span class="xref download myst">Download</span></a> an input file to perfom a restricted closed-shell calculation for the biphenyl molecule.</p>
+<p><a class="reference download internal" download="" href="../_downloads/de54fd808bcad7e7ada9a09f0e9db659/biphenyl-scf.inp"><span class="xref download myst">Download</span></a> an input file to perfom a restricted closed-shell calculation for the biphenyl molecule at the HF/def2-svp level of theory.</p>
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/biphenyl.png"><img alt="cover" class="bg-primary mb-1 align-center" src="../_images/biphenyl.png" style="width: 400px;" />
 </a>
 </section>
@@ -462,7 +463,7 @@ document.write(`
 <span class="nd">@end</span>
 
 <span class="nd">@method</span> <span class="n">settings</span>
-<span class="n">basis</span><span class="p">:</span> <span class="n">def2</span><span class="o">-</span><span class="n">svp</span>
+<span class="n">basis</span><span class="p">:</span> <span class="mi">6</span><span class="o">-</span><span class="mi">31</span><span class="o">+</span><span class="n">G</span><span class="o">*</span>
 <span class="n">xcfun</span><span class="p">:</span> <span class="n">b3lyp</span>
 <span class="nd">@end</span>
 
@@ -474,7 +475,7 @@ document.write(`
 <span class="nd">@end</span>
 </pre></div>
 </div>
-<p><a class="reference download internal" download="" href="../_downloads/1e2bc1c308af34442a468efbf394e29f/tempo-roscf.inp"><span class="xref download myst">Download</span></a> the input file to perfom a restricted open-shell calculation for the tempo molecule.</p>
+<p><a class="reference download internal" download="" href="../_downloads/1e2bc1c308af34442a468efbf394e29f/tempo-roscf.inp"><span class="xref download myst">Download</span></a> the input file to perfom a restricted open-shell calculation for the tempo molecule at the B3LYP/6-31+G* level of theory.</p>
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/tempo.png"><img alt="cover" class="bg-primary mb-1 align-center" src="../_images/tempo.png" style="width: 400px;" />
 </a>
 </section>
@@ -485,7 +486,7 @@ document.write(`
 <span class="nd">@end</span>
 
 <span class="nd">@method</span> <span class="n">settings</span>
-<span class="n">basis</span><span class="p">:</span> <span class="n">def2</span><span class="o">-</span><span class="n">svp</span>
+<span class="n">basis</span><span class="p">:</span> <span class="n">CC</span><span class="o">-</span><span class="n">PVDZ</span>
 <span class="n">xcfun</span><span class="p">:</span> <span class="n">PBE0</span>
 <span class="nd">@end</span>
 
@@ -497,7 +498,7 @@ document.write(`
 <span class="nd">@end</span>
 </pre></div>
 </div>
-<p><a class="reference download internal" download="" href="../_downloads/18efa1ff3aee0ba995371de36abd832e/tritylradical-uscf.inp"><span class="xref download myst">Download</span></a> the input file to perfom a unrestricted open-shell calculation for the triphenylmethyl radical molecule (also called trityl radical).</p>
+<p><a class="reference download internal" download="" href="../_downloads/18efa1ff3aee0ba995371de36abd832e/tritylradical-uscf.inp"><span class="xref download myst">Download</span></a> the input file to perfom a unrestricted open-shell calculation for the triphenylmethyl radical molecule (also called trityl radical) at the PBE0/CC-PVDZ level of theory.</p>
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/trityl.png"><img alt="cover" class="bg-primary mb-1 align-center" src="../_images/trityl.png" style="width: 400px;" />
 </a>
 </section>
