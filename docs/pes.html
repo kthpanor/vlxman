@@ -418,8 +418,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ground-state-optimization">Ground state optimization</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#excited-state-optimization">Excited state optimization</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constrained-optimization">Constrained optimization</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#freeze-coordinate">Freeze coordinate</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-coordinate">Set coordinate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-or-freeze-internal-coordinate">Set or freeze internal coordinate</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scan-coordinate">Scan coordinate</a></li>
 </ul>
 </li>
@@ -496,14 +495,75 @@ document.write(`
 </section>
 <section id="constrained-optimization">
 <h2>Constrained optimization<a class="headerlink" href="#constrained-optimization" title="Link to this heading">#</a></h2>
-<section id="freeze-coordinate">
-<h3>Freeze coordinate<a class="headerlink" href="#freeze-coordinate" title="Link to this heading">#</a></h3>
-</section>
-<section id="set-coordinate">
-<h3>Set coordinate<a class="headerlink" href="#set-coordinate" title="Link to this heading">#</a></h3>
+<p>A selection of internal coordinate can be <code class="docutils literal notranslate"><span class="pre">constraints:</span></code> to <code class="docutils literal notranslate"><span class="pre">set</span></code>, <code class="docutils literal notranslate"><span class="pre">freeze</span></code> or <code class="docutils literal notranslate"><span class="pre">scan</span></code> during the molecular structure optimization. It needs to be specified in the <code class="docutils literal notranslate"><span class="pre">&#64;optimize</span></code> section. These option apply to the following coordinate:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">distance</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">angle</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dihedral</span></code></p></li>
+</ul>
+<section id="set-or-freeze-internal-coordinate">
+<h3>Set or freeze internal coordinate<a class="headerlink" href="#set-or-freeze-internal-coordinate" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">set</span></code> will aim at converge the following internal coordinate to the desired value while <code class="docutils literal notranslate"><span class="pre">freeze</span></code> will keep the internal coordinate to the value given in the initial structure. These options apply to</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
+<span class="n">task</span><span class="p">:</span> <span class="n">optimize</span>
+<span class="nd">@end</span>
+
+<span class="nd">@method</span> <span class="n">settings</span>
+<span class="n">xcfun</span><span class="p">:</span> <span class="n">b3lyp</span>
+<span class="n">basis</span><span class="p">:</span> <span class="n">def2</span><span class="o">-</span><span class="n">svp</span>
+<span class="nd">@end</span>
+
+<span class="nd">@optimize</span>
+<span class="nb">set</span> <span class="n">dihedral</span> <span class="mi">1</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">2</span> <span class="mf">90.0</span>
+<span class="n">freeze</span> <span class="n">distance</span> <span class="mi">3</span> <span class="mi">4</span>
+<span class="nd">@end</span>
+
+<span class="nd">@molecule</span>
+<span class="n">charge</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">multiplicity</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">xyz</span><span class="p">:</span>
+<span class="o">...</span>
+<span class="nd">@end</span>
+
+</pre></div>
+</div>
+<p><a class="reference download internal" download="" href="../_downloads/2ce331f53e9d7ed0ae5a65974cfdf01c/bithio-freeze.inp"><span class="xref download myst">Download</span></a> an input file to perfom a optimization of the bithiophene molecule at the B3LYP/def2-svp level of theory where the inter-ring distance has been frozen to the initial geometry and where the inter-ring dihedral (S-C-C-S) has been constrained to 90°.</p>
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/bithio-freeze.gif"><img alt="cover" class="bg-primary mb-1 align-center" src="../_images/bithio-freeze.gif" style="width: 400px;" />
+</a>
 </section>
 <section id="scan-coordinate">
 <h3>Scan coordinate<a class="headerlink" href="#scan-coordinate" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">scan</span></code> will scan an internal coordinate from an initial to a final value in a given number of steps.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scan</span> <span class="n">distance</span> <span class="mi">6</span> <span class="mi">1</span> <span class="mf">1.4</span> <span class="mf">1.5</span> <span class="mi">9</span>
+<span class="n">scan</span> <span class="n">angle</span>    <span class="mi">6</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">100</span> <span class="mi">110</span> <span class="mi">9</span>
+<span class="n">scan</span> <span class="n">dihedral</span> <span class="mi">6</span> <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">0</span> <span class="mi">360</span> <span class="mi">19</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
+<span class="n">task</span><span class="p">:</span> <span class="n">optimize</span>
+<span class="nd">@end</span>
+
+<span class="nd">@method</span> <span class="n">settings</span>
+<span class="n">xcfun</span><span class="p">:</span> <span class="n">b3lyp</span>
+<span class="n">basis</span><span class="p">:</span> <span class="n">def2</span><span class="o">-</span><span class="n">svp</span>
+<span class="nd">@end</span>
+
+<span class="nd">@optimize</span>
+<span class="n">scan</span> <span class="n">dihedral</span> <span class="mi">1</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">2</span> <span class="mi">180</span> <span class="mi">0</span> <span class="mi">9</span>
+<span class="nd">@end</span>
+
+<span class="nd">@molecule</span>
+<span class="n">charge</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">multiplicity</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">xyz</span><span class="p">:</span>
+<span class="o">...</span>
+<span class="nd">@end</span>
+
+</pre></div>
+</div>
+<p><a class="reference download internal" download="" href="../_downloads/fae95082cf97c0e4504f67fbe558d854/bithio-scan.inp"><span class="xref download myst">Download</span></a> an input file to perfom a relaxed scan of the bithiophene molecule at the B3LYP/def2-svp level of theory where the inter-ring dihedral (S-C-C-S) is scan from 180° to 0° in 9 steps.</p>
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/bithio-scan.gif"><img alt="cover" class="bg-primary mb-1 align-center" src="../_images/bithio-scan.gif" style="width: 400px;" />
+</a>
 </section>
 </section>
 </section>
@@ -575,8 +635,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ground-state-optimization">Ground state optimization</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#excited-state-optimization">Excited state optimization</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constrained-optimization">Constrained optimization</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#freeze-coordinate">Freeze coordinate</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-coordinate">Set coordinate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-or-freeze-internal-coordinate">Set or freeze internal coordinate</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scan-coordinate">Scan coordinate</a></li>
 </ul>
 </li>

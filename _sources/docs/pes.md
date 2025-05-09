@@ -72,12 +72,85 @@ xyz:
 ```
 
 ## Constrained optimization
- 
-### Freeze coordinate
+A selection of internal coordinate can be ```constraints:``` to ```set```, ```freeze``` or ```scan``` during the molecular structure optimization. It needs to be specified in the ```@optimize``` section. These option apply to the following coordinate:
+* ```distance```
+* ```angle```
+* ```dihedral```
 
-### Set coordinate
+### Set or freeze internal coordinate
+
+```set``` will aim at converge the following internal coordinate to the desired value while ```freeze``` will keep the internal coordinate to the value given in the initial structure. These options apply to 
+
+```
+@jobs
+task: optimize
+@end
+
+@method settings
+xcfun: b3lyp
+basis: def2-svp
+@end
+
+@optimize
+set dihedral 1 3 4 2 90.0
+freeze distance 3 4
+@end
+
+@molecule
+charge: 0
+multiplicity: 1
+xyz:
+...
+@end
+
+```
+
+[Download](../input_files/bithio-freeze.inp) an input file to perfom a optimization of the bithiophene molecule at the B3LYP/def2-svp level of theory where the inter-ring distance has been frozen to the initial geometry and where the inter-ring dihedral (S-C-C-S) has been constrained to 90°.
+
+```{image} ../images/bithio-freeze.gif
+:alt: cover
+:class: bg-primary mb-1
+:width: 400px
+:align: center
+```
 
 ### Scan coordinate
 
+```scan``` will scan an internal coordinate from an initial to a final value in a given number of steps.
 
+```
+scan distance 6 1 1.4 1.5 9
+scan angle    6 1 2 100 110 9
+scan dihedral 6 1 2 3 0 360 19
+```
 
+```
+@jobs
+task: optimize
+@end
+
+@method settings
+xcfun: b3lyp
+basis: def2-svp
+@end
+
+@optimize
+scan dihedral 1 3 4 2 180 0 9
+@end
+
+@molecule
+charge: 0
+multiplicity: 1
+xyz:
+...
+@end
+
+```
+[Download](../input_files/bithio-scan.inp) an input file to perfom a relaxed scan of the bithiophene molecule at the B3LYP/def2-svp level of theory where the inter-ring dihedral (S-C-C-S) is scan from 180° to 0° in 9 steps.
+
+```{image} ../images/bithio-scan.gif
+:alt: cover
+:class: bg-primary mb-1
+:width: 400px
+:align: center
+```
