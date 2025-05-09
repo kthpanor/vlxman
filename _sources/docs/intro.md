@@ -6,7 +6,7 @@ VeloxChem {cite}`veloxchem` is a Python-based open source quantum chemistry soft
 
 VeloxChem features interactive program access through Jupyter notebooks as well as large-scale calculations in contemporary high-performance computing (HPC) environments. A comprehensive presentation of the former desktop aspect is provided in the [eChem](https://kthpanor.github.io/echem) book and this manual will focus on the latter HPC aspect.
 
-**Key capabilities**
+### Key capabilities
 
 - Kohn–Sham Density Functional Theory (DFT)
 - Time-dependent DFT (TDDFT)
@@ -22,3 +22,9 @@ VeloxChem features interactive program access through Jupyter notebooks as well 
 :width: 800px
 :align: center
 ```
+
+### Scaling
+#### laptop
+#### Desktop
+#### HPC-CPU
+#### HPC-GPU
