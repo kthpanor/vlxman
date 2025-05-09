@@ -6,7 +6,7 @@ This feature is under implementation.
 
 ## Static electric fields
 
-A term can be added in the Hamiltonian to describe the coupling of the molecular system and a time-independent (static), homogeneous, electric field.
+A term can be added in the Hamiltonian to describe the coupling of the molecular system and a time-independent (static), homogeneous, electric field. The value specified oin the input file are for the x,y,z direction respectively given in a.u.
 
 ```
 @jobs
@@ -22,8 +22,14 @@ electric field: 0, 0.001, -0.002
 charge: 0
 multiplicity: 1
 xyz:
-O  0.00000  0.00000  0.00000
-H  0.00000  0.00000  1.79524
-H  1.69319  0.00000 -0.59904
+...
 @end
+```
+[Download](../input_files/pna-field.inp) the input file to perfom a scf calculation under the presence of a static electric field for the p-nitroaniline.
+
+```{image} ../images/pna.png
+:alt: cover
+:class: bg-primary mb-1
+:width: 400px
+:align: center
 ```

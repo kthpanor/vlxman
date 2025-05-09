@@ -1,5 +1,9 @@
 # Reference states
 
+A detailed list of keyword can be found in the [SCF optimization section](./keywords.ipynb#scf-optimization) of the [Input file keywords page](./keywords.ipynb).
+
+By default, Hartree-Fock is used if not specified otherwise. To use DFT, several functionals are available and should be specified in the ```@method settings``` section by using the keyword ```xcfun```. See the [Exchange-correlation functionnals](./functionals.ipynb) page for a complete list of functionnals available.
+
 ## Restricted closed-shell
 
 ```
@@ -36,6 +40,7 @@ task: roscf
 
 @method settings
 basis: def2-svp
+xcfun: b3lyp
 @end
 
 @molecule
@@ -63,6 +68,7 @@ task: uscf
 
 @method settings
 basis: def2-svp
+xcfun: PBE0
 @end
 
 @molecule
@@ -80,27 +86,3 @@ xyz:
 :width: 400px
 :align: center
 ```
-
-By default, all the calculations presented at this page have been performed at the Hartree-Fock level. To use DFT, several functionals are available and should be specified in the ```@method settings``` section by using the keyword ```xcfun```
-
-```
-@jobs
-task: scf
-@end
-
-@method settings
-xcfun: b3lyp
-basis: def2-svp
-@end
-
-@molecule
-charge: 0
-multiplicity: 1
-xyz:
-...
-@end
-```
-
-
-See the [Exchange-correlation functionnals](./functionals.ipynb) page for a complete list of functionnal available
-

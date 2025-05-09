@@ -4,6 +4,7 @@ task: roscf
 
 @method settings
 basis: def2-svp
+xcfun: b3lyp
 @end
 
 @molecule

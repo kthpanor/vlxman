@@ -4,6 +4,7 @@ task: uscf
 
 @method settings
 basis: def2-svp
+xcfun: PBE0
 @end
 
 @molecule

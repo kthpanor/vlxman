@@ -187,7 +187,6 @@
 <li class="toctree-l1"><a class="reference internal" href="run_desktop.html">Running on a desktop</a></li>
 <li class="toctree-l1"><a class="reference internal" href="run_cluster.html">Running on a cluster</a></li>
 <li class="toctree-l1"><a class="reference internal" href="keywords.html">Input file keywords</a></li>
-<li class="toctree-l1"><a class="reference internal" href="input_files.html">Input files</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Model chemistry</span></p>
 <ul class="current nav bd-sidenav">
@@ -437,7 +436,7 @@ document.write(`
 </section>
 <section id="static-electric-fields">
 <h2>Static electric fields<a class="headerlink" href="#static-electric-fields" title="Link to this heading">#</a></h2>
-<p>A term can be added in the Hamiltonian to describe the coupling of the molecular system and a time-independent (static), homogeneous, electric field.</p>
+<p>A term can be added in the Hamiltonian to describe the coupling of the molecular system and a time-independent (static), homogeneous, electric field. The value specified oin the input file are for the x,y,z direction respectively given in a.u.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
 <span class="n">task</span><span class="p">:</span> <span class="n">scf</span>
 <span class="nd">@end</span>
@@ -451,12 +450,13 @@ document.write(`
 <span class="n">charge</span><span class="p">:</span> <span class="mi">0</span>
 <span class="n">multiplicity</span><span class="p">:</span> <span class="mi">1</span>
 <span class="n">xyz</span><span class="p">:</span>
-<span class="n">O</span>  <span class="mf">0.00000</span>  <span class="mf">0.00000</span>  <span class="mf">0.00000</span>
-<span class="n">H</span>  <span class="mf">0.00000</span>  <span class="mf">0.00000</span>  <span class="mf">1.79524</span>
-<span class="n">H</span>  <span class="mf">1.69319</span>  <span class="mf">0.00000</span> <span class="o">-</span><span class="mf">0.59904</span>
+<span class="o">...</span>
 <span class="nd">@end</span>
 </pre></div>
 </div>
+<p><a class="reference download internal" download="" href="../_downloads/e672617b60ce4c1b63d36d492915ba3e/pna-field.inp"><span class="xref download myst">Download</span></a> the input file to perfom a scf calculation under the presence of a static electric field for the p-nitroaniline.</p>
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/pna.png"><img alt="cover" class="bg-primary mb-1 align-center" src="../_images/pna.png" style="width: 400px;" />
+</a>
 </section>
 </section>
 
