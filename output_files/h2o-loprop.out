@@ -1,0 +1,355 @@
+!========================================================================================================================!
+!                                                                                                                        !
+!                                                       VELOXCHEM                                                        !
+!                                              AN ELECTRONIC STRUCTURE CODE                                              !
+!                                                                                                                        !
+!                                        Copyright 2018-2025 VeloxChem developers                                        !
+!========================================================================================================================!
+!                                VeloxChem execution started at Fri May  9 13:27:33 2025.                                !
+!========================================================================================================================!
+                                                                                                                          
+* Info * Using 32 OpenMP threads per MPI process.                                                                         
+                                                                                                                          
+* Info * Reading input file h2o-loprop.inp...                                                                             
+                                                                                                                          
+* Info * @jobs                                                                                                            
+* Info * task: loprop                                                                                                     
+* Info * @end                                                                                                             
+                                                                                                                          
+* Info * @method_settings                                                                                                 
+* Info * xcfun: b3lyp                                                                                                     
+* Info * basis: ANO-S-VDZP                                                                                                
+* Info * @end                                                                                                             
+                                                                                                                          
+                                              Molecular Geometry (Angstroms)                                              
+                                             ================================                                             
+                                                                                                                          
+                          Atom         Coordinate X          Coordinate Y          Coordinate Z                           
+                                                                                                                          
+                           O           0.000000000000        0.000000000000       -0.165350700000                         
+                           H           0.749368200000        0.000000000000        0.442432900000                         
+                           H          -0.749368200000        0.000000000000        0.442432900000                         
+                                                                                                                          
+                          Molecular charge            : 0                                                                 
+                          Spin multiplicity           : 1                                                                 
+                          Number of atoms             : 3                                                                 
+                          Number of alpha electrons   : 5                                                                 
+                          Number of beta  electrons   : 5                                                                 
+                                                                                                                          
+* Info * Reading basis set from file: /home/linares/miniconda3/envs/vlx-github/lib/python3.12/site-packages/veloxchem/basis/ANO-S-VDZP
+                                                                                                                          
+                                              Molecular Basis (Atomic Basis)                                              
+                                             ================================                                             
+                                                                                                                          
+                               Basis: ANO-S-VDZP                                                                          
+                                                                                                                          
+                               Atom Contracted GTOs           Primitive GTOs                                              
+                                                                                                                          
+                               O     (3S,2P,1D)                (30S,12P,3D)                                               
+                               H     (2S,1P)                   (14S,3P)                                                   
+                                                                                                                          
+                               Contracted Basis Functions : 24                                                            
+                               Primitive Basis Functions  : 127                                                           
+                                                                                                                          
+                                                                                                                          
+                                            Self Consistent Field Driver Setup                                            
+                                           ====================================                                           
+                                                                                                                          
+                   Wave Function Model             : Spin-Restricted Kohn-Sham                                            
+                   Initial Guess Model             : Restart from Checkpoint                                              
+                   Convergence Accelerator         : Direct Inversion of Iterative Subspace                               
+                   Max. Number of Iterations       : 50                                                                   
+                   Max. Number of Error Vectors    : 10                                                                   
+                   Convergence Threshold           : 1.0e-06                                                              
+                   ERI Screening Threshold         : 1.0e-12                                                              
+                   Linear Dependence Threshold     : 1.0e-06                                                              
+                   Exchange-Correlation Functional : B3LYP                                                                
+                   Molecular Grid Level            : 4                                                                    
+                                                                                                                          
+* Info * Nuclear repulsion energy: 9.1282837280 a.u.                                                                      
+                                                                                                                          
+* Info * Using the B3LYP functional.                                                                                      
+                                                                                                                          
+         P. J. Stephens, F. J. Devlin, C. F. Chabalowski, and M. J. Frisch.,  J. Phys. Chem. 98, 11623 (1994)
+                                                                                                                          
+* Info * Using the Libxc library (v6.2.2).                                                                                
+                                                                                                                          
+         S. Lehtola, C. Steigemann, M. J.T. Oliveira, and M. A.L. Marques.,  SoftwareX 7, 1–5 (2018)
+                                                                                                                          
+* Info * Using the following algorithm for XC numerical integration.                                                      
+                                                                                                                          
+         J. Kussmann, H. Laqua and C. Ochsenfeld, J. Chem. Theory Comput. 2021, 17, 1512-1521
+                                                                                                                          
+* Info * Molecular grid with 40768 points generated in 0.02 sec.                                                          
+                                                                                                                          
+* Info * Restarting from checkpoint file: h2o-loprop_scf.h5                                                               
+                                                                                                                          
+* Info * Overlap matrix computed in 0.00 sec.                                                                             
+                                                                                                                          
+* Info * Kinetic energy matrix computed in 0.00 sec.                                                                      
+                                                                                                                          
+* Info * Nuclear potential matrix computed in 0.00 sec.                                                                   
+                                                                                                                          
+* Info * Orthogonalization matrix computed in 0.00 sec.                                                                   
+                                                                                                                          
+                                                                                                                          
+               Iter. |    Kohn-Sham Energy | Energy Change | Gradient Norm | Max. Gradient | Density Change               
+               --------------------------------------------------------------------------------------------               
+                  1       -76.450842843987    0.0000000000      0.23214666      0.02891805      0.00000000                
+                  2       -76.453487679017   -0.0026448350      0.02126146      0.00305311      0.06620275                
+                  3       -76.453434685831    0.0000529932      0.03169684      0.00474581      0.01075149                
+                  4       -76.453532281172   -0.0000975953      0.00185138      0.00026474      0.00682127                
+                  5       -76.453532621018   -0.0000003398      0.00027564      0.00003869      0.00052037                
+                  6       -76.453532628032   -0.0000000070      0.00000705      0.00000134      0.00007120                
+                  7       -76.453532628038   -0.0000000000      0.00000073      0.00000012      0.00000352                
+                                                                                                                          
+* Info * Checkpoint written to file: h2o-loprop_scf.h5                                                                    
+                                                                                                                          
+* Info * SCF results written to file: h2o-loprop.h5                                                                       
+                                                                                                                          
+               *** SCF converged in 7 iterations. Time: 0.14 sec.                                                         
+                                                                                                                          
+               Spin-Restricted Kohn-Sham:                                                                                 
+               --------------------------                                                                                 
+               Total Energy                       :      -76.4535326280 a.u.                                              
+               Electronic Energy                  :      -85.5818163560 a.u.                                              
+               Nuclear Repulsion Energy           :        9.1282837280 a.u.                                              
+               ------------------------------------                                                                       
+               Gradient Norm                      :        0.0000007285 a.u.                                              
+                                                                                                                          
+                                                                                                                          
+               Ground State Information                                                                                   
+               ------------------------                                                                                   
+               Charge of Molecule            :  0.0                                                                       
+               Multiplicity (2S+1)           :  1                                                                         
+               Magnetic Quantum Number (M_S) :  0.0                                                                       
+                                                                                                                          
+                                                                                                                          
+                                                 Spin Restricted Orbitals                                                 
+                                                 ------------------------                                                 
+                                                                                                                          
+               Molecular Orbital No.   1:                                                                                 
+               --------------------------                                                                                 
+               Occupation: 2.000 Energy:  -19.14673 a.u.                                                                  
+               (   1 O   1s  :    -1.00)                                                                                  
+                                                                                                                          
+               Molecular Orbital No.   2:                                                                                 
+               --------------------------                                                                                 
+               Occupation: 2.000 Energy:   -1.02291 a.u.                                                                  
+               (   1 O   2s  :     0.71) (   2 H   1s  :     0.21) (   3 H   1s  :     0.21)                              
+                                                                                                                          
+               Molecular Orbital No.   3:                                                                                 
+               --------------------------                                                                                 
+               Occupation: 2.000 Energy:   -0.53734 a.u.                                                                  
+               (   1 O   1p+1:    -0.66) (   2 H   1s  :    -0.37) (   3 H   1s  :     0.37)                              
+                                                                                                                          
+               Molecular Orbital No.   4:                                                                                 
+               --------------------------                                                                                 
+               Occupation: 2.000 Energy:   -0.40491 a.u.                                                                  
+               (   1 O   2s  :     0.48) (   1 O   1p0 :    -0.79) (   2 H   1s  :    -0.22)                              
+               (   3 H   1s  :    -0.22)                                                                                  
+                                                                                                                          
+               Molecular Orbital No.   5:                                                                                 
+               --------------------------                                                                                 
+               Occupation: 2.000 Energy:   -0.32484 a.u.                                                                  
+               (   1 O   1p-1:    -0.96)                                                                                  
+                                                                                                                          
+               Molecular Orbital No.   6:                                                                                 
+               --------------------------                                                                                 
+               Occupation: 0.000 Energy:    0.00096 a.u.                                                                  
+               (   1 O   2s  :    -0.82) (   1 O   3s  :    -0.23) (   1 O   1p0 :    -0.38)                              
+               (   2 H   1s  :     0.68) (   2 H   2s  :     0.40) (   3 H   1s  :     0.68)                              
+               (   3 H   2s  :     0.40)                                                                                  
+                                                                                                                          
+               Molecular Orbital No.   7:                                                                                 
+               --------------------------                                                                                 
+               Occupation: 0.000 Energy:    0.11443 a.u.                                                                  
+               (   1 O   1p+1:    -1.06) (   1 O   2p+1:    -0.49) (   2 H   1s  :     1.79)                              
+               (   2 H   2s  :     1.08) (   3 H   1s  :    -1.79) (   3 H   2s  :    -1.08)                              
+                                                                                                                          
+               Molecular Orbital No.   8:                                                                                 
+               --------------------------                                                                                 
+               Occupation: 0.000 Energy:    0.31225 a.u.                                                                  
+               (   1 O   2s  :    -0.69) (   1 O   3s  :    -0.34) (   1 O   2p0 :    -1.04)                              
+               (   2 H   1s  :     0.37) (   2 H   2s  :     0.23) (   2 H   1p+1:    -0.21)                              
+               (   3 H   1s  :     0.37) (   3 H   2s  :     0.23) (   3 H   1p+1:     0.21)                              
+                                                                                                                          
+               Molecular Orbital No.   9:                                                                                 
+               --------------------------                                                                                 
+               Occupation: 0.000 Energy:    0.37278 a.u.                                                                  
+               (   1 O   2p-1:     1.02)                                                                                  
+                                                                                                                          
+               Molecular Orbital No.  10:                                                                                 
+               --------------------------                                                                                 
+               Occupation: 0.000 Energy:    0.38881 a.u.                                                                  
+               (   1 O   1p+1:    -1.12) (   1 O   2p+1:    -1.50) (   2 H   1s  :     1.56)                              
+               (   2 H   2s  :     0.39) (   3 H   1s  :    -1.56) (   3 H   2s  :    -0.39)                              
+                                                                                                                          
+                                                                                                                          
+                                                Ground State Dipole Moment                                                
+                                               ----------------------------                                               
+                                                                                                                          
+                                   X   :         0.000000 a.u.         0.000000 Debye                                     
+                                   Y   :         0.000000 a.u.         0.000000 Debye                                     
+                                   Z   :         0.780785 a.u.         1.984557 Debye                                     
+                                 Total :         0.780785 a.u.         1.984557 Debye                                     
+                                                                                                                          
+                                                                                                                          
+                                               Linear Response Solver Setup                                               
+                                              ==============================                                              
+                                                                                                                          
+                               Number of Frequencies           : 1                                                        
+                               Max. Number of Iterations       : 150                                                      
+                               Convergence Threshold           : 1.0e-04                                                  
+                               ERI Screening Threshold         : 1.0e-12                                                  
+                               Exchange-Correlation Functional : B3LYP                                                    
+                               Molecular Grid Level            : 4                                                        
+                                                                                                                          
+* Info * Using the B3LYP functional.                                                                                      
+                                                                                                                          
+         P. J. Stephens, F. J. Devlin, C. F. Chabalowski, and M. J. Frisch.,  J. Phys. Chem. 98, 11623 (1994)
+                                                                                                                          
+* Info * Using the Libxc library (v6.2.2).                                                                                
+                                                                                                                          
+         S. Lehtola, C. Steigemann, M. J.T. Oliveira, and M. A.L. Marques.,  SoftwareX 7, 1–5 (2018)
+                                                                                                                          
+* Info * Using the following algorithm for XC numerical integration.                                                      
+                                                                                                                          
+         J. Kussmann, H. Laqua and C. Ochsenfeld, J. Chem. Theory Comput. 2021, 17, 1512-1521
+                                                                                                                          
+* Info * Molecular grid with 40768 points generated in 0.01 sec.                                                          
+                                                                                                                          
+* Info * Processing 3 Fock builds...                                                                                      
+                                                                                                                          
+* Info * 0 gerade trial vectors in reduced space                                                                          
+* Info * 3 ungerade trial vectors in reduced space                                                                        
+                                                                                                                          
+* Info * 11.76 kB of memory used for subspace procedure on the master node                                                
+* Info * 119.92 GB of memory available for the solver on the master node                                                  
+                                                                                                                          
+               *** Iteration:   1 * Residuals (Max,Min): 9.05e-01 and 3.77e-01                                            
+                                                                                                                          
+               <<x;x>>_0.0000 :     -7.49918964 Residual Norm: 0.48739852                                                 
+               <<y;y>>_0.0000 :     -5.70422536 Residual Norm: 0.37658310                                                 
+               <<z;z>>_0.0000 :     -6.50268953 Residual Norm: 0.90494405                                                 
+                                                                                                                          
+* Info * Processing 3 Fock builds...                                                                                      
+                                                                                                                          
+* Info * 0 gerade trial vectors in reduced space                                                                          
+* Info * 6 ungerade trial vectors in reduced space                                                                        
+                                                                                                                          
+* Info * 16.32 kB of memory used for subspace procedure on the master node                                                
+* Info * 119.88 GB of memory available for the solver on the master node                                                  
+                                                                                                                          
+               *** Iteration:   2 * Residuals (Max,Min): 1.97e-01 and 5.07e-02                                            
+                                                                                                                          
+               <<x;x>>_0.0000 :     -7.76110574 Residual Norm: 0.06051824                                                 
+               <<y;y>>_0.0000 :     -5.92435429 Residual Norm: 0.05073616                                                 
+               <<z;z>>_0.0000 :     -7.22641332 Residual Norm: 0.19675509                                                 
+                                                                                                                          
+* Info * Processing 3 Fock builds...                                                                                      
+                                                                                                                          
+* Info * 0 gerade trial vectors in reduced space                                                                          
+* Info * 9 ungerade trial vectors in reduced space                                                                        
+                                                                                                                          
+* Info * 20.88 kB of memory used for subspace procedure on the master node                                                
+* Info * 119.84 GB of memory available for the solver on the master node                                                  
+                                                                                                                          
+               *** Iteration:   3 * Residuals (Max,Min): 3.17e-02 and 2.44e-03                                            
+                                                                                                                          
+               <<x;x>>_0.0000 :     -7.76446439 Residual Norm: 0.00371609                                                 
+               <<y;y>>_0.0000 :     -5.92793562 Residual Norm: 0.00243938                                                 
+               <<z;z>>_0.0000 :     -7.28478983 Residual Norm: 0.03165042                                                 
+                                                                                                                          
+* Info * Processing 3 Fock builds...                                                                                      
+                                                                                                                          
+* Info * 0 gerade trial vectors in reduced space                                                                          
+* Info * 12 ungerade trial vectors in reduced space                                                                       
+                                                                                                                          
+* Info * 25.44 kB of memory used for subspace procedure on the master node                                                
+* Info * 119.81 GB of memory available for the solver on the master node                                                  
+                                                                                                                          
+               *** Iteration:   4 * Residuals (Max,Min): 1.98e-03 and 1.78e-04                                            
+                                                                                                                          
+               <<x;x>>_0.0000 :     -7.76447880 Residual Norm: 0.00017913                                                 
+               <<y;y>>_0.0000 :     -5.92794555 Residual Norm: 0.00017793                                                 
+               <<z;z>>_0.0000 :     -7.28595396 Residual Norm: 0.00197554                                                 
+                                                                                                                          
+* Info * Processing 3 Fock builds...                                                                                      
+                                                                                                                          
+* Info * 0 gerade trial vectors in reduced space                                                                          
+* Info * 15 ungerade trial vectors in reduced space                                                                       
+                                                                                                                          
+* Info * 30.19 kB of memory used for subspace procedure on the master node                                                
+* Info * 119.78 GB of memory available for the solver on the master node                                                  
+                                                                                                                          
+               *** Iteration:   5 * Residuals (Max,Min): 1.09e-04 and 4.44e-06                                            
+                                                                                                                          
+               <<x;x>>_0.0000 :     -7.76447884 Residual Norm: 0.00000857                                                 
+               <<y;y>>_0.0000 :     -5.92794558 Residual Norm: 0.00000444                                                 
+               <<z;z>>_0.0000 :     -7.28595910 Residual Norm: 0.00010871                                                 
+                                                                                                                          
+* Info * Processing 1 Fock build...                                                                                       
+                                                                                                                          
+* Info * 0 gerade trial vectors in reduced space                                                                          
+* Info * 16 ungerade trial vectors in reduced space                                                                       
+                                                                                                                          
+* Info * 31.52 kB of memory used for subspace procedure on the master node                                                
+* Info * 119.78 GB of memory available for the solver on the master node                                                  
+                                                                                                                          
+               *** Iteration:   6 * Residuals (Max,Min): 8.57e-06 and 4.44e-06                                            
+                                                                                                                          
+               <<z;z>>_0.0000 :     -7.28595912 Residual Norm: 0.00000715                                                 
+                                                                                                                          
+* Info * Checkpoint written to file: h2o-loprop_rsp.h5                                                                    
+                                                                                                                          
+* Info * Time spent in writing checkpoint file: 0.00 sec                                                                  
+                                                                                                                          
+               *** Linear response converged in 6 iterations. Time: 0.26 sec                                              
+                                                                                                                          
+                                                                                                                          
+* Info * Response solution vectors written to file: h2o-loprop.h5                                                         
+                                                                                                                          
+               Polarizability (w=0.0000)                                                                                  
+               -------------------------                                                                                  
+                                  X              Y              Z                                                         
+               X         7.76447884    -0.00000000    -0.00000000                                                         
+               Y        -0.00000000     5.92794558    -0.00000000                                                         
+               Z         0.00000000    -0.00000000     7.28595912                                                         
+                                                                                                                          
+                                                                                                                          
+                                                Local Properties (LoProp)                                                 
+                                               ===========================                                                
+                                                                                                                          
+         Reference: L. Gagliardi, R. Lindh, G. Karlström, J. Chem. Phys. 2004, 121, 4494-4500.
+                                                                                                                          
+                                                Molecular Polarizabilities                                                
+                                                --------------------------                                                
+                                                 alpha_xx :       7.7645                                                  
+                                                 alpha_yy :       5.9279                                                  
+                                                 alpha_zz :       7.2860                                                  
+                                                                                                                          
+                                              Atomic Partial Charges (a.u.)                                               
+                                              -----------------------------                                               
+                                                  O    :         -0.6791                                                  
+                                                  H    :          0.3396                                                  
+                                                  H    :          0.3396                                                  
+                                                                                                                          
+                                              Atomic Polarizabilities (a.u.)                                              
+                                              ------------------------------                                              
+                                      xx         xy         xz         yy         yz         zz                           
+                         O    :     4.0255    -0.0000    -0.0000     3.1646    -0.0000     3.9143                         
+                         H    :     1.8695    -0.0000     1.1639     1.3817    -0.0000     1.6858                         
+                         H    :     1.8695     0.0000    -1.1639     1.3817    -0.0000     1.6858                         
+                                                                                                                          
+!========================================================================================================================!
+!                               VeloxChem execution completed at Fri May  9 13:27:34 2025.                               !
+!========================================================================================================================!
+!                                           Total execution time is 0.44 sec.                                            !
+!========================================================================================================================!
+!                     Rinkevicius, Z.; Li, X.; Vahtras, O.; Ahmadzadeh, K.; Brand, M.; Ringholm, M.;                     !
+!                              List, N. H.; Scheurer, M.; Scott, M.; Dreuw, A.; Norman, P.                               !
+!                     VeloxChem: A Python-driven Density-functional Theory Program for Spectroscopy                      !
+!                                Simulations in High-performance Computing Environments.                                 !
+!                                       WIREs Comput Mol Sci 2020, 10 (5), e1457.                                        !
+!========================================================================================================================!
