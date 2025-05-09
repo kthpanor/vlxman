@@ -16,9 +16,9 @@ VeloxChem features interactive program access through Jupyter notebooks as well 
 - Complex polarization propagator (CPP)
 - Response theory for pulses
 
-```{image} ../images/cover.png
+```{image} ../images/swedish_moebius.jpg
 :alt: cover
 :class: bg-primary mb-1
-:width: 400px
+:width: 800px
 :align: center
 ```
