@@ -53,7 +53,7 @@ H   -0.7493682    0.0000000    0.4424329
 @end
 ```
 
-Additionally, the equivalent following Python script (`water.inp`) could also be used:
+The equivalent following Python script (`water.py`) reads:
 ```
 import veloxchem as vlx
 

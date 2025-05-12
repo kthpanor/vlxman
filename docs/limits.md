@@ -20,7 +20,11 @@ For the most parts, VeloxChem implements few schemes to improve the formal scali
 
 Basically, the only underlying approximation made is the adoption of Cauchy–Schwarz screening in the evaluation of electron-repulsion integrals, but also this is done with rigor using a small screening threshold per default.
 
-## Polarizabilities and C6 dispersion coefficients
+## Scaling
+### Laptop
+### Desktop
+### HPC-CPU
+**Polarizabilities and C6 dispersion coefficients**
 
 With a highly efficient implementation of the linear complex polarization propagator in VeloxChem, Hartree–Fock and Kohn–Sham density-functional theory calculations were performed of the frequency-dependent polarizabilities for fullerenes consisting of up to 540 carbon atoms. Results for the static polarizabilities and C6 coefficients show scalings of $N^{1.2}$ and $N^{2.2}$, respectively,  thereby deviating significantly from the previously reported values obtained with use of semi-classical/empirical methods. See Ref. {cite}`Brand2021` for further details.
 
@@ -32,10 +36,6 @@ With a highly efficient implementation of the linear complex polarization propag
 :align: center
 ```
 
-## Scaling
-### laptop
-### Desktop
-### HPC-CPU
 ### HPC-GPU
 **GPU-Accelerated Fock Matrix Construction**
 

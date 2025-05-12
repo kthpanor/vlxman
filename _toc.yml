@@ -30,7 +30,8 @@ parts:
   - file: docs/xray
 - caption: Visualization
   chapters:
-  - file: docs/elec_dens
+  - file: docs/vis
+  - file: docs/viamd
 - caption: Advanced users
   chapters:
   - file: docs/program_struct

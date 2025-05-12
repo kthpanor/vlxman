@@ -11,6 +11,8 @@ do_resonance_raman: no
 @end
 ```
 
+Calculations of normal modes are performed with the aid of geomeTRIC {cite}`geomeTRIC`.
+
 ## Infra-red
 
 ```
