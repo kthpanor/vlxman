@@ -47,9 +47,59 @@ basis: def2-svp
 charge: 0
 multiplicity: 1
 xyz:
-...
+O    0.0000000    0.0000000   -0.1653507
+H    0.7493682    0.0000000    0.4424329
+H   -0.7493682    0.0000000    0.4424329
 @end
 ```
+
+Additionally, the equivalent following Python script (`water.inp`) could also be used:
+```
+import veloxchem as vlx
+
+water_xyz_string = """
+3
+water
+O    0.0000000    0.0000000   -0.1653507
+H    0.7493682    0.0000000    0.4424329
+H   -0.7493682    0.0000000    0.4424329
+"""
+
+molecule = vlx.Molecule.read_xyz_string(water_xyz_string)
+basis = vlx.MolecularBasis.read(molecule, 'def2-svp')
+
+scfdrv = vlx.ScfRestrictedDriver()
+scfdrv.filename = 'water'
+scf_results = scfdrv.compute(molecule, basis)
+```
+
+This Python script can be submitted with the following SLURM job submission:
+```bash
+#!/bin/bash
+
+#SBATCH --time=10:00:00
+
+#SBATCH --nodes=4
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=32
+
+# setup the environemnt
+module load buildtool-easybuild/3.5.3-nsc17d8ce4
+module load intel/2018a
+module load Python/3.6.4-nsc2-intel-2018a-eb
+
+# activate veloxchem
+source $HOME/software/VeloxChemMP/venv/bin/activate
+
+# number of threads should match the SLURM specification
+export OMP_NUM_THREADS=32
+
+# start the calculation
+mpirun python3 water.py > water.out
+
+# end of script
+```
+
 
 ## Benchmark reference
 
