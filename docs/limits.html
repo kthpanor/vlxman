@@ -189,7 +189,6 @@
 <li class="toctree-l1"><a class="reference internal" href="run_desktop.html">Running on a desktop</a></li>
 <li class="toctree-l1"><a class="reference internal" href="run_cluster.html">Running on a cluster</a></li>
 <li class="toctree-l1"><a class="reference internal" href="keywords.html">Input file keywords</a></li>
-<li class="toctree-l1"><a class="reference internal" href="input_files.html">Input files</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Model chemistry</span></p>
 <ul class="nav bd-sidenav">
@@ -201,10 +200,10 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Properties</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="pes.html">Potential energy surfaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="uv-vis.html">UV/vis absorption/emission</a></li>
 <li class="toctree-l1"><a class="reference internal" href="opt_act.html">Optical activity and dichroism</a></li>
 <li class="toctree-l1"><a class="reference internal" href="vib_spect.html">Vibrational spectroscopies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pes.html">Potential energy surfaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="magnetic.html">Magnetic resonances</a></li>
 <li class="toctree-l1"><a class="reference internal" href="linear-response.html">Linear response</a></li>
 <li class="toctree-l1"><a class="reference internal" href="nlo.html">Multi-photon interactions</a></li>
@@ -419,6 +418,13 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polarizabilities-and-c6-dispersion-coefficients">Polarizabilities and C6 dispersion coefficients</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scaling">Scaling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#laptop">laptop</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#desktop">Desktop</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hpc-cpu">HPC-CPU</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hpc-gpu">HPC-GPU</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -449,6 +455,26 @@ document.write(`
 <p>With a highly efficient implementation of the linear complex polarization propagator in VeloxChem, Hartree–Fock and Kohn–Sham density-functional theory calculations were performed of the frequency-dependent polarizabilities for fullerenes consisting of up to 540 carbon atoms. Results for the static polarizabilities and C6 coefficients show scalings of <span class="math notranslate nohighlight">\(N^{1.2}\)</span> and <span class="math notranslate nohighlight">\(N^{2.2}\)</span>, respectively,  thereby deviating significantly from the previously reported values obtained with use of semi-classical/empirical methods. See Ref. <span id="id1">[<a class="reference internal" href="refs.html#id3" title="Manuel Brand, Karan Ahmadzadeh, Xin Li, Zilvinas Rinkevicius, Wissam A. Saidi, and Patrick Norman. Size-dependent polarizabilities and van der Waals dispersion coefficients of fullerenes from large-scale complex polarization propagator calculations. J. Chem. Phys., 154(7):074304, 2021. doi:10.1063/5.0040009.">BAL+21</a>]</span> for further details.</p>
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/alpha_fullerene.png"><img alt="cover" class="bg-primary mb-1 align-center" src="../_images/alpha_fullerene.png" style="width: 600px;" />
 </a>
+</section>
+<section id="scaling">
+<h2>Scaling<a class="headerlink" href="#scaling" title="Link to this heading">#</a></h2>
+<section id="laptop">
+<h3>laptop<a class="headerlink" href="#laptop" title="Link to this heading">#</a></h3>
+</section>
+<section id="desktop">
+<h3>Desktop<a class="headerlink" href="#desktop" title="Link to this heading">#</a></h3>
+</section>
+<section id="hpc-cpu">
+<h3>HPC-CPU<a class="headerlink" href="#hpc-cpu" title="Link to this heading">#</a></h3>
+</section>
+<section id="hpc-gpu">
+<h3>HPC-GPU<a class="headerlink" href="#hpc-gpu" title="Link to this heading">#</a></h3>
+<p><strong>GPU-Accelerated Fock Matrix Construction</strong></p>
+<p>Two separate scaling aspects of the GPU implementation of the ERI-part of the Fock matrix construction can be shown: (a) a system size scaling illustrated by the wall times (in seconds) on a single GPU node obtained for spherical water clusters of varying sizes (the inset shows the largest cluster). (b) a strong scaling with respect to the number of GPUs (each with two GCDs), illustrated here by a G-quadruplex including all nucleotides where the phosphate group has been neutralized by adding a hydrogen.</p>
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/hpc-gpu-scaling.jpeg"><img alt="cover" class="bg-primary mb-1 align-center" src="../_images/hpc-gpu-scaling.jpeg" style="width: 800px;" />
+</a>
+<p>Read more in our article <a class="reference external" href="https://doi.org/10.1021/acs.jpca.4c07510"><em>J. Phys. Chem. A</em>, <strong>2025</strong>, 129, 2, 633-642</a> <span id="id2">[<a class="reference internal" href="refs.html#id33" title="Xin Li, Mathieu Linares, and Patrick Norman. Veloxchem: gpu-accelerated fock matrix construction enabling complex polarization propagator simulations of circular dichroism spectra of g-quadruplexes. The Journal of Physical Chemistry A, 129(2):633-642, 2025. URL: https://doi.org/10.1021/acs.jpca.4c07510, arXiv:https://doi.org/10.1021/acs.jpca.4c07510, doi:10.1021/acs.jpca.4c07510.">LLN25</a>]</span></p>
+</section>
 </section>
 </section>
 
@@ -517,6 +543,13 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polarizabilities-and-c6-dispersion-coefficients">Polarizabilities and C6 dispersion coefficients</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scaling">Scaling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#laptop">laptop</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#desktop">Desktop</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hpc-cpu">HPC-CPU</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hpc-gpu">HPC-GPU</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
