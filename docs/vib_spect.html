@@ -431,12 +431,12 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="vibrational-spectroscopies">
 <h1>Vibrational spectroscopies<a class="headerlink" href="#vibrational-spectroscopies" title="Link to this heading">#</a></h1>
-<p>This page presents how to calculate IR, Raman and Resonance Raman spectra by using the keyword: <code class="docutils literal notranslate"><span class="pre">do_ir</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;do_raman</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;do_resonance_raman</span></code> respectively in the <code class="docutils literal notranslate"><span class="pre">&#64;vibrational</span></code> section. Note that one can perform all three spectrosocopies at the time.</p>
+<p>This page presents how to calculate IR, Raman and Resonance Raman spectra by using the keyword: <code class="docutils literal notranslate"><span class="pre">do_ir</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;do_raman</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;do_resonance_raman</span></code> respectively in the <code class="docutils literal notranslate"><span class="pre">&#64;vibrational</span></code> section. IR and calculated at the same time as Raman OR resonance Raman.</p>
+<p>The following <code class="docutils literal notranslate"><span class="pre">&#64;vibrational</span></code> section show you the default settings of the vibrational task.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@vibrational</span>
 <span class="n">do_ir</span><span class="p">:</span> <span class="n">yes</span>
-<span class="n">do_raman</span><span class="p">:</span> <span class="n">yes</span>
-<span class="n">do_resonance_raman</span><span class="p">:</span> <span class="n">yes</span>
-<span class="n">frequencies</span><span class="p">:</span> <span class="mf">0.05</span><span class="o">-</span><span class="mf">0.25</span> <span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="n">do_raman</span><span class="p">:</span> <span class="n">no</span>
+<span class="n">do_resonance_raman</span><span class="p">:</span> <span class="n">no</span>
 <span class="nd">@end</span>
 </pre></div>
 </div>
@@ -492,7 +492,36 @@ document.write(`
 </section>
 <section id="resonance-raman">
 <h2>Resonance raman<a class="headerlink" href="#resonance-raman" title="Link to this heading">#</a></h2>
-<p>This is under construction</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
+<span class="n">task</span><span class="p">:</span> <span class="n">vibrational</span>
+<span class="nd">@end</span>
+
+<span class="nd">@method</span> <span class="n">settings</span>
+<span class="n">xcfun</span><span class="p">:</span> <span class="n">b3lyp</span>
+<span class="n">basis</span><span class="p">:</span> <span class="n">def2</span><span class="o">-</span><span class="n">svp</span>
+<span class="nd">@end</span>
+
+<span class="nd">@vibrational</span>
+<span class="n">do_resonance_raman</span><span class="p">:</span> <span class="n">yes</span>
+<span class="n">frequencies</span><span class="p">:</span> <span class="mf">0.05</span><span class="o">-</span><span class="mf">0.25</span> <span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="nd">@end</span>
+
+<span class="nd">@molecule</span>
+<span class="n">charge</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">multiplicity</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">xyz</span><span class="p">:</span>
+<span class="n">C</span>          <span class="o">-</span><span class="mf">7.193469896121</span>       <span class="o">-</span><span class="mf">0.606513185315</span>        <span class="mf">0.051392766908</span>                         
+<span class="n">C</span>          <span class="o">-</span><span class="mf">5.875615515175</span>       <span class="o">-</span><span class="mf">0.849065291590</span>        <span class="mf">0.042481132685</span>                         
+<span class="n">C</span>          <span class="o">-</span><span class="mf">4.889535693619</span>        <span class="mf">0.245221229217</span>       <span class="o">-</span><span class="mf">0.080553519627</span>                         
+<span class="n">O</span>          <span class="o">-</span><span class="mf">3.691300371749</span>        <span class="mf">0.086578691883</span>       <span class="o">-</span><span class="mf">0.094301147046</span>                         
+<span class="n">H</span>          <span class="o">-</span><span class="mf">5.343436560117</span>        <span class="mf">1.269725354663</span>       <span class="o">-</span><span class="mf">0.163335974501</span>                         
+<span class="n">H</span>          <span class="o">-</span><span class="mf">7.932396644059</span>       <span class="o">-</span><span class="mf">1.406925824035</span>        <span class="mf">0.141819097832</span>                         
+<span class="n">H</span>          <span class="o">-</span><span class="mf">7.577705619481</span>        <span class="mf">0.416356866537</span>       <span class="o">-</span><span class="mf">0.032850542800</span>                         
+<span class="n">H</span>          <span class="o">-</span><span class="mf">5.465794362629</span>       <span class="o">-</span><span class="mf">1.861160187416</span>        <span class="mf">0.125149091897</span>                         
+<span class="nd">@end</span>
+</pre></div>
+</div>
+<p><a class="reference download internal" download="" href="../_downloads/4b40c922743d47f83239a8593d22a7a8/acro-reson-raman.inp"><span class="xref download myst">Download</span></a> an input file to perfom a Raman spectra calculation of the acroleine molecule at the B3LYP/def2-svp level of theory.</p>
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/acro.png"><img alt="cover" class="bg-primary mb-1 align-center" src="../_images/acro.png" style="width: 400px;" />
 </a>
 </section>
