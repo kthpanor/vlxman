@@ -184,10 +184,9 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="limits.html">Pushing the limits</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installing the program</a></li>
-<li class="toctree-l1"><a class="reference internal" href="run_desktop.html">Running on a desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="run_desktop.html">Running on a laptop/desktop</a></li>
 <li class="toctree-l1"><a class="reference internal" href="run_cluster.html">Running on a cluster</a></li>
 <li class="toctree-l1"><a class="reference internal" href="keywords.html">Input file keywords</a></li>
-<li class="toctree-l1"><a class="reference internal" href="input_files.html">Input files</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Model chemistry</span></p>
 <ul class="current nav bd-sidenav">
@@ -199,10 +198,10 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Properties</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="pes.html">Potential energy surfaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="uv-vis.html">UV/vis absorption/emission</a></li>
 <li class="toctree-l1"><a class="reference internal" href="opt_act.html">Optical activity and dichroism</a></li>
 <li class="toctree-l1"><a class="reference internal" href="vib_spect.html">Vibrational spectroscopies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pes.html">Potential energy surfaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="magnetic.html">Magnetic resonances</a></li>
 <li class="toctree-l1"><a class="reference internal" href="linear-response.html">Linear response</a></li>
 <li class="toctree-l1"><a class="reference internal" href="nlo.html">Multi-photon interactions</a></li>
@@ -210,7 +209,8 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Visualization</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="elec_dens.html">Electronic densities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vis.html">Jupyter notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viamd.html">VIAMD software</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced users</span></p>
 <ul class="nav bd-sidenav">
@@ -431,6 +431,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="exchangecorrelation-functionals">
 <h1>Exchange–correlation functionals<a class="headerlink" href="#exchangecorrelation-functionals" title="Link to this heading">#</a></h1>
+<p>LIBXC is used as a library for exchange-correlation functionnals <span id="id1">[<a class="reference internal" href="refs.html#id156" title="Susi Lehtola, Conrad Steigemann, Micael J.T. Oliveira, and Miguel A.L. Marques. Recent developments in libxc — a comprehensive library of functionals for density functional theory. SoftwareX, 7:1-5, 2018. doi:https://doi.org/10.1016/j.softx.2017.11.002.">LSOM18</a>]</span>.</p>
 <section id="available-functionals">
 <h2>Available functionals<a class="headerlink" href="#available-functionals" title="Link to this heading">#</a></h2>
 <p>The density functionals provided in the VeloxChem library can be listed with the <code class="docutils literal notranslate"><span class="pre">available_functionals</span></code> method.</p>

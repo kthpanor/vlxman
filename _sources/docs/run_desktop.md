@@ -1,4 +1,4 @@
-# Running on a desktop
+# Running on a laptop/desktop
 
 ## In a Jupyter notebook
 
@@ -17,12 +17,11 @@ molecule = vlx.Molecule.read_xyz_string(water_xyz_string)
 basis = vlx.MolecularBasis.read(molecule, 'def2-svp')
 
 scfdrv = vlx.ScfRestrictedDriver()
-scfdrv.conv_thresh = 1.0e-6
 scfdrv.xcfun = 'b3lyp'
 scf_results = scfdrv.compute(molecule, basis)
 ```
 
-A comprehensive presenation of how to interact and run the VeloxChem program in a Jupyter notebook is provided in the [eChem book](https://kthpanor.github.io/echem).
+A comprehensive presentation of how to interact and run the VeloxChem program in a Jupyter notebook is provided in the [eChem book](https://kthpanor.github.io/echem).
 
 ## Using an input file
 

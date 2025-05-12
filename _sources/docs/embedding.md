@@ -107,7 +107,7 @@ xyz:
 
 In both cases, the user needs to specify the number of layers of the molecular surface as well as the surface grid point density in these layers (in units of Å$^{-2}$).
 
-[Download](../input_files/h2o-esp.inp) the input file to calculate the ESP charges for the water molecule at the HF/6-31G level of theory.
+Download a [text file](../input_files/h2o-esp.inp) or [Python script](../input_files/h2o-esp.py) type of input file to calculate the ESP charges for the water molecule at the HF/6-31G level of theory.
 
 ### RESP charges
 
@@ -178,8 +178,8 @@ xyz:
 ...
 @end 
 ```
-[Download](../input_files/h2o-resp.inp) the input file to calculate the RESP charges for the water molecule at the HF/6-31G* level of theory.
 
+Download a [text file](../input_files/h2o-resp.inp) or [Python script](../input_files/h2o-resp.py) type of input file to calculate the RESP charges for the water molecule at the HF/6-31G* level of theory.
 
 ### LoProp charges and polarizabilities
 

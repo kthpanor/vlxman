@@ -62,7 +62,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Input file keywords" href="keywords.html" />
-    <link rel="prev" title="Running on a desktop" href="run_desktop.html" />
+    <link rel="prev" title="Running on a laptop/desktop" href="run_desktop.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -184,10 +184,9 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="limits.html">Pushing the limits</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installing the program</a></li>
-<li class="toctree-l1"><a class="reference internal" href="run_desktop.html">Running on a desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="run_desktop.html">Running on a laptop/desktop</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Running on a cluster</a></li>
 <li class="toctree-l1"><a class="reference internal" href="keywords.html">Input file keywords</a></li>
-<li class="toctree-l1"><a class="reference internal" href="input_files.html">Input files</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Model chemistry</span></p>
 <ul class="nav bd-sidenav">
@@ -199,10 +198,10 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Properties</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="pes.html">Potential energy surfaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="uv-vis.html">UV/vis absorption/emission</a></li>
 <li class="toctree-l1"><a class="reference internal" href="opt_act.html">Optical activity and dichroism</a></li>
 <li class="toctree-l1"><a class="reference internal" href="vib_spect.html">Vibrational spectroscopies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pes.html">Potential energy surfaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="magnetic.html">Magnetic resonances</a></li>
 <li class="toctree-l1"><a class="reference internal" href="linear-response.html">Linear response</a></li>
 <li class="toctree-l1"><a class="reference internal" href="nlo.html">Multi-photon interactions</a></li>
@@ -210,7 +209,8 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Visualization</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="elec_dens.html">Electronic densities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vis.html">Visualization in Jupyter Notebook</a></li>
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced users</span></p>
 <ul class="nav bd-sidenav">
@@ -472,8 +472,55 @@ mpirun<span class="w"> </span>python3<span class="w"> </span>-m<span class="w"> 
 <span class="n">charge</span><span class="p">:</span> <span class="mi">0</span>
 <span class="n">multiplicity</span><span class="p">:</span> <span class="mi">1</span>
 <span class="n">xyz</span><span class="p">:</span>
-<span class="o">...</span>
+<span class="n">O</span>    <span class="mf">0.0000000</span>    <span class="mf">0.0000000</span>   <span class="o">-</span><span class="mf">0.1653507</span>
+<span class="n">H</span>    <span class="mf">0.7493682</span>    <span class="mf">0.0000000</span>    <span class="mf">0.4424329</span>
+<span class="n">H</span>   <span class="o">-</span><span class="mf">0.7493682</span>    <span class="mf">0.0000000</span>    <span class="mf">0.4424329</span>
 <span class="nd">@end</span>
+</pre></div>
+</div>
+<p>The equivalent following Python script (<code class="docutils literal notranslate"><span class="pre">water.py</span></code>) reads:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">veloxchem</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">vlx</span>
+
+<span class="n">water_xyz_string</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">3</span>
+<span class="s2">water</span>
+<span class="s2">O    0.0000000    0.0000000   -0.1653507</span>
+<span class="s2">H    0.7493682    0.0000000    0.4424329</span>
+<span class="s2">H   -0.7493682    0.0000000    0.4424329</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">molecule</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">Molecule</span><span class="o">.</span><span class="n">read_xyz_string</span><span class="p">(</span><span class="n">water_xyz_string</span><span class="p">)</span>
+<span class="n">basis</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">MolecularBasis</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="s1">&#39;def2-svp&#39;</span><span class="p">)</span>
+
+<span class="n">scfdrv</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">ScfRestrictedDriver</span><span class="p">()</span>
+<span class="n">scfdrv</span><span class="o">.</span><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;water&#39;</span>
+<span class="n">scf_results</span> <span class="o">=</span> <span class="n">scfdrv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">basis</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This Python script can be submitted with the following SLURM job submission:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="c1">#SBATCH --time=10:00:00</span>
+
+<span class="c1">#SBATCH --nodes=4</span>
+<span class="c1">#SBATCH --ntasks-per-node=1</span>
+<span class="c1">#SBATCH --cpus-per-task=32</span>
+
+<span class="c1"># setup the environemnt</span>
+module<span class="w"> </span>load<span class="w"> </span>buildtool-easybuild/3.5.3-nsc17d8ce4
+module<span class="w"> </span>load<span class="w"> </span>intel/2018a
+module<span class="w"> </span>load<span class="w"> </span>Python/3.6.4-nsc2-intel-2018a-eb
+
+<span class="c1"># activate veloxchem</span>
+<span class="nb">source</span><span class="w"> </span><span class="nv">$HOME</span>/software/VeloxChemMP/venv/bin/activate
+
+<span class="c1"># number of threads should match the SLURM specification</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="m">32</span>
+
+<span class="c1"># start the calculation</span>
+mpirun<span class="w"> </span>python3<span class="w"> </span>water.py<span class="w"> </span>&gt;<span class="w"> </span>water.out
+
+<span class="c1"># end of script</span>
 </pre></div>
 </div>
 <section id="benchmark-reference">
@@ -1731,7 +1778,7 @@ mpirun<span class="w"> </span>python3<span class="w"> </span>-m<span class="w"> 
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Running on a desktop</p>
+        <p class="prev-next-title">Running on a laptop/desktop</p>
       </div>
     </a>
     <a class="right-next"

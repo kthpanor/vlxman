@@ -25,7 +25,7 @@ xyz:
 ...
 @end
 ```
-[Download](../input_files/pna-field.inp) the input file to perfom a scf calculation under the presence of a static electric field for the p-nitroaniline.
+[Download](../input_files/pna-field.inp) or [Python script](../input_files/pna-field.py) type of input file  to perfom a scf calculation under the presence of a static electric field for the p-nitroaniline.
 
 ```{image} ../images/pna.png
 :alt: cover

@@ -186,7 +186,7 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Pushing the limits</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installing the program</a></li>
-<li class="toctree-l1"><a class="reference internal" href="run_desktop.html">Running on a desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="run_desktop.html">Running on a laptop/desktop</a></li>
 <li class="toctree-l1"><a class="reference internal" href="run_cluster.html">Running on a cluster</a></li>
 <li class="toctree-l1"><a class="reference internal" href="keywords.html">Input file keywords</a></li>
 </ul>
@@ -211,7 +211,8 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Visualization</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="elec_dens.html">Electronic densities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vis.html">Visualization in Jupyter Notebook</a></li>
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced users</span></p>
 <ul class="nav bd-sidenav">
@@ -417,9 +418,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polarizabilities-and-c6-dispersion-coefficients">Polarizabilities and C6 dispersion coefficients</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scaling">Scaling</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#laptop">laptop</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#laptop">Laptop</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#desktop">Desktop</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hpc-cpu">HPC-CPU</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hpc-gpu">HPC-GPU</a></li>
@@ -450,22 +450,20 @@ document.write(`
 </ul>
 <p>For the most parts, VeloxChem implements few schemes to improve the formal scaling of the calculation but rather focus to implement the general and stable algorithms efficiently for HPC cluster computing.</p>
 <p>Basically, the only underlying approximation made is the adoption of Cauchy–Schwarz screening in the evaluation of electron-repulsion integrals, but also this is done with rigor using a small screening threshold per default.</p>
-<section id="polarizabilities-and-c6-dispersion-coefficients">
-<h2>Polarizabilities and C6 dispersion coefficients<a class="headerlink" href="#polarizabilities-and-c6-dispersion-coefficients" title="Link to this heading">#</a></h2>
-<p>With a highly efficient implementation of the linear complex polarization propagator in VeloxChem, Hartree–Fock and Kohn–Sham density-functional theory calculations were performed of the frequency-dependent polarizabilities for fullerenes consisting of up to 540 carbon atoms. Results for the static polarizabilities and C6 coefficients show scalings of <span class="math notranslate nohighlight">\(N^{1.2}\)</span> and <span class="math notranslate nohighlight">\(N^{2.2}\)</span>, respectively,  thereby deviating significantly from the previously reported values obtained with use of semi-classical/empirical methods. See Ref. <span id="id1">[<a class="reference internal" href="refs.html#id3" title="Manuel Brand, Karan Ahmadzadeh, Xin Li, Zilvinas Rinkevicius, Wissam A. Saidi, and Patrick Norman. Size-dependent polarizabilities and van der Waals dispersion coefficients of fullerenes from large-scale complex polarization propagator calculations. J. Chem. Phys., 154(7):074304, 2021. doi:10.1063/5.0040009.">BAL+21</a>]</span> for further details.</p>
-<a class="bg-primary mb-1 reference internal image-reference" href="../_images/alpha_fullerene.png"><img alt="cover" class="bg-primary mb-1 align-center" src="../_images/alpha_fullerene.png" style="width: 600px;" />
-</a>
-</section>
 <section id="scaling">
 <h2>Scaling<a class="headerlink" href="#scaling" title="Link to this heading">#</a></h2>
 <section id="laptop">
-<h3>laptop<a class="headerlink" href="#laptop" title="Link to this heading">#</a></h3>
+<h3>Laptop<a class="headerlink" href="#laptop" title="Link to this heading">#</a></h3>
 </section>
 <section id="desktop">
 <h3>Desktop<a class="headerlink" href="#desktop" title="Link to this heading">#</a></h3>
 </section>
 <section id="hpc-cpu">
 <h3>HPC-CPU<a class="headerlink" href="#hpc-cpu" title="Link to this heading">#</a></h3>
+<p><strong>Polarizabilities and C6 dispersion coefficients</strong></p>
+<p>With a highly efficient implementation of the linear complex polarization propagator in VeloxChem, Hartree–Fock and Kohn–Sham density-functional theory calculations were performed of the frequency-dependent polarizabilities for fullerenes consisting of up to 540 carbon atoms. Results for the static polarizabilities and C6 coefficients show scalings of <span class="math notranslate nohighlight">\(N^{1.2}\)</span> and <span class="math notranslate nohighlight">\(N^{2.2}\)</span>, respectively,  thereby deviating significantly from the previously reported values obtained with use of semi-classical/empirical methods. See Ref. <span id="id1">[<a class="reference internal" href="refs.html#id3" title="Manuel Brand, Karan Ahmadzadeh, Xin Li, Zilvinas Rinkevicius, Wissam A. Saidi, and Patrick Norman. Size-dependent polarizabilities and van der Waals dispersion coefficients of fullerenes from large-scale complex polarization propagator calculations. J. Chem. Phys., 154(7):074304, 2021. doi:10.1063/5.0040009.">BAL+21</a>]</span> for further details.</p>
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/alpha_fullerene.png"><img alt="cover" class="bg-primary mb-1 align-center" src="../_images/alpha_fullerene.png" style="width: 600px;" />
+</a>
 </section>
 <section id="hpc-gpu">
 <h3>HPC-GPU<a class="headerlink" href="#hpc-gpu" title="Link to this heading">#</a></h3>
@@ -542,9 +540,8 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polarizabilities-and-c6-dispersion-coefficients">Polarizabilities and C6 dispersion coefficients</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scaling">Scaling</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#laptop">laptop</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#laptop">Laptop</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#desktop">Desktop</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hpc-cpu">HPC-CPU</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hpc-gpu">HPC-GPU</a></li>

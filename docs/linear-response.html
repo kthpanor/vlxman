@@ -186,10 +186,9 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="limits.html">Pushing the limits</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installing the program</a></li>
-<li class="toctree-l1"><a class="reference internal" href="run_desktop.html">Running on a desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="run_desktop.html">Running on a laptop/desktop</a></li>
 <li class="toctree-l1"><a class="reference internal" href="run_cluster.html">Running on a cluster</a></li>
 <li class="toctree-l1"><a class="reference internal" href="keywords.html">Input file keywords</a></li>
-<li class="toctree-l1"><a class="reference internal" href="input_files.html">Input files</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Model chemistry</span></p>
 <ul class="nav bd-sidenav">
@@ -201,10 +200,10 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Properties</span></p>
 <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="pes.html">Potential energy surfaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="uv-vis.html">UV/vis absorption/emission</a></li>
 <li class="toctree-l1"><a class="reference internal" href="opt_act.html">Optical activity and dichroism</a></li>
 <li class="toctree-l1"><a class="reference internal" href="vib_spect.html">Vibrational spectroscopies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pes.html">Potential energy surfaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="magnetic.html">Magnetic resonances</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Linear response</a></li>
 <li class="toctree-l1"><a class="reference internal" href="nlo.html">Multi-photon interactions</a></li>
@@ -212,7 +211,8 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Visualization</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="elec_dens.html">Electronic densities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vis.html">Visualization in Jupyter Notebook</a></li>
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced users</span></p>
 <ul class="nav bd-sidenav">
@@ -437,7 +437,7 @@ document.write(`
 <h1>Linear response<a class="headerlink" href="#linear-response" title="Link to this heading">#</a></h1>
 <section id="polarizability">
 <h2>Polarizability<a class="headerlink" href="#polarizability" title="Link to this heading">#</a></h2>
-<p>The linear electric-dipole polarizabilty is determined from the linear response function <span id="id1">[<a class="reference internal" href="refs.html#id50" title="Patrick Norman, Kenneth Ruud, and Trond Saue. Principles and practices of molecular properties. John Wiley &amp; Sons, Ltd, Chichester, UK, 2018.">NRS18</a>]</span></p>
+<p>The linear electric-dipole polarizabilty is determined from the linear response function <span id="id1">[<a class="reference internal" href="refs.html#id51" title="Patrick Norman, Kenneth Ruud, and Trond Saue. Principles and practices of molecular properties. John Wiley &amp; Sons, Ltd, Chichester, UK, 2018.">NRS18</a>]</span></p>
 <div class="math notranslate nohighlight">
 \[
 \alpha_{\alpha\beta}(\omega) =
@@ -522,7 +522,7 @@ d\omega
 \[
     i\omega^I = i\omega_0 \frac{1-t}{1+t},\quad d\omega^I = \frac{-2\omega_0 dt}{(1+t)^2},
 \]</div>
-<p>where a transformation factor of <span class="math notranslate nohighlight">\(\omega_0 = 0.3\)</span> a.u. is used. The user may specify the number of frequency points used in the quadrature, or otherwise a default value is adopted. The polarizabilities are calculated from the complex polarization propagator (CPP), or complex linear response function <span id="id2">[<a class="reference internal" href="refs.html#id50" title="Patrick Norman, Kenneth Ruud, and Trond Saue. Principles and practices of molecular properties. John Wiley &amp; Sons, Ltd, Chichester, UK, 2018.">NRS18</a>]</span>.</p>
+<p>where a transformation factor of <span class="math notranslate nohighlight">\(\omega_0 = 0.3\)</span> a.u. is used. The user may specify the number of frequency points used in the quadrature, or otherwise a default value is adopted. The polarizabilities are calculated from the complex polarization propagator (CPP), or complex linear response function <span id="id2">[<a class="reference internal" href="refs.html#id51" title="Patrick Norman, Kenneth Ruud, and Trond Saue. Principles and practices of molecular properties. John Wiley &amp; Sons, Ltd, Chichester, UK, 2018.">NRS18</a>]</span>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
 <span class="n">task</span><span class="p">:</span> <span class="n">response</span>
 <span class="nd">@end</span>

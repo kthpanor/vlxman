@@ -184,7 +184,7 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="limits.html">Pushing the limits</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installing the program</a></li>
-<li class="toctree-l1"><a class="reference internal" href="run_desktop.html">Running on a desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="run_desktop.html">Running on a laptop/desktop</a></li>
 <li class="toctree-l1"><a class="reference internal" href="run_cluster.html">Running on a cluster</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Input file keywords</a></li>
 </ul>
@@ -209,7 +209,8 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Visualization</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="elec_dens.html">Electronic densities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vis.html">Visualization in Jupyter Notebook</a></li>
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced users</span></p>
 <ul class="nav bd-sidenav">
@@ -445,7 +446,55 @@ document.write(`
 <section id="tasks">
 <h2>Tasks<a class="headerlink" href="#tasks" title="Link to this heading">#</a></h2>
 <p>The different taks below are presented in the same order followed for the Properties description.</p>
-<p><a class="reference internal" href="refstate.html#restricted-closed-shell"><span class="std std-ref">scf</span></a>, <a class="reference internal" href="refstate.html#restricted-open-shell"><span class="std std-ref">roscf</span></a>, <a class="reference internal" href="refstate.html#unrestricted-open-shell"><span class="std std-ref">uscf</span></a>, mp2, romp2, ump2, <a class="reference internal" href="embedding.html#esp-charges"><span class="std std-ref">esp charges</span></a>, <a class="reference internal" href="embedding.html#resp-charges"><span class="std std-ref">resp charges</span></a>, <a class="reference internal" href="embedding.html#loprop-charges-and-polarizabilities"><span class="std std-ref">loprop</span></a>, <a class="reference internal" href="pes.html"><span class="std std-doc">optimize</span></a>, <a class="reference internal" href="uv-vis.html"><span class="std std-doc">response</span></a>, <a class="reference internal" href="opt_act.html#exciton-coupling-model"><span class="std std-ref">exciton</span></a>, <a class="reference internal" href="vib_spect.html"><span class="std std-doc">vibrational</span></a></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Task</p></th>
+<th class="head text-left"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><a class="reference internal" href="refstate.html#restricted-closed-shell"><span class="std std-ref">scf</span></a></p></td>
+<td class="text-left"><p>Perform a Restricted closed-shell calculation (HF or DFT)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><a class="reference internal" href="refstate.html#restricted-open-shell"><span class="std std-ref">roscf</span></a></p></td>
+<td class="text-left"><p>Perform a Restricted open-shell calculation (HF or DFT)</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><a class="reference internal" href="refstate.html#unrestricted-open-shell"><span class="std std-ref">uscf</span></a></p></td>
+<td class="text-left"><p>Perform a Unrestricted open-shell calculation (HF or DFT)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><a class="reference internal" href="refstate.html#restricted-mp2"><span class="std std-ref">mp2</span></a></p></td>
+<td class="text-left"><p>Perform a Restricted closed-shell MP2 calculation</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><a class="reference internal" href="refstate.html#restricted-open-shell-mp2"><span class="std std-ref">romp2</span></a></p></td>
+<td class="text-left"><p>Perform a Restricted open-shell MP2 calculation</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><a class="reference internal" href="refstate.html#unrestricted-mp2"><span class="std std-ref">ump2</span></a></p></td>
+<td class="text-left"><p>Perform a Unrestricted open-shell MP2 calculation</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><a class="reference internal" href="embedding.html#esp-charges"><span class="std std-ref">esp charges</span></a></p></td>
+<td class="text-left"><p>Calculate the ESP charges</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><a class="reference internal" href="embedding.html#resp-charges"><span class="std std-ref">resp charges</span></a></p></td>
+<td class="text-left"><p>Calculate the RESP charges</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><a class="reference internal" href="embedding.html#loprop-charges-and-polarizabilities"><span class="std std-ref">loprop</span></a></p></td>
+<td class="text-left"><p>Calculate the LOPROP charges and polarizabilities</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><a class="reference internal" href="pes.html"><span class="std std-doc">optimize</span></a></p></td>
+<td class="text-left"><p>Optimize the geometry in the ground and excited state</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><a class="reference internal" href="uv-vis.html"><span class="std std-doc">response</span></a></p></td>
+<td class="text-left"><p>Calculate response properies with TD-DFT and CPP, such as <a class="reference internal" href="uv-vis.html"><span class="std std-doc">UV/Vis</span></a> or <a class="reference internal" href="opt_act.html"><span class="std std-doc">ECD</span></a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><a class="reference internal" href="opt_act.html#exciton-coupling-model"><span class="std std-ref">exciton</span></a></p></td>
+<td class="text-left"><p>Use the exciton coupling model to calculate absorption and circular dichroism</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><a class="reference internal" href="vib_spect.html"><span class="std std-doc">vibrational</span></a></p></td>
+<td class="text-left"><p>Calculate IR, Raman and resonance Raman spectra</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 <section id="molecule">
 <h2>Molecule<a class="headerlink" href="#molecule" title="Link to this heading">#</a></h2>
@@ -473,10 +522,10 @@ document.write(`
 </section>
 <section id="scf-optimization">
 <h2>SCF optimization<a class="headerlink" href="#scf-optimization" title="Link to this heading">#</a></h2>
+<p>Here are printed the keywords for the <code class="docutils literal notranslate"><span class="pre">ScfRestrictedDriver()</span></code>, the same can be done for the <code class="docutils literal notranslate"><span class="pre">ScfRestrictedOpenDriver()</span></code> and <code class="docutils literal notranslate"><span class="pre">ScfUnrestrictedDriver()</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scf_drv</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">ScfRestrictedDriver</span><span class="p">()</span>
-
 <span class="n">scf_drv</span><span class="o">.</span><span class="n">print_keywords</span><span class="p">()</span>
 </pre></div>
 </div>

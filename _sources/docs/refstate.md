@@ -24,7 +24,7 @@ xyz:
 ...
 @end
 ```
-[Download](../input_files/biphenyl-scf.inp) an input file to perfom a restricted closed-shell calculation for the biphenyl molecule at the HF/def2-svp level of theory.
+Download a [text format](../input_files/biphenyl-scf.inp) or [Python script](../input_files/biphenyl-scf.py) type of input file to perfom a restricted closed-shell calculation for the biphenyl molecule at the HF/def2-svp level of theory.
 
 ```{image} ../images/biphenyl.png
 :alt: cover
@@ -52,7 +52,7 @@ xyz:
 ...
 @end
 ```
-[Download](../input_files/tempo-roscf.inp) the input file to perfom a restricted open-shell calculation for the tempo molecule at the B3LYP/6-31+G* level of theory.
+Download a [text format](../input_files/tempo-roscf.inp) or [Python script](../input_files/tempo-roscf.py) type of input file to perfom a restricted open-shell calculation for the tempo molecule at the B3LYP/6-31+G* level of theory.
 
 ```{image} ../images/tempo.png
 :alt: cover
@@ -80,7 +80,7 @@ xyz:
 ...
 @end
 ```
-[Download](../input_files/tritylradical-uscf.inp) the input file to perfom a unrestricted open-shell calculation for the triphenylmethyl radical molecule (also called trityl radical) at the PBE0/CC-PVDZ level of theory.
+Download a [text format](../input_files/tritylradical-uscf.inp) or [Python script](../input_files/tritylradical-uscf.py) type of input file to perfom a unrestricted open-shell calculation for the triphenylmethyl radical molecule (also called trityl radical) at the PBE0/CC-PVDZ level of theory.
 
 ```{image} ../images/trityl.png
 :alt: cover
@@ -88,3 +88,9 @@ xyz:
 :width: 400px
 :align: center
 ```
+
+## Restricted MP2
+
+## Restricted open-shell MP2
+
+## Unrestricted MP2

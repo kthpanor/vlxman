@@ -62,7 +62,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Source code structure" href="source_struct.html" />
-    <link rel="prev" title="Electronic densities" href="elec_dens.html" />
+    <link rel="prev" title="Visualization in Jupyter Notebook" href="vis.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -184,10 +184,9 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="limits.html">Pushing the limits</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installing the program</a></li>
-<li class="toctree-l1"><a class="reference internal" href="run_desktop.html">Running on a desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="run_desktop.html">Running on a laptop/desktop</a></li>
 <li class="toctree-l1"><a class="reference internal" href="run_cluster.html">Running on a cluster</a></li>
 <li class="toctree-l1"><a class="reference internal" href="keywords.html">Input file keywords</a></li>
-<li class="toctree-l1"><a class="reference internal" href="input_files.html">Input files</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Model chemistry</span></p>
 <ul class="nav bd-sidenav">
@@ -199,10 +198,10 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Properties</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="pes.html">Potential energy surfaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="uv-vis.html">UV/vis absorption/emission</a></li>
 <li class="toctree-l1"><a class="reference internal" href="opt_act.html">Optical activity and dichroism</a></li>
 <li class="toctree-l1"><a class="reference internal" href="vib_spect.html">Vibrational spectroscopies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pes.html">Potential energy surfaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="magnetic.html">Magnetic resonances</a></li>
 <li class="toctree-l1"><a class="reference internal" href="linear-response.html">Linear response</a></li>
 <li class="toctree-l1"><a class="reference internal" href="nlo.html">Multi-photon interactions</a></li>
@@ -210,7 +209,8 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Visualization</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="elec_dens.html">Electronic densities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vis.html">Visualization in Jupyter Notebook</a></li>
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced users</span></p>
 <ul class="current nav bd-sidenav">
@@ -833,6 +833,7 @@ FILE
  &#39;EvbDriver&#39;,
  &#39;EvbFepDriver&#39;,
  &#39;EvbForceFieldBuilder&#39;,
+ &#39;EvbForceGroup&#39;,
  &#39;EvbReporter&#39;,
  &#39;EvbSystemBuilder&#39;,
  &#39;ExcitedStateAnalysisDriver&#39;,
@@ -931,6 +932,7 @@ FILE
  &#39;TpaFullDriver&#39;,
  &#39;TpaReducedDriver&#39;,
  &#39;TpaTransitionDriver&#39;,
+ &#39;TransitionStateGuesser&#39;,
  &#39;TwoCenterElectronRepulsionDriver&#39;,
  &#39;TwoCenterElectronRepulsionGeom100Driver&#39;,
  &#39;VibrationalAnalysis&#39;,
@@ -1032,6 +1034,7 @@ FILE
  &#39;mmforcefieldgenerator&#39;,
  &#39;mmgradientdriver&#39;,
  &#39;mofbuilder&#39;,
+ &#39;mofmdprepare&#39;,
  &#39;mofoptimizer&#39;,
  &#39;mofpreparer&#39;,
  &#39;mofutils&#39;,
@@ -1063,6 +1066,7 @@ FILE
  &#39;quadraticresponsedriver&#39;,
  &#39;reactionmatcher&#39;,
  &#39;respchargesdriver&#39;,
+ &#39;rifockdriver&#39;,
  &#39;rotatory_strength_in_cgs&#39;,
  &#39;rspabsorption&#39;,
  &#39;rspc6&#39;,
@@ -1101,6 +1105,7 @@ FILE
  &#39;tpafulldriver&#39;,
  &#39;tpareddriver&#39;,
  &#39;tpatransitiondriver&#39;,
+ &#39;tsguesser&#39;,
  &#39;uffparameters&#39;,
  &#39;veloxchemlib&#39;,
  &#39;vibrationalanalysis&#39;,
@@ -1270,12 +1275,12 @@ FILE
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="elec_dens.html"
+       href="vis.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Electronic densities</p>
+        <p class="prev-next-title">Visualization in Jupyter Notebook</p>
       </div>
     </a>
     <a class="right-next"
