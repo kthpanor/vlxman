@@ -1,37 +1,69 @@
 # Running on a cluster
 
-A SLURM job submission script for VeloxChem can take something of the following form:
+On a supercomputer cluster, it is a common practice to submit a job script to a batch queue system such as e.g. [SLURM](https://en.wikipedia.org/wiki/Slurm_Workload_Manager). 
+
+## Job script
+
+In the job script, one specifies the amount of resources to be used for the calculation as well as a line launching the application across the allocated nodes using e.g. `srun` or `mpirun`. In this scenario, VeloxChem is run with an input file in the form of either a Python script or a text file. In the example job script given below, both alternatives are provided and you activate the one that you prefer using.
 
 ```bash
 #!/bin/bash
 
-#SBATCH --time=10:00:00
+#SBATCH -A project_name
+#SBATCH -p partition_name
+#SBATCH -J job_name
+#SBATCH -t 01:00:00
 
-#SBATCH --nodes=4
-#SBATCH --ntasks-per-node=1
-#SBATCH --cpus-per-task=32
+#SBATCH --nodes=2
+#SBATCH --ntasks-per-node=8
+#SBATCH --cpus-per-task=16
 
-# setup the environemnt
-module load buildtool-easybuild/3.5.3-nsc17d8ce4
-module load intel/2018a
-module load Python/3.6.4-nsc2-intel-2018a-eb
+module load veloxchem/1.0
 
-# activate veloxchem
-source $HOME/software/VeloxChemMP/venv/bin/activate
+export OMP_NUM_THREADS=16
+export OMP_PLACES=cores
+export SRUN_CPUS_PER_TASK=$SLURM_CPUS_PER_TASK
 
-# number of threads should match the SLURM specification
-export OMP_NUM_THREADS=32
+# using a Python script type of input file
+srun python myjob.py > myjob.out
+# using a text type of input file
+#srun vlx myjob.inp myjob.out
 
-# start the calculation
-job=water
-mpirun python3 -m veloxchem ${job}.inp ${job}.out
-
-# end of script
+# end of job script
 ```
 
-This script will start a job with 4 MPI ranks, each with 32 OpenMP threads. It is recommended to start one MPI rank per node, and on each node, one OpenMP thread per core.
+This script will start a job on two nodes with eight MPI ranks per node (one per [NUMA](https://en.wikipedia.org/wiki/Non-uniform_memory_access) domain), each with 16 OpenMP threads.
 
-The input file (here assumed to be named `water.inp`) consists of multiple groups marked with `@group name` and `@end`. For example, the following input file has three groups: `jobs`, `method settings`, and `molecule`.
+## Input file
+
+**Python script**
+
+An example Python script type of input file named `myjob.py` in the job script above and and which is running an SCF optimization takes the following form.
+
+```
+import veloxchem as vlx
+
+xyz_string = """
+3
+water
+O    0.0000000    0.0000000   -0.1653507
+H    0.7493682    0.0000000    0.4424329
+H   -0.7493682    0.0000000    0.4424329
+"""
+
+molecule = vlx.Molecule.read_xyz_string(xyz_string)
+basis = vlx.MolecularBasis.read(molecule, "def2-svp")
+
+scf_drv = vlx.ScfRestrictedDriver()
+scf_drv.filename = "vlx_results_hdf5"
+scf_results = scfdrv.compute(molecule, basis)
+```
+
+The results of the calculation are stored in an [HDF5](https://en.wikipedia.org/wiki/Hierarchical_Data_Format) file with a user specified name. This file can be directly read and analyzed with VIAMD.
+
+**Text file**
+
+The same SCF calculation can be performed with use of an input file in text format named `myjob.inp` in the in the job script above--such an input file consists of multiple groups marked with `@group name` and `@end`.
 
 ```
 @jobs
@@ -52,54 +84,6 @@ H    0.7493682    0.0000000    0.4424329
 H   -0.7493682    0.0000000    0.4424329
 @end
 ```
-
-The equivalent following Python script (`water.py`) reads:
-```
-import veloxchem as vlx
-
-water_xyz_string = """
-3
-water
-O    0.0000000    0.0000000   -0.1653507
-H    0.7493682    0.0000000    0.4424329
-H   -0.7493682    0.0000000    0.4424329
-"""
-
-molecule = vlx.Molecule.read_xyz_string(water_xyz_string)
-basis = vlx.MolecularBasis.read(molecule, 'def2-svp')
-
-scfdrv = vlx.ScfRestrictedDriver()
-scfdrv.filename = 'water'
-scf_results = scfdrv.compute(molecule, basis)
-```
-
-This Python script can be submitted with the following SLURM job submission:
-```bash
-#!/bin/bash
-
-#SBATCH --time=10:00:00
-
-#SBATCH --nodes=4
-#SBATCH --ntasks-per-node=1
-#SBATCH --cpus-per-task=32
-
-# setup the environemnt
-module load buildtool-easybuild/3.5.3-nsc17d8ce4
-module load intel/2018a
-module load Python/3.6.4-nsc2-intel-2018a-eb
-
-# activate veloxchem
-source $HOME/software/VeloxChemMP/venv/bin/activate
-
-# number of threads should match the SLURM specification
-export OMP_NUM_THREADS=32
-
-# start the calculation
-mpirun python3 water.py > water.out
-
-# end of script
-```
-
 
 ## Benchmark reference
 
