@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -186,7 +186,7 @@
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installing the program</a></li>
 <li class="toctree-l1"><a class="reference internal" href="run_desktop.html">Running on a laptop/desktop</a></li>
 <li class="toctree-l1"><a class="reference internal" href="run_cluster.html">Running on a cluster</a></li>
-<li class="toctree-l1"><a class="reference internal" href="keywords.html">Input file keywords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="keywords.html">Input text file keywords</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Model chemistry</span></p>
 <ul class="nav bd-sidenav">
@@ -435,6 +435,79 @@ document.write(`
 <h1>Jupyter notebooks<a class="headerlink" href="#jupyter-notebooks" title="Link to this heading">#</a></h1>
 <section id="molecular-stucture">
 <h2>Molecular stucture<a class="headerlink" href="#molecular-stucture" title="Link to this heading">#</a></h2>
+<p>In Jupyter notebook, a Veloxchem molecule object can be visualiza using the show function. This is powevered by Py3DMol. The atom_indices and atom_labels options can be used.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">veloxchem</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">vlx</span>
+<span class="n">molecule</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">Molecule</span><span class="o">.</span><span class="n">read_smiles</span><span class="p">(</span><span class="s1">&#39;C1=CC=C(C=C1)C(=O)O&#39;</span><span class="p">)</span>
+<span class="n">molecule</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">atom_indices</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">atom_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div id="3dmolviewer_17470595117851934"  style="position: relative; width: 400px; height: 300px;">
+        <p id="3dmolwarning_17470595117851934" style="background-color:#ffcccc;color:black">3Dmol.js failed to load for some reason.  Please check your browser console for error messages.<br></p>
+        </div>
+<script>
+
+var loadScriptAsync = function(uri){
+  return new Promise((resolve, reject) => {
+    //this is to ignore the existence of requirejs amd
+    var savedexports, savedmodule;
+    if (typeof exports !== 'undefined') savedexports = exports;
+    else exports = {}
+    if (typeof module !== 'undefined') savedmodule = module;
+    else module = {}
+
+    var tag = document.createElement('script');
+    tag.src = uri;
+    tag.async = true;
+    tag.onload = () => {
+        exports = savedexports;
+        module = savedmodule;
+        resolve();
+    };
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+});
+};
+
+if(typeof $3Dmolpromise === 'undefined') {
+$3Dmolpromise = null;
+  $3Dmolpromise = loadScriptAsync('https://cdnjs.cloudflare.com/ajax/libs/3Dmol/2.4.2/3Dmol-min.js');
+}
+
+var viewer_17470595117851934 = null;
+var warn = document.getElementById("3dmolwarning_17470595117851934");
+if(warn) {
+    warn.parentNode.removeChild(warn);
+}
+$3Dmolpromise.then(function() {
+viewer_17470595117851934 = $3Dmol.createViewer(document.getElementById("3dmolviewer_17470595117851934"),{backgroundColor:"white"});
+viewer_17470595117851934.zoomTo();
+	viewer_17470595117851934.addModel("15\n\nC             -1.810808000000        -0.240287000000         2.476861000000\nC             -0.576902000000         0.303662000000         2.112976000000\nC              0.114382000000        -0.201272000000         1.007051000000\nC             -0.425318000000        -1.259149000000         0.252723000000\nC             -1.669690000000        -1.799661000000         0.628682000000\nC             -2.356468000000        -1.290713000000         1.735507000000\nC              0.307098000000        -1.792283000000        -0.916964000000\nO             -0.174668000000        -2.740386000000        -1.594363000000\nO              1.537375000000        -1.250940000000        -1.281140000000\nH             -2.344007000000         0.152110000000         3.333142000000\nH             -0.155102000000         1.117692000000         2.688332000000\nH              1.069177000000         0.236345000000         0.744065000000\nH             -2.111991000000        -2.614237000000         0.068858000000\nH             -3.312768000000        -1.711446000000         2.018465000000\nH              2.047151000000        -1.608505000000        -2.080230000000\n");
+	viewer_17470595117851934.setViewStyle({"style": "outline", "width": 0.05});
+	viewer_17470595117851934.setStyle({"stick": {}, "sphere": {"scale": 0.25}});
+	viewer_17470595117851934.addLabel("C1",{"position": {"x": -1.810808, "y": -0.240287, "z": 2.476861}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17470595117851934.addLabel("C2",{"position": {"x": -0.576902, "y": 0.303662, "z": 2.112976}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17470595117851934.addLabel("C3",{"position": {"x": 0.114382, "y": -0.201272, "z": 1.007051}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17470595117851934.addLabel("C4",{"position": {"x": -0.4253179999999999, "y": -1.259149, "z": 0.252723}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17470595117851934.addLabel("C5",{"position": {"x": -1.6696899999999997, "y": -1.799661, "z": 0.6286819999999999}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17470595117851934.addLabel("C6",{"position": {"x": -2.356468, "y": -1.2907129999999998, "z": 1.735507}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17470595117851934.addLabel("C7",{"position": {"x": 0.307098, "y": -1.7922829999999998, "z": -0.9169639999999999}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17470595117851934.addLabel("O8",{"position": {"x": -0.174668, "y": -2.740386, "z": -1.594363}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17470595117851934.addLabel("O9",{"position": {"x": 1.537375, "y": -1.25094, "z": -1.2811399999999997}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17470595117851934.addLabel("H10",{"position": {"x": -2.344007, "y": 0.15211, "z": 3.333142}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17470595117851934.addLabel("H11",{"position": {"x": -0.155102, "y": 1.117692, "z": 2.688332}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17470595117851934.addLabel("H12",{"position": {"x": 1.069177, "y": 0.236345, "z": 0.744065}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17470595117851934.addLabel("H13",{"position": {"x": -2.111991, "y": -2.614237, "z": 0.068858}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17470595117851934.addLabel("H14",{"position": {"x": -3.312768, "y": -1.711446, "z": 2.018465}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17470595117851934.addLabel("H15",{"position": {"x": 2.047151, "y": -1.608505, "z": -2.08023}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17470595117851934.zoomTo();
+viewer_17470595117851934.render();
+});
+</script></div></div>
+</div>
 </section>
 <section id="structure-optimization">
 <h2>Structure optimization<a class="headerlink" href="#structure-optimization" title="Link to this heading">#</a></h2>

@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -186,7 +186,7 @@
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installing the program</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Running on a laptop/desktop</a></li>
 <li class="toctree-l1"><a class="reference internal" href="run_cluster.html">Running on a cluster</a></li>
-<li class="toctree-l1"><a class="reference internal" href="keywords.html">Input file keywords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="keywords.html">Input text file keywords</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Model chemistry</span></p>
 <ul class="nav bd-sidenav">
@@ -209,8 +209,8 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Visualization</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="vis.html">Visualization in Jupyter Notebook</a></li>
-
+<li class="toctree-l1"><a class="reference internal" href="vis.html">Jupyter notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viamd.html">VIAMD software</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced users</span></p>
 <ul class="nav bd-sidenav">
@@ -433,34 +433,46 @@ document.write(`
 <h1>Running on a laptop/desktop<a class="headerlink" href="#running-on-a-laptop-desktop" title="Link to this heading">#</a></h1>
 <section id="in-a-jupyter-notebook">
 <h2>In a Jupyter notebook<a class="headerlink" href="#in-a-jupyter-notebook" title="Link to this heading">#</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">veloxchem</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">vlx</span>
-
-<span class="n">water_xyz_string</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">3</span>
-<span class="s2">water</span>
-<span class="s2">O  0.00000  0.00000  0.00000</span>
-<span class="s2">H  0.00000  0.00000  1.79524</span>
-<span class="s2">H  1.69319  0.00000 -0.59904</span>
-<span class="s2">&quot;&quot;&quot;</span>
-
-<span class="n">molecule</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">Molecule</span><span class="o">.</span><span class="n">read_xyz_string</span><span class="p">(</span><span class="n">water_xyz_string</span><span class="p">)</span>
-<span class="n">basis</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">MolecularBasis</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="s1">&#39;def2-svp&#39;</span><span class="p">)</span>
-
-<span class="n">scfdrv</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">ScfRestrictedDriver</span><span class="p">()</span>
-<span class="n">scfdrv</span><span class="o">.</span><span class="n">xcfun</span> <span class="o">=</span> <span class="s1">&#39;b3lyp&#39;</span>
-<span class="n">scf_results</span> <span class="o">=</span> <span class="n">scfdrv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">basis</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>A comprehensive presentation of how to interact and run the VeloxChem program in a Jupyter notebook is provided in the <a class="reference external" href="https://kthpanor.github.io/echem">eChem book</a>.</p>
+<p>On a personal computer, we recommend importing the VeloxChem Python module and running calculations in Jupyter notebooks. This provides a very flexible framework for the creation of workflows, as amply illustrated in the <a class="reference external" href="https://kthpanor.github.io/echem">eChem book</a> <span id="id1">[<a class="reference internal" href="refs.html#id2" title="Thomas Fransson, Mickael Delcey, Iulia E. Brumboiu, Manuel Hodecker, Xin Li, Zilvinas Rinkevicius, Andreas Dreuw, Young Min Rhee, and Patrick Norman. Computational Chemistry from Laptop to HPC: A notebook exploration of quantum chemistry. KTH Royal Institute of Technology, August 2022. ISBN 978-91-988114-0-7. URL: https://kthpanor.github.io/echem (visited on 2023-02-16), doi:10.30746/978-91-988114-0-7.">FDB+22</a>]</span>.</p>
+<figure class="align-center">
+<img alt="../_images/jupyter_nb.png" src="../_images/jupyter_nb.png" />
+</figure>
 </section>
 <section id="using-an-input-file">
 <h2>Using an input file<a class="headerlink" href="#using-an-input-file" title="Link to this heading">#</a></h2>
-<p>An input file driven VeloxChem calculation can be started on the command line as follows:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ vlx water.inp [water.out]
+<p>Calculations can also be run in the terminal window using input files in the form of Python scripts or text files.</p>
+<p><strong>Python script</strong></p>
+<p>Terminal command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">myjob</span><span class="o">.</span><span class="n">py</span> <span class="o">&gt;</span> <span class="n">myjob</span><span class="o">.</span><span class="n">out</span>
 </pre></div>
 </div>
-<p>If the optional output file name is omitted, the output will be sent to standard output.</p>
-<p>The input file (here assumed to be named <code class="docutils literal notranslate"><span class="pre">water.inp</span></code>) consists of multiple groups marked with <code class="docutils literal notranslate"><span class="pre">&#64;group</span> <span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">&#64;end</span></code>. For example, the following input file has three groups: <code class="docutils literal notranslate"><span class="pre">jobs</span></code>, <code class="docutils literal notranslate"><span class="pre">method</span> <span class="pre">settings</span></code>, and <code class="docutils literal notranslate"><span class="pre">molecule</span></code>. In the <code class="docutils literal notranslate"><span class="pre">molecule</span></code> group, the default unit for Cartesian coordinates is Angstrom.</p>
+<p>The Python script input file named <code class="docutils literal notranslate"><span class="pre">myjob.py</span></code> above can e.g. take the form:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">veloxchem</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">vlx</span>
+
+<span class="n">xyz_string</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">3</span>
+<span class="s2">water</span>
+<span class="s2">O    0.0000000    0.0000000   -0.1653507</span>
+<span class="s2">H    0.7493682    0.0000000    0.4424329</span>
+<span class="s2">H   -0.7493682    0.0000000    0.4424329</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">molecule</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">Molecule</span><span class="o">.</span><span class="n">read_xyz_string</span><span class="p">(</span><span class="n">xyz_string</span><span class="p">)</span>
+<span class="n">basis</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">MolecularBasis</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="s2">&quot;def2-svp&quot;</span><span class="p">)</span>
+
+<span class="n">scf_drv</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">ScfRestrictedDriver</span><span class="p">()</span>
+<span class="n">scf_drv</span><span class="o">.</span><span class="n">xcfun</span> <span class="o">=</span> <span class="s1">&#39;b3lyp&#39;</span>
+<span class="n">scf_drv</span><span class="o">.</span><span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;vlx_results_hdf5&quot;</span>
+<span class="n">scf_results</span> <span class="o">=</span> <span class="n">scfdrv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">basis</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The results of the calculation are stored in an <a class="reference external" href="https://en.wikipedia.org/wiki/Hierarchical_Data_Format">HDF5</a> file with a user specified name. This file can be directly read and analyzed with VIAMD.</p>
+<p><strong>Text file</strong></p>
+<p>Terminal command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vlx</span> <span class="n">myjob</span><span class="o">.</span><span class="n">inp</span> <span class="p">[</span><span class="n">myjob</span><span class="o">.</span><span class="n">out</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>An input file in text format consists of multiple groups marked with <code class="docutils literal notranslate"><span class="pre">&#64;group</span> <span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">&#64;end</span></code>. The default unit for Cartesian coordinates of atoms is Angstrom. An example of the input file named <code class="docutils literal notranslate"><span class="pre">myjob.inp</span></code> above reads:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
 <span class="n">task</span><span class="p">:</span> <span class="n">scf</span>
 <span class="nd">@end</span>

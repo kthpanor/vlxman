@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -61,7 +61,7 @@
     <link rel="icon" href="../_static/vlx_logo_mark.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Input file keywords" href="keywords.html" />
+    <link rel="next" title="Input text file keywords" href="keywords.html" />
     <link rel="prev" title="Running on a laptop/desktop" href="run_desktop.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -186,7 +186,7 @@
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installing the program</a></li>
 <li class="toctree-l1"><a class="reference internal" href="run_desktop.html">Running on a laptop/desktop</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Running on a cluster</a></li>
-<li class="toctree-l1"><a class="reference internal" href="keywords.html">Input file keywords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="keywords.html">Input text file keywords</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Model chemistry</span></p>
 <ul class="nav bd-sidenav">
@@ -209,8 +209,8 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Visualization</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="vis.html">Visualization in Jupyter Notebook</a></li>
-
+<li class="toctree-l1"><a class="reference internal" href="vis.html">Jupyter notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viamd.html">VIAMD software</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced users</span></p>
 <ul class="nav bd-sidenav">
@@ -416,6 +416,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#job-script">Job script</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#input-file">Input file</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmark-reference">Benchmark reference</a></li>
 </ul>
             </nav>
@@ -430,35 +432,62 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="running-on-a-cluster">
 <h1>Running on a cluster<a class="headerlink" href="#running-on-a-cluster" title="Link to this heading">#</a></h1>
-<p>A SLURM job submission script for VeloxChem can take something of the following form:</p>
+<p>On a supercomputer cluster, it is a common practice to submit a job script to a batch queue system such as e.g. <a class="reference external" href="https://en.wikipedia.org/wiki/Slurm_Workload_Manager">SLURM</a>.</p>
+<section id="job-script">
+<h2>Job script<a class="headerlink" href="#job-script" title="Link to this heading">#</a></h2>
+<p>In the job script, one specifies the amount of resources to be used for the calculation as well as a line launching the application across the allocated nodes using e.g. <code class="docutils literal notranslate"><span class="pre">srun</span></code> or <code class="docutils literal notranslate"><span class="pre">mpirun</span></code>. In this scenario, VeloxChem is run with an input file in the form of either a Python script or a text file. In the example job script given below, both alternatives are provided and you activate the one that you prefer using.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 
-<span class="c1">#SBATCH --time=10:00:00</span>
+<span class="c1">#SBATCH -A project_name</span>
+<span class="c1">#SBATCH -p partition_name</span>
+<span class="c1">#SBATCH -J job_name</span>
+<span class="c1">#SBATCH -t 01:00:00</span>
 
-<span class="c1">#SBATCH --nodes=4</span>
-<span class="c1">#SBATCH --ntasks-per-node=1</span>
-<span class="c1">#SBATCH --cpus-per-task=32</span>
+<span class="c1">#SBATCH --nodes=2</span>
+<span class="c1">#SBATCH --ntasks-per-node=8</span>
+<span class="c1">#SBATCH --cpus-per-task=16</span>
 
-<span class="c1"># setup the environemnt</span>
-module<span class="w"> </span>load<span class="w"> </span>buildtool-easybuild/3.5.3-nsc17d8ce4
-module<span class="w"> </span>load<span class="w"> </span>intel/2018a
-module<span class="w"> </span>load<span class="w"> </span>Python/3.6.4-nsc2-intel-2018a-eb
+module<span class="w"> </span>load<span class="w"> </span>veloxchem/1.0
 
-<span class="c1"># activate veloxchem</span>
-<span class="nb">source</span><span class="w"> </span><span class="nv">$HOME</span>/software/VeloxChemMP/venv/bin/activate
+<span class="nb">export</span><span class="w"> </span><span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="m">16</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">OMP_PLACES</span><span class="o">=</span>cores
+<span class="nb">export</span><span class="w"> </span><span class="nv">SRUN_CPUS_PER_TASK</span><span class="o">=</span><span class="nv">$SLURM_CPUS_PER_TASK</span>
 
-<span class="c1"># number of threads should match the SLURM specification</span>
-<span class="nb">export</span><span class="w"> </span><span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="m">32</span>
+<span class="c1"># using a Python script type of input file</span>
+srun<span class="w"> </span>python<span class="w"> </span>myjob.py<span class="w"> </span>&gt;<span class="w"> </span>myjob.out
+<span class="c1"># using a text type of input file</span>
+<span class="c1">#srun vlx myjob.inp myjob.out</span>
 
-<span class="c1"># start the calculation</span>
-<span class="nv">job</span><span class="o">=</span>water
-mpirun<span class="w"> </span>python3<span class="w"> </span>-m<span class="w"> </span>veloxchem<span class="w"> </span><span class="si">${</span><span class="nv">job</span><span class="si">}</span>.inp<span class="w"> </span><span class="si">${</span><span class="nv">job</span><span class="si">}</span>.out
-
-<span class="c1"># end of script</span>
+<span class="c1"># end of job script</span>
 </pre></div>
 </div>
-<p>This script will start a job with 4 MPI ranks, each with 32 OpenMP threads. It is recommended to start one MPI rank per node, and on each node, one OpenMP thread per core.</p>
-<p>The input file (here assumed to be named <code class="docutils literal notranslate"><span class="pre">water.inp</span></code>) consists of multiple groups marked with <code class="docutils literal notranslate"><span class="pre">&#64;group</span> <span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">&#64;end</span></code>. For example, the following input file has three groups: <code class="docutils literal notranslate"><span class="pre">jobs</span></code>, <code class="docutils literal notranslate"><span class="pre">method</span> <span class="pre">settings</span></code>, and <code class="docutils literal notranslate"><span class="pre">molecule</span></code>.</p>
+<p>This script will start a job on two nodes with eight MPI ranks per node (one per <a class="reference external" href="https://en.wikipedia.org/wiki/Non-uniform_memory_access">NUMA</a> domain), each with 16 OpenMP threads.</p>
+</section>
+<section id="input-file">
+<h2>Input file<a class="headerlink" href="#input-file" title="Link to this heading">#</a></h2>
+<p><strong>Python script</strong></p>
+<p>An example Python script type of input file named <code class="docutils literal notranslate"><span class="pre">myjob.py</span></code> in the job script above and and which is running an SCF optimization takes the following form.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">veloxchem</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">vlx</span>
+
+<span class="n">xyz_string</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">3</span>
+<span class="s2">water</span>
+<span class="s2">O    0.0000000    0.0000000   -0.1653507</span>
+<span class="s2">H    0.7493682    0.0000000    0.4424329</span>
+<span class="s2">H   -0.7493682    0.0000000    0.4424329</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">molecule</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">Molecule</span><span class="o">.</span><span class="n">read_xyz_string</span><span class="p">(</span><span class="n">xyz_string</span><span class="p">)</span>
+<span class="n">basis</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">MolecularBasis</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="s2">&quot;def2-svp&quot;</span><span class="p">)</span>
+
+<span class="n">scf_drv</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">ScfRestrictedDriver</span><span class="p">()</span>
+<span class="n">scf_drv</span><span class="o">.</span><span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;vlx_results_hdf5&quot;</span>
+<span class="n">scf_results</span> <span class="o">=</span> <span class="n">scfdrv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">basis</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The results of the calculation are stored in an <a class="reference external" href="https://en.wikipedia.org/wiki/Hierarchical_Data_Format">HDF5</a> file with a user specified name. This file can be directly read and analyzed with VIAMD.</p>
+<p><strong>Text file</strong></p>
+<p>The same SCF calculation can be performed with use of an input file in text format named <code class="docutils literal notranslate"><span class="pre">myjob.inp</span></code> in the in the job script above–such an input file consists of multiple groups marked with <code class="docutils literal notranslate"><span class="pre">&#64;group</span> <span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">&#64;end</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
 <span class="n">task</span><span class="p">:</span> <span class="n">scf</span>
 <span class="nd">@end</span>
@@ -478,51 +507,7 @@ mpirun<span class="w"> </span>python3<span class="w"> </span>-m<span class="w"> 
 <span class="nd">@end</span>
 </pre></div>
 </div>
-<p>The equivalent following Python script (<code class="docutils literal notranslate"><span class="pre">water.py</span></code>) reads:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">veloxchem</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">vlx</span>
-
-<span class="n">water_xyz_string</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">3</span>
-<span class="s2">water</span>
-<span class="s2">O    0.0000000    0.0000000   -0.1653507</span>
-<span class="s2">H    0.7493682    0.0000000    0.4424329</span>
-<span class="s2">H   -0.7493682    0.0000000    0.4424329</span>
-<span class="s2">&quot;&quot;&quot;</span>
-
-<span class="n">molecule</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">Molecule</span><span class="o">.</span><span class="n">read_xyz_string</span><span class="p">(</span><span class="n">water_xyz_string</span><span class="p">)</span>
-<span class="n">basis</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">MolecularBasis</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="s1">&#39;def2-svp&#39;</span><span class="p">)</span>
-
-<span class="n">scfdrv</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">ScfRestrictedDriver</span><span class="p">()</span>
-<span class="n">scfdrv</span><span class="o">.</span><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;water&#39;</span>
-<span class="n">scf_results</span> <span class="o">=</span> <span class="n">scfdrv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">basis</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>This Python script can be submitted with the following SLURM job submission:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
-
-<span class="c1">#SBATCH --time=10:00:00</span>
-
-<span class="c1">#SBATCH --nodes=4</span>
-<span class="c1">#SBATCH --ntasks-per-node=1</span>
-<span class="c1">#SBATCH --cpus-per-task=32</span>
-
-<span class="c1"># setup the environemnt</span>
-module<span class="w"> </span>load<span class="w"> </span>buildtool-easybuild/3.5.3-nsc17d8ce4
-module<span class="w"> </span>load<span class="w"> </span>intel/2018a
-module<span class="w"> </span>load<span class="w"> </span>Python/3.6.4-nsc2-intel-2018a-eb
-
-<span class="c1"># activate veloxchem</span>
-<span class="nb">source</span><span class="w"> </span><span class="nv">$HOME</span>/software/VeloxChemMP/venv/bin/activate
-
-<span class="c1"># number of threads should match the SLURM specification</span>
-<span class="nb">export</span><span class="w"> </span><span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="m">32</span>
-
-<span class="c1"># start the calculation</span>
-mpirun<span class="w"> </span>python3<span class="w"> </span>water.py<span class="w"> </span>&gt;<span class="w"> </span>water.out
-
-<span class="c1"># end of script</span>
-</pre></div>
-</div>
+</section>
 <section id="benchmark-reference">
 <h2>Benchmark reference<a class="headerlink" href="#benchmark-reference" title="Link to this heading">#</a></h2>
 <p>In order to ensure that your installation of the VeloxChem program performs well and that you are correctly launching the program on your cluster hardware, you may wish to reproduce the following benchmark calculation. With a different hardware execution times will be different, but with use of the same <em>total number of cores</em> (i.e. 128) you should expect a similar wall time.</p>
@@ -1786,7 +1771,7 @@ mpirun<span class="w"> </span>python3<span class="w"> </span>water.py<span class
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Input file keywords</p>
+        <p class="prev-next-title">Input text file keywords</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1806,6 +1791,8 @@ mpirun<span class="w"> </span>python3<span class="w"> </span>water.py<span class
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#job-script">Job script</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#input-file">Input file</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmark-reference">Benchmark reference</a></li>
 </ul>
   </nav></div>
