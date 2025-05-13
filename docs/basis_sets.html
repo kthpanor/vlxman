@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -433,32 +433,23 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="basis-sets">
 <h1>Basis sets<a class="headerlink" href="#basis-sets" title="Link to this heading">#</a></h1>
-<p>Let us consider an example:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">veloxchem</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">vlx</span>
-
-<span class="n">co_xyz_str</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">2</span>
-<span class="s2">carbon monoxide</span>
-<span class="s2">C    0.00    0.00    0.00</span>
-<span class="s2">O    0.00    0.00    1.43</span>
-<span class="s2">&quot;&quot;&quot;</span>
-
-<span class="n">molecule</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">Molecule</span><span class="o">.</span><span class="n">read_xyz_string</span><span class="p">(</span><span class="n">co_xyz_str</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
 <section id="basis-set-specification">
 <h2>Basis set specification<a class="headerlink" href="#basis-set-specification" title="Link to this heading">#</a></h2>
-<p>A basis set is specfied with the <code class="docutils literal notranslate"><span class="pre">read</span></code> method of the <code class="docutils literal notranslate"><span class="pre">MolecularBasis</span></code> class.</p>
+<p><strong>Python script</strong></p>
+<p>The choice of basis set is specified with the <code class="docutils literal notranslate"><span class="pre">read</span></code> method of the <code class="docutils literal notranslate"><span class="pre">MolecularBasis</span></code> class:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">basis</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">MolecularBasis</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="s1">&#39;cc-pVDZ&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">basis</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">MolecularBasis</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="s2">&quot;cc-pVDZ&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</div>
+<p><strong>Text file</strong></p>
+<p>The choice of basis set is specified under <code class="docutils literal notranslate"><span class="pre">method</span> <span class="pre">settings</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@method</span> <span class="n">settings</span>
+<span class="n">basis</span><span class="p">:</span> <span class="n">def2</span><span class="o">-</span><span class="n">svp</span>
+<span class="nd">@end</span>
+</pre></div>
 </div>
 </section>
 <section id="available-basis-sets">

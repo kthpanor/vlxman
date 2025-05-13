@@ -37,8 +37,10 @@ molecule = vlx.Molecule.read_xyz_string(xyz_string)
 basis = vlx.MolecularBasis.read(molecule, "def2-svp")
 
 scf_drv = vlx.ScfRestrictedDriver()
-scf_drv.xcfun = 'b3lyp'
+
+scf_drv.xcfun = "b3lyp"
 scf_drv.filename = "vlx_results_hdf5"
+
 scf_results = scfdrv.compute(molecule, basis)
 ```
 

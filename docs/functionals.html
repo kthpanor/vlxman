@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -431,7 +431,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="exchangecorrelation-functionals">
 <h1>Exchange–correlation functionals<a class="headerlink" href="#exchangecorrelation-functionals" title="Link to this heading">#</a></h1>
-<p>LIBXC is used as a library for exchange-correlation functionnals <span id="id1">[<a class="reference internal" href="refs.html#id157" title="Susi Lehtola, Conrad Steigemann, Micael J.T. Oliveira, and Miguel A.L. Marques. Recent developments in libxc — a comprehensive library of functionals for density functional theory. SoftwareX, 7:1-5, 2018. doi:10.1016/j.softx.2017.11.002.">LSOM18</a>]</span>.</p>
+<p>The <a class="reference external" href="https://github.com/ElectronicStructureLibrary/libxc">LibXC</a> library is used for the evaluation of exchange–correlation functionals <span id="id1">[<a class="reference internal" href="refs.html#id157" title="Susi Lehtola, Conrad Steigemann, Micael J.T. Oliveira, and Miguel A.L. Marques. Recent developments in libxc — a comprehensive library of functionals for density functional theory. SoftwareX, 7:1-5, 2018. doi:10.1016/j.softx.2017.11.002.">LSOM18</a>]</span>.</p>
 <section id="available-functionals">
 <h2>Available functionals<a class="headerlink" href="#available-functionals" title="Link to this heading">#</a></h2>
 <p>The density functionals provided in the VeloxChem library can be listed with the <code class="docutils literal notranslate"><span class="pre">available_functionals</span></code> method.</p>
@@ -464,14 +464,25 @@ M06-2X, M06-HF, M06-L, M11-L, MPW1B95, MPWB1K, PW6B95, PWB6K
 </section>
 <section id="dft-settings">
 <h2>DFT settings<a class="headerlink" href="#dft-settings" title="Link to this heading">#</a></h2>
-<p>The choice of functional and related settings are performed in the input file section <code class="docutils literal notranslate"><span class="pre">method</span> <span class="pre">settings</span></code>:</p>
+<p><strong>Python script</strong></p>
+<p>The choice of functional is made by an attribute setting of SCF driver objects:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scf_drv</span><span class="o">.</span><span class="n">xcfun</span> <span class="o">=</span> <span class="s2">&quot;b3lyp&quot;</span>
+</pre></div>
+</div>
+<p><strong>Text file</strong></p>
+<p>The choice of functional is specified under <code class="docutils literal notranslate"><span class="pre">method</span> <span class="pre">settings</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@method</span> <span class="n">settings</span>
 <span class="n">xcfun</span><span class="p">:</span> <span class="n">b3lyp</span>
 <span class="nd">@end</span>
 </pre></div>
 </div>
-<p>To change to another functional, replace <code class="docutils literal notranslate"><span class="pre">b3lyp</span></code> with any of the others (as spelled in the list above).</p>
-<p>The accuracy level of the grid will be auto-determined for a given functional.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>To change to another functional, replace <code class="docutils literal notranslate"><span class="pre">b3lyp</span></code> with any of the others (as spelled in the list above).</p></li>
+<li><p>The grid level for numerical integrations will be auto-determined for a given functional.</p></li>
+</ul>
+</div>
 </section>
 </section>
 
