@@ -8,6 +8,24 @@ The basis set needs to be specified in the ```@method settings``` section by usi
 
 ## Restricted closed-shell
 
+**Python script**
+```
+import veloxchem as vlx
+
+mol_xyz_string = """
+... 
+"""
+
+molecule = vlx.Molecule.read_xyz_string(mol_xyz_string)
+basis = vlx.MolecularBasis.read(molecule, 'def2-svp')
+
+scfdrv = vlx.ScfRestrictedDriver()
+scfdrv.filename = 'mol-scf'
+scf_results = scfdrv.compute(molecule, basis)
+```
+Download a [Python script](../input_files/biphenyl-scf.py) type of input file to perfom a restricted closed-shell calculation for the biphenyl molecule at the HF/def2-svp level of theory.
+
+**Text file**
 ```
 @jobs
 task: scf
@@ -24,7 +42,7 @@ xyz:
 ...
 @end
 ```
-Download a [text format](../input_files/biphenyl-scf.inp) or [Python script](../input_files/biphenyl-scf.py) type of input file to perfom a restricted closed-shell calculation for the biphenyl molecule at the HF/def2-svp level of theory.
+Download a [text format](../input_files/biphenyl-scf.inp) type of input file to perfom a restricted closed-shell calculation for the biphenyl molecule at the HF/def2-svp level of theory.
 
 ```{image} ../images/biphenyl.png
 :alt: cover
@@ -34,7 +52,27 @@ Download a [text format](../input_files/biphenyl-scf.inp) or [Python script](../
 ```
 
 ## Restricted open-shell
+**Python script**
+```
+import veloxchem as vlx
 
+mol_xyz_string = """
+...
+"""
+
+molecule = vlx.Molecule.read_xyz_string(mol_xyz_string)
+molecule.set_multiplicity(2)
+basis = vlx.MolecularBasis.read(molecule, '6-31+G*')
+
+scfdrv = vlx.ScfRestrictedOpenDriver()
+scfdrv.filename = 'mol-roscf'
+scfdrv.xcfun = 'b3lyp'
+scf_results = scfdrv.compute(molecule, basis)
+```
+
+Download a [Python script](../input_files/tempo-roscf.py) type of input file to perfom a restricted open-shell calculation for the tempo molecule at the B3LYP/6-31+G* level of theory.
+
+**Text file**
 ```
 @jobs
 task: roscf
@@ -52,7 +90,7 @@ xyz:
 ...
 @end
 ```
-Download a [text format](../input_files/tempo-roscf.inp) or [Python script](../input_files/tempo-roscf.py) type of input file to perfom a restricted open-shell calculation for the tempo molecule at the B3LYP/6-31+G* level of theory.
+Download a [text format](../input_files/tempo-roscf.inp) type of input file to perfom a restricted open-shell calculation for the tempo molecule at the B3LYP/6-31+G* level of theory.
 
 ```{image} ../images/tempo.png
 :alt: cover
@@ -62,7 +100,26 @@ Download a [text format](../input_files/tempo-roscf.inp) or [Python script](../i
 ```
 
 ## Unrestricted open-shell
+**Python script**
+```
+import veloxchem as vlx
 
+mol_xyz_string = """
+...
+"""
+
+molecule = vlx.Molecule.read_xyz_string(mol_xyz_string)
+molecule.set_multiplicity(2)
+basis = vlx.MolecularBasis.read(molecule, 'CC-PVDZ')
+
+scfdrv = vlx.ScfUnrestrictedDriver()
+scfdrv.filename = 'mol-uscf'
+scfdrv.xcfun = 'b3lyp'
+scf_results = scfdrv.compute(molecule, basis)
+```
+Download a [Python script](../input_files/tritylradical-uscf.py) type of input file to perfom a unrestricted open-shell calculation for the triphenylmethyl radical molecule (also called trityl radical) at the PBE0/CC-PVDZ level of theory.
+
+**Text file**
 ```
 @jobs
 task: uscf
@@ -80,7 +137,7 @@ xyz:
 ...
 @end
 ```
-Download a [text format](../input_files/tritylradical-uscf.inp) or [Python script](../input_files/tritylradical-uscf.py) type of input file to perfom a unrestricted open-shell calculation for the triphenylmethyl radical molecule (also called trityl radical) at the PBE0/CC-PVDZ level of theory.
+Download a [text format](../input_files/tritylradical-uscf.inp) type of input file to perfom a unrestricted open-shell calculation for the triphenylmethyl radical molecule (also called trityl radical) at the PBE0/CC-PVDZ level of theory.
 
 ```{image} ../images/trityl.png
 :alt: cover

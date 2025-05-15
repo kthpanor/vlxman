@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -493,7 +493,8 @@ A_{JI} =
 \[\begin{equation*}
 b_J = \sum_{a} \frac{V_a}{r_{aJ}}
 \end{equation*}\]</div>
-<p>The ESP charges are detemined with VeloxChem in a Jupyter notebook according to</p>
+<p>The ESP charges are detemined with VeloxChem in a Jupyter notebook according to
+<strong>Python script</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">veloxchem</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">vlx</span>
 
 <span class="n">xyz_str</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
@@ -504,6 +505,7 @@ b_J = \sum_{a} \frac{V_a}{r_{aJ}}
 <span class="n">basis</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">MolecularBasis</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="s1">&#39;6-31g&#39;</span><span class="p">)</span>
 
 <span class="n">esp_drv</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">RespChargesDriver</span><span class="p">()</span>
+<span class="n">esp_drv</span><span class="o">.</span><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;mol-esp&#39;</span>
 <span class="n">esp_drv</span><span class="o">.</span><span class="n">update_settings</span><span class="p">({</span>
     <span class="s1">&#39;number_layers&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
     <span class="s1">&#39;density&#39;</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">,</span>
@@ -511,7 +513,8 @@ b_J = \sum_{a} \frac{V_a}{r_{aJ}}
 <span class="n">esp_charges</span> <span class="o">=</span> <span class="n">esp_drv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">basis</span><span class="p">,</span> <span class="s1">&#39;esp&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Or with use of an input file as below</p>
+<p>Download a <a class="reference download internal" download="" href="../_downloads/c559c4bea7730f1b1c67e99ae8d2d3e0/h2o-esp.py"><span class="xref download myst">Python script</span></a> type of input file to calculate the ESP charges for the water molecule at the HF/6-31G level of theory.</p>
+<p><strong>Text file</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
 <span class="n">task</span><span class="p">:</span> <span class="n">esp</span> <span class="n">charges</span>
 <span class="nd">@end</span>
@@ -533,8 +536,8 @@ b_J = \sum_{a} \frac{V_a}{r_{aJ}}
 <span class="nd">@end</span>
 </pre></div>
 </div>
+<p>Download a <a class="reference download internal" download="" href="../_downloads/e3d3357df1a28d04a4d3c4820e1f6b6b/h2o-esp.inp"><span class="xref download myst">text file</span></a> type of input file to calculate the ESP charges for the water molecule at the HF/6-31G level of theory.</p>
 <p>In both cases, the user needs to specify the number of layers of the molecular surface as well as the surface grid point density in these layers (in units of Å<span class="math notranslate nohighlight">\(^{-2}\)</span>).</p>
-<p>Download a <a class="reference download internal" download="" href="../_downloads/e3d3357df1a28d04a4d3c4820e1f6b6b/h2o-esp.inp"><span class="xref download myst">text file</span></a> or <a class="reference download internal" download="" href="../_downloads/c559c4bea7730f1b1c67e99ae8d2d3e0/h2o-esp.py"><span class="xref download myst">Python script</span></a> type of input file to calculate the ESP charges for the water molecule at the HF/6-31G level of theory.</p>
 </section>
 <section id="resp-charges">
 <h3>RESP charges<a class="headerlink" href="#resp-charges" title="Link to this heading">#</a></h3>
@@ -559,7 +562,8 @@ A_{JJ} =
 \sum_{a} \frac{1}{r_{aJ}^2} + \alpha \, (q_J^2+\beta^2)^{-1/2}
 \end{equation*}\]</div>
 <p>with a dependency on the partial charge. Consequently, RESP charges are obtained by solving the matrix equation iteratively until the charges and Lagrange multipliers become self-consistent. In addition to that, the RESP charge model allows for the introduction of constraints on charges of equivalent atoms due to symmetry operations or bond rotations.</p>
-<p>The RESP charges are detemined with VeloxChem in a Jupyter notebook according to</p>
+<p>The RESP charges are detemined with VeloxChem in a Jupyter notebook according to
+<strong>Python script</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">veloxchem</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">vlx</span>
 
 <span class="n">xyz_str</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
@@ -570,13 +574,15 @@ A_{JJ} =
 <span class="n">basis</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">MolecularBasis</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="s1">&#39;6-31g*&#39;</span><span class="p">)</span>
 
 <span class="n">resp_drv</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">RespChargesDriver</span><span class="p">()</span>
+<span class="n">resp_drv</span><span class="o">.</span><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;mol-resp&#39;</span>
 <span class="n">resp_drv</span><span class="o">.</span><span class="n">update_settings</span><span class="p">({</span>
     <span class="s1">&#39;equal_charges&#39;</span><span class="p">:</span> <span class="s1">&#39;2 = 3&#39;</span>
 <span class="p">})</span>
 <span class="n">resp_charges</span> <span class="o">=</span> <span class="n">resp_drv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">basis</span><span class="p">,</span> <span class="s1">&#39;resp&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Or with use of an input file as below</p>
+<p>Download a <a class="reference download internal" download="" href="../_downloads/7ed5feb43adf71d030e1345bea15f57b/h2o-resp.py"><span class="xref download myst">Python script</span></a> type of input file to calculate the RESP charges for the water molecule at the HF/6-31G* level of theory.</p>
+<p><strong>Text file</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@jobs
 task: resp charges
 @end
@@ -597,11 +603,33 @@ xyz:
 @end 
 </pre></div>
 </div>
-<p>Download a <a class="reference download internal" download="" href="../_downloads/d9176bd0356f287b5281cf6ca093bf94/h2o-resp.inp"><span class="xref download myst">text file</span></a> or <a class="reference download internal" download="" href="../_downloads/7ed5feb43adf71d030e1345bea15f57b/h2o-resp.py"><span class="xref download myst">Python script</span></a> type of input file to calculate the RESP charges for the water molecule at the HF/6-31G* level of theory.</p>
+<p>Download a <a class="reference download internal" download="" href="../_downloads/d9176bd0356f287b5281cf6ca093bf94/h2o-resp.inp"><span class="xref download myst">text file</span></a> type of input file to calculate the RESP charges for the water molecule at the HF/6-31G* level of theory.</p>
 </section>
 <section id="loprop-charges-and-polarizabilities">
 <h3>LoProp charges and polarizabilities<a class="headerlink" href="#loprop-charges-and-polarizabilities" title="Link to this heading">#</a></h3>
 <p>The LoProp approach <span id="id1">[<a class="reference internal" href="refs.html#id3" title="Laura Gagliardi, Roland Lindh, and Gunnar Karlström. Local properties of quantum chemical systems: The LoProp approach. J. Chem. Phys., 121(10):4494–4500, 2004. doi:10.1063/1.1778131.">GLKarlstrom04</a>]</span> is implemented for the determination of localized (atomic) charges and polarizabilities that enter into polarizable embedding calculations of optical spectra.</p>
+<p><strong>Python script</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">veloxchem.peforcefieldgenerator</span><span class="w"> </span><span class="kn">import</span> <span class="n">PEForceFieldGenerator</span>
+
+<span class="n">xyz_str</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">...</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">molecule</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">Molecule</span><span class="o">.</span><span class="n">read_xyz_string</span><span class="p">(</span><span class="n">xyz_str</span><span class="p">)</span>
+<span class="n">basis</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">MolecularBasis</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="s1">&#39;ANO-S-VDZP&#39;</span><span class="p">)</span>
+<span class="n">scfdrv</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">ScfUnrestrictedDriver</span><span class="p">()</span>
+<span class="n">scfdrv</span><span class="o">.</span><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;mol-loprop&#39;</span>
+<span class="n">scfdrv</span><span class="o">.</span><span class="n">xcfun</span> <span class="o">=</span> <span class="s1">&#39;b3lyp&#39;</span>
+<span class="n">scf_results</span> <span class="o">=</span> <span class="n">scfdrv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">basis</span><span class="p">)</span>
+
+
+<span class="n">pe_ff_gen</span> <span class="o">=</span> <span class="n">PEForceFieldGenerator</span><span class="p">()</span>
+<span class="n">pe_ff_gen</span><span class="o">.</span><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;mol-loprop&#39;</span>
+<span class="n">pe_ff_results</span> <span class="o">=</span> <span class="n">pe_ff_gen</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">basis</span><span class="p">,</span> <span class="n">scf_results</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Download a <a class="reference internal" href="#../input_files/h2o-loprop.py"><span class="xref myst">Python script</span></a> type of input file to calculate the LOPROP charges and atomic polarizabilities for the water molecule at the B3LYP/ANO-S-VDPZ level of theory.</p>
+<p><strong>Text file</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@jobs
 task: loprop
 @end
@@ -619,7 +647,7 @@ xyz:
 @end
 </pre></div>
 </div>
-<p><a class="reference download internal" download="" href="../_downloads/6346fa7a6c938a23b77b9c407da481c3/h2o-loprop.inp"><span class="xref download myst">Download</span></a> the input file to calculate the LOPROP charges and atomic polarizabilities for the water molecule at the B3LYP/ANO-S-VDPZ level of theory.</p>
+<p>Download a <a class="reference download internal" download="" href="../_downloads/6346fa7a6c938a23b77b9c407da481c3/h2o-loprop.inp"><span class="xref download myst">text file</span></a> the input file to calculate the LOPROP charges and atomic polarizabilities for the water molecule at the B3LYP/ANO-S-VDPZ level of theory.</p>
 <p>With the three input files provided above, you should get the following charges for the water molecule.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>

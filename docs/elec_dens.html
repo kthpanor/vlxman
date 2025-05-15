@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>UV/vis absorption/emission &#8212; VeloxChem program manual</title>
+    <title>Electronic densities &#8212; VeloxChem program manual</title>
   
   
   
@@ -57,14 +57,10 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/uv-vis';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/elec_dens';</script>
     <link rel="icon" href="../_static/vlx_logo_mark.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Optical activity and dichroism" href="opt_act.html" />
-    <link rel="prev" title="Potential energy surfaces" href="pes.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -126,6 +122,8 @@
     <div class="bd-container__inner bd-page-width">
       
       
+      
+        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -199,9 +197,9 @@
 <li class="toctree-l1"><a class="reference internal" href="embedding.html">Environment</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Properties</span></p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="pes.html">Potential energy surfaces</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">UV/vis absorption/emission</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uv-vis.html">UV/vis absorption/emission</a></li>
 <li class="toctree-l1"><a class="reference internal" href="opt_act.html">Optical activity and dichroism</a></li>
 <li class="toctree-l1"><a class="reference internal" href="vib_spect.html">Vibrational spectroscopies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="magnetic.html">Magnetic resonances</a></li>
@@ -294,7 +292,7 @@
       
       
       
-      <li><a href="https://github.com/kthpanor/vlxman/issues/new?title=Issue%20on%20page%20%2Fdocs/uv-vis.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/kthpanor/vlxman/issues/new?title=Issue%20on%20page%20%2Fdocs/elec_dens.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -324,7 +322,7 @@
       
       
       
-      <li><a href="../_sources/docs/uv-vis.md" target="_blank"
+      <li><a href="../_sources/docs/elec_dens.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -408,7 +406,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>UV/vis absorption/emission</h1>
+    <h1>Electronic densities</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -418,8 +416,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generalized-eigenvalue-equation">Generalized eigenvalue equation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-polarization-propagator-approach">Complex polarization propagator approach</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cube-files">Cube files</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#molecular-orbitals">Molecular orbitals</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#natural-transition-orbitals-and-attachment-detachment-densities">Natural transition orbitals and attachment/detachment densities</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-cube-files">Visualize cube files</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -431,115 +433,72 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="uv-vis-absorption-emission">
-<h1>UV/vis absorption/emission<a class="headerlink" href="#uv-vis-absorption-emission" title="Link to this heading">#</a></h1>
-<section id="generalized-eigenvalue-equation">
-<h2>Generalized eigenvalue equation<a class="headerlink" href="#generalized-eigenvalue-equation" title="Link to this heading">#</a></h2>
-<p>The standard method to calculate UV/vis absorption and emission spectra is to solve the generalized eigenvalue equation <span id="id1">[<a class="reference internal" href="refs.html#id51" title="Patrick Norman, Kenneth Ruud, and Trond Saue. Principles and practices of molecular properties. John Wiley &amp; Sons, Ltd, Chichester, UK, 2018.">NRS18</a>]</span>.</p>
-<p>In the case of SCF theory, it is commonly referred to as the time-dependent density functional theory or Hartree–Fock (TDDFT or TDHF) approach. TDHF is also known as the Random Phase Approximation (RPA).</p>
-<p>If electron de-excitations are ignored in the formation of the electronic Hessian, then one arrives at the Tamm–<a class="reference external" href="https://en.wikipedia.org/wiki/Sidney_Dancoff">Dancoff</a> approximation and which can be invoked with a keyword in the input file.</p>
-<p>VeloxChem implements a reduced-space Davidson algorithm to solve the equation for the <em>N</em> lowest eigenvalues (bottom-up). Based on these eigenvalues, or transition frequencies, and the associated transition moments, the dimensionless <a class="reference external" href="https://en.wikipedia.org/wiki/Oscillator_strength#:~:text=In%20spectroscopy%2C%20oscillator%20strength%20is,of%20an%20atom%20or%20molecule.">oscillator strengths</a> are calculated according to</p>
-<div class="math notranslate nohighlight">
-\[
-  f_{n0} = \frac{2 m_\mathrm{e} \omega_{n0}}{3\hbar e^2}
-  \sum_{\alpha = x,y,z}
-  |\langle 0 | \hat{\mu}_\alpha | n \rangle |^2
-\]</div>
-<p>With oscillator strengths and transition frequencies, the <a class="reference external" href="https://en.wikipedia.org/wiki/Absorption_cross_section">linear absorption cross section</a> can be determined from the expression <span id="id2">[<a class="reference internal" href="refs.html#id51" title="Patrick Norman, Kenneth Ruud, and Trond Saue. Principles and practices of molecular properties. John Wiley &amp; Sons, Ltd, Chichester, UK, 2018.">NRS18</a>]</span></p>
-<div class="math notranslate nohighlight">
-\[
-\sigma(\omega) =
-\frac{2\pi^2 e^2 \omega}{(4\pi\varepsilon_0) m_\mathrm{e} c} 
-\sum_{n &gt; 0}
-f(\omega; \omega_{n0}, \gamma) 
-\frac{
-f_{n0}
-}{ 
-\omega_{n0}
-}
-\]</div>
-<p>where <span class="math notranslate nohighlight">\(f\)</span> is the <a class="reference external" href="https://en.wikipedia.org/wiki/Cauchy_distribution">Cauchy distribution</a>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@jobs
-task: response
-@end
+  <section class="tex2jax_ignore mathjax_ignore" id="electronic-densities">
+<h1>Electronic densities<a class="headerlink" href="#electronic-densities" title="Link to this heading">#</a></h1>
+<section id="cube-files">
+<h2>Cube files<a class="headerlink" href="#cube-files" title="Link to this heading">#</a></h2>
+<section id="molecular-orbitals">
+<h3>Molecular orbitals<a class="headerlink" href="#molecular-orbitals" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
+<span class="n">task</span><span class="p">:</span> <span class="n">visualization</span>
+<span class="nd">@end</span>
 
-@method settings
-xcfun: b3lyp
-basis: def2-svp
-@end
+<span class="nd">@method</span> <span class="n">settings</span>
+<span class="n">basis</span><span class="p">:</span> <span class="n">def2</span><span class="o">-</span><span class="n">svp</span>
+<span class="nd">@end</span>
 
-@response
-property: absorption
-! tamm_dancoff: yes
-nstates: 3
-@end
+<span class="nd">@visualization</span>
+<span class="n">cubes</span><span class="p">:</span> <span class="n">density</span><span class="p">(</span><span class="n">alpha</span><span class="p">),</span> <span class="n">mo</span><span class="p">(</span><span class="n">homo</span><span class="p">)</span>
+<span class="n">files</span><span class="p">:</span> <span class="n">density</span><span class="o">.</span><span class="n">cube</span><span class="p">,</span> <span class="n">homo</span><span class="o">.</span><span class="n">cube</span>
+<span class="nd">@end</span>
 
-@molecule
-charge: 0
-multiplicity: 1
-xyz:  
-...
-@end
+<span class="nd">@molecule</span>
+<span class="n">charge</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">multiplicity</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">xyz</span><span class="p">:</span>
+<span class="n">O</span>  <span class="mf">0.00000</span>  <span class="mf">0.00000</span>  <span class="mf">0.00000</span>
+<span class="n">H</span>  <span class="mf">0.00000</span>  <span class="mf">0.00000</span>  <span class="mf">1.79524</span>
+<span class="n">H</span>  <span class="mf">1.69319</span>  <span class="mf">0.00000</span> <span class="o">-</span><span class="mf">0.59904</span>
+<span class="nd">@end</span> 
 </pre></div>
 </div>
 </section>
-<section id="complex-polarization-propagator-approach">
-<h2>Complex polarization propagator approach<a class="headerlink" href="#complex-polarization-propagator-approach" title="Link to this heading">#</a></h2>
-<p>The linear absorption cross section can be determined directly from the imaginary part of the <a class="reference external" href="https://en.wikipedia.org/wiki/Polarizability">polarizability</a> <span id="id3">[<a class="reference internal" href="refs.html#id51" title="Patrick Norman, Kenneth Ruud, and Trond Saue. Principles and practices of molecular properties. John Wiley &amp; Sons, Ltd, Chichester, UK, 2018.">NRS18</a>]</span></p>
-<div class="math notranslate nohighlight">
-\[
-\sigma(\omega) =
-\frac{\omega}{\epsilon_0 c}
-\mathrm{Im}\left\{
-\overline{\alpha}(-\omega;\omega)
-\right\}
-\]</div>
-<p>where</p>
-<div class="math notranslate nohighlight">
-\[
-\overline{\alpha} =
-\frac{1}{3}
-\big(
-\alpha_{xx} + 
-\alpha_{yy} + 
-\alpha_{zz}
-\big)
-\]</div>
-<p>and</p>
-<div class="math notranslate nohighlight">
-\[
-\alpha_{\alpha\beta}(-\omega;\omega) =
-- \langle \langle 
-\hat{\mu}_\alpha ; \hat{\mu}_\beta
-\rangle \rangle^\gamma_\omega
-\]</div>
-<p>The polarizability is complex and calculated with a damping term, <span class="math notranslate nohighlight">\(\hbar \gamma\)</span>, associated with the inverse finite lifetime of the excited states. The default program setting for this parameter is 0.124 eV (or 0.004556 a.u.).</p>
-<p>The resulting values for <span class="math notranslate nohighlight">\(\sigma(\omega)\)</span> are presented in atomic units and can be converted to the SI unit of m<span class="math notranslate nohighlight">\(^2\)</span> by multiplying with a factor of <span class="math notranslate nohighlight">\(a_0^2\)</span>.</p>
-<p>The arbitrary frequency region is specified in the input file together with a requested frequency resolution.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@jobs
-task: response
-@end
-
-@method settings
-xcfun: b3lyp
-basis: def2-svp
-@end
-
-@response
-property: absorption (cpp)
-! frequency region (and resolution)
-frequencies: 0.0-0.15 (0.0025)
-damping: 0.0045563  ! this is the default value
-@end
-
-@molecule
-charge: 0
-multiplicity: 1
-xyz:  
-...
-@end 
+<section id="natural-transition-orbitals-and-attachment-detachment-densities">
+<h3>Natural transition orbitals and attachment/detachment densities<a class="headerlink" href="#natural-transition-orbitals-and-attachment-detachment-densities" title="Link to this heading">#</a></h3>
+<p>Cube files for natural transition orbitals (NTOs) and detachment/attachment densities can be generated in response calculations with the following response section statements:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@response</span>
+<span class="nb">property</span><span class="p">:</span> <span class="n">absorption</span>
+<span class="n">nstates</span><span class="p">:</span> <span class="mi">3</span>
+<span class="n">nto</span><span class="p">:</span> <span class="n">yes</span>
+<span class="n">nto_pairs</span><span class="p">:</span> <span class="mi">2</span>
+<span class="n">detach_attach</span><span class="p">:</span> <span class="n">yes</span>
+<span class="nd">@end</span>
 </pre></div>
 </div>
+</section>
+<section id="visualize-cube-files">
+<h3>Visualize cube files<a class="headerlink" href="#visualize-cube-files" title="Link to this heading">#</a></h3>
+<p>The cube files can be visualized in a Jupyter notebook with use of the <a class="reference external" href="https://pypi.org/project/py3Dmol/">py3Dmol</a> module:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">py3Dmol</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">p3d</span>
+
+<span class="c1"># generate view</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">p3d</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
+
+<span class="n">v</span><span class="o">.</span><span class="n">addModel</span><span class="p">(</span><span class="n">pyridine_xyz</span><span class="p">,</span> <span class="s2">&quot;xyz&quot;</span><span class="p">)</span>
+<span class="n">v</span><span class="o">.</span><span class="n">setStyle</span><span class="p">({</span><span class="s1">&#39;stick&#39;</span><span class="p">:{}})</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;cube_1.cube&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">cube</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="c1"># negative lobe    </span>
+<span class="n">v</span><span class="o">.</span><span class="n">addVolumetricData</span><span class="p">(</span><span class="n">cube</span><span class="p">,</span> <span class="s2">&quot;cube&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;isoval&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.02</span><span class="p">,</span> <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;opacity&quot;</span><span class="p">:</span> <span class="mf">0.75</span><span class="p">})</span>
+<span class="c1"># positive lobe</span>
+<span class="n">v</span><span class="o">.</span><span class="n">addVolumetricData</span><span class="p">(</span><span class="n">cube</span><span class="p">,</span> <span class="s2">&quot;cube&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;isoval&quot;</span><span class="p">:</span> <span class="mf">0.02</span><span class="p">,</span> <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;opacity&quot;</span><span class="p">:</span> <span class="mf">0.75</span><span class="p">})</span>
+
+<span class="n">v</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
 </section>
 </section>
 
@@ -573,24 +532,6 @@ xyz:
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="pes.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Potential energy surfaces</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="opt_act.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Optical activity and dichroism</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -607,8 +548,12 @@ xyz:
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generalized-eigenvalue-equation">Generalized eigenvalue equation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-polarization-propagator-approach">Complex polarization propagator approach</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cube-files">Cube files</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#molecular-orbitals">Molecular orbitals</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#natural-transition-orbitals-and-attachment-detachment-densities">Natural transition orbitals and attachment/detachment densities</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-cube-files">Visualize cube files</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

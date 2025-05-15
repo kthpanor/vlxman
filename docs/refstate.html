@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -440,6 +440,23 @@ document.write(`
 <p>The basis set needs to be specified in the <code class="docutils literal notranslate"><span class="pre">&#64;method</span> <span class="pre">settings</span></code> section by using the keyword <code class="docutils literal notranslate"><span class="pre">basis</span></code>. See the <a class="reference internal" href="basis_sets.html#available-basis-sets"><span class="std std-ref">Available basis sets section</span></a> of the <a class="reference internal" href="basis_sets.html"><span class="std std-doc">Input file keywords page</span></a>.</p>
 <section id="restricted-closed-shell">
 <h2>Restricted closed-shell<a class="headerlink" href="#restricted-closed-shell" title="Link to this heading">#</a></h2>
+<p><strong>Python script</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">veloxchem</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">vlx</span>
+
+<span class="n">mol_xyz_string</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">... </span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">molecule</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">Molecule</span><span class="o">.</span><span class="n">read_xyz_string</span><span class="p">(</span><span class="n">mol_xyz_string</span><span class="p">)</span>
+<span class="n">basis</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">MolecularBasis</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="s1">&#39;def2-svp&#39;</span><span class="p">)</span>
+
+<span class="n">scfdrv</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">ScfRestrictedDriver</span><span class="p">()</span>
+<span class="n">scfdrv</span><span class="o">.</span><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;mol-scf&#39;</span>
+<span class="n">scf_results</span> <span class="o">=</span> <span class="n">scfdrv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">basis</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Download a <a class="reference download internal" download="" href="../_downloads/6c9760face8cfc49382c748e8a4c6a55/biphenyl-scf.py"><span class="xref download myst">Python script</span></a> type of input file to perfom a restricted closed-shell calculation for the biphenyl molecule at the HF/def2-svp level of theory.</p>
+<p><strong>Text file</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
 <span class="n">task</span><span class="p">:</span> <span class="n">scf</span>
 <span class="nd">@end</span>
@@ -456,12 +473,31 @@ document.write(`
 <span class="nd">@end</span>
 </pre></div>
 </div>
-<p>Download a <a class="reference download internal" download="" href="../_downloads/de54fd808bcad7e7ada9a09f0e9db659/biphenyl-scf.inp"><span class="xref download myst">text format</span></a> or <a class="reference download internal" download="" href="../_downloads/6c9760face8cfc49382c748e8a4c6a55/biphenyl-scf.py"><span class="xref download myst">Python script</span></a> type of input file to perfom a restricted closed-shell calculation for the biphenyl molecule at the HF/def2-svp level of theory.</p>
+<p>Download a <a class="reference download internal" download="" href="../_downloads/de54fd808bcad7e7ada9a09f0e9db659/biphenyl-scf.inp"><span class="xref download myst">text format</span></a> type of input file to perfom a restricted closed-shell calculation for the biphenyl molecule at the HF/def2-svp level of theory.</p>
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/biphenyl.png"><img alt="cover" class="bg-primary mb-1 align-center" src="../_images/biphenyl.png" style="width: 400px;" />
 </a>
 </section>
 <section id="restricted-open-shell">
 <h2>Restricted open-shell<a class="headerlink" href="#restricted-open-shell" title="Link to this heading">#</a></h2>
+<p><strong>Python script</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">veloxchem</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">vlx</span>
+
+<span class="n">mol_xyz_string</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">...</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">molecule</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">Molecule</span><span class="o">.</span><span class="n">read_xyz_string</span><span class="p">(</span><span class="n">mol_xyz_string</span><span class="p">)</span>
+<span class="n">molecule</span><span class="o">.</span><span class="n">set_multiplicity</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">basis</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">MolecularBasis</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="s1">&#39;6-31+G*&#39;</span><span class="p">)</span>
+
+<span class="n">scfdrv</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">ScfRestrictedOpenDriver</span><span class="p">()</span>
+<span class="n">scfdrv</span><span class="o">.</span><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;mol-roscf&#39;</span>
+<span class="n">scfdrv</span><span class="o">.</span><span class="n">xcfun</span> <span class="o">=</span> <span class="s1">&#39;b3lyp&#39;</span>
+<span class="n">scf_results</span> <span class="o">=</span> <span class="n">scfdrv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">basis</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Download a <a class="reference download internal" download="" href="../_downloads/41eddabef1122ea9d7884f3e031b31e4/tempo-roscf.py"><span class="xref download myst">Python script</span></a> type of input file to perfom a restricted open-shell calculation for the tempo molecule at the B3LYP/6-31+G* level of theory.</p>
+<p><strong>Text file</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
 <span class="n">task</span><span class="p">:</span> <span class="n">roscf</span>
 <span class="nd">@end</span>
@@ -479,12 +515,31 @@ document.write(`
 <span class="nd">@end</span>
 </pre></div>
 </div>
-<p>Download a <a class="reference download internal" download="" href="../_downloads/1e2bc1c308af34442a468efbf394e29f/tempo-roscf.inp"><span class="xref download myst">text format</span></a> or <a class="reference download internal" download="" href="../_downloads/41eddabef1122ea9d7884f3e031b31e4/tempo-roscf.py"><span class="xref download myst">Python script</span></a> type of input file to perfom a restricted open-shell calculation for the tempo molecule at the B3LYP/6-31+G* level of theory.</p>
+<p>Download a <a class="reference download internal" download="" href="../_downloads/1e2bc1c308af34442a468efbf394e29f/tempo-roscf.inp"><span class="xref download myst">text format</span></a> type of input file to perfom a restricted open-shell calculation for the tempo molecule at the B3LYP/6-31+G* level of theory.</p>
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/tempo.png"><img alt="cover" class="bg-primary mb-1 align-center" src="../_images/tempo.png" style="width: 400px;" />
 </a>
 </section>
 <section id="unrestricted-open-shell">
 <h2>Unrestricted open-shell<a class="headerlink" href="#unrestricted-open-shell" title="Link to this heading">#</a></h2>
+<p><strong>Python script</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">veloxchem</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">vlx</span>
+
+<span class="n">mol_xyz_string</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">...</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">molecule</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">Molecule</span><span class="o">.</span><span class="n">read_xyz_string</span><span class="p">(</span><span class="n">mol_xyz_string</span><span class="p">)</span>
+<span class="n">molecule</span><span class="o">.</span><span class="n">set_multiplicity</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">basis</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">MolecularBasis</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="s1">&#39;CC-PVDZ&#39;</span><span class="p">)</span>
+
+<span class="n">scfdrv</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">ScfUnrestrictedDriver</span><span class="p">()</span>
+<span class="n">scfdrv</span><span class="o">.</span><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;mol-uscf&#39;</span>
+<span class="n">scfdrv</span><span class="o">.</span><span class="n">xcfun</span> <span class="o">=</span> <span class="s1">&#39;b3lyp&#39;</span>
+<span class="n">scf_results</span> <span class="o">=</span> <span class="n">scfdrv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">basis</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Download a <a class="reference download internal" download="" href="../_downloads/addeb0a0bfae6d6d1ac6bad722cb6b90/tritylradical-uscf.py"><span class="xref download myst">Python script</span></a> type of input file to perfom a unrestricted open-shell calculation for the triphenylmethyl radical molecule (also called trityl radical) at the PBE0/CC-PVDZ level of theory.</p>
+<p><strong>Text file</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
 <span class="n">task</span><span class="p">:</span> <span class="n">uscf</span>
 <span class="nd">@end</span>
@@ -502,7 +557,7 @@ document.write(`
 <span class="nd">@end</span>
 </pre></div>
 </div>
-<p>Download a <a class="reference download internal" download="" href="../_downloads/18efa1ff3aee0ba995371de36abd832e/tritylradical-uscf.inp"><span class="xref download myst">text format</span></a> or <a class="reference download internal" download="" href="../_downloads/addeb0a0bfae6d6d1ac6bad722cb6b90/tritylradical-uscf.py"><span class="xref download myst">Python script</span></a> type of input file to perfom a unrestricted open-shell calculation for the triphenylmethyl radical molecule (also called trityl radical) at the PBE0/CC-PVDZ level of theory.</p>
+<p>Download a <a class="reference download internal" download="" href="../_downloads/18efa1ff3aee0ba995371de36abd832e/tritylradical-uscf.inp"><span class="xref download myst">text format</span></a> type of input file to perfom a unrestricted open-shell calculation for the triphenylmethyl radical molecule (also called trityl radical) at the PBE0/CC-PVDZ level of theory.</p>
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/trityl.png"><img alt="cover" class="bg-primary mb-1 align-center" src="../_images/trityl.png" style="width: 400px;" />
 </a>
 </section>

@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -437,7 +437,25 @@ document.write(`
 </section>
 <section id="static-electric-fields">
 <h2>Static electric fields<a class="headerlink" href="#static-electric-fields" title="Link to this heading">#</a></h2>
-<p>A term can be added in the Hamiltonian to describe the coupling of the molecular system and a time-independent (static), homogeneous, electric field. The value specified oin the input file are for the x,y,z direction respectively given in a.u.</p>
+<p>A term can be added in the Hamiltonian to describe the coupling of the molecular system and a time-independent (static), homogeneous, electric field. The value specified oin the input file are for the x,y,z direction respectively given in a.u.
+<strong>Python script</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">veloxchem</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">vlx</span>
+
+<span class="n">mol_xyz_string</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">...</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">molecule</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">Molecule</span><span class="o">.</span><span class="n">read_xyz_string</span><span class="p">(</span><span class="n">mol_xyz_string</span><span class="p">)</span>
+<span class="n">basis</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">MolecularBasis</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="s1">&#39;def2-svp&#39;</span><span class="p">)</span>
+
+<span class="n">scfdrv</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">ScfRestrictedDriver</span><span class="p">()</span>
+<span class="n">scfdrv</span><span class="o">.</span><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;mol-field&#39;</span>
+<span class="n">scfdrv</span><span class="o">.</span><span class="n">electric_field</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]</span>
+<span class="n">scf_results</span> <span class="o">=</span> <span class="n">scfdrv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">basis</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Download a <a class="reference download internal" download="" href="../_downloads/e672617b60ce4c1b63d36d492915ba3e/pna-field.inp"><span class="xref download myst">text format</span></a> type of input file to perfom a scf calculation under the presence of a static electric field for the p-nitroaniline.</p>
+<p><strong>Text file</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
 <span class="n">task</span><span class="p">:</span> <span class="n">scf</span>
 <span class="nd">@end</span>
@@ -455,7 +473,7 @@ document.write(`
 <span class="nd">@end</span>
 </pre></div>
 </div>
-<p><a class="reference download internal" download="" href="../_downloads/e672617b60ce4c1b63d36d492915ba3e/pna-field.inp"><span class="xref download myst">Download</span></a> or <a class="reference download internal" download="" href="../_downloads/77c617a777e0bb26099cff5d016609d2/pna-field.py"><span class="xref download myst">Python script</span></a> type of input file  to perfom a scf calculation under the presence of a static electric field for the p-nitroaniline.</p>
+<p>Download a <a class="reference download internal" download="" href="../_downloads/77c617a777e0bb26099cff5d016609d2/pna-field.py"><span class="xref download myst">Python script</span></a> type of input file to perfom a scf calculation under the presence of a static electric field for the p-nitroaniline.</p>
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/pna.png"><img alt="cover" class="bg-primary mb-1 align-center" src="../_images/pna.png" style="width: 400px;" />
 </a>
 </section>

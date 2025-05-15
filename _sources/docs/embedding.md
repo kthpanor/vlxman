@@ -62,7 +62,7 @@ b_J = \sum_{a} \frac{V_a}{r_{aJ}}
 \end{equation*}
 
 The ESP charges are detemined with VeloxChem in a Jupyter notebook according to
-
+**Python script**
 ```
 import veloxchem as vlx
 
@@ -74,15 +74,16 @@ molecule = vlx.Molecule.read_xyz_string(xyz_str)
 basis = vlx.MolecularBasis.read(molecule, '6-31g')
 
 esp_drv = vlx.RespChargesDriver()
+esp_drv.filename = 'mol-esp'
 esp_drv.update_settings({
     'number_layers': 5,
     'density': 10.0,
 })
 esp_charges = esp_drv.compute(molecule, basis, 'esp')
 ```
+Download a [Python script](../input_files/h2o-esp.py) type of input file to calculate the ESP charges for the water molecule at the HF/6-31G level of theory.
 
-Or with use of an input file as below
-
+**Text file**
 ```
 @jobs
 task: esp charges
@@ -104,10 +105,9 @@ xyz:
 ...
 @end
 ```
+Download a [text file](../input_files/h2o-esp.inp) type of input file to calculate the ESP charges for the water molecule at the HF/6-31G level of theory.
 
 In both cases, the user needs to specify the number of layers of the molecular surface as well as the surface grid point density in these layers (in units of Å$^{-2}$).
-
-Download a [text file](../input_files/h2o-esp.inp) or [Python script](../input_files/h2o-esp.py) type of input file to calculate the ESP charges for the water molecule at the HF/6-31G level of theory.
 
 ### RESP charges
 
@@ -139,7 +139,7 @@ A_{JJ} =
 with a dependency on the partial charge. Consequently, RESP charges are obtained by solving the matrix equation iteratively until the charges and Lagrange multipliers become self-consistent. In addition to that, the RESP charge model allows for the introduction of constraints on charges of equivalent atoms due to symmetry operations or bond rotations.
 
 The RESP charges are detemined with VeloxChem in a Jupyter notebook according to
-
+**Python script**
 ```
 import veloxchem as vlx
 
@@ -151,13 +151,15 @@ molecule = vlx.Molecule.read_xyz_string(xyz_str)
 basis = vlx.MolecularBasis.read(molecule, '6-31g*')
 
 resp_drv = vlx.RespChargesDriver()
+resp_drv.filename = 'mol-resp'
 resp_drv.update_settings({
     'equal_charges': '2 = 3'
 })
 resp_charges = resp_drv.compute(molecule, basis, 'resp')
 ```
-Or with use of an input file as below
+Download a [Python script](../input_files/h2o-resp.py) type of input file to calculate the RESP charges for the water molecule at the HF/6-31G* level of theory.
 
+**Text file**
 ```
 @jobs
 task: resp charges
@@ -179,12 +181,35 @@ xyz:
 @end 
 ```
 
-Download a [text file](../input_files/h2o-resp.inp) or [Python script](../input_files/h2o-resp.py) type of input file to calculate the RESP charges for the water molecule at the HF/6-31G* level of theory.
+Download a [text file](../input_files/h2o-resp.inp) type of input file to calculate the RESP charges for the water molecule at the HF/6-31G* level of theory.
 
 ### LoProp charges and polarizabilities
 
 The LoProp approach {cite}`Gagliardi2004` is implemented for the determination of localized (atomic) charges and polarizabilities that enter into polarizable embedding calculations of optical spectra.
 
+**Python script**
+````
+from veloxchem.peforcefieldgenerator import PEForceFieldGenerator
+
+xyz_str = """
+...
+"""
+
+molecule = vlx.Molecule.read_xyz_string(xyz_str)
+basis = vlx.MolecularBasis.read(molecule, 'ANO-S-VDZP')
+scfdrv = vlx.ScfUnrestrictedDriver()
+scfdrv.filename = 'mol-loprop'
+scfdrv.xcfun = 'b3lyp'
+scf_results = scfdrv.compute(molecule, basis)
+
+
+pe_ff_gen = PEForceFieldGenerator()
+pe_ff_gen.filename = 'mol-loprop'
+pe_ff_results = pe_ff_gen.compute(molecule, basis, scf_results)
+````
+Download a [Python script](../input_files/h2o-loprop.py) type of input file to calculate the LOPROP charges and atomic polarizabilities for the water molecule at the B3LYP/ANO-S-VDPZ level of theory.
+
+**Text file**
 ````
 @jobs
 task: loprop
@@ -202,7 +227,7 @@ xyz:
 ...
 @end
 ````
-[Download](../input_files/h2o-loprop.inp) the input file to calculate the LOPROP charges and atomic polarizabilities for the water molecule at the B3LYP/ANO-S-VDPZ level of theory.
+Download a [text file](../input_files/h2o-loprop.inp) the input file to calculate the LOPROP charges and atomic polarizabilities for the water molecule at the B3LYP/ANO-S-VDPZ level of theory.
 
 With the three input files provided above, you should get the following charges for the water molecule.
 
