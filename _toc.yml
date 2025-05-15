@@ -13,6 +13,7 @@ parts:
   - file: docs/keywords
 - caption: Model chemistry
   chapters:
+  - file: docs/molecule
   - file: docs/refstate
   - file: docs/functionals
   - file: docs/basis_sets
