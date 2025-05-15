@@ -7,6 +7,7 @@ This feature is under implementation.
 ## Static electric fields
 
 A term can be added in the Hamiltonian to describe the coupling of the molecular system and a time-independent (static), homogeneous, electric field. The value specified oin the input file are for the x,y,z direction respectively given in a.u.
+
 **Python script**
 ```
 import veloxchem as vlx

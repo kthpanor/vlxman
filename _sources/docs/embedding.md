@@ -189,7 +189,7 @@ The LoProp approach {cite}`Gagliardi2004` is implemented for the determination o
 
 **Python script**
 ````
-from veloxchem.peforcefieldgenerator import PEForceFieldGenerator
+import veloxchem as vlx
 
 xyz_str = """
 ...
@@ -197,15 +197,14 @@ xyz_str = """
 
 molecule = vlx.Molecule.read_xyz_string(xyz_str)
 basis = vlx.MolecularBasis.read(molecule, 'ANO-S-VDZP')
-scfdrv = vlx.ScfUnrestrictedDriver()
-scfdrv.filename = 'mol-loprop'
-scfdrv.xcfun = 'b3lyp'
-scf_results = scfdrv.compute(molecule, basis)
 
+scf_drv = vlx.ScfRestrictedDriver()
+scf_results = scf_drv.compute(molecule, basis)
 
-pe_ff_gen = PEForceFieldGenerator()
-pe_ff_gen.filename = 'mol-loprop'
-pe_ff_results = pe_ff_gen.compute(molecule, basis, scf_results)
+loprop_drv = vlx.PEForceFieldGenerator()
+loprop_filename = 'mol-loprop'
+loprop_results = loprop_drv.compute(molecule, basis, scf_results)
+
 ````
 Download a [Python script](../input_files/h2o-loprop.py) type of input file to calculate the LOPROP charges and atomic polarizabilities for the water molecule at the B3LYP/ANO-S-VDPZ level of theory.
 
