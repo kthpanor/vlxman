@@ -20,7 +20,7 @@ For the most parts, VeloxChem implements few schemes to improve the formal scali
 
 Basically, the only underlying approximation made is the adoption of Cauchy–Schwarz screening in the evaluation of electron-repulsion integrals, but also this is done with rigor using a small screening threshold per default.
 
-## Scaling
+## Performance and scaling
 ### Laptop
 ### Desktop
 ### HPC-CPU

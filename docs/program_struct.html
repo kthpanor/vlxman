@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -62,7 +62,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Source code structure" href="source_struct.html" />
-    <link rel="prev" title="Visualization in Jupyter Notebook" href="vis.html" />
+    <link rel="prev" title="VIAMD software" href="viamd.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -186,7 +186,7 @@
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installing the program</a></li>
 <li class="toctree-l1"><a class="reference internal" href="run_desktop.html">Running on a laptop/desktop</a></li>
 <li class="toctree-l1"><a class="reference internal" href="run_cluster.html">Running on a cluster</a></li>
-<li class="toctree-l1"><a class="reference internal" href="keywords.html">Input file keywords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="keywords.html">Input text file keywords</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Model chemistry</span></p>
 <ul class="nav bd-sidenav">
@@ -209,8 +209,8 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Visualization</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="vis.html">Visualization in Jupyter Notebook</a></li>
-
+<li class="toctree-l1"><a class="reference internal" href="vis.html">Jupyter notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viamd.html">VIAMD software</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced users</span></p>
 <ul class="current nav bd-sidenav">
@@ -455,36 +455,28 @@ NAME
     veloxchem
 
 DESCRIPTION
-    #                                   VELOXCHEM
-    #              ----------------------------------------------------
-    #                          An Electronic Structure Code
+    #                              VELOXCHEM
+    #         ----------------------------------------------------
+    #                     An Electronic Structure Code
     #
-    #  SPDX-License-Identifier: BSD-3-Clause
+    #  Copyright © 2018-2024 by VeloxChem developers. All rights reserved.
     #
-    #  Copyright 2018-2025 VeloxChem developers
+    #  SPDX-License-Identifier: LGPL-3.0-or-later
     #
-    #  Redistribution and use in source and binary forms, with or without modification,
-    #  are permitted provided that the following conditions are met:
+    #  This file is part of VeloxChem.
     #
-    #  1. Redistributions of source code must retain the above copyright notice, this
-    #     list of conditions and the following disclaimer.
-    #  2. Redistributions in binary form must reproduce the above copyright notice,
-    #     this list of conditions and the following disclaimer in the documentation
-    #     and/or other materials provided with the distribution.
-    #  3. Neither the name of the copyright holder nor the names of its contributors
-    #     may be used to endorse or promote products derived from this software without
-    #     specific prior written permission.
+    #  VeloxChem is free software: you can redistribute it and/or modify it under
+    #  the terms of the GNU Lesser General Public License as published by the Free
+    #  Software Foundation, either version 3 of the License, or (at your option)
+    #  any later version.
     #
-    #  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot; AND
-    #  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-    #  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-    #  DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
-    #  FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-    #  DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
-    #  SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
-    #  HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
-    #  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
-    #  OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    #  VeloxChem is distributed in the hope that it will be useful, but WITHOUT
+    #  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+    #  FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
+    #  License for more details.
+    #
+    #  You should have received a copy of the GNU Lesser General Public License
+    #  along with VeloxChem. If not, see &lt;https://www.gnu.org/licenses/&gt;.
 
 PACKAGE CONTENTS
     __main__
@@ -497,7 +489,6 @@ PACKAGE CONTENTS
     c6driver
     checkpoint
     cli
-    conformergenerator
     cpcmdriver
     cphfsolver
     cppsolver
@@ -516,7 +507,6 @@ PACKAGE CONTENTS
     evbffbuilder
     evbreporter
     evbsystembuilder
-    excitedstateanalysisdriver
     excitondriver
     features
     firstorderprop
@@ -546,7 +536,6 @@ PACKAGE CONTENTS
     mmforcefieldgenerator
     mmgradientdriver
     mofbuilder
-    mofmdprepare
     mofoptimizer
     mofpreparer
     mofutils
@@ -584,7 +573,6 @@ PACKAGE CONTENTS
     rsppolarizability
     rspproperty
     rspshg
-    rspthreepatransition
     rsptpa
     rsptpatransition
     sadguessdriver
@@ -603,24 +591,20 @@ PACKAGE CONTENTS
     submatrix
     symmetryanalyzer
     symmetryoperations
-    tdacppsolver
     tdaeigensolver
     tddftgradientdriver
     tddftorbitalresponse
     tdhfhessiandriver
     threepatransitiondriver
-    tmparameters
     tpadriver
     tpafulldriver
     tpareddriver
     tpatransitiondriver
     trajectorydriver
-    tsguesser
     uffparameters
     veloxchemlib
     vibrationalanalysis
     visualizationdriver
-    waterparameters
     xtbdriver
     xtbgradientdriver
     xtbhessiandriver
@@ -790,10 +774,10 @@ FUNCTIONS
         Gets convertion factor for rotatory strength (a.u. -&gt; 10^-40 cgs).
 
 VERSION
-    1.0rc4
+    1.0rc3
 
 FILE
-    /home/linares/miniconda3/envs/vlx-github/lib/python3.12/site-packages/veloxchem/__init__.py
+    /home/mathieu-linares/miniconda3/envs/vlxenv/lib/python3.12/site-packages/veloxchem/__init__.py
 </pre></div>
 </div>
 </div>
@@ -819,7 +803,6 @@ FILE
  &#39;C6Driver&#39;,
  &#39;CircularDichroismSpectrum&#39;,
  &#39;ComplexResponse&#39;,
- &#39;ConformerGenerator&#39;,
  &#39;CpcmDriver&#39;,
  &#39;CphfSolver&#39;,
  &#39;CubicGrid&#39;,
@@ -833,10 +816,8 @@ FILE
  &#39;EvbDriver&#39;,
  &#39;EvbFepDriver&#39;,
  &#39;EvbForceFieldBuilder&#39;,
- &#39;EvbForceGroup&#39;,
  &#39;EvbReporter&#39;,
  &#39;EvbSystemBuilder&#39;,
- &#39;ExcitedStateAnalysisDriver&#39;,
  &#39;ExcitonModelDriver&#39;,
  &#39;FirstOrderProperties&#39;,
  &#39;FockDriver&#39;,
@@ -932,7 +913,6 @@ FILE
  &#39;TpaFullDriver&#39;,
  &#39;TpaReducedDriver&#39;,
  &#39;TpaTransitionDriver&#39;,
- &#39;TransitionStateGuesser&#39;,
  &#39;TwoCenterElectronRepulsionDriver&#39;,
  &#39;TwoCenterElectronRepulsionGeom100Driver&#39;,
  &#39;VibrationalAnalysis&#39;,
@@ -977,7 +957,6 @@ FILE
  &#39;compute_nuclear_potential_integrals&#39;,
  &#39;compute_overlap_integrals&#39;,
  &#39;configure_mkl_rt&#39;,
- &#39;conformergenerator&#39;,
  &#39;cpcmdriver&#39;,
  &#39;cphfsolver&#39;,
  &#39;cppsolver&#39;,
@@ -997,7 +976,6 @@ FILE
  &#39;evbffbuilder&#39;,
  &#39;evbreporter&#39;,
  &#39;evbsystembuilder&#39;,
- &#39;excitedstateanalysisdriver&#39;,
  &#39;excitondriver&#39;,
  &#39;extinction_coefficient_from_beta&#39;,
  &#39;features&#39;,
@@ -1034,7 +1012,6 @@ FILE
  &#39;mmforcefieldgenerator&#39;,
  &#39;mmgradientdriver&#39;,
  &#39;mofbuilder&#39;,
- &#39;mofmdprepare&#39;,
  &#39;mofoptimizer&#39;,
  &#39;mofpreparer&#39;,
  &#39;mofutils&#39;,
@@ -1066,7 +1043,6 @@ FILE
  &#39;quadraticresponsedriver&#39;,
  &#39;reactionmatcher&#39;,
  &#39;respchargesdriver&#39;,
- &#39;rifockdriver&#39;,
  &#39;rotatory_strength_in_cgs&#39;,
  &#39;rspabsorption&#39;,
  &#39;rspc6&#39;,
@@ -1094,23 +1070,19 @@ FILE
  &#39;subcommunicators&#39;,
  &#39;symmetryanalyzer&#39;,
  &#39;symmetryoperations&#39;,
- &#39;tdacppsolver&#39;,
  &#39;tdaeigensolver&#39;,
  &#39;tddftgradientdriver&#39;,
  &#39;tddftorbitalresponse&#39;,
  &#39;tdhfhessiandriver&#39;,
  &#39;threepatransitiondriver&#39;,
- &#39;tmparameters&#39;,
  &#39;tpadriver&#39;,
  &#39;tpafulldriver&#39;,
  &#39;tpareddriver&#39;,
  &#39;tpatransitiondriver&#39;,
- &#39;tsguesser&#39;,
  &#39;uffparameters&#39;,
  &#39;veloxchemlib&#39;,
  &#39;vibrationalanalysis&#39;,
  &#39;visualizationdriver&#39;,
- &#39;waterparameters&#39;,
  &#39;xtbdriver&#39;,
  &#39;xtbgradientdriver&#39;,
  &#39;xtbhessiandriver&#39;]
@@ -1199,6 +1171,7 @@ FILE
  &#39;_get_scf_range&#39;,
  &#39;_graceful_exit&#39;,
  &#39;_need_graceful_exit&#39;,
+ &#39;_print_debug_info&#39;,
  &#39;_print_energy_components&#39;,
  &#39;_print_ground_state&#39;,
  &#39;_print_header&#39;,
@@ -1275,12 +1248,12 @@ FILE
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="vis.html"
+       href="viamd.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Visualization in Jupyter Notebook</p>
+        <p class="prev-next-title">VIAMD software</p>
       </div>
     </a>
     <a class="right-next"
