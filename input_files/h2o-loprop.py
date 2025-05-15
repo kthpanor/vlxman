@@ -13,7 +13,6 @@ molecule = vlx.Molecule.read_xyz_string(xyz_str)
 basis = vlx.MolecularBasis.read(molecule, 'ANO-S-VDZP')
 
 scf_drv = vlx.ScfRestrictedDriver()
-scf_drv.filename = 'mol-loprop'
 scf_results = scf_drv.compute(molecule, basis)
 
 loprop_drv = vlx.PEForceFieldGenerator()

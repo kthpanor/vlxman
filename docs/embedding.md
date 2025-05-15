@@ -62,6 +62,7 @@ b_J = \sum_{a} \frac{V_a}{r_{aJ}}
 \end{equation*}
 
 The ESP charges are detemined with VeloxChem in a Jupyter notebook according to
+
 **Python script**
 ```
 import veloxchem as vlx
