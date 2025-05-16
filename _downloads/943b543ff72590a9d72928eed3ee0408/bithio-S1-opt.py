@@ -1,6 +1,6 @@
 import veloxchem as vlx
 
-xyz="""
+xyz_string="""
 16
 
 S    1.6198   -1.3808    0.3663    
@@ -21,15 +21,23 @@ H    4.0400   -1.0528    0.2959
 H   -4.0401    1.0529    0.2959  
 """
 
-molecule = vlx.Molecule.read_xyz_string(xyz)
-basis = vlx.MolecularBasis.read(molecule, 'def2-svp')
+molecule = vlx.Molecule.from_xyz_string(xyz_string)
+basis = vlx.MolecularBasis.read(molecule,"def2-svp")
 
+# Ground state electronic structure
 scf_drv = vlx.ScfRestrictedDriver()
-scf_drv.filename = 'bithio-S0-opt'
-scf_drv.xcfun = 'b3lyp'
-scf_drv.dispersion = 'd4'
-results = scf_drv.compute(molecule, basis)
+scf_drv.xcfun = "b3lyp"
+scf_results = scf_drv.compute(molecule, basis)
 
-opt_drv = vlx.OptimizationDriver(scf_drv)
-opt_drv.filename = 'bithio-S0-opt'
-opt_results = opt_drv.compute(molecule, basis, results)
+# TDDFT linear response
+rsp_drv = vlx.LinearResponseEigenSolver()
+rsp_drv.nstates = 2
+rsp_results = rsp_drv.compute(molecule, basis, scf_results)
+
+# TDDFT gradient settings and optimization
+grad_drv = vlx.TddftGradientDriver(scf_drv)
+grad_drv.state_deriv_index = 1
+
+opt_drv = vlx.OptimizationDriver(grad_drv)
+opt_drv.filename = "bithio-S1-opt"
+opt_results = opt_drv.compute(molecule, basis, scf_drv, rsp_drv, rsp_results)
