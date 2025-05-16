@@ -1,10 +1,8 @@
 # Reference states
 
-A detailed list of keyword can be found in the [SCF optimization section](./keywords.ipynb#scf-optimization) of the [Input file keywords page](./keywords.ipynb).
+A detailed list of keyword can be found in the [SCF optimization](./keywords.ipynb#scf-optimization) section of the [input file keywords](./keywords.ipynb) page.
 
-By default, Hartree-Fock is used if not specified otherwise. To use DFT, several functionals are available and should be specified in the ```@method settings``` section by using the keyword ```xcfun```. See the [Exchange-correlation functionnals](./functionals.ipynb) page for a complete list of functionnals available.
-
-The basis set needs to be specified in the ```@method settings``` section by using the keyword ```basis```. See the [Available basis sets section](./basis_sets.ipynb#available-basis-sets) of the [Input file keywords page](./basis_sets.ipynb).
+By default, the Hartree–Fock method is employed. To use Kohn–Sham DFT, any of the several available functionals is specified as illustrated below, see the [exchange-correlation functionals](./functionals.ipynb) page for a complete list of available functionals.
 
 ## Restricted closed-shell
 

@@ -190,6 +190,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Model chemistry</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="molecule.html">Molecule</a></li>
 <li class="toctree-l1"><a class="reference internal" href="refstate.html">Reference states</a></li>
 <li class="toctree-l1"><a class="reference internal" href="functionals.html">Exchange–correlation functionals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="basis_sets.html">Basis sets</a></li>
@@ -437,6 +438,31 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span><span class="w"> </span><span class="nn">veloxchem</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">vlx</span>
+
+<span class="n">File</span> <span class="o">~/</span><span class="n">miniconda3</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">echem</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.12</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">veloxchem</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">26</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1">#</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="c1">#                              VELOXCHEM</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1">#         ----------------------------------------------------</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">24</span> 
+<span class="g g-Whitespace">     </span><span class="mi">25</span> <span class="c1"># C++ classes</span>
+<span class="ne">---&gt; </span><span class="mi">26</span> <span class="kn">from</span><span class="w"> </span><span class="nn">.veloxchemlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">AtomBasis</span>
+<span class="g g-Whitespace">     </span><span class="mi">27</span> <span class="kn">from</span><span class="w"> </span><span class="nn">.veloxchemlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">BasisFunction</span>
+<span class="g g-Whitespace">     </span><span class="mi">28</span> <span class="kn">from</span><span class="w"> </span><span class="nn">.veloxchemlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">OverlapDriver</span>
+
+<span class="ne">ImportError</span>: dlopen(/Users/panor/miniconda3/envs/echem/lib/python3.12/site-packages/veloxchem/veloxchemlib.cpython-312-darwin.so, 0x0002): Library not loaded: @rpath/libgfortran.5.dylib
+  <span class="n">Referenced</span> <span class="n">from</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">CAA510D4</span><span class="o">-</span><span class="mi">816</span><span class="n">A</span><span class="o">-</span><span class="mf">34E5</span><span class="o">-</span><span class="mi">9021</span><span class="o">-</span><span class="mi">485</span><span class="n">EF5D56159</span><span class="o">&gt;</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">panor</span><span class="o">/</span><span class="n">miniconda3</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">echem</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">libopenblas</span><span class="mf">.0</span><span class="o">.</span><span class="n">dylib</span>
+  <span class="n">Reason</span><span class="p">:</span> <span class="n">tried</span><span class="p">:</span> <span class="s1">&#39;/Users/panor/miniconda3/envs/echem/lib/libgfortran.5.dylib&#39;</span> <span class="p">(</span><span class="n">duplicate</span> <span class="n">LC_RPATH</span> <span class="s1">&#39;@loader_path&#39;</span><span class="p">),</span> <span class="s1">&#39;/Users/panor/miniconda3/envs/echem/lib/libgfortran.5.dylib&#39;</span> <span class="p">(</span><span class="n">duplicate</span> <span class="n">LC_RPATH</span> <span class="s1">&#39;@loader_path&#39;</span><span class="p">),</span> <span class="s1">&#39;/Users/panor/miniconda3/envs/echem/lib/python3.12/site-packages/veloxchem/../../../../lib/libgfortran.5.dylib&#39;</span> <span class="p">(</span><span class="n">duplicate</span> <span class="n">LC_RPATH</span> <span class="s1">&#39;@loader_path&#39;</span><span class="p">),</span> <span class="s1">&#39;/Users/panor/miniconda3/envs/echem/lib/python3.12/site-packages/veloxchem/../../../libgfortran.5.dylib&#39;</span> <span class="p">(</span><span class="n">duplicate</span> <span class="n">LC_RPATH</span> <span class="s1">&#39;@loader_path&#39;</span><span class="p">),</span> <span class="s1">&#39;/Users/panor/miniconda3/envs/echem/lib/python3.12/site-packages/veloxchem/../../../../lib/libgfortran.5.dylib&#39;</span> <span class="p">(</span><span class="n">duplicate</span> <span class="n">LC_RPATH</span> <span class="s1">&#39;@loader_path&#39;</span><span class="p">),</span> <span class="s1">&#39;/Users/panor/miniconda3/envs/echem/lib/python3.12/site-packages/veloxchem/../../../libgfortran.5.dylib&#39;</span> <span class="p">(</span><span class="n">duplicate</span> <span class="n">LC_RPATH</span> <span class="s1">&#39;@loader_path&#39;</span><span class="p">),</span> <span class="s1">&#39;/Users/panor/miniconda3/envs/echem/bin/../lib/libgfortran.5.dylib&#39;</span> <span class="p">(</span><span class="n">duplicate</span> <span class="n">LC_RPATH</span> <span class="s1">&#39;@loader_path&#39;</span><span class="p">),</span> <span class="s1">&#39;/Users/panor/miniconda3/envs/echem/bin/../lib/libgfortran.5.dylib&#39;</span> <span class="p">(</span><span class="n">duplicate</span> <span class="n">LC_RPATH</span> <span class="s1">&#39;@loader_path&#39;</span><span class="p">),</span> <span class="s1">&#39;/usr/local/lib/libgfortran.5.dylib&#39;</span> <span class="p">(</span><span class="n">no</span> <span class="n">such</span> <span class="n">file</span><span class="p">),</span> <span class="s1">&#39;/usr/lib/libgfortran.5.dylib&#39;</span> <span class="p">(</span><span class="n">no</span> <span class="n">such</span> <span class="n">file</span><span class="p">,</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">dyld</span> <span class="n">cache</span><span class="p">)</span><span class="n">Library</span> <span class="ow">not</span> <span class="n">loaded</span><span class="p">:</span> <span class="nd">@rpath</span><span class="o">/</span><span class="n">libgfortran</span><span class="mf">.5</span><span class="o">.</span><span class="n">dylib</span>
+  <span class="n">Referenced</span> <span class="n">from</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">C6991033</span><span class="o">-</span><span class="mi">5</span><span class="n">FD1</span><span class="o">-</span><span class="mi">3</span><span class="n">ED0</span><span class="o">-</span><span class="mi">9244</span><span class="o">-</span><span class="n">DFF142EB9D6C</span><span class="o">&gt;</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">panor</span><span class="o">/</span><span class="n">miniconda3</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">echem</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">libxtb</span><span class="mf">.6</span><span class="o">.</span><span class="n">dylib</span>
+  <span class="n">Reason</span><span class="p">:</span> <span class="n">tried</span><span class="p">:</span> <span class="s1">&#39;/Users/panor/miniconda3/envs/echem/lib/libgfortran.5.dylib&#39;</span> <span class="p">(</span><span class="n">duplicate</span> <span class="n">LC_RPATH</span> <span class="s1">&#39;@loader_path&#39;</span><span class="p">),</span> <span class="s1">&#39;/Users/panor/miniconda3/envs/echem/lib/libgfortran.5.dylib&#39;</span> <span class="p">(</span><span class="n">duplicate</span> <span class="n">LC_RPATH</span> <span class="s1">&#39;@loader_path&#39;</span><span class="p">),</span> <span class="s1">&#39;/Users/panor/miniconda3/envs/echem/lib/python3.12/site-packages/veloxchem/../../../../lib/libgfortran.5.dylib&#39;</span> <span class="p">(</span><span class="n">duplicate</span> <span class="n">LC_RPATH</span> <span class="s1">&#39;@loader_path&#39;</span><span class="p">),</span> <span class="s1">&#39;/Users/panor/miniconda3/envs/echem/lib/python3.12/site-packages/veloxchem/../../../libgfortran.5.dylib&#39;</span> <span class="p">(</span><span class="n">duplicate</span> <span class="n">LC_RPATH</span> <span class="s1">&#39;@loader_path&#39;</span><span class="p">),</span> <span class="s1">&#39;/Users/panor/miniconda3/envs/echem/lib/python3.12/site-packages/veloxchem/../../../../lib/libgfortran.5.dylib&#39;</span> <span class="p">(</span><span class="n">duplicate</span> <span class="n">LC_RPATH</span> <span class="s1">&#39;@loader_path&#39;</span><span class="p">),</span> <span class="s1">&#39;/Users/panor/miniconda3/envs/echem/lib/python3.12/site-packages/veloxchem/../../../libgfortran.5.dylib&#39;</span> <span class="p">(</span><span class="n">duplicate</span> <span class="n">LC_RPATH</span> <span class="s1">&#39;@loader_path&#39;</span><span class="p">),</span> <span class="s1">&#39;/Users/panor/miniconda3/envs/echem/bin/../lib/libgfortran.5.dylib&#39;</span> <span class="p">(</span><span class="n">duplicate</span> <span class="n">LC_RPATH</span> <span class="s1">&#39;@loader_path&#39;</span><span class="p">),</span> <span class="s1">&#39;/Users/panor/miniconda3/envs/echem/bin/../lib/libgfortran.5.dylib&#39;</span> <span class="p">(</span><span class="n">duplicate</span> <span class="n">LC_RPATH</span> <span class="s1">&#39;@loader_path&#39;</span><span class="p">),</span> <span class="s1">&#39;/usr/local/lib/libgfortran.5.dylib&#39;</span> <span class="p">(</span><span class="n">no</span> <span class="n">such</span> <span class="n">file</span><span class="p">),</span> <span class="s1">&#39;/usr/lib/libgfortran.5.dylib&#39;</span> <span class="p">(</span><span class="n">no</span> <span class="n">such</span> <span class="n">file</span><span class="p">,</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">dyld</span> <span class="n">cache</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
 </div>
 <p>The VeloxChem program adopts a layered Python/C++ language structure.</p>
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/code-structure.png"><img alt="veloxchem-structure" class="bg-primary mb-1 align-center" src="../_images/code-structure.png" style="width: 600px;" />
@@ -455,28 +481,36 @@ NAME
     veloxchem
 
 DESCRIPTION
-    #                              VELOXCHEM
-    #         ----------------------------------------------------
-    #                     An Electronic Structure Code
+    #                                   VELOXCHEM
+    #              ----------------------------------------------------
+    #                          An Electronic Structure Code
     #
-    #  Copyright © 2018-2024 by VeloxChem developers. All rights reserved.
+    #  SPDX-License-Identifier: BSD-3-Clause
     #
-    #  SPDX-License-Identifier: LGPL-3.0-or-later
+    #  Copyright 2018-2025 VeloxChem developers
     #
-    #  This file is part of VeloxChem.
+    #  Redistribution and use in source and binary forms, with or without modification,
+    #  are permitted provided that the following conditions are met:
     #
-    #  VeloxChem is free software: you can redistribute it and/or modify it under
-    #  the terms of the GNU Lesser General Public License as published by the Free
-    #  Software Foundation, either version 3 of the License, or (at your option)
-    #  any later version.
+    #  1. Redistributions of source code must retain the above copyright notice, this
+    #     list of conditions and the following disclaimer.
+    #  2. Redistributions in binary form must reproduce the above copyright notice,
+    #     this list of conditions and the following disclaimer in the documentation
+    #     and/or other materials provided with the distribution.
+    #  3. Neither the name of the copyright holder nor the names of its contributors
+    #     may be used to endorse or promote products derived from this software without
+    #     specific prior written permission.
     #
-    #  VeloxChem is distributed in the hope that it will be useful, but WITHOUT
-    #  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-    #  FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
-    #  License for more details.
-    #
-    #  You should have received a copy of the GNU Lesser General Public License
-    #  along with VeloxChem. If not, see &lt;https://www.gnu.org/licenses/&gt;.
+    #  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot; AND
+    #  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+    #  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+    #  DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+    #  FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+    #  DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+    #  SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+    #  HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+    #  LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
+    #  OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PACKAGE CONTENTS
     __main__
@@ -489,6 +523,7 @@ PACKAGE CONTENTS
     c6driver
     checkpoint
     cli
+    conformergenerator
     cpcmdriver
     cphfsolver
     cppsolver
@@ -507,11 +542,11 @@ PACKAGE CONTENTS
     evbffbuilder
     evbreporter
     evbsystembuilder
+    excitedstateanalysisdriver
     excitondriver
     features
     firstorderprop
     fockdriver
-    forcefieldgenerator
     gradientdriver
     griddriver
     hessiandriver
@@ -525,7 +560,6 @@ PACKAGE CONTENTS
     interpolationdatapoint
     interpolationdriver
     linearsolver
-    loprop
     lreigensolver
     lrsolver
     main
@@ -591,6 +625,7 @@ PACKAGE CONTENTS
     submatrix
     symmetryanalyzer
     symmetryoperations
+    tdacppsolver
     tdaeigensolver
     tddftgradientdriver
     tddftorbitalresponse
@@ -773,11 +808,14 @@ FUNCTIONS
 
         Gets convertion factor for rotatory strength (a.u. -&gt; 10^-40 cgs).
 
+DATA
+    __deployed__ = {&#39;author&#39;: &#39;Xin Li&#39;, &#39;build&#39;: &#39;195&#39;, &#39;commit&#39;: &#39;645f537...
+
 VERSION
     1.0rc3
 
 FILE
-    /home/mathieu-linares/miniconda3/envs/vlxenv/lib/python3.12/site-packages/veloxchem/__init__.py
+    /Users/lixin/miniforge3/envs/vlxman2/lib/python3.12/site-packages/veloxchem/__init__.py
 </pre></div>
 </div>
 </div>
@@ -793,138 +831,57 @@ FILE
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;AODensityMatrix&#39;,
+ &#39;AOFockMatrix&#39;,
  &#39;Absorption&#39;,
  &#39;AtomBasis&#39;,
- &#39;AtomTypeIdentifier&#39;,
  &#39;BasisFunction&#39;,
  &#39;BlockDavidsonSolver&#39;,
- &#39;BlockedGtoPairBlock&#39;,
  &#39;C6&#39;,
- &#39;C6Driver&#39;,
+ &#39;C6Solver&#39;,
  &#39;CircularDichroismSpectrum&#39;,
  &#39;ComplexResponse&#39;,
- &#39;CpcmDriver&#39;,
- &#39;CphfSolver&#39;,
  &#39;CubicGrid&#39;,
- &#39;CubicResponseDriver&#39;,
- &#39;DensityViewer&#39;,
+ &#39;CustomProperty&#39;,
+ &#39;DenseMatrix&#39;,
  &#39;DispersionModel&#39;,
  &#39;ElectricDipoleIntegralsDriver&#39;,
- &#39;ElectricDipoleMomentDriver&#39;,
- &#39;ElectricDipoleMomentGeom100Driver&#39;,
- &#39;EvbDataProcessing&#39;,
- &#39;EvbDriver&#39;,
- &#39;EvbFepDriver&#39;,
- &#39;EvbForceFieldBuilder&#39;,
- &#39;EvbReporter&#39;,
- &#39;EvbSystemBuilder&#39;,
+ &#39;ElectronRepulsionIntegralsDriver&#39;,
+ &#39;ExcitationVector&#39;,
  &#39;ExcitonModelDriver&#39;,
- &#39;FirstOrderProperties&#39;,
- &#39;FockDriver&#39;,
- &#39;FockGeom1000Driver&#39;,
- &#39;FockGeom1010Driver&#39;,
- &#39;FockGeom1100Driver&#39;,
- &#39;FockGeom2000Driver&#39;,
- &#39;GradientDriver&#39;,
- &#39;GridDriver&#39;,
- &#39;GtoBlock&#39;,
- &#39;GtoPairBlock&#39;,
- &#39;HessianDriver&#39;,
- &#39;HessianOrbitalResponse&#39;,
- &#39;IMDatabasePointCollecter&#39;,
- &#39;IMForceFieldGenerator&#39;,
  &#39;InputParser&#39;,
- &#39;InterpolationDatapoint&#39;,
- &#39;InterpolationDriver&#39;,
- &#39;KineticEnergyDriver&#39;,
- &#39;KineticEnergyGeom100Driver&#39;,
- &#39;KineticEnergyGeom101Driver&#39;,
- &#39;KineticEnergyGeom200Driver&#39;,
+ &#39;KineticEnergyIntegralsDriver&#39;,
  &#39;LinearAbsorptionCrossSection&#39;,
  &#39;LinearResponseEigenSolver&#39;,
  &#39;LinearResponseSolver&#39;,
  &#39;LoPropDriver&#39;,
- &#39;MMDriver&#39;,
- &#39;MMForceFieldGenerator&#39;,
- &#39;MMGradientDriver&#39;,
  &#39;MOIntegralsDriver&#39;,
- &#39;Matrices&#39;,
- &#39;Matrix&#39;,
- &#39;MofBuilder&#39;,
+ &#39;MOIntsBatch&#39;,
  &#39;MolecularBasis&#39;,
  &#39;MolecularOrbitals&#39;,
  &#39;Molecule&#39;,
  &#39;Mp2Driver&#39;,
  &#39;MpiTask&#39;,
- &#39;NuclearPotentialDriver&#39;,
- &#39;NuclearPotentialErfDriver&#39;,
- &#39;NuclearPotentialErfGeom010Driver&#39;,
- &#39;NuclearPotentialErfGeom100Driver&#39;,
- &#39;NuclearPotentialGeom010Driver&#39;,
- &#39;NuclearPotentialGeom100Driver&#39;,
- &#39;NuclearPotentialGeom101Driver&#39;,
- &#39;NuclearPotentialGeom110Driver&#39;,
- &#39;NuclearPotentialGeom200Driver&#39;,
- &#39;NumerovDriver&#39;,
- &#39;OpenMMDriver&#39;,
- &#39;OpenMMDynamics&#39;,
- &#39;OpenMMGradientDriver&#39;,
+ &#39;NuclearPotentialIntegralsDriver&#39;,
  &#39;OptimizationDriver&#39;,
- &#39;OrbitalViewer&#39;,
  &#39;OutputStream&#39;,
- &#39;OverlapDriver&#39;,
- &#39;OverlapGeom100Driver&#39;,
- &#39;OverlapGeom101Driver&#39;,
- &#39;OverlapGeom200Driver&#39;,
- &#39;PEForceFieldGenerator&#39;,
- &#39;PolOrbitalResponse&#39;,
+ &#39;OverlapIntegralsDriver&#39;,
  &#39;Polarizability&#39;,
- &#39;PolarizabilityGradient&#39;,
- &#39;QuadraticResponseDriver&#39;,
- &#39;RIFockDriver&#39;,
- &#39;RIFockGradDriver&#39;,
- &#39;RespChargesDriver&#39;,
+ &#39;ResponseDriver&#39;,
  &#39;ResponseProperty&#39;,
- &#39;SHG&#39;,
+ &#39;SADGuessDriver&#39;,
+ &#39;ScfFirstOrderProperties&#39;,
  &#39;ScfGradientDriver&#39;,
- &#39;ScfHessianDriver&#39;,
  &#39;ScfRestrictedDriver&#39;,
- &#39;ScfRestrictedOpenDriver&#39;,
  &#39;ScfUnrestrictedDriver&#39;,
- &#39;Seminario&#39;,
- &#39;ShgDriver&#39;,
- &#39;SolvationBuilder&#39;,
- &#39;SolvationFepDriver&#39;,
  &#39;SubCommunicators&#39;,
- &#39;SubMatrix&#39;,
- &#39;SymmetryAnalyzer&#39;,
- &#39;T3FlatBuffer&#39;,
- &#39;T4CScreener&#39;,
- &#39;TPA&#39;,
- &#39;TdaEigenSolver&#39;,
- &#39;TddftGradientDriver&#39;,
- &#39;TddftOrbitalResponse&#39;,
- &#39;TdhfHessianDriver&#39;,
- &#39;ThreeCenterElectronRepulsionDriver&#39;,
- &#39;ThreeCenterElectronRepulsionGeom010Driver&#39;,
- &#39;ThreeCenterElectronRepulsionGeom100Driver&#39;,
- &#39;ThreeCenterOverlapDriver&#39;,
- &#39;ThreePATransitionDriver&#39;,
- &#39;TpaFullDriver&#39;,
- &#39;TpaReducedDriver&#39;,
- &#39;TpaTransitionDriver&#39;,
- &#39;TwoCenterElectronRepulsionDriver&#39;,
- &#39;TwoCenterElectronRepulsionGeom100Driver&#39;,
- &#39;VibrationalAnalysis&#39;,
+ &#39;TDAExciDriver&#39;,
+ &#39;TwoIndexes&#39;,
  &#39;VisualizationDriver&#39;,
- &#39;XCFunctional&#39;,
- &#39;XCIntegrator&#39;,
- &#39;XCMolecularGradient&#39;,
- &#39;XtbDriver&#39;,
- &#39;XtbGradientDriver&#39;,
- &#39;XtbHessianDriver&#39;,
+ &#39;XTBDriver&#39;,
+ &#39;XTBGradientDriver&#39;,
  &#39;__builtins__&#39;,
  &#39;__cached__&#39;,
+ &#39;__deployed__&#39;,
  &#39;__doc__&#39;,
  &#39;__file__&#39;,
  &#39;__loader__&#39;,
@@ -933,159 +890,81 @@ FILE
  &#39;__path__&#39;,
  &#39;__spec__&#39;,
  &#39;__version__&#39;,
+ &#39;ao_matrix_to_dalton&#39;,
+ &#39;ao_matrix_to_veloxchem&#39;,
  &#39;aodensitymatrix&#39;,
- &#39;aoindices&#39;,
+ &#39;aofockmatrix&#39;,
  &#39;assert_msg_critical&#39;,
- &#39;atomtypeidentifier&#39;,
- &#39;available_functionals&#39;,
- &#39;available_pdft_functionals&#39;,
  &#39;batchsize&#39;,
  &#39;blockdavidson&#39;,
- &#39;bohr_in_angstrom&#39;,
+ &#39;bohr_in_angstroms&#39;,
  &#39;c2diis&#39;,
- &#39;c6driver&#39;,
+ &#39;c6solver&#39;,
  &#39;checkpoint&#39;,
- &#39;chemical_element_identifier&#39;,
- &#39;chemical_element_label&#39;,
- &#39;chemical_element_mass&#39;,
- &#39;chemical_element_max_angular_momentum&#39;,
- &#39;chemical_element_name&#39;,
- &#39;compute_angular_momentum_integrals&#39;,
- &#39;compute_electric_dipole_integrals&#39;,
- &#39;compute_kinetic_energy_integrals&#39;,
- &#39;compute_linear_momentum_integrals&#39;,
- &#39;compute_nuclear_potential_integrals&#39;,
- &#39;compute_overlap_integrals&#39;,
- &#39;configure_mkl_rt&#39;,
- &#39;cpcmdriver&#39;,
- &#39;cphfsolver&#39;,
  &#39;cppsolver&#39;,
  &#39;cubicgrid&#39;,
- &#39;cubicresponsedriver&#39;,
+ &#39;denguess&#39;,
  &#39;denmat&#39;,
- &#39;densityviewer&#39;,
- &#39;dftutils&#39;,
- &#39;dipole_in_debye&#39;,
- &#39;dispersionmodel&#39;,
+ &#39;deprecations&#39;,
  &#39;distributedarray&#39;,
- &#39;environment&#39;,
+ &#39;environ&#39;,
+ &#39;ericut&#39;,
  &#39;errorhandler&#39;,
- &#39;evbdataprocessing&#39;,
- &#39;evbdriver&#39;,
- &#39;evbfepdriver&#39;,
- &#39;evbffbuilder&#39;,
- &#39;evbreporter&#39;,
- &#39;evbsystembuilder&#39;,
  &#39;excitondriver&#39;,
- &#39;extinction_coefficient_from_beta&#39;,
- &#39;features&#39;,
- &#39;fine_structure_constant&#39;,
- &#39;firstorderprop&#39;,
- &#39;fockdriver&#39;,
+ &#39;fockmat&#39;,
  &#39;get_basis_path&#39;,
- &#39;get_data_path&#39;,
+ &#39;get_qq_scheme&#39;,
+ &#39;get_qq_type&#39;,
  &#39;gradientdriver&#39;,
- &#39;griddriver&#39;,
  &#39;hartree_in_ev&#39;,
  &#39;hartree_in_kcalpermol&#39;,
- &#39;hartree_in_kjpermol&#39;,
- &#39;hartree_in_wavenumber&#39;,
- &#39;hartree_in_wavenumbers&#39;,
- &#39;hessiandriver&#39;,
- &#39;hessianorbitalresponse&#39;,
- &#39;imdatabasepointcollecter&#39;,
- &#39;imforcefieldgenerator&#39;,
  &#39;inputparser&#39;,
- &#39;interpolationdatapoint&#39;,
- &#39;interpolationdriver&#39;,
- &#39;is_chemical_element&#39;,
  &#39;linearsolver&#39;,
+ &#39;loprop&#39;,
  &#39;lreigensolver&#39;,
  &#39;lrsolver&#39;,
- &#39;make_matrices&#39;,
- &#39;make_matrix&#39;,
- &#39;mat_t&#39;,
- &#39;matrices&#39;,
- &#39;matrix&#39;,
- &#39;mklconf&#39;,
- &#39;mmdriver&#39;,
- &#39;mmforcefieldgenerator&#39;,
- &#39;mmgradientdriver&#39;,
- &#39;mofbuilder&#39;,
- &#39;mofoptimizer&#39;,
- &#39;mofpreparer&#39;,
- &#39;mofutils&#39;,
+ &#39;mathconst_pi&#39;,
+ &#39;moints&#39;,
  &#39;mointsdriver&#39;,
  &#39;molecularbasis&#39;,
  &#39;molecularorbitals&#39;,
  &#39;molecule&#39;,
  &#39;molorb&#39;,
  &#39;mp2driver&#39;,
+ &#39;mpi_initialized&#39;,
  &#39;mpi_master&#39;,
  &#39;mpitask&#39;,
- &#39;nonlinearsolver&#39;,
- &#39;numerovdriver&#39;,
- &#39;oneeints&#39;,
- &#39;openmmdriver&#39;,
- &#39;openmmdynamics&#39;,
- &#39;openmmgradientdriver&#39;,
  &#39;optimizationdriver&#39;,
  &#39;optimizationengine&#39;,
- &#39;orbitalviewer&#39;,
  &#39;outputstream&#39;,
- &#39;parse_xc_func&#39;,
- &#39;partition_atoms&#39;,
- &#39;peforcefieldgenerator&#39;,
- &#39;polarizabilitygradient&#39;,
- &#39;polorbitalresponse&#39;,
- &#39;print_features&#39;,
  &#39;profiler&#39;,
- &#39;quadraticresponsedriver&#39;,
- &#39;reactionmatcher&#39;,
- &#39;respchargesdriver&#39;,
- &#39;rotatory_strength_in_cgs&#39;,
+ &#39;qqscheme&#39;,
  &#39;rspabsorption&#39;,
  &#39;rspc6&#39;,
  &#39;rspcdspec&#39;,
+ &#39;rspcustomproperty&#39;,
+ &#39;rspdriver&#39;,
  &#39;rsplinabscross&#39;,
  &#39;rsppolarizability&#39;,
  &#39;rspproperty&#39;,
- &#39;rspshg&#39;,
- &#39;rsptpa&#39;,
- &#39;sadguessdriver&#39;,
- &#39;sanitychecks&#39;,
  &#39;scfdriver&#39;,
+ &#39;scffirstorderprop&#39;,
  &#39;scfgradientdriver&#39;,
- &#39;scfhessiandriver&#39;,
  &#39;scfrestdriver&#39;,
- &#39;scfrestopendriver&#39;,
  &#39;scfunrestdriver&#39;,
- &#39;seminario&#39;,
  &#39;set_omp_num_threads&#39;,
  &#39;set_vlxbasispath&#39;,
- &#39;set_vlxdatapath&#39;,
- &#39;shgdriver&#39;,
- &#39;solvationbuilder&#39;,
- &#39;solvationfepdriver&#39;,
+ &#39;signalhandler&#39;,
  &#39;subcommunicators&#39;,
- &#39;symmetryanalyzer&#39;,
- &#39;symmetryoperations&#39;,
- &#39;tdaeigensolver&#39;,
- &#39;tddftgradientdriver&#39;,
- &#39;tddftorbitalresponse&#39;,
- &#39;tdhfhessiandriver&#39;,
- &#39;threepatransitiondriver&#39;,
+ &#39;szblock&#39;,
+ &#39;tdaexcidriver&#39;,
  &#39;tpadriver&#39;,
  &#39;tpafulldriver&#39;,
  &#39;tpareddriver&#39;,
- &#39;tpatransitiondriver&#39;,
- &#39;uffparameters&#39;,
  &#39;veloxchemlib&#39;,
- &#39;vibrationalanalysis&#39;,
  &#39;visualizationdriver&#39;,
  &#39;xtbdriver&#39;,
- &#39;xtbgradientdriver&#39;,
- &#39;xtbhessiandriver&#39;]
+ &#39;xtbgradientdriver&#39;]
 </pre></div>
 </div>
 </div>
@@ -1122,7 +1001,6 @@ FILE
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;__class__&#39;,
- &#39;__deepcopy__&#39;,
  &#39;__delattr__&#39;,
  &#39;__dict__&#39;,
  &#39;__dir__&#39;,
@@ -1131,7 +1009,6 @@ FILE
  &#39;__format__&#39;,
  &#39;__ge__&#39;,
  &#39;__getattribute__&#39;,
- &#39;__getstate__&#39;,
  &#39;__gt__&#39;,
  &#39;__hash__&#39;,
  &#39;__init__&#39;,
@@ -1149,66 +1026,47 @@ FILE
  &#39;__str__&#39;,
  &#39;__subclasshook__&#39;,
  &#39;__weakref__&#39;,
- &#39;_apply_mom&#39;,
- &#39;_check_convergence&#39;,
- &#39;_comp_2e_fock&#39;,
- &#39;_comp_2e_fock_single_comm&#39;,
- &#39;_comp_density_change&#39;,
- &#39;_comp_diis&#39;,
- &#39;_comp_energy&#39;,
- &#39;_comp_full_fock&#39;,
- &#39;_comp_gradient&#39;,
- &#39;_comp_npot_mat_parallel&#39;,
- &#39;_comp_number_of_electrons&#39;,
- &#39;_comp_one_ints&#39;,
- &#39;_delete_mos&#39;,
- &#39;_gen_molecular_orbitals&#39;,
- &#39;_get_acc_type&#39;,
- &#39;_get_dyn_threshold&#39;,
- &#39;_get_effective_fock&#39;,
- &#39;_get_guess_type&#39;,
- &#39;_get_scaled_fock&#39;,
- &#39;_get_scf_range&#39;,
- &#39;_graceful_exit&#39;,
- &#39;_need_graceful_exit&#39;,
- &#39;_print_debug_info&#39;,
- &#39;_print_energy_components&#39;,
- &#39;_print_ground_state&#39;,
- &#39;_print_header&#39;,
- &#39;_print_iter_data&#39;,
- &#39;_print_scf_energy&#39;,
- &#39;_print_scf_finish&#39;,
- &#39;_print_scf_title&#39;,
- &#39;_store_diis_data&#39;,
- &#39;_update_mol_orbs_phase&#39;,
- &#39;_write_final_hdf5&#39;,
- &#39;comm&#39;,
+ &#39;add_iter_data&#39;,
+ &#39;check_convergence&#39;,
+ &#39;comp_2e_fock&#39;,
+ &#39;comp_2e_fock_single_comm&#39;,
+ &#39;comp_2e_fock_split_comm&#39;,
+ &#39;comp_density_change&#39;,
+ &#39;comp_diis&#39;,
+ &#39;comp_energy&#39;,
+ &#39;comp_full_fock&#39;,
+ &#39;comp_gradient&#39;,
+ &#39;comp_guess_density&#39;,
+ &#39;comp_npot_mat_split_comm&#39;,
+ &#39;comp_one_ints&#39;,
  &#39;compute&#39;,
  &#39;compute_s2&#39;,
- &#39;density&#39;,
- &#39;gen_initial_density_proj&#39;,
- &#39;gen_initial_density_restart&#39;,
- &#39;gen_initial_density_sad&#39;,
+ &#39;delete_mos&#39;,
+ &#39;gen_molecular_orbitals&#39;,
+ &#39;gen_new_density&#39;,
+ &#39;get_acc_type&#39;,
+ &#39;get_dyn_threshold&#39;,
+ &#39;get_effective_fock&#39;,
+ &#39;get_guess_type&#39;,
+ &#39;get_qq_dyn&#39;,
+ &#39;get_scaled_fock&#39;,
  &#39;get_scf_energy&#39;,
- &#39;get_scf_type_str&#39;,
- &#39;history&#39;,
- &#39;is_converged&#39;,
- &#39;maximum_overlap&#39;,
- &#39;mol_orbs&#39;,
- &#39;molecular_orbitals&#39;,
- &#39;nnodes&#39;,
- &#39;nodes&#39;,
- &#39;num_iter&#39;,
- &#39;ostream&#39;,
- &#39;print_attributes&#39;,
- &#39;print_keywords&#39;,
- &#39;rank&#39;,
- &#39;scf_energy&#39;,
- &#39;scf_tensors&#39;,
- &#39;scf_type&#39;,
- &#39;set_start_orbitals&#39;,
+ &#39;get_scf_range&#39;,
+ &#39;get_scf_type&#39;,
+ &#39;graceful_exit&#39;,
+ &#39;need_graceful_exit&#39;,
+ &#39;print_energy_components&#39;,
+ &#39;print_ground_state&#39;,
+ &#39;print_header&#39;,
+ &#39;print_iter_data&#39;,
+ &#39;print_scf_energy&#39;,
+ &#39;print_scf_finish&#39;,
+ &#39;print_scf_title&#39;,
+ &#39;set_skip_iter_flag&#39;,
+ &#39;store_diis_data&#39;,
+ &#39;update_fock_type&#39;,
+ &#39;update_mol_orbs_phase&#39;,
  &#39;update_settings&#39;,
- &#39;validate_checkpoint&#39;,
  &#39;write_checkpoint&#39;]
 </pre></div>
 </div>

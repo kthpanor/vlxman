@@ -62,7 +62,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Exchange–correlation functionals" href="functionals.html" />
-    <link rel="prev" title="Input text file keywords" href="keywords.html" />
+    <link rel="prev" title="Molecule" href="molecule.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -190,6 +190,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Model chemistry</span></p>
 <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="molecule.html">Molecule</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Reference states</a></li>
 <li class="toctree-l1"><a class="reference internal" href="functionals.html">Exchange–correlation functionals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="basis_sets.html">Basis sets</a></li>
@@ -435,9 +436,8 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="reference-states">
 <h1>Reference states<a class="headerlink" href="#reference-states" title="Link to this heading">#</a></h1>
-<p>A detailed list of keyword can be found in the <a class="reference internal" href="keywords.html#scf-optimization"><span class="std std-ref">SCF optimization section</span></a> of the <a class="reference internal" href="keywords.html"><span class="std std-doc">Input file keywords page</span></a>.</p>
-<p>By default, Hartree-Fock is used if not specified otherwise. To use DFT, several functionals are available and should be specified in the <code class="docutils literal notranslate"><span class="pre">&#64;method</span> <span class="pre">settings</span></code> section by using the keyword <code class="docutils literal notranslate"><span class="pre">xcfun</span></code>. See the <a class="reference internal" href="functionals.html"><span class="std std-doc">Exchange-correlation functionnals</span></a> page for a complete list of functionnals available.</p>
-<p>The basis set needs to be specified in the <code class="docutils literal notranslate"><span class="pre">&#64;method</span> <span class="pre">settings</span></code> section by using the keyword <code class="docutils literal notranslate"><span class="pre">basis</span></code>. See the <a class="reference internal" href="basis_sets.html#available-basis-sets"><span class="std std-ref">Available basis sets section</span></a> of the <a class="reference internal" href="basis_sets.html"><span class="std std-doc">Input file keywords page</span></a>.</p>
+<p>A detailed list of keyword can be found in the <a class="reference internal" href="keywords.html#scf-optimization"><span class="std std-ref">SCF optimization</span></a> section of the <a class="reference internal" href="keywords.html"><span class="std std-doc">input file keywords</span></a> page.</p>
+<p>By default, the Hartree–Fock method is employed. To use Kohn–Sham DFT, any of the several available functionals is specified as illustrated below, see the <a class="reference internal" href="functionals.html"><span class="std std-doc">exchange-correlation functionals</span></a> page for a complete list of available functionals.</p>
 <section id="restricted-closed-shell">
 <h2>Restricted closed-shell<a class="headerlink" href="#restricted-closed-shell" title="Link to this heading">#</a></h2>
 <p><strong>Python script</strong></p>
@@ -603,12 +603,12 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="keywords.html"
+       href="molecule.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Input text file keywords</p>
+        <p class="prev-next-title">Molecule</p>
       </div>
     </a>
     <a class="right-next"

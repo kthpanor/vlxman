@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -61,7 +61,7 @@
     <link rel="icon" href="../_static/vlx_logo_mark.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Reference states" href="refstate.html" />
+    <link rel="next" title="Molecule" href="molecule.html" />
     <link rel="prev" title="Running on a cluster" href="run_cluster.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -190,6 +190,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Model chemistry</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="molecule.html">Molecule</a></li>
 <li class="toctree-l1"><a class="reference internal" href="refstate.html">Reference states</a></li>
 <li class="toctree-l1"><a class="reference internal" href="functionals.html">Exchange–correlation functionals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="basis_sets.html">Basis sets</a></li>
@@ -539,7 +540,6 @@ document.write(`
                   level_shifting_delta      float       level shifting delta                                              
                   conv_thresh               float       SCF convergence threshold                                         
                   eri_thresh                float       ERI screening threshold                                           
-                  ovl_thresh                float       AO linear dependency threshold                                    
                   restart                   boolean     restart from checkpoint file                                      
                   filename                  string      base name of output files                                         
                   checkpoint_file           string      name of checkpoint file                                           
@@ -588,55 +588,47 @@ document.write(`
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                ==========================================================================================                
                   @response                                                                                               
                 ------------------------------------------------------------------------------------------                
-                  eri_thresh             float       ERI screening threshold                                              
-                  batch_size             integer     batch size for Fock build                                            
-                  conv_thresh            float       convergence threshold                                                
-                  max_iter               integer     maximum number of iterations                                         
-                  norm_thresh            float       norm threshold for adding vector                                     
-                  lindep_thresh          float       threshold for linear dependence                                      
-                  serial_ratio           float       serial ratio as in Amdahl&#39;s law                                      
-                  use_subcomms           boolean     use subcommunicators for Fock build                                  
-                  restart                boolean     restart from checkpoint file                                         
-                  filename               string      base name of output files                                            
-                  checkpoint_file        string      name of checkpoint file                                              
-                  force_checkpoint       boolean     flag for writing checkpoint every iteration                          
-                  save_solutions         boolean     save solutions to file                                               
-                  timing                 boolean     print timing information                                             
-                  profiling              boolean     print profiling information                                          
-                  memory_profiling       boolean     print memory usage                                                   
-                  memory_tracing         boolean     trace memory allocation                                              
-                  print_level            integer     verbosity of output (1-3)                                            
-                  non_equilibrium_solv   boolean     toggle use of non-equilibrium solvation for response                 
-                  nstates                integer     number of excited states                                             
-                  core_excitation        boolean     compute core-excited states                                          
-                  num_core_orbitals      integer     number of involved core-orbitals                                     
-                  nto                    boolean     analyze natural transition orbitals                                  
-                  nto_pairs              integer     number of NTO pairs in NTO analysis                                  
-                  nto_cubes              boolean     write NTO cube files                                                 
-                  detach_attach          boolean     analyze detachment/attachment density                                
-                  detach_attach_cubes    boolean     write detachment/attachment density cube files                       
-                  esa                    boolean     compute excited state absorption                                     
-                  esa_from_state         integer     the state to excite from (e.g. 1 for S1)                             
-                  cube_origin            sequence    origin of cubic grid points                                          
-                  cube_stepsize          sequence    step size of cubic grid points                                       
-                  cube_points            sequence    number of cubic grid points                                          
-                  tamm_dancoff           boolean     use Tamm-Dancoff approximation                                       
+                  eri_thresh           float       ERI screening threshold                                                
+                  batch_size           integer     batch size for Fock build                                              
+                  conv_thresh          float       convergence threshold                                                  
+                  max_iter             integer     maximum number of iterations                                           
+                  norm_thresh          float       norm threshold for adding vector                                       
+                  lindep_thresh        float       threshold for linear dependence                                        
+                  serial_ratio         float       serial ratio as in Amdahl&#39;s law                                        
+                  use_subcomms         boolean     use subcommunicators for Fock build                                    
+                  restart              boolean     restart from checkpoint file                                           
+                  filename             string      base name of output files                                              
+                  checkpoint_file      string      name of checkpoint file                                                
+                  force_checkpoint     boolean     flag for writing checkpoint every iteration                            
+                  save_solutions       boolean     save solutions to file                                                 
+                  timing               boolean     print timing information                                               
+                  profiling            boolean     print profiling information                                            
+                  memory_profiling     boolean     print memory usage                                                     
+                  memory_tracing       boolean     trace memory allocation                                                
+                  print_level          integer     verbosity of output (1-3)                                              
+                  nstates              integer     number of excited states                                               
+                  core_excitation      boolean     compute core-excited states                                            
+                  num_core_orbitals    integer     number of involved core-orbitals                                       
+                  nto                  boolean     analyze natural transition orbitals                                    
+                  nto_pairs            integer     number of NTO pairs in NTO analysis                                    
+                  nto_cubes            boolean     write NTO cube files                                                   
+                  detach_attach        boolean     analyze detachment/attachment density                                  
+                  detach_attach_cubes  boolean     write detachment/attachment density cube files                         
+                  esa                  boolean     compute excited state absorption                                       
+                  esa_from_state       integer     the state to excite from (e.g. 1 for S1)                               
+                  cube_origin          sequence    origin of cubic grid points                                            
+                  cube_stepsize        sequence    step size of cubic grid points                                         
+                  cube_points          sequence    number of cubic grid points                                            
+                  tamm_dancoff         boolean     use Tamm-Dancoff approximation                                         
                 ==========================================================================================                
                   @method settings                                                                                        
                 ------------------------------------------------------------------------------------------                
-                  ri_coulomb             boolean     use RI-J approximation                                               
-                  ri_auxiliary_basis     string      RI-J auxiliary basis set                                             
-                  xcfun                  string      exchange-correlation functional                                      
-                  grid_level             integer     accuracy level of DFT grid                                           
-                  potfile                string      potential file for polarizable embedding                             
-                  electric_field         sequence    static electric field                                                
-                  solvation_model        string      solvation model                                                      
-                  cpcm_grid_per_sphere   sequence    number of C-PCM grid points per sphere                               
-                  cpcm_cg_thresh         float       threshold for solving C-PCM charges                                  
-                  cpcm_epsilon           float       dielectric constant of solvent (C-PCM)                               
-                  cpcm_optical_epsilon   float       optical dielectric constant of solvent (C-PCM)                       
-                  cpcm_x                 float       parameter for scaling function (C-PCM)                               
-                  cpcm_custom_vdw_radii  sequence    custom vdw radii for C-PCM                                           
+                  ri_coulomb           boolean     use RI-J approximation                                                 
+                  ri_auxiliary_basis   string      RI-J auxiliary basis set                                               
+                  xcfun                string      exchange-correlation functional                                        
+                  grid_level           integer     accuracy level of DFT grid                                             
+                  potfile              string      potential file for polarizable embedding                               
+                  electric_field       sequence    static electric field                                                  
                 ==========================================================================================                
 </pre></div>
 </div>
@@ -657,47 +649,39 @@ document.write(`
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                ==========================================================================================                
                   @response                                                                                               
                 ------------------------------------------------------------------------------------------                
-                  eri_thresh             float       ERI screening threshold                                              
-                  batch_size             integer     batch size for Fock build                                            
-                  conv_thresh            float       convergence threshold                                                
-                  max_iter               integer     maximum number of iterations                                         
-                  norm_thresh            float       norm threshold for adding vector                                     
-                  lindep_thresh          float       threshold for linear dependence                                      
-                  serial_ratio           float       serial ratio as in Amdahl&#39;s law                                      
-                  use_subcomms           boolean     use subcommunicators for Fock build                                  
-                  restart                boolean     restart from checkpoint file                                         
-                  filename               string      base name of output files                                            
-                  checkpoint_file        string      name of checkpoint file                                              
-                  force_checkpoint       boolean     flag for writing checkpoint every iteration                          
-                  save_solutions         boolean     save solutions to file                                               
-                  timing                 boolean     print timing information                                             
-                  profiling              boolean     print profiling information                                          
-                  memory_profiling       boolean     print memory usage                                                   
-                  memory_tracing         boolean     trace memory allocation                                              
-                  print_level            integer     verbosity of output (1-3)                                            
-                  non_equilibrium_solv   boolean     toggle use of non-equilibrium solvation for response                 
-                  a_operator             string      A operator                                                           
-                  a_components           string      Cartesian components of A operator                                   
-                  b_operator             string      B operator                                                           
-                  b_components           string      Cartesian components of B operator                                   
-                  frequencies            sequence    frequencies                                                          
-                  damping                float       damping parameter                                                    
+                  eri_thresh          float       ERI screening threshold                                                 
+                  batch_size          integer     batch size for Fock build                                               
+                  conv_thresh         float       convergence threshold                                                   
+                  max_iter            integer     maximum number of iterations                                            
+                  norm_thresh         float       norm threshold for adding vector                                        
+                  lindep_thresh       float       threshold for linear dependence                                         
+                  serial_ratio        float       serial ratio as in Amdahl&#39;s law                                         
+                  use_subcomms        boolean     use subcommunicators for Fock build                                     
+                  restart             boolean     restart from checkpoint file                                            
+                  filename            string      base name of output files                                               
+                  checkpoint_file     string      name of checkpoint file                                                 
+                  force_checkpoint    boolean     flag for writing checkpoint every iteration                             
+                  save_solutions      boolean     save solutions to file                                                  
+                  timing              boolean     print timing information                                                
+                  profiling           boolean     print profiling information                                             
+                  memory_profiling    boolean     print memory usage                                                      
+                  memory_tracing      boolean     trace memory allocation                                                 
+                  print_level         integer     verbosity of output (1-3)                                               
+                  a_operator          string      A operator                                                              
+                  a_components        string      Cartesian components of A operator                                      
+                  b_operator          string      B operator                                                              
+                  b_components        string      Cartesian components of B operator                                      
+                  frequencies         sequence    frequencies                                                             
+                  damping             float       damping parameter                                                       
                 ==========================================================================================                
                   @method settings                                                                                        
                 ------------------------------------------------------------------------------------------                
-                  ri_coulomb             boolean     use RI-J approximation                                               
-                  ri_auxiliary_basis     string      RI-J auxiliary basis set                                             
-                  xcfun                  string      exchange-correlation functional                                      
-                  grid_level             integer     accuracy level of DFT grid                                           
-                  potfile                string      potential file for polarizable embedding                             
-                  electric_field         sequence    static electric field                                                
-                  solvation_model        string      solvation model                                                      
-                  cpcm_grid_per_sphere   sequence    number of C-PCM grid points per sphere                               
-                  cpcm_cg_thresh         float       threshold for solving C-PCM charges                                  
-                  cpcm_epsilon           float       dielectric constant of solvent (C-PCM)                               
-                  cpcm_optical_epsilon   float       optical dielectric constant of solvent (C-PCM)                       
-                  cpcm_x                 float       parameter for scaling function (C-PCM)                               
-                  cpcm_custom_vdw_radii  sequence    custom vdw radii for C-PCM                                           
+                  ri_coulomb          boolean     use RI-J approximation                                                  
+                  ri_auxiliary_basis  string      RI-J auxiliary basis set                                                
+                  xcfun               string      exchange-correlation functional                                         
+                  grid_level          integer     accuracy level of DFT grid                                              
+                  potfile             string      potential file for polarizable embedding                                
+                  electric_field      sequence    static electric field                                                   
                 ==========================================================================================                
 </pre></div>
 </div>
@@ -782,11 +766,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="refstate.html"
+       href="molecule.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Reference states</p>
+        <p class="prev-next-title">Molecule</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
