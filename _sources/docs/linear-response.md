@@ -1,5 +1,6 @@
 # Linear response
 
+(sec:alpha)=
 ## Polarizability
 
 The linear electric-dipole polarizabilty is determined from the linear response function {cite}`Norman2018`
@@ -76,6 +77,7 @@ xyz:
 
 ```
 
+(sec:c6)=
 ## C6 dispersion coefficients
 
 The $C_6$ dispersion coefficient relates to the electric-dipole polarizability according to

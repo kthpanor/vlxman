@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -411,7 +411,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#infra-red">Infra-red</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#raman">Raman</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resonance-raman">Resonance raman</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resonance-raman">Resonance Raman</a></li>
 </ul>
             </nav>
         </div>
@@ -424,7 +424,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="vibrational-spectroscopies">
-<h1>Vibrational spectroscopies<a class="headerlink" href="#vibrational-spectroscopies" title="Link to this heading">#</a></h1>
+<span id="sec-vib-spect"></span><h1>Vibrational spectroscopies<a class="headerlink" href="#vibrational-spectroscopies" title="Link to this heading">#</a></h1>
 <p>This page presents how to calculate IR, Raman and Resonance Raman spectra by using the keyword: <code class="docutils literal notranslate"><span class="pre">do_ir</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;do_raman</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;do_resonance_raman</span></code> respectively in the <code class="docutils literal notranslate"><span class="pre">&#64;vibrational</span></code> section. IR and calculated at the same time as Raman OR resonance Raman.</p>
 <p>The following <code class="docutils literal notranslate"><span class="pre">&#64;vibrational</span></code> section show you the default settings of the vibrational task.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@vibrational</span>
@@ -434,9 +434,9 @@ document.write(`
 <span class="nd">@end</span>
 </pre></div>
 </div>
-<p>Calculations of normal modes are performed with the aid of geomeTRIC <span id="id1">[<a class="reference internal" href="refs.html#id156" title="Lee-Ping Wang and Chenchen Song. Geometry optimization made simple with translation and rotation coordinates. J. Chem. Phys., 144(21):214108, 2016. doi:10.1063/1.4952956.">WS16</a>]</span>.</p>
+<p>Calculations of normal modes are performed with the aid of geomeTRIC <span id="id1">[<a class="reference internal" href="refs.html#id159" title="Lee-Ping Wang and Chenchen Song. Geometry optimization made simple with translation and rotation coordinates. J. Chem. Phys., 144(21):214108, 2016. doi:10.1063/1.4952956.">WS16</a>]</span>.</p>
 <section id="infra-red">
-<h2>Infra-red<a class="headerlink" href="#infra-red" title="Link to this heading">#</a></h2>
+<span id="sec-ir"></span><h2>Infra-red<a class="headerlink" href="#infra-red" title="Link to this heading">#</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
 <span class="n">task</span><span class="p">:</span> <span class="n">vibrational</span>
 <span class="nd">@end</span>
@@ -461,7 +461,7 @@ document.write(`
 <p><a class="reference download internal" download="" href="../_downloads/d3f241caff77d498773d938420bb00cf/acro-ir.inp"><span class="xref download myst">Download</span></a> an input file to perfom an IR spectra calculation of the acroleine molecule at the B3LYP/def2-svp level of theory.</p>
 </section>
 <section id="raman">
-<h2>Raman<a class="headerlink" href="#raman" title="Link to this heading">#</a></h2>
+<span id="sec-raman"></span><h2>Raman<a class="headerlink" href="#raman" title="Link to this heading">#</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
 <span class="n">task</span><span class="p">:</span> <span class="n">vibrational</span>
 <span class="nd">@end</span>
@@ -486,7 +486,7 @@ document.write(`
 <p><a class="reference download internal" download="" href="../_downloads/cd2c2c809b79c1ee1d968a3bf386b6f8/acro-raman.inp"><span class="xref download myst">Download</span></a> an input file to perfom a Raman spectra calculation of the acroleine molecule at the B3LYP/def2-svp level of theory.</p>
 </section>
 <section id="resonance-raman">
-<h2>Resonance raman<a class="headerlink" href="#resonance-raman" title="Link to this heading">#</a></h2>
+<span id="sec-rrs"></span><h2>Resonance Raman<a class="headerlink" href="#resonance-raman" title="Link to this heading">#</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
 <span class="n">task</span><span class="p">:</span> <span class="n">vibrational</span>
 <span class="nd">@end</span>
@@ -581,7 +581,7 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#infra-red">Infra-red</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#raman">Raman</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resonance-raman">Resonance raman</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resonance-raman">Resonance Raman</a></li>
 </ul>
   </nav></div>
 

@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -429,8 +429,8 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="linear-response">
 <h1>Linear response<a class="headerlink" href="#linear-response" title="Link to this heading">#</a></h1>
 <section id="polarizability">
-<h2>Polarizability<a class="headerlink" href="#polarizability" title="Link to this heading">#</a></h2>
-<p>The linear electric-dipole polarizabilty is determined from the linear response function <span id="id1">[<a class="reference internal" href="refs.html#id52" title="Patrick Norman, Kenneth Ruud, and Trond Saue. Principles and practices of molecular properties. John Wiley &amp; Sons, Ltd, Chichester, UK, 2018.">NRS18</a>]</span></p>
+<span id="sec-alpha"></span><h2>Polarizability<a class="headerlink" href="#polarizability" title="Link to this heading">#</a></h2>
+<p>The linear electric-dipole polarizabilty is determined from the linear response function <span id="id1">[<a class="reference internal" href="refs.html#id55" title="Patrick Norman, Kenneth Ruud, and Trond Saue. Principles and practices of molecular properties. John Wiley &amp; Sons, Ltd, Chichester, UK, 2018.">NRS18</a>]</span></p>
 <div class="math notranslate nohighlight">
 \[
 \alpha_{\alpha\beta}(\omega) =
@@ -501,7 +501,7 @@ document.write(`
 </div>
 </section>
 <section id="c6-dispersion-coefficients">
-<h2>C6 dispersion coefficients<a class="headerlink" href="#c6-dispersion-coefficients" title="Link to this heading">#</a></h2>
+<span id="sec-c6"></span><h2>C6 dispersion coefficients<a class="headerlink" href="#c6-dispersion-coefficients" title="Link to this heading">#</a></h2>
 <p>The <span class="math notranslate nohighlight">\(C_6\)</span> dispersion coefficient relates to the electric-dipole polarizability according to</p>
 <div class="math notranslate nohighlight">
 \[
@@ -515,7 +515,7 @@ d\omega
 \[
     i\omega^I = i\omega_0 \frac{1-t}{1+t},\quad d\omega^I = \frac{-2\omega_0 dt}{(1+t)^2},
 \]</div>
-<p>where a transformation factor of <span class="math notranslate nohighlight">\(\omega_0 = 0.3\)</span> a.u. is used. The user may specify the number of frequency points used in the quadrature, or otherwise a default value is adopted. The polarizabilities are calculated from the complex polarization propagator (CPP), or complex linear response function <span id="id2">[<a class="reference internal" href="refs.html#id52" title="Patrick Norman, Kenneth Ruud, and Trond Saue. Principles and practices of molecular properties. John Wiley &amp; Sons, Ltd, Chichester, UK, 2018.">NRS18</a>]</span>.</p>
+<p>where a transformation factor of <span class="math notranslate nohighlight">\(\omega_0 = 0.3\)</span> a.u. is used. The user may specify the number of frequency points used in the quadrature, or otherwise a default value is adopted. The polarizabilities are calculated from the complex polarization propagator (CPP), or complex linear response function <span id="id2">[<a class="reference internal" href="refs.html#id55" title="Patrick Norman, Kenneth Ruud, and Trond Saue. Principles and practices of molecular properties. John Wiley &amp; Sons, Ltd, Chichester, UK, 2018.">NRS18</a>]</span>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
 <span class="n">task</span><span class="p">:</span> <span class="n">response</span>
 <span class="nd">@end</span>

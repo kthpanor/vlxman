@@ -412,8 +412,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#next-generation-quantum-chemistry-software-for-molecular-properties">Next-generation quantum chemistry software for molecular properties</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-capabilities">Key capabilities</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#next-generation-quantum-chemistry-software">Next-generation quantum chemistry software</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selected-functionalities">Selected functionalities</a></li>
 </ul>
 </li>
 </ul>
@@ -429,23 +429,43 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="home">
 <h1>Home<a class="headerlink" href="#home" title="Link to this heading">#</a></h1>
-<section id="next-generation-quantum-chemistry-software-for-molecular-properties">
-<h2>Next-generation quantum chemistry software for molecular properties<a class="headerlink" href="#next-generation-quantum-chemistry-software-for-molecular-properties" title="Link to this heading">#</a></h2>
-<p>VeloxChem <span id="id1">[<a class="reference internal" href="refs.html#id33" title="Zilvinas Rinkevicius, Xin Li, Olav Vahtras, Karan Ahmadzadeh, Manuel Brand, Magnus Ringholm, Nanna Holmgaard List, Maximilian Scheurer, Mikael Scott, Andreas Dreuw, and Patrick Norman. Veloxchem: a python-driven density-functional theory program for spectroscopy simulations in high-performance computing environments. WIREs Comput. Mol. Sci., 10(5):e1457, 2020. doi:10.1002/wcms.1457.">RLV+20</a>]</span> is a Python-based open source quantum chemistry software developed for the calculation of molecular properties and simulation of a variety of spectroscopies.</p>
-<p>VeloxChem features interactive program access through Jupyter notebooks as well as large-scale calculations in contemporary high-performance computing (HPC) environments. A comprehensive presentation of the former desktop aspect is provided in the <a class="reference external" href="https://kthpanor.github.io/echem">eChem</a> book and this manual will focus on the latter HPC aspect.</p>
-<section id="key-capabilities">
-<h3>Key capabilities<a class="headerlink" href="#key-capabilities" title="Link to this heading">#</a></h3>
+<section id="next-generation-quantum-chemistry-software">
+<h2>Next-generation quantum chemistry software<a class="headerlink" href="#next-generation-quantum-chemistry-software" title="Link to this heading">#</a></h2>
+<p>VeloxChem <span id="id1">[<a class="reference internal" href="refs.html#id36" title="Zilvinas Rinkevicius, Xin Li, Olav Vahtras, Karan Ahmadzadeh, Manuel Brand, Magnus Ringholm, Nanna Holmgaard List, Maximilian Scheurer, Mikael Scott, Andreas Dreuw, and Patrick Norman. Veloxchem: a python-driven density-functional theory program for spectroscopy simulations in high-performance computing environments. WIREs Comput. Mol. Sci., 10(5):e1457, 2020. doi:10.1002/wcms.1457.">RLV+20</a>]</span> is a Python-based open source quantum chemistry software for contemporary and future hardware architectures. It features interactive program access through Jupyter notebooks as well as massively parallel calculations in high-performance computing (HPC) environments.</p>
+<p>VeloxChem offers modeling of complex molecular systems by means of force-field molecular dynamics and polarizable embedding in combination with user-friendly support for automatized solvation and force-field derivations. It is an ideal platform for building simulation workflows and data-driven research <span id="id2">[<a class="reference internal" href="refs.html#id5" title="Juan Angel de Gracia Trivino, Iulia Emilia Brumboiu, David Carrasco-Busturia, Xin Li, Chenxi Li, Mathieu Linares, Valentin Lindfeld, Young Min Rhee, Julia Rune, Bastiaan van Hoorn, Patrick Norman, and Mårten S. G. Ahlquist. Veloxchem quantum–classical interoperability for modeling of complex molecular systems. J. Phys. Chem. A, 2025. submitted.">dGTBCB+25</a>]</span>.</p>
+<p>VeloxChem is education enabling, providing a means to explain and explore the theory underlying computational chemistry in a highly interactive manner <span id="id3">[<a class="reference internal" href="refs.html#id4" title="Thomas Fransson, Mickael G. Delcey, Iulia Emilia Brumboiu, Manuel Hodecker, Xin Li, Zilvinas Rinkevicius, Andreas Dreuw, Young Min Rhee, and Patrick Norman. eChem: A Notebook Exploration of Quantum Chemistry. J. Chem. Educ., 100(4):1664–1671, 2023. doi:10.1021/acs.jchemed.2c01103.">FDB+23</a>]</span>. It is science enabling, providing a means for accelerated method development in quantum chemistry <span id="id4">[<a class="reference internal" href="refs.html#id2" title="Manuel Hodecker, Patrick Norman, and Iulia Emilia Brumboiu. eChem: Accelerated method development in quantum chemistry with notebooks. 2025. doi:10.26434/chemrxiv-2025-x0csm.">HNB25</a>]</span>.</p>
+<p>This manual gives a description of the installation process and basic usage of VeloxChem. A more comprehensive view of the opportunities for Python software interaction is provided in the <a class="reference external" href="https://kthpanor.github.io/echem">eChem</a> book <span id="id5">[<a class="reference internal" href="refs.html#id3" title="Thomas Fransson, Mickael Delcey, Iulia E. Brumboiu, Manuel Hodecker, Xin Li, Zilvinas Rinkevicius, Andreas Dreuw, Young Min Rhee, and Patrick Norman. Computational Chemistry from Laptop to HPC: A notebook exploration of quantum chemistry. KTH Royal Institute of Technology, 2022. doi:10.30746/978-91-988114-0-7.">FDB+22</a>]</span>.</p>
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/swedish_moebius.jpg"><img alt="cover" class="bg-primary mb-1 align-right" src="../_images/swedish_moebius.jpg" style="width: 250px;" />
+</a>
+<section id="selected-functionalities">
+<h3>Selected functionalities<a class="headerlink" href="#selected-functionalities" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Kohn–Sham Density Functional Theory (DFT)</p></li>
 <li><p>Time-dependent DFT (TDDFT)</p></li>
-<li><p>Optical and X-ray absorption</p></li>
-<li><p>Electronic circular dichroism (ECD)</p></li>
-<li><p>Polarizabilities and dispersion coefficients</p></li>
-<li><p>Complex polarization propagator (CPP)</p></li>
-<li><p>Response theory for pulses</p></li>
+<li><p>Complex polarization propagator (CPP) to cubic order</p></li>
+<li><p><a class="reference internal" href="pes.html#sec-pes"><span class="std std-ref">Potential energy surface</span></a> (PES) exploration for ground and excited states</p></li>
+<li><p><a class="reference internal" href="uv-vis.html#sec-uv-vis"><span class="std std-ref">Optical</span></a> (UV/vis) and <a class="reference internal" href="xray.html#sec-xray"><span class="std std-ref">X-ray absorption</span></a> (XAS, XPS)</p></li>
+<li><p><a class="reference internal" href="nlo.html#sec-tpa"><span class="std std-ref">Two-photon absorption</span></a> (TPA)</p></li>
+<li><p><a class="reference internal" href="opt_act.html#sec-ecd"><span class="std std-ref">Electronic circular dichroism</span></a> (ECD)</p></li>
+<li><p><a class="reference internal" href="linear-response.html#sec-alpha"><span class="std std-ref">Polarizabilities</span></a> and <a class="reference internal" href="linear-response.html#sec-c6"><span class="std std-ref">dispersion coefficients</span></a></p></li>
+<li><p><a class="reference internal" href="vib_spect.html#sec-vib-spect"><span class="std std-ref">Vibrational spectroscopies</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="vib_spect.html#sec-ir"><span class="std std-ref">Infrared absorption</span></a> (IR)</p></li>
+<li><p><a class="reference internal" href="vib_spect.html#sec-raman"><span class="std std-ref">Raman spectroscopy</span></a></p></li>
+<li><p><a class="reference internal" href="vib_spect.html#sec-rrs"><span class="std std-ref">Resonance Raman spectroscopy</span></a> (RRS)</p></li>
 </ul>
-<a class="bg-primary mb-1 reference internal image-reference" href="../_images/swedish_moebius.jpg"><img alt="cover" class="bg-primary mb-1 align-center" src="../_images/swedish_moebius.jpg" style="width: 800px;" />
-</a>
+</li>
+<li><p>Classical methods</p>
+<ul>
+<li><p>Molecular mechanics (MM)</p></li>
+<li><p>Interpolation mechanics (IM)</p></li>
+<li><p>Molecular dynamics (MD)</p></li>
+<li><p>Polarizable embedding (PE)</p></li>
+<li><p>Localized properties (LoProp, RESP)</p></li>
+<li><p>Empirical Valence Bond (EVB)</p></li>
+</ul>
+</li>
+</ul>
 </section>
 </section>
 <div class="toctree-wrapper compound">
@@ -517,8 +537,8 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#next-generation-quantum-chemistry-software-for-molecular-properties">Next-generation quantum chemistry software for molecular properties</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-capabilities">Key capabilities</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#next-generation-quantum-chemistry-software">Next-generation quantum chemistry software</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selected-functionalities">Selected functionalities</a></li>
 </ul>
 </li>
 </ul>
