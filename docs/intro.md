@@ -8,7 +8,7 @@ VeloxChem offers modeling of complex molecular systems by means of force-field m
 
 VeloxChem is education enabling, providing a means to explain and explore the theory underlying computational chemistry in a highly interactive manner {cite}`echem_edu`. It is science enabling, providing a means for accelerated method development in quantum chemistry {cite}`echem_dev`.
 
-This manual gives a description of the installation process and basic usage of VeloxChem. A more comprehensive view of the opportunities for Python software interaction is provided in the [eChem](https://kthpanor.github.io/echem) book {cite}`echem_book`.
+This manual gives a description of the installation process and basic usage of VeloxChem. A more comprehensive view of the ample opportunities for Python software interactions is provided in the [eChem](https://kthpanor.github.io/echem) book {cite}`echem_book`.
 
 ```{image} ../images/swedish_moebius.jpg
 :alt: cover
