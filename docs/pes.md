@@ -1,3 +1,4 @@
+(sec:pes)=
 # Potential energy surfaces
 Structure optimizations are performed with the aid of geomeTRIC {cite}`geomeTRIC`.
 
