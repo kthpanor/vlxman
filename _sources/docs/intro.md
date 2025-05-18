@@ -21,7 +21,10 @@ This manual gives a description of the installation process and basic usage of V
 
 - Kohn–Sham Density Functional Theory (DFT)
 - Time-dependent DFT (TDDFT)
-- Complex polarization propagator (CPP) to cubic order
+- Complex polarization propagator (CPP)
+    - [linear response functions](sec:cpp_lrf)
+    - [quadratic response functions](sec:cpp_qrf)
+    - [cubic response functions](sec:cpp_crf)
 - [Potential energy surface](sec:pes) (PES) exploration for ground and excited states
 - [Optical](sec:uv_vis) (UV/vis) and [X-ray absorption](sec:xray) (XAS, XPS)
 - [Two-photon absorption](sec:tpa) (TPA)

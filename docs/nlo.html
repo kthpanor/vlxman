@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -57,6 +57,8 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/nlo';</script>
     <link rel="icon" href="../_static/vlx_logo_mark.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -410,6 +412,8 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#two-photon-absorption">Two-photon absorption</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-quadratic-response-functions">General quadratic response functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-cubic-response-functions">General cubic response functions</a></li>
 </ul>
             </nav>
         </div>
@@ -425,6 +429,113 @@ document.write(`
 <span id="sec-nlo"></span><h1>Multi-photon interactions<a class="headerlink" href="#multi-photon-interactions" title="Link to this heading">#</a></h1>
 <section id="two-photon-absorption">
 <span id="sec-tpa"></span><h2>Two-photon absorption<a class="headerlink" href="#two-photon-absorption" title="Link to this heading">#</a></h2>
+</section>
+<section id="general-quadratic-response-functions">
+<span id="sec-cpp-qrf"></span><h2>General quadratic response functions<a class="headerlink" href="#general-quadratic-response-functions" title="Link to this heading">#</a></h2>
+<p>A general quadratic response function</p>
+<div class="math notranslate nohighlight">
+\[
+\langle\langle \hat{\Omega}; \hat{V}_1, \hat{V}_2 
+\rangle \rangle_{\omega_1, \omega_2}^\gamma
+\]</div>
+<p>can be requested, referring to the linear response of the molecular property associated with <span class="math notranslate nohighlight">\(\hat{\Omega}\)</span> due to the perturbation associated with <span class="math notranslate nohighlight">\(\hat{V}_1\)</span> and <span class="math notranslate nohighlight">\(\hat{V}_2\)</span> oscillating with the angular frequencies <span class="math notranslate nohighlight">\(\omega_1\)</span> and <span class="math notranslate nohighlight">\(\omega_2\)</span>, respectively. The damping term <span class="math notranslate nohighlight">\(\gamma\)</span> is associated with the inverse lifetime of excited states.</p>
+<p><strong>Python script</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">veloxchem</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">vlx</span>
+
+<span class="n">molecule</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">Molecule</span><span class="o">.</span><span class="n">read_xyz_string</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;4</span>
+<span class="s2">Hydrogen peroxide</span>
+<span class="s2">O  -0.65564532 -0.06106286 -0.03621403</span>
+<span class="s2">O   0.65564532  0.06106286 -0.03621403</span>
+<span class="s2">H  -0.97628735  0.65082652  0.57474201</span>
+<span class="s2">H   0.97628735 -0.65082652  0.57474201</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+
+<span class="n">basis</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">MolecularBasis</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="s2">&quot;def2-svpd&quot;</span><span class="p">,</span> <span class="n">ostream</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+<span class="n">scf_drv</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">ScfRestrictedDriver</span><span class="p">()</span>
+
+<span class="n">scf_drv</span><span class="o">.</span><span class="n">xcfun</span> <span class="o">=</span> <span class="s2">&quot;b3lyp&quot;</span>
+<span class="n">scf_results</span> <span class="o">=</span> <span class="n">scf_drv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">basis</span><span class="p">)</span>
+
+<span class="n">crf_drv</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">QuadraticResponseDriver</span><span class="p">()</span>
+
+<span class="n">crf_drv</span><span class="o">.</span><span class="n">a_operator</span> <span class="o">=</span> <span class="s2">&quot;electric dipole&quot;</span>
+<span class="n">crf_drv</span><span class="o">.</span><span class="n">b_operator</span> <span class="o">=</span> <span class="s2">&quot;magnetic dipole&quot;</span>
+<span class="n">crf_drv</span><span class="o">.</span><span class="n">c_operator</span> <span class="o">=</span> <span class="s2">&quot;electric dipole&quot;</span>
+
+<span class="c1"># available operators</span>
+<span class="c1">#qrf.b_operator = &quot;electric dipole&quot;</span>
+<span class="c1">#qrf.b_operator = &quot;magnetic dipole&quot;</span>
+<span class="c1">#qrf.b_operator = &quot;linear momentum&quot;</span>
+<span class="c1">#qrf.b_operator = &quot;angular momentum&quot;</span>
+
+<span class="n">crf_drv</span><span class="o">.</span><span class="n">a_component</span> <span class="o">=</span> <span class="s2">&quot;z&quot;</span>
+<span class="n">crf_drv</span><span class="o">.</span><span class="n">b_component</span> <span class="o">=</span> <span class="s2">&quot;x&quot;</span>
+<span class="n">crf_drv</span><span class="o">.</span><span class="n">c_component</span> <span class="o">=</span> <span class="s2">&quot;x&quot;</span>
+
+<span class="n">crf_drv</span><span class="o">.</span><span class="n">b_frequencies</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0656</span><span class="p">,</span> <span class="mf">0.1312</span><span class="p">]</span>
+<span class="n">crf_drv</span><span class="o">.</span><span class="n">c_frequencies</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0656</span><span class="p">,</span> <span class="mf">0.1312</span><span class="p">]</span>
+
+<span class="n">crf_drv</span><span class="o">.</span><span class="n">damping</span> <span class="o">=</span> <span class="mf">0.004556</span>  <span class="c1"># 1000 cm-1</span>
+
+<span class="n">crf_results</span> <span class="o">=</span> <span class="n">crf_drv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">basis</span><span class="p">,</span> <span class="n">scf_results</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="general-cubic-response-functions">
+<span id="sec-cpp-crf"></span><h2>General cubic response functions<a class="headerlink" href="#general-cubic-response-functions" title="Link to this heading">#</a></h2>
+<p>A general cubic response function</p>
+<div class="math notranslate nohighlight">
+\[
+\langle\langle \hat{\Omega}; \hat{V}_1, \hat{V}_2, \hat{V}_3 
+\rangle \rangle_{\omega_1, \omega_2, \omega_3}^\gamma
+\]</div>
+<p>can be requested, referring to the linear response of the molecular property associated with <span class="math notranslate nohighlight">\(\hat{\Omega}\)</span> due to the perturbation associated with <span class="math notranslate nohighlight">\(\hat{V}_1\)</span>, <span class="math notranslate nohighlight">\(\hat{V}_2\)</span>, and <span class="math notranslate nohighlight">\(\hat{V}_3\)</span> oscillating with the angular frequencies <span class="math notranslate nohighlight">\(\omega_1\)</span>, <span class="math notranslate nohighlight">\(\omega_2\)</span>, and <span class="math notranslate nohighlight">\(\omega_3\)</span>, respectively. The damping term <span class="math notranslate nohighlight">\(\gamma\)</span> is associated with the inverse lifetime of excited states.</p>
+<p><strong>Python script</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">veloxchem</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">vlx</span>
+
+<span class="n">molecule</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">Molecule</span><span class="o">.</span><span class="n">read_xyz_string</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;4</span>
+<span class="s2">Hydrogen peroxide</span>
+<span class="s2">O  -0.65564532 -0.06106286 -0.03621403</span>
+<span class="s2">O   0.65564532  0.06106286 -0.03621403</span>
+<span class="s2">H  -0.97628735  0.65082652  0.57474201</span>
+<span class="s2">H   0.97628735 -0.65082652  0.57474201</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+
+<span class="n">basis</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">MolecularBasis</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="s2">&quot;def2-svpd&quot;</span><span class="p">,</span> <span class="n">ostream</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+<span class="n">scf_drv</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">ScfRestrictedDriver</span><span class="p">()</span>
+
+<span class="n">scf_drv</span><span class="o">.</span><span class="n">xcfun</span> <span class="o">=</span> <span class="s2">&quot;b3lyp&quot;</span>
+<span class="n">scf_results</span> <span class="o">=</span> <span class="n">scf_drv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">basis</span><span class="p">)</span>
+
+<span class="n">crf_drv</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">CubicResponseDriver</span><span class="p">()</span>
+
+<span class="n">crf_drv</span><span class="o">.</span><span class="n">a_operator</span> <span class="o">=</span> <span class="s2">&quot;electric dipole&quot;</span>
+<span class="n">crf_drv</span><span class="o">.</span><span class="n">b_operator</span> <span class="o">=</span> <span class="s2">&quot;magnetic dipole&quot;</span>
+<span class="n">crf_drv</span><span class="o">.</span><span class="n">c_operator</span> <span class="o">=</span> <span class="s2">&quot;electric dipole&quot;</span>
+<span class="n">crf_drv</span><span class="o">.</span><span class="n">d_operator</span> <span class="o">=</span> <span class="s2">&quot;electric dipole&quot;</span>
+
+<span class="c1"># available operators</span>
+<span class="c1">#crf.b_operator = &quot;electric dipole&quot;</span>
+<span class="c1">#crf.b_operator = &quot;magnetic dipole&quot;</span>
+<span class="c1">#crf.b_operator = &quot;linear momentum&quot;</span>
+<span class="c1">#crf.b_operator = &quot;angular momentum&quot;</span>
+
+<span class="n">crf_drv</span><span class="o">.</span><span class="n">a_component</span> <span class="o">=</span> <span class="s2">&quot;z&quot;</span>
+<span class="n">crf_drv</span><span class="o">.</span><span class="n">b_component</span> <span class="o">=</span> <span class="s2">&quot;x&quot;</span>
+<span class="n">crf_drv</span><span class="o">.</span><span class="n">c_component</span> <span class="o">=</span> <span class="s2">&quot;x&quot;</span>
+<span class="n">crf_drv</span><span class="o">.</span><span class="n">d_component</span> <span class="o">=</span> <span class="s2">&quot;z&quot;</span>
+
+<span class="n">crf_drv</span><span class="o">.</span><span class="n">b_frequencies</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0656</span><span class="p">,</span> <span class="mf">0.1312</span><span class="p">]</span>
+<span class="n">crf_drv</span><span class="o">.</span><span class="n">c_frequencies</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0656</span><span class="p">,</span> <span class="mf">0.1312</span><span class="p">]</span>
+<span class="n">crf_drv</span><span class="o">.</span><span class="n">d_frequencies</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0656</span><span class="p">,</span> <span class="mf">0.1312</span><span class="p">]</span>
+
+<span class="n">crf_drv</span><span class="o">.</span><span class="n">damping</span> <span class="o">=</span> <span class="mf">0.004556</span>  <span class="c1"># 1000 cm-1</span>
+
+<span class="n">crf_results</span> <span class="o">=</span> <span class="n">crf_drv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">basis</span><span class="p">,</span> <span class="n">scf_results</span><span class="p">)</span>
+</pre></div>
+</div>
 </section>
 </section>
 
@@ -493,6 +604,8 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#two-photon-absorption">Two-photon absorption</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-quadratic-response-functions">General quadratic response functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-cubic-response-functions">General cubic response functions</a></li>
 </ul>
   </nav></div>
 
