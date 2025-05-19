@@ -153,6 +153,7 @@ cpp_results = cpp_drv.compute(molecule, basis, scf_results)
 ```
 Download a [Python script](../input_files/alanine-cpp.py) type of input file to calculate the the ECD spectra with the CPP approach for the alanine molecule at the CAM-B3LYP/def2-svp level of theory.
 
+**Text file**
 ```
 @jobs
 task: response
