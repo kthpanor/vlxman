@@ -52,7 +52,7 @@ scf_drv.filename = 'mol-uv-vis'
 results = scf_drv.compute(molecule, basis)
 
 rsp_drv = vlx.lreigensolver.LinearResponseEigenSolver()
-rsp_drv.nstates=10
+rsp_drv.nstates = 10
 rsp_drv.nto = True
 rsp_results = rsp_drv.compute(molecule, basis, results)
 
