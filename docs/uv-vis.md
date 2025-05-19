@@ -32,20 +32,26 @@ $$
 
 where $f$ is the [Cauchy distribution](https://en.wikipedia.org/wiki/Cauchy_distribution).
 
+A detailed list of keyword can be found in the [UV/vis absorption spectrum](./keywords.ipynb#uv-vis-absorption-spectrum) of the [Input file keywords page](./keywords.ipynb). Note that NTO can be saved using the nto keyword. By using the absoprtion property, both UV-Vis and ECD will be calculated.
+
+**Python script**
+
+
+**Text file**
 ```
 @jobs
 task: response
 @end
 
 @method settings
-xcfun: b3lyp
+xcfun: cam-b3lyp
 basis: def2-svp
 @end
 
 @response
 property: absorption
-! tamm_dancoff: yes
-nstates: 3
+nstates: 10
+nto: yes
 @end
 
 @molecule
@@ -55,6 +61,8 @@ xyz:
 ...
 @end
 ```
+
+Download a [text file](../input_files/tq-uv-vis.inp) type of input file to perfom an optimization for the bithiophene molecule at the B3LYP+D4/def2-svp level of theory.
 
 ## Complex polarization propagator approach
 
