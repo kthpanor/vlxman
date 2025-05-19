@@ -469,7 +469,7 @@ f_{n0}
 <span class="n">results</span> <span class="o">=</span> <span class="n">scf_drv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">basis</span><span class="p">)</span>
 
 <span class="n">rsp_drv</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">lreigensolver</span><span class="o">.</span><span class="n">LinearResponseEigenSolver</span><span class="p">()</span>
-<span class="n">rsp_drv</span><span class="o">.</span><span class="n">nstates</span><span class="o">=</span><span class="mi">10</span>
+<span class="n">rsp_drv</span><span class="o">.</span><span class="n">nstates</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">rsp_drv</span><span class="o">.</span><span class="n">nto</span> <span class="o">=</span> <span class="kc">True</span>
 <span class="n">rsp_results</span> <span class="o">=</span> <span class="n">rsp_drv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">basis</span><span class="p">,</span> <span class="n">results</span><span class="p">)</span>
 
