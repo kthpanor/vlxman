@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -458,6 +458,12 @@ R_{n0} =
 \langle n | \hat{m}_\alpha | 0\rangle
 \]</div>
 <p>In VeloxChem, the rotatory strength is evaluated in the velocity gauge as given in the second expression.</p>
+<p><strong>Python script</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<p>Download a <a class="reference internal" href="#../input_files/alanine-ecd.py"><span class="xref myst">Python script</span></a> type of input file to calculate the the ECD spectra for the 10 first excited state of the alanine molecule at the CAM-B3LYP/def2-svp level of theory.</p>
+<p><strong>Text file</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
 <span class="n">task</span><span class="p">:</span> <span class="n">response</span>
 <span class="nd">@end</span>
@@ -469,7 +475,8 @@ R_{n0} =
 
 <span class="nd">@response</span>
 <span class="nb">property</span><span class="p">:</span> <span class="n">ecd</span>
-<span class="n">nstates</span><span class="p">:</span> <span class="mi">20</span>
+<span class="n">nstates</span><span class="p">:</span> <span class="mi">10</span>
+<span class="n">nto</span><span class="p">:</span> <span class="n">yes</span>
 <span class="nd">@end</span>
 
 <span class="nd">@molecule</span>
@@ -481,6 +488,7 @@ R_{n0} =
 
 </pre></div>
 </div>
+<p>Download a <a class="reference download internal" download="" href="../_downloads/e63616f6fd921d136c1c55ea7625cca5/alanine-ecd.inp"><span class="xref download myst">text file</span></a> type of input file to calculate the ECD spectra for the 10 first excited state of the alanine molecule at the CAM-B3LYP/def2-svp level of theory.</p>
 </section>
 <section id="extinction-coefficient">
 <h2>Extinction coefficient<a class="headerlink" href="#extinction-coefficient" title="Link to this heading">#</a></h2>

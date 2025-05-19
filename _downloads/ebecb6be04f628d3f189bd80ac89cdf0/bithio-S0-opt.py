@@ -31,4 +31,5 @@ scf_drv.dispersion = 'd4'
 results = scf_drv.compute(molecule, basis)
 
 opt_drv = vlx.OptimizationDriver(scf_drv)
+opt_drv.filename = 'bithio-S0-opt'
 opt_results = opt_drv.compute(molecule, basis, results)

@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -452,29 +452,55 @@ f_{n0}
 }
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(f\)</span> is the <a class="reference external" href="https://en.wikipedia.org/wiki/Cauchy_distribution">Cauchy distribution</a>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@jobs
-task: response
-@end
+<p>A detailed list of keyword can be found in the <a class="reference internal" href="keywords.html#uv-vis-absorption-spectrum"><span class="std std-ref">UV/vis absorption spectrum</span></a> of the <a class="reference internal" href="keywords.html"><span class="std std-doc">Input file keywords page</span></a>. Note that NTO can be saved using the nto keyword. By using the absoprtion property, both UV-Vis and ECD will be calculated.</p>
+<p><strong>Python script</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">veloxchem</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">vlx</span>
 
-@method settings
-xcfun: b3lyp
-basis: def2-svp
-@end
+<span class="n">xyz</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">...</span>
+<span class="s2">&quot;&quot;&quot;</span>
 
-@response
-property: absorption
-! tamm_dancoff: yes
-nstates: 3
-@end
+<span class="n">molecule</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">Molecule</span><span class="o">.</span><span class="n">read_xyz_string</span><span class="p">(</span><span class="n">xyz</span><span class="p">)</span>
+<span class="n">basis</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">MolecularBasis</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="s1">&#39;def2-svp&#39;</span><span class="p">)</span>
 
-@molecule
-charge: 0
-multiplicity: 1
-xyz:  
-...
-@end
+<span class="n">scf_drv</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">ScfRestrictedDriver</span><span class="p">()</span>
+<span class="n">scf_drv</span><span class="o">.</span><span class="n">xcfun</span> <span class="o">=</span> <span class="s1">&#39;cam-b3lyp&#39;</span>
+<span class="n">scf_drv</span><span class="o">.</span><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;mol-uv-vis&#39;</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">scf_drv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">basis</span><span class="p">)</span>
+
+<span class="n">rsp_drv</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">lreigensolver</span><span class="o">.</span><span class="n">LinearResponseEigenSolver</span><span class="p">()</span>
+<span class="n">rsp_drv</span><span class="o">.</span><span class="n">nstates</span><span class="o">=</span><span class="mi">10</span>
+<span class="n">rsp_drv</span><span class="o">.</span><span class="n">nto</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">rsp_results</span> <span class="o">=</span> <span class="n">rsp_drv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">basis</span><span class="p">,</span> <span class="n">results</span><span class="p">)</span>
+
 </pre></div>
 </div>
+<p>Download a <a class="reference download internal" download="" href="../_downloads/43306c2fc4ddde33a61370ad058311a6/tq-uv-vis.py"><span class="xref download myst">Python script</span></a> type of input file to calculate the absorption of the 10 first excited state of the thiophene-quinoxaline molecule at the CAM-B3LYP/def2-svp level of theory.</p>
+<p><strong>Text file</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
+<span class="n">task</span><span class="p">:</span> <span class="n">response</span>
+<span class="nd">@end</span>
+
+<span class="nd">@method</span> <span class="n">settings</span>
+<span class="n">xcfun</span><span class="p">:</span> <span class="n">cam</span><span class="o">-</span><span class="n">b3lyp</span>
+<span class="n">basis</span><span class="p">:</span> <span class="n">def2</span><span class="o">-</span><span class="n">svp</span>
+<span class="nd">@end</span>
+
+<span class="nd">@response</span>
+<span class="nb">property</span><span class="p">:</span> <span class="n">absorption</span>
+<span class="n">nstates</span><span class="p">:</span> <span class="mi">10</span>
+<span class="n">nto</span><span class="p">:</span> <span class="n">yes</span>
+<span class="nd">@end</span>
+
+<span class="nd">@molecule</span>
+<span class="n">charge</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">multiplicity</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">xyz</span><span class="p">:</span>  
+<span class="o">...</span>
+<span class="nd">@end</span>
+</pre></div>
+</div>
+<p>Download a <a class="reference download internal" download="" href="../_downloads/75f0d61a020451d0ba3cd085de5eae1a/tq-uv-vis.inp"><span class="xref download myst">text file</span></a> type of input file to calculate the absorption of the 10 first excited state of the thiophene-quinoxaline molecule at the CAM-B3LYP/def2-svp level of theory.</p>
 </section>
 <section id="complex-polarization-propagator-approach">
 <h2>Complex polarization propagator approach<a class="headerlink" href="#complex-polarization-propagator-approach" title="Link to this heading">#</a></h2>
@@ -509,6 +535,13 @@ xyz:
 <p>The polarizability is complex and calculated with a damping term, <span class="math notranslate nohighlight">\(\hbar \gamma\)</span>, associated with the inverse finite lifetime of the excited states. The default program setting for this parameter is 0.124 eV (or 0.004556 a.u.).</p>
 <p>The resulting values for <span class="math notranslate nohighlight">\(\sigma(\omega)\)</span> are presented in atomic units and can be converted to the SI unit of m<span class="math notranslate nohighlight">\(^2\)</span> by multiplying with a factor of <span class="math notranslate nohighlight">\(a_0^2\)</span>.</p>
 <p>The arbitrary frequency region is specified in the input file together with a requested frequency resolution.</p>
+<p>A detailed list of keyword can be found in the <a class="reference internal" href="keywords.html##complex-response-solver"><span class="std std-ref">Complex response solver</span></a> of the <a class="reference internal" href="keywords.html"><span class="std std-doc">Input file keywords page</span></a>.</p>
+<p><strong>Python script</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<p>Download a <a class="reference download internal" download="" href="../_downloads/9e57d62076ce72456695396a4ae7ade3/tq-cpp.py"><span class="xref download myst">Python script</span></a> type of input file to calculate the absorption spectra with CPP of the thiophene-quinoxaline molecule at the CAM-B3LYP/def2-svp level of theory.</p>
+<p><strong>Text file</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@jobs
 task: response
 @end
@@ -521,7 +554,7 @@ basis: def2-svp
 @response
 property: absorption (cpp)
 ! frequency region (and resolution)
-frequencies: 0.0-0.15 (0.0025)
+frequencies: 0.10-0.25 (0.0025)
 damping: 0.0045563  ! this is the default value
 @end
 
@@ -533,6 +566,7 @@ xyz:
 @end 
 </pre></div>
 </div>
+<p>Download a <a class="reference download internal" download="" href="../_downloads/fd2c8d517c718be8a9c6a32ae2e3ed3c/tq-cpp.inp"><span class="xref download myst">text file</span></a> type of input file to calculate the absorption spectra with CPP of the thiophene-quinoxaline molecule at the CAM-B3LYP/def2-svp level of theory.</p>
 </section>
 </section>
 
