@@ -34,10 +34,12 @@ basis = vlx.MolecularBasis.read(molecule, 'def2-svp')
 scf_drv = vlx.ScfRestrictedDriver()
 scf_drv.xcfun = 'cam-b3lyp'
 scf_drv.filename = 'tq-cpp'
-results = scf_drv.compute(molecule, basis)
+scf_results = scf_drv.compute(molecule, basis)
 
-rsp_drv = vlx.lreigensolver.LinearResponseEigenSolver()
+cpp_drv = vlx.ComplexResponse()
+cpp_drv.frequencies = np.arange(0.1, 0.25, 0.0025)
+cpp_drv.damping = 0.0045563
+cpp_drv.cpp_flag = "absorption"
+cpp_drv.filename = 'tq-cpp'
 
-rsp_drv.nto = True
-rsp_results = rsp_drv.compute(molecule, basis, results)
-
+cpp_results = cpp_drv.compute(molecule, basis, scf_results)
