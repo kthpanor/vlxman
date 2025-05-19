@@ -131,7 +131,27 @@ A detailed list of keyword can be found in the [Complex response solver](./keywo
 **Python script**
 
 ```
+import veloxchem as vlx
 
+xyz="""
+...
+"""
+
+molecule = vlx.Molecule.read_xyz_string(xyz)
+basis = vlx.MolecularBasis.read(molecule, 'def2-svp')
+
+scf_drv = vlx.ScfRestrictedDriver()
+scf_drv.xcfun = 'cam-b3lyp'
+scf_drv.filename = 'mol-cpp'
+scf_results = scf_drv.compute(molecule, basis)
+
+cpp_drv = vlx.ComplexResponse()
+cpp_drv.frequencies = np.arange(0.1, 0.25, 0.0025)
+cpp_drv.damping = 0.0045563
+cpp_drv.cpp_flag = "absorption"
+cpp_drv.filename = 'mol-cpp'
+
+cpp_results = cpp_drv.compute(molecule, basis, scf_results)
 ```
 Download a [Python script](../input_files/tq-cpp.py) type of input file to calculate the absorption spectra with CPP of the thiophene-quinoxaline molecule at the CAM-B3LYP/def2-svp level of theory.
 
