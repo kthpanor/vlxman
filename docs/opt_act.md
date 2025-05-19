@@ -184,7 +184,12 @@ Download a [text file](../input_files/alanine-cpp.inp) type of input file to cal
 ## Exciton coupling model
 
 VeloxChem implements the exciton coupling model to determine circular dichroism spectra.
+**Python script**
+```
+to be added.
+```
 
+**Text file**
 ```
 @jobs
 task: exciton
