@@ -35,6 +35,14 @@ $$
 
 In VeloxChem, the rotatory strength is evaluated in the velocity gauge as given in the second expression.
 
+**Python script**
+```
+
+```
+Download a [Python script](../input_files/alanine-ecd.py) type of input file to calculate the the ECD spectra for the 10 first excited state of the alanine molecule at the CAM-B3LYP/def2-svp level of theory.
+
+**Text file**
+
 ```
 @jobs
 task: response
@@ -47,7 +55,8 @@ xcfun: b3lyp
 
 @response
 property: ecd
-nstates: 20
+nstates: 10
+nto: yes
 @end
 
 @molecule
@@ -58,6 +67,7 @@ xyz:
 @end
 
 ```
+Download a [text file](../input_files/alanine-ecd.inp) type of input file to calculate the ECD spectra for the 10 first excited state of the alanine molecule at the CAM-B3LYP/def2-svp level of theory.
 
 ## Extinction coefficient
 
