@@ -35,9 +35,10 @@ This manual gives a description of the installation process and basic usage of V
     - [Raman spectroscopy](sec:raman)
     - [Resonance Raman spectroscopy](sec:rrs) (RRS)
 - Classical methods
-    - Molecular mechanics (MM)
+    - [Molecular mechanics](sec:mm) (MM)
     - Interpolation mechanics (IM)
     - Molecular dynamics (MD)
+    - Conformational search
     - Polarizable embedding (PE)
     - Localized properties (LoProp, RESP)
     - Empirical Valence Bond (EVB)

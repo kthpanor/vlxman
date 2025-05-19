@@ -29,6 +29,15 @@ parts:
   - file: docs/linear-response
   - file: docs/nlo
   - file: docs/xray
+- caption: Classical methods
+  chapters:
+  - file: docs/mm
+#  - file: docs/im
+#  - file: docs/md
+#  - file: docs/conf_search
+#  - file: docs/pol_embed
+#  - file: docs/loc_prop
+#  - file: docs/evb
 - caption: Visualization
   chapters:
   - file: docs/vis
