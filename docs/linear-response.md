@@ -1,5 +1,6 @@
 # Linear response
 
+(sec:alpha)=
 ## Polarizability
 
 The linear electric-dipole polarizabilty is determined from the linear response function {cite}`Norman2018`
@@ -35,6 +36,7 @@ xyz:
 @end 
 ```
 
+(sec:cpp_lrf)=
 ## General linear response functions
 
 A general linear response function
@@ -44,38 +46,53 @@ $$
 \rangle \rangle_\omega^\gamma
 $$
 
-can be requested, referring to the linear response of the molecular property associated with $\hat{\Omega}$ due to the perturbation associated with $\hat{V}$ and oscillating with the angular frequency $\omega$. The damping term $\gamma$ is associated with the inverse lifetime and enters into the calculation only if a complex response function is requested by setting `complex` to `yes`.
+can be requested, referring to the linear response of the molecular property associated with $\hat{\Omega}$ due to the perturbation associated with $\hat{V}$ and oscillating with the angular frequency $\omega$. The damping term $\gamma$ is associated with the inverse lifetime of the excited states.
+
+**Python script**
 
 ```
-@jobs
-task: response
-@end
+import veloxchem as vlx
 
-@method settings
-basis: def2-svpd
-xcfun: b3lyp
-@end
+molecule = vlx.Molecule.read_xyz_string("""4
+Hydrogen peroxide
+O  -0.65564532 -0.06106286 -0.03621403
+O   0.65564532  0.06106286 -0.03621403
+H  -0.97628735  0.65082652  0.57474201
+H   0.97628735 -0.65082652  0.57474201
+""")
 
-@response
-property: custom
-order: linear
-complex: no
-a_operator: electric dipole
-a_components: xyz
-b_operator: electric dipole
-b_compontents: xyz
-frequencies: 0.0, 0.0656
-@end
+basis = vlx.MolecularBasis.read(molecule, "def2-svpd", ostream=None)
 
-@molecule
-charge: 0
-multiplicity: 1
-xyz:
-...
-@end
+scf_drv = vlx.ScfRestrictedDriver()
 
+scf_drv.xcfun = "b3lyp"
+scf_results = scf_drv.compute(molecule, basis)
+
+lrf = vlx.ComplexResponse() 
+
+# available operators
+#lrf.b_operator = "electric dipole"
+#lrf.b_operator = "magnetic dipole"
+#lrf.b_operator = "linear momentum"
+#lrf.b_operator = "angular momentum"
+
+lrf.a_operator = "electric dipole"
+lrf.b_operator = "magnetic dipole"
+
+lrf.a_components = ["x", "y", "z"]
+lrf.b_components = ["x", "y", "z"]
+
+lrf_drv.damping = 0.004556  # 1000 cm-1
+lrf.frequencies = [0.0656]
+
+lrf_results = lrf.compute(molecule, basis, scf_results)
 ```
 
+**Text file**
+
+*add me*
+
+(sec:c6)=
 ## C6 dispersion coefficients
 
 The $C_6$ dispersion coefficient relates to the electric-dipole polarizability according to

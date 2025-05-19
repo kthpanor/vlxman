@@ -1,3 +1,4 @@
+(sec:vib_spect)=
 # Vibrational spectroscopies
 
 This page presents how to calculate IR, Raman and Resonance Raman spectra by using the keyword: ```do_ir```, ```@do_raman```, ```@do_resonance_raman``` respectively in the ```@vibrational``` section. IR and calculated at the same time as Raman OR resonance Raman.
@@ -13,6 +14,7 @@ do_resonance_raman: no
 
 Calculations of normal modes are performed with the aid of geomeTRIC {cite}`geomeTRIC`.
 
+(sec:ir)=
 ## Infra-red
 
 ```
@@ -38,6 +40,7 @@ xyz:
 ```
 [Download](../input_files/acro-ir.inp) an input file to perfom an IR spectra calculation of the acroleine molecule at the B3LYP/def2-svp level of theory.
 
+(sec:raman)=
 ## Raman
 ```
 @jobs
@@ -62,7 +65,8 @@ xyz:
 ```
 [Download](../input_files/acro-raman.inp) an input file to perfom a Raman spectra calculation of the acroleine molecule at the B3LYP/def2-svp level of theory.
 
-## Resonance raman
+(sec:rrs)=
+## Resonance Raman
 ```
 @jobs
 task: vibrational

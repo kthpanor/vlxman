@@ -1,3 +1,4 @@
+(sec:ecd)=
 # Optical activity and dichroism
 
 ## Rotatory strengths

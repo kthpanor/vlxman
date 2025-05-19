@@ -4,19 +4,23 @@
 title                  : VeloxChem program manual
 author                 : The VeloxChem team
 logo                   : vlx_logo.png
+copyright              : "2025"
 exclude_patterns       : [ README.md ]
 only_build_toc_files   : false
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:
-  execute_notebooks: auto
+  execute_notebooks: cache
+  timeout: 120
 
 #Sphinx settings
 #Force a more recent version of the math engine mathjax
 sphinx:
   config:
+    suppress_warnings: ["mystnb.unknown_mime_type"]
     mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+    myst_heading_anchors: 3
 
 # Define the name of the latex output file for PDF builds
 latex:
@@ -46,3 +50,4 @@ html:
   use_issues_button: true
   use_repository_button: true
   favicon: vlx_logo_mark.png
+  home_page_in_navbar: false

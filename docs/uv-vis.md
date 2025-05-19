@@ -1,3 +1,4 @@
+(sec:uv_vis)=
 # UV/vis absorption/emission
 
 ## Generalized eigenvalue equation
