@@ -459,10 +459,28 @@ R_{n0} =
 \]</div>
 <p>In VeloxChem, the rotatory strength is evaluated in the velocity gauge as given in the second expression.</p>
 <p><strong>Python script</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">veloxchem</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">vlx</span>
+
+<span class="n">xyz</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">...</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">molecule</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">Molecule</span><span class="o">.</span><span class="n">read_xyz_string</span><span class="p">(</span><span class="n">xyz</span><span class="p">)</span>
+<span class="n">basis</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">MolecularBasis</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="s1">&#39;def2-svp&#39;</span><span class="p">)</span>
+
+<span class="n">scf_drv</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">ScfRestrictedDriver</span><span class="p">()</span>
+<span class="n">scf_drv</span><span class="o">.</span><span class="n">xcfun</span> <span class="o">=</span> <span class="s1">&#39;cam-b3lyp&#39;</span>
+<span class="n">scf_drv</span><span class="o">.</span><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;mol-ecd&#39;</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">scf_drv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">basis</span><span class="p">)</span>
+
+<span class="n">rsp_drv</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">lreigensolver</span><span class="o">.</span><span class="n">LinearResponseEigenSolver</span><span class="p">()</span>
+<span class="n">rsp_drv</span><span class="o">.</span><span class="n">nstates</span><span class="o">=</span><span class="mi">10</span>
+<span class="n">rsp_drv</span><span class="o">.</span><span class="n">nto</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">rsp_drv</span><span class="o">.</span><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;mol-ecd&#39;</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">rsp_drv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">basis</span><span class="p">,</span> <span class="n">results</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Download a <a class="reference internal" href="#../input_files/alanine-ecd.py"><span class="xref myst">Python script</span></a> type of input file to calculate the the ECD spectra for the 10 first excited state of the alanine molecule at the CAM-B3LYP/def2-svp level of theory.</p>
+<p>Download a <a class="reference download internal" download="" href="../_downloads/3acdadfa6786deb3984d2ac9eaf0ac0f/alanine-ecd.py"><span class="xref download myst">Python script</span></a> type of input file to calculate the the ECD spectra for the 10 first excited state of the alanine molecule at the CAM-B3LYP/def2-svp level of theory.</p>
 <p><strong>Text file</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
 <span class="n">task</span><span class="p">:</span> <span class="n">response</span>
@@ -525,6 +543,31 @@ G_{\alpha\beta} = - \Re\langle\langle\hat{\mu}_\alpha;\hat{m}_\beta
 <p>The mixed electric–magnetic dipole tensor, <span class="math notranslate nohighlight">\(G\)</span>, is evaluated in the velocity gauge as given in the second expression. Furthermore, it is complex and calculated with a damping term, <span class="math notranslate nohighlight">\(\hbar \gamma\)</span>, associated with the inverse finite lifetime of the excited states. The default program setting for this parameter is 0.124 eV (or 0.004556 a.u.).</p>
 <p>The resulting values for <span class="math notranslate nohighlight">\(\Delta \epsilon(\omega)\)</span>
 are converted  from atomic units to units of L mol<span class="math notranslate nohighlight">\(^{-1}\)</span> cm<span class="math notranslate nohighlight">\(^{-1}\)</span> by multiplying with a factor of <span class="math notranslate nohighlight">\(10\, a_0^2\)</span>.</p>
+<p><strong>Python script</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">veloxchem</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">vlx</span>
+
+<span class="n">xyz</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">....</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">molecule</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">Molecule</span><span class="o">.</span><span class="n">read_xyz_string</span><span class="p">(</span><span class="n">xyz</span><span class="p">)</span>
+<span class="n">basis</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">MolecularBasis</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="s1">&#39;def2-svp&#39;</span><span class="p">)</span>
+
+<span class="n">scf_drv</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">ScfRestrictedDriver</span><span class="p">()</span>
+<span class="n">scf_drv</span><span class="o">.</span><span class="n">xcfun</span> <span class="o">=</span> <span class="s1">&#39;cam-b3lyp&#39;</span>
+<span class="n">scf_drv</span><span class="o">.</span><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;mol-cpp&#39;</span>
+<span class="n">scf_results</span> <span class="o">=</span> <span class="n">scf_drv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">basis</span><span class="p">)</span>
+
+<span class="n">cpp_drv</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">ComplexResponse</span><span class="p">()</span>
+<span class="n">cpp_drv</span><span class="o">.</span><span class="n">frequencies</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mf">0.0025</span><span class="p">)</span>
+<span class="n">cpp_drv</span><span class="o">.</span><span class="n">damping</span> <span class="o">=</span> <span class="mf">0.0045563</span>
+<span class="n">cpp_drv</span><span class="o">.</span><span class="n">cpp_flag</span> <span class="o">=</span> <span class="s2">&quot;ecd&quot;</span>
+<span class="n">cpp_drv</span><span class="o">.</span><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;mol-cpp&#39;</span>
+
+<span class="n">cpp_results</span> <span class="o">=</span> <span class="n">cpp_drv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">basis</span><span class="p">,</span> <span class="n">scf_results</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Download a <a class="reference download internal" download="" href="../_downloads/455baab430c58902ff9ddebdc3bc2173/alanine-cpp.py"><span class="xref download myst">Python script</span></a> type of input file to calculate the the ECD spectra with the CPP approach for the alanine molecule at the CAM-B3LYP/def2-svp level of theory.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@jobs
 task: response
 @end
@@ -549,6 +592,7 @@ xyz:
 @end
 </pre></div>
 </div>
+<p>Download a <a class="reference download internal" download="" href="../_downloads/ed1b6a51ef952de76a58bfeec67bdf3e/alanine-cpp.inp"><span class="xref download myst">text file</span></a> type of input file to calculate the the ECD spectra with the CPP approach for the alanine molecule at the CAM-B3LYP/def2-svp level of theory.</p>
 </section>
 <section id="exciton-coupling-model">
 <h2>Exciton coupling model<a class="headerlink" href="#exciton-coupling-model" title="Link to this heading">#</a></h2>
