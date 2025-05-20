@@ -13,7 +13,7 @@ This manual gives a description of the installation process and basic usage of V
 ```{image} ../images/swedish_moebius.jpg
 :alt: cover
 :class: bg-primary mb-1
-:width: 250px
+:width: 450px
 :align: right
 ```
 

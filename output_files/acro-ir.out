@@ -5,7 +5,7 @@
 !                                                                                                                        !
 !                                        Copyright 2018-2025 VeloxChem developers                                        !
 !========================================================================================================================!
-!                                VeloxChem execution started at Fri May  9 17:46:27 2025.                                !
+!                                VeloxChem execution started at Mon May 19 14:41:10 2025.                                !
 !========================================================================================================================!
                                                                                                                           
 * Info * Using 32 OpenMP threads per MPI process.                                                                         
@@ -66,8 +66,8 @@
                                            ====================================                                           
                                                                                                                           
                    Wave Function Model             : Spin-Restricted Kohn-Sham                                            
-                   Initial Guess Model             : Restart from Checkpoint                                              
-                   Convergence Accelerator         : Direct Inversion of Iterative Subspace                               
+                   Initial Guess Model             : Superposition of Atomic Densities                                    
+                   Convergence Accelerator         : Two Level Direct Inversion of Iterative Subspace                     
                    Max. Number of Iterations       : 50                                                                   
                    Max. Number of Error Vectors    : 10                                                                   
                    Convergence Threshold           : 1.0e-06                                                              
@@ -92,7 +92,16 @@
                                                                                                                           
 * Info * Molecular grid with 113597 points generated in 0.06 sec.                                                         
                                                                                                                           
-* Info * Restarting from checkpoint file: acro-ir_scf.h5                                                                  
+* Info * Overlap matrix computed in 0.00 sec.                                                                             
+                                                                                                                          
+* Info * Kinetic energy matrix computed in 0.00 sec.                                                                      
+                                                                                                                          
+* Info * Nuclear potential matrix computed in 0.00 sec.                                                                   
+                                                                                                                          
+* Info * Orthogonalization matrix computed in 0.00 sec.                                                                   
+                                                                                                                          
+* Info * Starting Reduced Basis SCF calculation...                                                                        
+* Info * ...done. SCF energy in reduced basis set: -190.519433708976 a.u. Time: 0.10 sec.                                 
                                                                                                                           
 * Info * Overlap matrix computed in 0.00 sec.                                                                             
                                                                                                                           
@@ -105,13 +114,23 @@
                                                                                                                           
                Iter. |    Kohn-Sham Energy | Energy Change | Gradient Norm | Max. Gradient | Density Change               
                --------------------------------------------------------------------------------------------               
-                  1      -191.771618828017    0.0000000000      0.00000018      0.00000002      0.00000000                
+                  1      -191.757704033234    0.0000000000      0.34835803      0.04292201      0.00000000                
+                  2      -191.753942793786    0.0037612394      0.40558684      0.04408646      0.23729898                
+                  3      -191.770399465417   -0.0164566716      0.11163178      0.00999188      0.15696645                
+                  4      -191.771566527350   -0.0011670619      0.01984292      0.00174511      0.05105135                
+                  5      -191.771603873495   -0.0000373461      0.01031291      0.00092975      0.01403270                
+                  6      -191.771618688810   -0.0000148153      0.00103560      0.00006468      0.00355610                
+                  7      -191.771618823183   -0.0000001344      0.00018982      0.00001086      0.00035271                
+                  8      -191.771618827506   -0.0000000043      0.00006201      0.00000397      0.00009238                
+                  9      -191.771618827996   -0.0000000005      0.00001290      0.00000099      0.00002345                
+                 10      -191.771618828017   -0.0000000000      0.00000170      0.00000012      0.00000864                
+                 11      -191.771618828017   -0.0000000000      0.00000018      0.00000002      0.00000123                
                                                                                                                           
 * Info * Checkpoint written to file: acro-ir_scf.h5                                                                       
                                                                                                                           
 * Info * SCF results written to file: acro-ir.h5                                                                          
                                                                                                                           
-               *** SCF converged in 1 iterations. Time: 0.11 sec.                                                         
+               *** SCF converged in 11 iterations. Time: 0.92 sec.                                                        
                                                                                                                           
                Spin-Restricted Kohn-Sham:                                                                                 
                --------------------------                                                                                 
@@ -261,31 +280,67 @@
                                                                                                                           
 * Info * Molecular grid with 113597 points generated in 0.05 sec.                                                         
                                                                                                                           
-* Info * CPHF/CPKS integral derivatives computed in 1.74 sec.                                                             
+* Info * CPHF/CPKS integral derivatives computed in 1.69 sec.                                                             
                                                                                                                           
-* Info * CPHF/CPKS right-hand side computed in 2.13 sec.                                                                  
+* Info * CPHF/CPKS right-hand side computed in 1.88 sec.                                                                  
                                                                                                                           
-* Info * Restarting from checkpoint file: acro-ir_orbrsp.h5                                                               
+* Info * Processing 21 Fock builds...                                                                                     
+                                                                                                                          
+* Info * 21 trial vectors in reduced space                                                                                
+                                                                                                                          
+* Info * 484.58 kB of memory used for subspace procedure on the master node                                               
+* Info * 116.54 GB of memory available for the solver on the master node                                                  
+                                                                                                                          
+               *** Iteration:   1 * Residuals (Max,Min): 6.67e-01 and 5.78e-02                                            
+                                                                                                                          
+* Info * Processing 21 Fock builds...                                                                                     
+                                                                                                                          
+* Info * 42 trial vectors in reduced space                                                                                
+                                                                                                                          
+* Info * 792.02 kB of memory used for subspace procedure on the master node                                               
+* Info * 116.55 GB of memory available for the solver on the master node                                                  
+                                                                                                                          
+               *** Iteration:   2 * Residuals (Max,Min): 5.09e-02 and 7.19e-03                                            
+                                                                                                                          
+* Info * Processing 21 Fock builds...                                                                                     
+                                                                                                                          
+* Info * 63 trial vectors in reduced space                                                                                
+                                                                                                                          
+* Info * 1.10 MB of memory used for subspace procedure on the master node                                                 
+* Info * 116.58 GB of memory available for the solver on the master node                                                  
+                                                                                                                          
+               *** Iteration:   3 * Residuals (Max,Min): 4.70e-03 and 4.69e-04                                            
+                                                                                                                          
+* Info * Processing 17 Fock builds...                                                                                     
+                                                                                                                          
+* Info * 80 trial vectors in reduced space                                                                                
+                                                                                                                          
+* Info * 1.41 MB of memory used for subspace procedure on the master node                                                 
+* Info * 116.59 GB of memory available for the solver on the master node                                                  
+                                                                                                                          
+               *** Iteration:   4 * Residuals (Max,Min): 3.42e-04 and 3.57e-05                                            
+                                                                                                                          
+* Info * Processing 16 Fock builds...                                                                                     
                                                                                                                           
 * Info * 96 trial vectors in reduced space                                                                                
                                                                                                                           
-* Info * 1.58 MB of memory used for subspace procedure on the master node                                                 
-* Info * 116.09 GB of memory available for the solver on the master node                                                  
+* Info * 1.76 MB of memory used for subspace procedure on the master node                                                 
+* Info * 116.60 GB of memory available for the solver on the master node                                                  
                                                                                                                           
-               *** Iteration:   1 * Residuals (Max,Min): 4.92e-05 and 7.00e-06                                            
+               *** Iteration:   5 * Residuals (Max,Min): 9.31e-05 and 7.00e-06                                            
                                                                                                                           
 * Info * Checkpoint written to file: acro-ir_orbrsp.h5                                                                    
                                                                                                                           
-* Info * Time spent in writing checkpoint file: 0.00 sec                                                                  
+* Info * Time spent in writing checkpoint file: 0.01 sec                                                                  
                                                                                                                           
-               *** Coupled-Perturbed Kohn-Sham converged in 1 iterations. Time: 3.94 sec                                  
+               *** Coupled-Perturbed Kohn-Sham converged in 5 iterations. Time: 10.52 sec                                 
                                                                                                                           
                                                                                                                           
 * Info * First order derivative contributions to the Hessian computed in 0.00 sec.                                        
                                                                                                                           
-* Info * Second order derivative contributions to the Hessian computed in 12.41 sec.                                      
+* Info * Second order derivative contributions to the Hessian computed in 11.99 sec.                                      
                                                                                                                           
-                                   *** Time spent in Hessian calculation: 16.36 sec ***                                   
+                                   *** Time spent in Hessian calculation: 22.52 sec ***                                   
                                                                                                                           
                                                                                                                           
                                                    Free Energy Analysis                                                   
@@ -315,7 +370,7 @@
                                    Harmonic frequency:                 916.93  cm**-1                                     
                                    Reduced mass:                       1.5446  amu                                        
                                    Force constant:                     0.7651  mdyne/A                                    
-                                   IR intensity:                      20.1491  km/mol                                     
+                                   IR intensity:                      20.1488  km/mol                                     
                                    Normal mode:                                                                           
                                                               X           Y           Z                                   
                                    1       C            -0.0818     -0.1085      0.0118                                   
@@ -333,7 +388,7 @@
                                    Harmonic frequency:                 989.42  cm**-1                                     
                                    Reduced mass:                       1.3104  amu                                        
                                    Force constant:                     0.7558  mdyne/A                                    
-                                   IR intensity:                      38.2828  km/mol                                     
+                                   IR intensity:                      38.2833  km/mol                                     
                                    Normal mode:                                                                           
                                                               X           Y           Z                                   
                                    1       C             0.0037      0.0144      0.1576                                   
@@ -351,7 +406,7 @@
                                    Harmonic frequency:                1160.45  cm**-1                                     
                                    Reduced mass:                       1.9423  amu                                        
                                    Force constant:                     1.5411  mdyne/A                                    
-                                   IR intensity:                      34.4777  km/mol                                     
+                                   IR intensity:                      34.4776  km/mol                                     
                                    Normal mode:                                                                           
                                                               X           Y           Z                                   
                                    1       C             0.0470      0.0376     -0.0045                                   
@@ -369,7 +424,7 @@
                                    Harmonic frequency:                1823.14  cm**-1                                     
                                    Reduced mass:                      10.0961  amu                                        
                                    Force constant:                    19.7717  mdyne/A                                    
-                                   IR intensity:                     221.6293  km/mol                                     
+                                   IR intensity:                     221.6294  km/mol                                     
                                    Normal mode:                                                                           
                                                               X           Y           Z                                   
                                    1       C            -0.0227      0.0111     -0.0005                                   
@@ -403,9 +458,9 @@
 * Info * Full vibrational analysis results written to: acro-ir-vib-results.out                                            
                                                                                                                           
 !========================================================================================================================!
-!                               VeloxChem execution completed at Fri May  9 17:46:44 2025.                               !
+!                               VeloxChem execution completed at Mon May 19 14:41:34 2025.                               !
 !========================================================================================================================!
-!                                           Total execution time is 16.56 sec.                                           !
+!                                           Total execution time is 23.63 sec.                                           !
 !========================================================================================================================!
 !                     Rinkevicius, Z.; Li, X.; Vahtras, O.; Ahmadzadeh, K.; Brand, M.; Ringholm, M.;                     !
 !                              List, N. H.; Scheurer, M.; Scott, M.; Dreuw, A.; Norman, P.                               !
