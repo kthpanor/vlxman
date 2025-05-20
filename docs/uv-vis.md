@@ -55,7 +55,7 @@ rsp_drv.nto = True
 rsp_results = rsp_drv.compute(molecule, basis, results)
 
 ```
-Download a {download}`Python script <../input_files/tq-uv-vis.py>` type of input file to calculate the absorption of the 10 first excited state of the thiophene-quinoxaline molecule at the CAM-B3LYP/def2-svp level of theory.
+Download a {download}`Python script <../input_files/tq-uv-vis.py>` type of input file to calculate the absorption of the ten lowest singlet excited states of the thiophene-quinoxaline molecule at the CAM-B3LYP/def2-svp level of theory.
 
 **Text file**
 
