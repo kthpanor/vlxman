@@ -85,7 +85,7 @@ xyz:
 @end
 ```
 
-Download a {download}`text file <../input_files/tq-uv-vis.inp>` type of input file to calculate the absorption of the 10 first excited state of the thiophene-quinoxaline molecule at the CAM-B3LYP/def2-svp level of theory.
+Download a {download}`text file <../input_files/tq-uv-vis.inp>` type of input file to calculate the absorption of the ten lowest singlet excited states of the thiophene-quinoxaline molecule at the CAM-B3LYP/def2-svp level of theory.
 
 ## Complex polarization propagator approach
 
