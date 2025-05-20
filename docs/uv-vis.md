@@ -33,8 +33,6 @@ $$
 
 where $f$ is the [Cauchy distribution](https://en.wikipedia.org/wiki/Cauchy_distribution).
 
-A detailed list of keyword can be found in the [UV/vis absorption spectrum](./keywords.ipynb#uv-vis-absorption-spectrum) of the [Input file keywords page](./keywords.ipynb). Note that NTO can be saved using the nto keyword. By using the absoprtion property, both UV-Vis and ECD will be calculated.
-
 **Python script**
 ```
 import veloxchem as vlx
@@ -57,9 +55,12 @@ rsp_drv.nto = True
 rsp_results = rsp_drv.compute(molecule, basis, results)
 
 ```
-Download a [Python script](../input_files/tq-uv-vis.py) type of input file to calculate the absorption of the 10 first excited state of the thiophene-quinoxaline molecule at the CAM-B3LYP/def2-svp level of theory.
+Download a {download}`Python script <../input_files/tq-uv-vis.py>` type of input file to calculate the absorption of the 10 first excited state of the thiophene-quinoxaline molecule at the CAM-B3LYP/def2-svp level of theory.
 
 **Text file**
+
+Please refer to the [keyword list](sec:uv-vis-keywords) for a complete set of options. Note that natural transition orbitals NTO can be saved using the `nto` keyword. By specifying the `absorption` property, both UV/vis and ECD spectra will be calculated.
+
 ```
 @jobs
 task: response
@@ -84,7 +85,7 @@ xyz:
 @end
 ```
 
-Download a [text file](../input_files/tq-uv-vis.inp) type of input file to calculate the absorption of the 10 first excited state of the thiophene-quinoxaline molecule at the CAM-B3LYP/def2-svp level of theory.
+Download a {download}`text file <../input_files/tq-uv-vis.inp>` type of input file to calculate the absorption of the 10 first excited state of the thiophene-quinoxaline molecule at the CAM-B3LYP/def2-svp level of theory.
 
 ## Complex polarization propagator approach
 
@@ -123,10 +124,7 @@ The polarizability is complex and calculated with a damping term, $\hbar \gamma$
 
 The resulting values for $\sigma(\omega)$ are presented in atomic units and can be converted to the SI unit of m$^2$ by multiplying with a factor of $a_0^2$.
 
-
 The arbitrary frequency region is specified in the input file together with a requested frequency resolution.
-
-A detailed list of keyword can be found in the [Complex response solver](./keywords.ipynb##complex-response-solver) of the [Input file keywords page](./keywords.ipynb). 
 
 **Python script**
 
@@ -153,9 +151,13 @@ cpp_drv.filename = 'mol-cpp'
 
 cpp_results = cpp_drv.compute(molecule, basis, scf_results)
 ```
-Download a [Python script](../input_files/tq-cpp.py) type of input file to calculate the absorption spectra with CPP of the thiophene-quinoxaline molecule at the CAM-B3LYP/def2-svp level of theory.
+
+Download a {download}`Python script <../input_files/tq-cpp.py>` type of input file to calculate the absorption spectra with CPP of the thiophene-quinoxaline molecule at the CAM-B3LYP/def2-svp level of theory.
 
 **Text file**
+
+Please refer to the [keyword list](sec:cpp-keywords) for a complete set of options.
+
 ```
 @jobs
 task: response
@@ -180,4 +182,5 @@ xyz:
 ...
 @end 
 ```
-Download a [text file](../input_files/tq-cpp.inp) type of input file to calculate the absorption spectra with CPP of the thiophene-quinoxaline molecule at the CAM-B3LYP/def2-svp level of theory.
+
+Download a {download}`text file] <../input_files/tq-cpp.inp>` type of input file to calculate the absorption spectra with CPP of the thiophene-quinoxaline molecule at the CAM-B3LYP/def2-svp level of theory.
