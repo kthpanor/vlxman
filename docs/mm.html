@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Home &#8212; VeloxChem program manual</title>
+    <title>Molecular mechanics &#8212; VeloxChem program manual</title>
   
   
   
@@ -57,13 +57,12 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/intro';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/mm';</script>
     <link rel="icon" href="../_static/vlx_logo_mark.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Pushing the limits" href="limits.html" />
+    <link rel="next" title="Jupyter notebooks" href="vis.html" />
+    <link rel="prev" title="X-ray spectroscpies" href="xray.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -126,8 +125,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -146,7 +143,7 @@
     
   
 
-<a class="navbar-brand logo" href="#">
+<a class="navbar-brand logo" href="intro.html">
   
   
   
@@ -204,8 +201,8 @@
 <li class="toctree-l1"><a class="reference internal" href="xray.html">X-ray spectroscpies</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Classical methods</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="mm.html">Molecular mechanics</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Molecular mechanics</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Visualization</span></p>
 <ul class="nav bd-sidenav">
@@ -292,7 +289,7 @@
       
       
       
-      <li><a href="https://github.com/kthpanor/vlxman/issues/new?title=Issue%20on%20page%20%2Fdocs/intro.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/kthpanor/vlxman/issues/new?title=Issue%20on%20page%20%2Fdocs/mm.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -322,7 +319,7 @@
       
       
       
-      <li><a href="../_sources/docs/intro.md" target="_blank"
+      <li><a href="../_sources/docs/mm.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -406,7 +403,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Home</h1>
+    <h1>Molecular mechanics</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -416,10 +413,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#next-generation-quantum-chemistry-software">Next-generation quantum chemistry software</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selected-functionalities">Selected functionalities</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#force-field-generation">Force field generation</a></li>
 </ul>
             </nav>
         </div>
@@ -431,68 +425,11 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="home">
-<h1>Home<a class="headerlink" href="#home" title="Link to this heading">#</a></h1>
-<section id="next-generation-quantum-chemistry-software">
-<h2>Next-generation quantum chemistry software<a class="headerlink" href="#next-generation-quantum-chemistry-software" title="Link to this heading">#</a></h2>
-<p>VeloxChem <span id="id1">[<a class="reference internal" href="refs.html#id36" title="Zilvinas Rinkevicius, Xin Li, Olav Vahtras, Karan Ahmadzadeh, Manuel Brand, Magnus Ringholm, Nanna Holmgaard List, Maximilian Scheurer, Mikael Scott, Andreas Dreuw, and Patrick Norman. Veloxchem: a python-driven density-functional theory program for spectroscopy simulations in high-performance computing environments. WIREs Comput. Mol. Sci., 10(5):e1457, 2020. doi:10.1002/wcms.1457.">RLV+20</a>]</span> is a Python-based open source quantum chemistry software for contemporary and future hardware architectures. It features interactive program access through Jupyter notebooks as well as massively parallel calculations in high-performance computing (HPC) environments.</p>
-<p>VeloxChem offers modeling of complex molecular systems by means of force-field molecular dynamics and polarizable embedding in combination with user-friendly support for automatized solvation and force-field derivations. It is an ideal platform for building simulation workflows and data-driven research <span id="id2">[<a class="reference internal" href="refs.html#id5" title="Juan Angel de Gracia Trivino, Iulia Emilia Brumboiu, David Carrasco-Busturia, Xin Li, Chenxi Li, Mathieu Linares, Valentin Lindfeld, Young Min Rhee, Julia Rune, Bastiaan van Hoorn, Patrick Norman, and Mårten S. G. Ahlquist. Veloxchem quantum–classical interoperability for modeling of complex molecular systems. J. Phys. Chem. A, 2025. submitted.">dGTBCB+25</a>]</span>.</p>
-<p>VeloxChem is education enabling, providing a means to explain and explore the theory underlying computational chemistry in a highly interactive manner <span id="id3">[<a class="reference internal" href="refs.html#id4" title="Thomas Fransson, Mickael G. Delcey, Iulia Emilia Brumboiu, Manuel Hodecker, Xin Li, Zilvinas Rinkevicius, Andreas Dreuw, Young Min Rhee, and Patrick Norman. eChem: A Notebook Exploration of Quantum Chemistry. J. Chem. Educ., 100(4):1664–1671, 2023. doi:10.1021/acs.jchemed.2c01103.">FDB+23</a>]</span>. It is science enabling, providing a means for accelerated method development in quantum chemistry <span id="id4">[<a class="reference internal" href="refs.html#id2" title="Manuel Hodecker, Patrick Norman, and Iulia Emilia Brumboiu. eChem: Accelerated method development in quantum chemistry with notebooks. 2025. doi:10.26434/chemrxiv-2025-x0csm.">HNB25</a>]</span>.</p>
-<p>This manual gives a description of the installation process and basic usage of VeloxChem. A more comprehensive view of the ample opportunities for Python software interactions is provided in the <a class="reference external" href="https://kthpanor.github.io/echem">eChem</a> book <span id="id5">[<a class="reference internal" href="refs.html#id3" title="Thomas Fransson, Mickael Delcey, Iulia E. Brumboiu, Manuel Hodecker, Xin Li, Zilvinas Rinkevicius, Andreas Dreuw, Young Min Rhee, and Patrick Norman. Computational Chemistry from Laptop to HPC: A notebook exploration of quantum chemistry. KTH Royal Institute of Technology, 2022. doi:10.30746/978-91-988114-0-7.">FDB+22</a>]</span>.</p>
-<a class="bg-primary mb-1 reference internal image-reference" href="../_images/swedish_moebius.jpg"><img alt="cover" class="bg-primary mb-1 align-right" src="../_images/swedish_moebius.jpg" style="width: 450px;" />
-</a>
-<section id="selected-functionalities">
-<h3>Selected functionalities<a class="headerlink" href="#selected-functionalities" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>Kohn–Sham Density Functional Theory (DFT)</p></li>
-<li><p>Time-dependent DFT (TDDFT)</p></li>
-<li><p>Complex polarization propagator (CPP)</p>
-<ul>
-<li><p><a class="reference internal" href="linear-response.html#sec-cpp-lrf"><span class="std std-ref">linear response functions</span></a></p></li>
-<li><p><a class="reference internal" href="nlo.html#sec-cpp-qrf"><span class="std std-ref">quadratic response functions</span></a></p></li>
-<li><p><a class="reference internal" href="nlo.html#sec-cpp-crf"><span class="std std-ref">cubic response functions</span></a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="pes.html#sec-pes"><span class="std std-ref">Potential energy surface</span></a> (PES) exploration for ground and excited states</p></li>
-<li><p><a class="reference internal" href="uv-vis.html#sec-uv-vis"><span class="std std-ref">Optical</span></a> (UV/vis) and <a class="reference internal" href="xray.html#sec-xray"><span class="std std-ref">X-ray absorption</span></a> (XAS, XPS)</p></li>
-<li><p><a class="reference internal" href="nlo.html#sec-tpa"><span class="std std-ref">Two-photon absorption</span></a> (TPA)</p></li>
-<li><p><a class="reference internal" href="opt_act.html#sec-ecd"><span class="std std-ref">Electronic circular dichroism</span></a> (ECD)</p></li>
-<li><p><a class="reference internal" href="linear-response.html#sec-alpha"><span class="std std-ref">Polarizabilities</span></a> and <a class="reference internal" href="linear-response.html#sec-c6"><span class="std std-ref">dispersion coefficients</span></a></p></li>
-<li><p><a class="reference internal" href="vib_spect.html#sec-vib-spect"><span class="std std-ref">Vibrational spectroscopies</span></a></p>
-<ul>
-<li><p><a class="reference internal" href="vib_spect.html#sec-ir"><span class="std std-ref">Infrared absorption</span></a> (IR)</p></li>
-<li><p><a class="reference internal" href="vib_spect.html#sec-raman"><span class="std std-ref">Raman spectroscopy</span></a></p></li>
-<li><p><a class="reference internal" href="vib_spect.html#sec-rrs"><span class="std std-ref">Resonance Raman spectroscopy</span></a> (RRS)</p></li>
-</ul>
-</li>
-<li><p>Classical methods</p>
-<ul>
-<li><p><a class="reference internal" href="mm.html#sec-mm"><span class="std std-ref">Molecular mechanics</span></a> (MM)</p></li>
-<li><p>Interpolation mechanics (IM)</p></li>
-<li><p>Molecular dynamics (MD)</p></li>
-<li><p>Conformational search</p></li>
-<li><p>Polarizable embedding (PE)</p></li>
-<li><p>Localized properties (LoProp, RESP)</p></li>
-<li><p>Empirical Valence Bond (EVB)</p></li>
-</ul>
-</li>
-</ul>
+  <section class="tex2jax_ignore mathjax_ignore" id="molecular-mechanics">
+<span id="sec-mm"></span><h1>Molecular mechanics<a class="headerlink" href="#molecular-mechanics" title="Link to this heading">#</a></h1>
+<section id="force-field-generation">
+<span id="sec-ff-gen"></span><h2>Force field generation<a class="headerlink" href="#force-field-generation" title="Link to this heading">#</a></h2>
 </section>
-</section>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -525,12 +462,21 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="xray.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">X-ray spectroscpies</p>
+      </div>
+    </a>
     <a class="right-next"
-       href="limits.html"
+       href="vis.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Pushing the limits</p>
+        <p class="prev-next-title">Jupyter notebooks</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -550,10 +496,7 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#next-generation-quantum-chemistry-software">Next-generation quantum chemistry software</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selected-functionalities">Selected functionalities</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#force-field-generation">Force field generation</a></li>
 </ul>
   </nav></div>
 
