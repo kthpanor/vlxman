@@ -5,7 +5,7 @@
 !                                                                                                                        !
 !                                        Copyright 2018-2025 VeloxChem developers                                        !
 !========================================================================================================================!
-!                                VeloxChem execution started at Fri May  9 17:42:07 2025.                                !
+!                                VeloxChem execution started at Tue May 20 13:17:29 2025.                                !
 !========================================================================================================================!
                                                                                                                           
 * Info * Using 32 OpenMP threads per MPI process.                                                                         
@@ -90,7 +90,7 @@
                                                                                                                           
          J. Kussmann, H. Laqua and C. Ochsenfeld, J. Chem. Theory Comput. 2021, 17, 1512-1521
                                                                                                                           
-* Info * Molecular grid with 113597 points generated in 0.06 sec.                                                         
+* Info * Molecular grid with 113597 points generated in 0.07 sec.                                                         
                                                                                                                           
 * Info * Overlap matrix computed in 0.00 sec.                                                                             
                                                                                                                           
@@ -101,7 +101,7 @@
 * Info * Orthogonalization matrix computed in 0.00 sec.                                                                   
                                                                                                                           
 * Info * Starting Reduced Basis SCF calculation...                                                                        
-* Info * ...done. SCF energy in reduced basis set: -190.519433708976 a.u. Time: 0.13 sec.                                 
+* Info * ...done. SCF energy in reduced basis set: -190.519433708976 a.u. Time: 0.19 sec.                                 
                                                                                                                           
 * Info * Overlap matrix computed in 0.00 sec.                                                                             
                                                                                                                           
@@ -109,7 +109,7 @@
                                                                                                                           
 * Info * Nuclear potential matrix computed in 0.00 sec.                                                                   
                                                                                                                           
-* Info * Orthogonalization matrix computed in 0.01 sec.                                                                   
+* Info * Orthogonalization matrix computed in 0.02 sec.                                                                   
                                                                                                                           
                                                                                                                           
                Iter. |    Kohn-Sham Energy | Energy Change | Gradient Norm | Max. Gradient | Density Change               
@@ -119,10 +119,10 @@
                   3      -191.770399465417   -0.0164566716      0.11163178      0.00999188      0.15696645                
                   4      -191.771566527350   -0.0011670619      0.01984292      0.00174511      0.05105135                
                   5      -191.771603873495   -0.0000373461      0.01031291      0.00092975      0.01403270                
-                  6      -191.771618688810   -0.0000148153      0.00103560      0.00006468      0.00355610                
+                  6      -191.771618688809   -0.0000148153      0.00103560      0.00006468      0.00355610                
                   7      -191.771618823183   -0.0000001344      0.00018982      0.00001086      0.00035271                
                   8      -191.771618827506   -0.0000000043      0.00006201      0.00000397      0.00009238                
-                  9      -191.771618827995   -0.0000000005      0.00001290      0.00000099      0.00002345                
+                  9      -191.771618827996   -0.0000000005      0.00001290      0.00000099      0.00002345                
                  10      -191.771618828017   -0.0000000000      0.00000170      0.00000012      0.00000864                
                  11      -191.771618828017   -0.0000000000      0.00000018      0.00000002      0.00000123                
                                                                                                                           
@@ -130,7 +130,7 @@
                                                                                                                           
 * Info * SCF results written to file: acro-raman.h5                                                                       
                                                                                                                           
-               *** SCF converged in 11 iterations. Time: 0.90 sec.                                                        
+               *** SCF converged in 11 iterations. Time: 2.19 sec.                                                        
                                                                                                                           
                Spin-Restricted Kohn-Sham:                                                                                 
                --------------------------                                                                                 
@@ -279,18 +279,18 @@
                                                                                                                           
          J. Kussmann, H. Laqua and C. Ochsenfeld, J. Chem. Theory Comput. 2021, 17, 1512-1521
                                                                                                                           
-* Info * Molecular grid with 113597 points generated in 0.05 sec.                                                         
+* Info * Molecular grid with 113597 points generated in 0.07 sec.                                                         
                                                                                                                           
-* Info * CPHF/CPKS integral derivatives computed in 1.71 sec.                                                             
+* Info * CPHF/CPKS integral derivatives computed in 4.12 sec.                                                             
                                                                                                                           
-* Info * CPHF/CPKS right-hand side computed in 2.00 sec.                                                                  
+* Info * CPHF/CPKS right-hand side computed in 4.35 sec.                                                                  
                                                                                                                           
 * Info * Processing 21 Fock builds...                                                                                     
                                                                                                                           
 * Info * 21 trial vectors in reduced space                                                                                
                                                                                                                           
 * Info * 484.58 kB of memory used for subspace procedure on the master node                                               
-* Info * 116.10 GB of memory available for the solver on the master node                                                  
+* Info * 113.12 GB of memory available for the solver on the master node                                                  
                                                                                                                           
                *** Iteration:   1 * Residuals (Max,Min): 6.67e-01 and 5.78e-02                                            
                                                                                                                           
@@ -299,7 +299,7 @@
 * Info * 42 trial vectors in reduced space                                                                                
                                                                                                                           
 * Info * 792.02 kB of memory used for subspace procedure on the master node                                               
-* Info * 116.14 GB of memory available for the solver on the master node                                                  
+* Info * 113.11 GB of memory available for the solver on the master node                                                  
                                                                                                                           
                *** Iteration:   2 * Residuals (Max,Min): 5.09e-02 and 7.19e-03                                            
                                                                                                                           
@@ -308,7 +308,7 @@
 * Info * 63 trial vectors in reduced space                                                                                
                                                                                                                           
 * Info * 1.10 MB of memory used for subspace procedure on the master node                                                 
-* Info * 116.15 GB of memory available for the solver on the master node                                                  
+* Info * 113.08 GB of memory available for the solver on the master node                                                  
                                                                                                                           
                *** Iteration:   3 * Residuals (Max,Min): 4.70e-03 and 4.69e-04                                            
                                                                                                                           
@@ -317,7 +317,7 @@
 * Info * 80 trial vectors in reduced space                                                                                
                                                                                                                           
 * Info * 1.41 MB of memory used for subspace procedure on the master node                                                 
-* Info * 116.17 GB of memory available for the solver on the master node                                                  
+* Info * 113.06 GB of memory available for the solver on the master node                                                  
                                                                                                                           
                *** Iteration:   4 * Residuals (Max,Min): 3.42e-04 and 3.57e-05                                            
                                                                                                                           
@@ -326,7 +326,7 @@
 * Info * 96 trial vectors in reduced space                                                                                
                                                                                                                           
 * Info * 1.76 MB of memory used for subspace procedure on the master node                                                 
-* Info * 116.18 GB of memory available for the solver on the master node                                                  
+* Info * 113.04 GB of memory available for the solver on the master node                                                  
                                                                                                                           
                *** Iteration:   5 * Residuals (Max,Min): 9.31e-05 and 7.00e-06                                            
                                                                                                                           
@@ -334,14 +334,14 @@
                                                                                                                           
 * Info * Time spent in writing checkpoint file: 0.00 sec                                                                  
                                                                                                                           
-               *** Coupled-Perturbed Kohn-Sham converged in 5 iterations. Time: 11.32 sec                                 
+               *** Coupled-Perturbed Kohn-Sham converged in 5 iterations. Time: 25.87 sec                                 
                                                                                                                           
                                                                                                                           
 * Info * First order derivative contributions to the Hessian computed in 0.00 sec.                                        
                                                                                                                           
-* Info * Second order derivative contributions to the Hessian computed in 12.53 sec.                                      
+* Info * Second order derivative contributions to the Hessian computed in 15.16 sec.                                      
                                                                                                                           
-                                   *** Time spent in Hessian calculation: 23.86 sec ***                                   
+                                   *** Time spent in Hessian calculation: 41.06 sec ***                                   
                                                                                                                           
                                                                                                                           
                                                                                                                           
@@ -367,7 +367,7 @@
                                                                                                                           
          J. Kussmann, H. Laqua and C. Ochsenfeld, J. Chem. Theory Comput. 2021, 17, 1512-1521
                                                                                                                           
-* Info * Molecular grid with 113597 points generated in 0.05 sec.                                                         
+* Info * Molecular grid with 113597 points generated in 0.06 sec.                                                         
                                                                                                                           
 * Info * Processing 3 Fock builds...                                                                                      
                                                                                                                           
@@ -375,7 +375,7 @@
 * Info * 3 ungerade trial vectors in reduced space                                                                        
                                                                                                                           
 * Info * 103.60 kB of memory used for subspace procedure on the master node                                               
-* Info * 115.21 GB of memory available for the solver on the master node                                                  
+* Info * 112.50 GB of memory available for the solver on the master node                                                  
                                                                                                                           
                *** Iteration:   1 * Residuals (Max,Min): 1.09e+00 and 4.10e-01                                            
                                                                                                                           
@@ -389,7 +389,7 @@
 * Info * 6 ungerade trial vectors in reduced space                                                                        
                                                                                                                           
 * Info * 147.52 kB of memory used for subspace procedure on the master node                                               
-* Info * 115.21 GB of memory available for the solver on the master node                                                  
+* Info * 112.51 GB of memory available for the solver on the master node                                                  
                                                                                                                           
                *** Iteration:   2 * Residuals (Max,Min): 1.61e-01 and 4.42e-02                                            
                                                                                                                           
@@ -403,7 +403,7 @@
 * Info * 9 ungerade trial vectors in reduced space                                                                        
                                                                                                                           
 * Info * 191.44 kB of memory used for subspace procedure on the master node                                               
-* Info * 115.25 GB of memory available for the solver on the master node                                                  
+* Info * 112.50 GB of memory available for the solver on the master node                                                  
                                                                                                                           
                *** Iteration:   3 * Residuals (Max,Min): 7.08e-02 and 9.86e-03                                            
                                                                                                                           
@@ -417,7 +417,7 @@
 * Info * 12 ungerade trial vectors in reduced space                                                                       
                                                                                                                           
 * Info * 235.36 kB of memory used for subspace procedure on the master node                                               
-* Info * 115.25 GB of memory available for the solver on the master node                                                  
+* Info * 112.46 GB of memory available for the solver on the master node                                                  
                                                                                                                           
                *** Iteration:   4 * Residuals (Max,Min): 1.70e-02 and 2.10e-03                                            
                                                                                                                           
@@ -431,7 +431,7 @@
 * Info * 15 ungerade trial vectors in reduced space                                                                       
                                                                                                                           
 * Info * 279.28 kB of memory used for subspace procedure on the master node                                               
-* Info * 115.25 GB of memory available for the solver on the master node                                                  
+* Info * 112.47 GB of memory available for the solver on the master node                                                  
                                                                                                                           
                *** Iteration:   5 * Residuals (Max,Min): 4.01e-03 and 4.78e-04                                            
                                                                                                                           
@@ -445,7 +445,7 @@
 * Info * 18 ungerade trial vectors in reduced space                                                                       
                                                                                                                           
 * Info * 323.39 kB of memory used for subspace procedure on the master node                                               
-* Info * 115.26 GB of memory available for the solver on the master node                                                  
+* Info * 112.51 GB of memory available for the solver on the master node                                                  
                                                                                                                           
                *** Iteration:   6 * Residuals (Max,Min): 5.19e-04 and 6.78e-05                                            
                                                                                                                           
@@ -459,7 +459,7 @@
 * Info * 19 ungerade trial vectors in reduced space                                                                       
                                                                                                                           
 * Info * 337.84 kB of memory used for subspace procedure on the master node                                               
-* Info * 115.26 GB of memory available for the solver on the master node                                                  
+* Info * 112.51 GB of memory available for the solver on the master node                                                  
                                                                                                                           
                *** Iteration:   7 * Residuals (Max,Min): 8.28e-05 and 6.78e-05                                            
                                                                                                                           
@@ -469,7 +469,7 @@
                                                                                                                           
 * Info * Time spent in writing checkpoint file: 0.00 sec                                                                  
                                                                                                                           
-               *** Linear response converged in 7 iterations. Time: 1.61 sec                                              
+               *** Linear response converged in 7 iterations. Time: 3.90 sec                                              
                                                                                                                           
                                                                                                                           
 * Info * Response solution vectors written to file: acro-raman.h5                                                         
@@ -511,23 +511,23 @@
                                                                                                                           
          J. Kussmann, H. Laqua and C. Ochsenfeld, J. Chem. Theory Comput. 2021, 17, 1512-1521
                                                                                                                           
-* Info * Molecular grid with 113597 points generated in 0.04 sec.                                                         
+* Info * Molecular grid with 113597 points generated in 0.05 sec.                                                         
                                                                                                                           
 * Info * Building RHS for w = 0.000                                                                                       
 * Info * 4.66 kB of memory used for subspace procedure on the master node                                                 
-* Info * 115.28 GB of memory available for the solver on the master node                                                  
+* Info * 112.65 GB of memory available for the solver on the master node                                                  
                                                                                                                           
 * Info * 1.57 MB of memory used for subspace procedure on the master node                                                 
-* Info * 115.28 GB of memory available for the solver on the master node                                                  
+* Info * 112.65 GB of memory available for the solver on the master node                                                  
                                                                                                                           
-* Info * ** Time spent on constructing the orbrsp RHS for 1 frequencies: 1.77 sec **                                      
+* Info * ** Time spent on constructing the orbrsp RHS for 1 frequencies: 3.39 sec **                                      
                                                                                                                           
 * Info * Processing 6 Fock builds...                                                                                      
                                                                                                                           
 * Info * 6 trial vectors in reduced space                                                                                 
                                                                                                                           
 * Info * 132.37 kB of memory used for subspace procedure on the master node                                               
-* Info * 115.28 GB of memory available for the solver on the master node                                                  
+* Info * 112.64 GB of memory available for the solver on the master node                                                  
                                                                                                                           
                *** Iteration:   1 * Residuals (Max,Min): 2.16e-01 and 5.70e-02                                            
                                                                                                                           
@@ -536,7 +536,7 @@
 * Info * 12 trial vectors in reduced space                                                                                
                                                                                                                           
 * Info * 220.21 kB of memory used for subspace procedure on the master node                                               
-* Info * 115.29 GB of memory available for the solver on the master node                                                  
+* Info * 112.53 GB of memory available for the solver on the master node                                                  
                                                                                                                           
                *** Iteration:   2 * Residuals (Max,Min): 4.00e-02 and 1.28e-02                                            
                                                                                                                           
@@ -545,7 +545,7 @@
 * Info * 18 trial vectors in reduced space                                                                                
                                                                                                                           
 * Info * 308.05 kB of memory used for subspace procedure on the master node                                               
-* Info * 115.29 GB of memory available for the solver on the master node                                                  
+* Info * 112.59 GB of memory available for the solver on the master node                                                  
                                                                                                                           
                *** Iteration:   3 * Residuals (Max,Min): 4.80e-03 and 2.01e-03                                            
                                                                                                                           
@@ -554,7 +554,7 @@
 * Info * 24 trial vectors in reduced space                                                                                
                                                                                                                           
 * Info * 395.89 kB of memory used for subspace procedure on the master node                                               
-* Info * 115.29 GB of memory available for the solver on the master node                                                  
+* Info * 112.59 GB of memory available for the solver on the master node                                                  
                                                                                                                           
                *** Iteration:   4 * Residuals (Max,Min): 6.66e-04 and 3.01e-04                                            
                                                                                                                           
@@ -563,7 +563,7 @@
 * Info * 30 trial vectors in reduced space                                                                                
                                                                                                                           
 * Info * 527.82 kB of memory used for subspace procedure on the master node                                               
-* Info * 115.33 GB of memory available for the solver on the master node                                                  
+* Info * 112.62 GB of memory available for the solver on the master node                                                  
                                                                                                                           
                *** Iteration:   5 * Residuals (Max,Min): 9.63e-05 and 3.21e-05                                            
                                                                                                                           
@@ -571,7 +571,7 @@
                                                                                                                           
 * Info * Time spent in writing checkpoint file: 0.00 sec                                                                  
                                                                                                                           
-               *** Coupled-Perturbed Kohn-Sham converged in 5 iterations. Time: 4.26 sec                                  
+               *** Coupled-Perturbed Kohn-Sham converged in 5 iterations. Time: 8.76 sec                                  
                                                                                                                           
                                                                                                                           
 * Info * Using the B3LYP functional.                                                                                      
@@ -586,23 +586,23 @@
                                                                                                                           
          J. Kussmann, H. Laqua and C. Ochsenfeld, J. Chem. Theory Comput. 2021, 17, 1512-1521
                                                                                                                           
-* Info * Molecular grid with 113597 points generated in 0.05 sec.                                                         
+* Info * Molecular grid with 113597 points generated in 0.06 sec.                                                         
                                                                                                                           
 * Info * Building omega for w = 0.000                                                                                     
 * Info * 277.56 kB of memory used for subspace procedure on the master node                                               
-* Info * 115.34 GB of memory available for the solver on the master node                                                  
+* Info * 112.52 GB of memory available for the solver on the master node                                                  
                                                                                                                           
                                                                                                                           
-                      ** Time spent on constructing omega multipliers for 1 frequencies: 0.73 sec **                      
+                      ** Time spent on constructing omega multipliers for 1 frequencies: 1.64 sec **                      
                                                                                                                           
 * Info * Building gradient for frequency = 0.000                                                                          
                                                                                                                           
 * Info * 396.00 bytes of memory used for subspace procedure on the master node                                            
-* Info * 115.39 GB of memory available for the solver on the master node                                                  
+* Info * 112.71 GB of memory available for the solver on the master node                                                  
                                                                                                                           
-* Info * ** Time spent on constructing the analytical gradient for 1 frequencies: 21.44 sec **                            
+* Info * ** Time spent on constructing the analytical gradient for 1 frequencies: 28.71 sec **                            
                                                                                                                           
-                             *** Time spent in polarizability gradient driver: 26.49 sec ***                              
+                             *** Time spent in polarizability gradient driver: 39.18 sec ***                              
                                                                                                                           
                                                    Free Energy Analysis                                                   
                                                   ======================                                                  
@@ -724,9 +724,9 @@
 * Info * Full vibrational analysis results written to: acro-raman-vib-results.out                                         
                                                                                                                           
 !========================================================================================================================!
-!                               VeloxChem execution completed at Fri May  9 17:43:00 2025.                               !
+!                               VeloxChem execution completed at Tue May 20 13:18:56 2025.                               !
 !========================================================================================================================!
-!                                           Total execution time is 53.07 sec.                                           !
+!                                           Total execution time is 86.66 sec.                                           !
 !========================================================================================================================!
 !                     Rinkevicius, Z.; Li, X.; Vahtras, O.; Ahmadzadeh, K.; Brand, M.; Ringholm, M.;                     !
 !                              List, N. H.; Scheurer, M.; Scott, M.; Dreuw, A.; Norman, P.                               !
