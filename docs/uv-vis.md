@@ -34,6 +34,7 @@ $$
 where $f$ is the [Cauchy distribution](https://en.wikipedia.org/wiki/Cauchy_distribution).
 
 **Python script**
+
 ```
 import veloxchem as vlx
 

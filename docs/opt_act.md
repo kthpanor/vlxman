@@ -33,9 +33,10 @@ R_{n0} =
 \langle n | \hat{m}_\alpha | 0\rangle
 $$
 
-In VeloxChem, the rotatory strength is evaluated in the velocity gauge as given in the second expression.
+In VeloxChem, the rotatory strength is evaluated in the velocity gauge as given in the second expression, and it is thereby gauge-origin independent.
 
 **Python script**
+
 ```
 import veloxchem as vlx
 
@@ -57,7 +58,8 @@ rsp_drv.nto = True
 rsp_drv.filename = 'mol-ecd'
 results = rsp_drv.compute(molecule, basis, results)
 ```
-Download a [Python script](../input_files/alanine-ecd.py) type of input file to calculate the the ECD spectra for the 10 first excited state of the alanine molecule at the CAM-B3LYP/def2-svp level of theory.
+
+Download a {download}`Python script <../input_files/alanine-ecd.py>` type of input file to calculate the the ECD spectra for the ten lowest singlet excited states of the alanine molecule at the CAM-B3LYP/def2-svp level of theory.
 
 **Text file**
 
@@ -85,7 +87,8 @@ xyz:
 @end
 
 ```
-Download a [text file](../input_files/alanine-ecd.inp) type of input file to calculate the ECD spectra for the 10 first excited state of the alanine molecule at the CAM-B3LYP/def2-svp level of theory.
+
+Download a {download}`text file <../input_files/alanine-ecd.inp>` type of input file to calculate the ECD spectra for the ten lowest singlet excited state of the alanine molecule at the CAM-B3LYP/def2-svp level of theory.
 
 ## Extinction coefficient
 
@@ -128,6 +131,7 @@ The resulting values for $\Delta \epsilon(\omega)$
 are converted  from atomic units to units of L mol$^{-1}$ cm$^{-1}$ by multiplying with a factor of $10\, a_0^2$.
 
 **Python script**
+
 ```
 import veloxchem as vlx
 
@@ -151,9 +155,11 @@ cpp_drv.filename = 'mol-cpp'
 
 cpp_results = cpp_drv.compute(molecule, basis, scf_results)
 ```
-Download a [Python script](../input_files/alanine-cpp.py) type of input file to calculate the the ECD spectra with the CPP approach for the alanine molecule at the CAM-B3LYP/def2-svp level of theory.
+
+Download a {download}`Python script <../input_files/alanine-cpp.py>` type of input file to calculate the the ECD spectra with the CPP approach for the alanine molecule at the CAM-B3LYP/def2-svp level of theory.
 
 **Text file**
+
 ```
 @jobs
 task: response
@@ -178,18 +184,21 @@ xyz:
 ...
 @end
 ```
-Download a [text file](../input_files/alanine-cpp.inp) type of input file to calculate the the ECD spectra with the CPP approach for the alanine molecule at the CAM-B3LYP/def2-svp level of theory.
 
+Download a {download}`text file <../input_files/alanine-cpp.inp>` type of input file to calculate the the ECD spectra with the CPP approach for the alanine molecule at the CAM-B3LYP/def2-svp level of theory.
 
 ## Exciton coupling model
 
 VeloxChem implements the exciton coupling model to determine circular dichroism spectra.
+
 **Python script**
+
 ```
 to be added.
 ```
 
 **Text file**
+
 ```
 @jobs
 task: exciton

@@ -1,21 +1,18 @@
 (sec:vib_spect)=
 # Vibrational spectroscopies
 
-This page presents how to calculate IR, Raman and Resonance Raman spectra by using the keyword: ```do_ir```, ```@do_raman```, ```@do_resonance_raman``` respectively in the ```@vibrational``` section. IR and calculated at the same time as Raman OR resonance Raman.
-
-The following ```@vibrational``` section show you the default settings of the vibrational task.
-```
-@vibrational
-do_ir: yes
-do_raman: no
-do_resonance_raman: no
-@end
-```
-
 Calculations of normal modes are performed with the aid of geomeTRIC {cite}`geomeTRIC`.
+
+The associated IR spectrum is calculated by default also when Raman or resonance Raman calculations are requested.
 
 (sec:ir)=
 ## Infra-red
+
+**Python script**
+
+to be added
+
+**Text file**
 
 ```
 @jobs
@@ -38,10 +35,18 @@ xyz:
 ...                     
 @end
 ```
-[Download](../input_files/acro-ir.inp) an input file to perfom an IR spectra calculation of the acroleine molecule at the B3LYP/def2-svp level of theory.
+
+Download a {download}`text file <../input_files/acro-ir.inp>` type of input file to perform an IR spectrum calculation of the acroleine molecule at the B3LYP/def2-svp level of theory.
 
 (sec:raman)=
 ## Raman
+
+**Python script**
+
+to be added
+
+**Text file**
+
 ```
 @jobs
 task: vibrational
@@ -63,10 +68,17 @@ xyz:
 ...                     
 @end
 ```
-[Download](../input_files/acro-raman.inp) an input file to perfom a Raman spectra calculation of the acroleine molecule at the B3LYP/def2-svp level of theory.
+Download a {download}`text file <../input_files/acro-raman.inp>` type of input file to perform a Raman spectrum calculation of the acroleine molecule at the B3LYP/def2-svp level of theory.
 
 (sec:rrs)=
 ## Resonance Raman
+
+**Python script**
+
+to be added
+
+**Text file**
+
 ```
 @jobs
 task: vibrational
@@ -89,7 +101,8 @@ xyz:
 ...                      
 @end
 ```
-[Download](../input_files/acro-reson-raman.inp) an input file to perfom a Raman spectra calculation of the acroleine molecule at the B3LYP/def2-svp level of theory.
+
+Download a {download}`text file <../input_files/acro-reson-raman.inp>` type of input file to perform a Raman spectrum calculation of the acroleine molecule at the B3LYP/def2-svp level of theory.
 
 ```{image} ../images/acro.png
 :alt: cover
