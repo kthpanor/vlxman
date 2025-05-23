@@ -6,7 +6,7 @@ Calculations of normal modes are performed with the aid of geomeTRIC {cite}`geom
 The associated IR spectrum is calculated by default also when Raman or resonance Raman calculations are requested.
 
 (sec:ir)=
-## Infra-red
+## Infrared
 
 **Python script**
 
