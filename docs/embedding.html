@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -57,8 +57,6 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/embedding';</script>
     <link rel="icon" href="../_static/vlx_logo_mark.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -201,6 +199,15 @@
 <li class="toctree-l1"><a class="reference internal" href="linear-response.html">Linear response</a></li>
 <li class="toctree-l1"><a class="reference internal" href="nlo.html">Multi-photon interactions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xray.html">X-ray spectroscpies</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Classical methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="mm.html">Molecular mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="im.html">Interpolation mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md.html">Molecular dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conf_search.html">Conformational search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loc_prop.html">Localized properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evb.html">Empirical valence bond</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Visualization</span></p>
 <ul class="nav bd-sidenav">
@@ -411,12 +418,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#localized-properties">Localized properties</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#esp-charges">ESP charges</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resp-charges">RESP charges</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loprop-charges-and-polarizabilities">LoProp charges and polarizabilities</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cpcm">CPCM</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polarizable-embedding">Polarizable embedding</a></li>
 </ul>
             </nav>
@@ -431,257 +433,12 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="environment">
 <h1>Environment<a class="headerlink" href="#environment" title="Link to this heading">#</a></h1>
-<section id="localized-properties">
-<h2>Localized properties<a class="headerlink" href="#localized-properties" title="Link to this heading">#</a></h2>
-<section id="esp-charges">
-<h3>ESP charges<a class="headerlink" href="#esp-charges" title="Link to this heading">#</a></h3>
-<p>Since there is no unique definition for partial charges and no corresponding physical observable, they can be assigned in several ways, such as being derived from the quantum mechanical electrostatic potential</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{equation*}
-V(\boldsymbol{r}) = 
-\sum_{I}
-\frac{Z_I e}{4\pi\varepsilon_0 |\boldsymbol{r}-\mathrm{\textbf{R}}_I|} - e
-\sum_{\mu,\nu}
-D_{\mu\nu}
-\int 
-\frac{
-\phi_\mu^*(\boldsymbol{r}')\phi_\nu(\boldsymbol{r}')
-}{
-4\pi\varepsilon_0
-|\boldsymbol{r}-\boldsymbol{r}'|
-}
-d^3\boldsymbol{r}'
-\end{equation*}\]</div>
-<p>that can be replaced with a potential caused by the partial charges:</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{equation*}
-\widetilde{V}(\boldsymbol{r}) = 
-\sum_{I}
-\frac{
-q_I
-}{
-4\pi\varepsilon_0
-|\boldsymbol{r}-\textbf{R}_I|
-}
-\end{equation*}\]</div>
-<p>The Merz–Kollman scheme minimizes the squared norm difference between these two quantities evaluated on a set of grid points in the solvent-accessible region of the molecule with respect to variations in the partial charges and a constraint of a conservation of the total molecular charge – the grid points are distributed on successive layers of scaled van der Waals surfaces. This measure is referred to as the figure-of-merit</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{equation*}
-\chi_{\mathrm{esp}}^2 = \sum_a \bigl(V(\boldsymbol{r}_a) - \widetilde{V}(\boldsymbol{r}_a)\bigl)^2
-\end{equation*}\]</div>
-<p>The resulting electrostatic potential (ESP) charges are obtained by solving the equation</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{equation*}
-\mathrm{\textbf{A}} \, \mathrm{\textbf{q}} = \mathrm{\textbf{b}}
-\end{equation*}\]</div>
-<p>where</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{equation*}
-A_{JI} =
-\frac{1}{4\pi\varepsilon_0}
-\sum_{a} \frac{1}{r_{aI}r_{aJ}}
-\end{equation*}\]</div>
-<p>and</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{equation*}
-b_J = \sum_{a} \frac{V_a}{r_{aJ}}
-\end{equation*}\]</div>
-<p>The ESP charges are detemined with VeloxChem in a Jupyter notebook according to</p>
-<p><strong>Python script</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">veloxchem</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">vlx</span>
-
-<span class="n">xyz_str</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">...</span>
-<span class="s2">&quot;&quot;&quot;</span>
-
-<span class="n">molecule</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">Molecule</span><span class="o">.</span><span class="n">read_xyz_string</span><span class="p">(</span><span class="n">xyz_str</span><span class="p">)</span>
-<span class="n">basis</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">MolecularBasis</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="s1">&#39;6-31g&#39;</span><span class="p">)</span>
-
-<span class="n">esp_drv</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">RespChargesDriver</span><span class="p">()</span>
-<span class="n">esp_drv</span><span class="o">.</span><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;mol-esp&#39;</span>
-<span class="n">esp_drv</span><span class="o">.</span><span class="n">update_settings</span><span class="p">({</span>
-    <span class="s1">&#39;number_layers&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-    <span class="s1">&#39;density&#39;</span><span class="p">:</span> <span class="mf">10.0</span><span class="p">,</span>
-<span class="p">})</span>
-<span class="n">esp_charges</span> <span class="o">=</span> <span class="n">esp_drv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">basis</span><span class="p">,</span> <span class="s1">&#39;esp&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Download a <a class="reference download internal" download="" href="../_downloads/c559c4bea7730f1b1c67e99ae8d2d3e0/h2o-esp.py"><span class="xref download myst">Python script</span></a> type of input file to calculate the ESP charges for the water molecule at the HF/6-31G level of theory.</p>
-<p><strong>Text file</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
-<span class="n">task</span><span class="p">:</span> <span class="n">esp</span> <span class="n">charges</span>
-<span class="nd">@end</span>
-
-<span class="nd">@method</span> <span class="n">settings</span>
-<span class="n">basis</span><span class="p">:</span> <span class="mi">6</span><span class="o">-</span><span class="mi">31</span><span class="n">g</span>
-<span class="nd">@end</span>
-
-<span class="nd">@esp</span> <span class="n">charges</span>
-<span class="n">number</span> <span class="n">layers</span><span class="p">:</span> <span class="mi">5</span>
-<span class="n">density</span><span class="p">:</span> <span class="mf">10.0</span>
-<span class="nd">@end</span>
-
-<span class="nd">@molecule</span>
-<span class="n">charge</span><span class="p">:</span> <span class="mi">0</span>
-<span class="n">multiplicity</span><span class="p">:</span> <span class="mi">1</span>
-<span class="n">xyz</span><span class="p">:</span>  
-<span class="o">...</span>
-<span class="nd">@end</span>
-</pre></div>
-</div>
-<p>Download a <a class="reference download internal" download="" href="../_downloads/e3d3357df1a28d04a4d3c4820e1f6b6b/h2o-esp.inp"><span class="xref download myst">text file</span></a> type of input file to calculate the ESP charges for the water molecule at the HF/6-31G level of theory.</p>
-<p>In both cases, the user needs to specify the number of layers of the molecular surface as well as the surface grid point density in these layers (in units of Å<span class="math notranslate nohighlight">\(^{-2}\)</span>).</p>
-</section>
-<section id="resp-charges">
-<h3>RESP charges<a class="headerlink" href="#resp-charges" title="Link to this heading">#</a></h3>
-<p>The restrained electrostatic potential (RESP) charge model is an improvement to the Merz–Kollman scheme as the figure-of-merit is rather insensitive to variations in charges of atoms buried inside the molecule.</p>
-<figure class="align-center" id="chi-square">
-<a class="reference internal image-reference" href="../_images/chi_square.png"><img alt="../_images/chi_square.png" src="../_images/chi_square.png" style="width: 600px;" />
-</a>
-<figcaption>
-<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Dependence of figure-of-merit, <span class="math notranslate nohighlight">\(\chi^2_\mathrm{esp}\)</span>, with respect to variations in atomic charges. Four separate atoms are here considered.</span><a class="headerlink" href="#chi-square" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>To avoid unphysically high magnitudes of the charges of interior atoms, a hyperbolic penalty function is added</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{equation*}
-\chi_{\mathrm{rstr}}^2 = \alpha \sum_I \bigl((q_I^2+\beta^2)^{1/2}-\beta\bigl)
-\end{equation*}\]</div>
-<p>so that the diagonal matrix elements become equal to</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{equation*}
-A_{JJ} = 
-\frac{1}{4\pi\varepsilon_0}
-\sum_{a} \frac{1}{r_{aJ}^2} + \alpha \, (q_J^2+\beta^2)^{-1/2}
-\end{equation*}\]</div>
-<p>with a dependency on the partial charge. Consequently, RESP charges are obtained by solving the matrix equation iteratively until the charges and Lagrange multipliers become self-consistent. In addition to that, the RESP charge model allows for the introduction of constraints on charges of equivalent atoms due to symmetry operations or bond rotations.</p>
-<p>The RESP charges are detemined with VeloxChem in a Jupyter notebook according to
-<strong>Python script</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">veloxchem</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">vlx</span>
-
-<span class="n">xyz_str</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">...</span>
-<span class="s2">&quot;&quot;&quot;</span>
-
-<span class="n">molecule</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">Molecule</span><span class="o">.</span><span class="n">read_xyz_string</span><span class="p">(</span><span class="n">xyz_str</span><span class="p">)</span>
-<span class="n">basis</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">MolecularBasis</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="s1">&#39;6-31g*&#39;</span><span class="p">)</span>
-
-<span class="n">resp_drv</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">RespChargesDriver</span><span class="p">()</span>
-<span class="n">resp_drv</span><span class="o">.</span><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;mol-resp&#39;</span>
-<span class="n">resp_drv</span><span class="o">.</span><span class="n">update_settings</span><span class="p">({</span>
-    <span class="s1">&#39;equal_charges&#39;</span><span class="p">:</span> <span class="s1">&#39;2 = 3&#39;</span>
-<span class="p">})</span>
-<span class="n">resp_charges</span> <span class="o">=</span> <span class="n">resp_drv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">basis</span><span class="p">,</span> <span class="s1">&#39;resp&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Download a <a class="reference download internal" download="" href="../_downloads/7ed5feb43adf71d030e1345bea15f57b/h2o-resp.py"><span class="xref download myst">Python script</span></a> type of input file to calculate the RESP charges for the water molecule at the HF/6-31G* level of theory.</p>
-<p><strong>Text file</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@jobs
-task: resp charges
-@end
-
-@method settings
-basis: 6-31g*
-@end
-
-@resp charges
-equal charges: 2 = 3    ! with reference to the atom ordering below
-@end
-
-@molecule
-charge: 0
-multiplicity: 1
-xyz:  
-...
-@end 
-</pre></div>
-</div>
-<p>Download a <a class="reference download internal" download="" href="../_downloads/d9176bd0356f287b5281cf6ca093bf94/h2o-resp.inp"><span class="xref download myst">text file</span></a> type of input file to calculate the RESP charges for the water molecule at the HF/6-31G* level of theory.</p>
-</section>
-<section id="loprop-charges-and-polarizabilities">
-<h3>LoProp charges and polarizabilities<a class="headerlink" href="#loprop-charges-and-polarizabilities" title="Link to this heading">#</a></h3>
-<p>The LoProp approach <span id="id1">[<a class="reference internal" href="refs.html#id6" title="Laura Gagliardi, Roland Lindh, and Gunnar Karlström. Local properties of quantum chemical systems: The LoProp approach. J. Chem. Phys., 121(10):4494–4500, 2004. doi:10.1063/1.1778131.">GLKarlstrom04</a>]</span> is implemented for the determination of localized (atomic) charges and polarizabilities that enter into polarizable embedding calculations of optical spectra.</p>
-<p><strong>Python script</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">veloxchem</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">vlx</span>
-
-<span class="n">xyz_str</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">...</span>
-<span class="s2">&quot;&quot;&quot;</span>
-
-<span class="n">molecule</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">Molecule</span><span class="o">.</span><span class="n">read_xyz_string</span><span class="p">(</span><span class="n">xyz_str</span><span class="p">)</span>
-<span class="n">basis</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">MolecularBasis</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="s1">&#39;ANO-S-VDZP&#39;</span><span class="p">)</span>
-
-<span class="n">scf_drv</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">ScfRestrictedDriver</span><span class="p">()</span>
-<span class="n">scf_results</span> <span class="o">=</span> <span class="n">scf_drv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">basis</span><span class="p">)</span>
-
-<span class="n">loprop_drv</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">PEForceFieldGenerator</span><span class="p">()</span>
-<span class="n">loprop_filename</span> <span class="o">=</span> <span class="s1">&#39;mol-loprop&#39;</span>
-<span class="n">loprop_results</span> <span class="o">=</span> <span class="n">loprop_drv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">basis</span><span class="p">,</span> <span class="n">scf_results</span><span class="p">)</span>
-
-</pre></div>
-</div>
-<p>Download a <a class="reference download internal" download="" href="../_downloads/bc5ca6a15e2a7d0970362c9fc69ed3cb/h2o-loprop.py"><span class="xref download myst">Python script</span></a> type of input file to calculate the LOPROP charges and atomic polarizabilities for the water molecule at the B3LYP/ANO-S-VDPZ level of theory.</p>
-<p><strong>Text file</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@jobs
-task: loprop
-@end
-
-@method settings
-xcfun: b3lyp
-basis: ANO-S-VDZP ! An ANO type of basis set should be used
-@end
-
-@molecule
-charge: 0
-multiplicity: 1
-xyz:
-...
-@end
-</pre></div>
-</div>
-<p>Download a <a class="reference download internal" download="" href="../_downloads/6346fa7a6c938a23b77b9c407da481c3/h2o-loprop.inp"><span class="xref download myst">text file</span></a> the input file to calculate the LOPROP charges and atomic polarizabilities for the water molecule at the B3LYP/ANO-S-VDPZ level of theory.</p>
-<p>With the three input files provided above, you should get the following charges for the water molecule.</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head text-center"><p>Charges</p></th>
-<th class="head text-center"><p>ESP</p></th>
-<th class="head text-center"><p>RESP</p></th>
-<th class="head text-center"><p>LOPROP</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-center"><p>O</p></td>
-<td class="text-center"><p>-0.924862</p></td>
-<td class="text-center"><p>-0.792355</p></td>
-<td class="text-center"><p>-0.6791</p></td>
-</tr>
-<tr class="row-odd"><td class="text-center"><p>H1</p></td>
-<td class="text-center"><p>0.462365</p></td>
-<td class="text-center"><p>0.396178</p></td>
-<td class="text-center"><p>0.3396</p></td>
-</tr>
-<tr class="row-even"><td class="text-center"><p>H2</p></td>
-<td class="text-center"><p>0.462497</p></td>
-<td class="text-center"><p>0.396178</p></td>
-<td class="text-center"><p>0.3396</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<a class="bg-primary mb-1 reference internal image-reference" href="../_images/water.png"><img alt="cover" class="bg-primary mb-1 align-center" src="../_images/water.png" style="width: 400px;" />
-</a>
-<p>And the following anisotropic atomic polarizabilities are obtained from the LOPROP calculation:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>             <span class="n">xx</span>         <span class="n">xy</span>         <span class="n">xz</span>         <span class="n">yy</span>         <span class="n">yz</span>         <span class="n">zz</span>
-<span class="n">O</span>    <span class="p">:</span>     <span class="mf">4.0255</span>    <span class="o">-</span><span class="mf">0.0000</span>    <span class="o">-</span><span class="mf">0.0000</span>     <span class="mf">3.1646</span>    <span class="o">-</span><span class="mf">0.0000</span>     <span class="mf">3.9143</span>
-<span class="n">H1</span>   <span class="p">:</span>     <span class="mf">1.8695</span>    <span class="o">-</span><span class="mf">0.0000</span>     <span class="mf">1.1639</span>     <span class="mf">1.3817</span>    <span class="o">-</span><span class="mf">0.0000</span>     <span class="mf">1.6858</span>
-<span class="n">H2</span>   <span class="p">:</span>     <span class="mf">1.8695</span>     <span class="mf">0.0000</span>    <span class="o">-</span><span class="mf">1.1639</span>     <span class="mf">1.3817</span>    <span class="o">-</span><span class="mf">0.0000</span>     <span class="mf">1.6858</span>
-</pre></div>
-</div>
-<p>Those charges and polarizabilities can be used for polarizable embedding</p>
-</section>
+<section id="cpcm">
+<span id="sec-cpcm"></span><h2>CPCM<a class="headerlink" href="#cpcm" title="Link to this heading">#</a></h2>
+<p>to be added</p>
 </section>
 <section id="polarizable-embedding">
-<h2>Polarizable embedding<a class="headerlink" href="#polarizable-embedding" title="Link to this heading">#</a></h2>
+<span id="sec-pe"></span><h2>Polarizable embedding<a class="headerlink" href="#polarizable-embedding" title="Link to this heading">#</a></h2>
 <p>An SCF calculation with a polarizable environment is performed in VeloxChem with an input file of the form</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
 <span class="n">task</span><span class="p">:</span> <span class="n">scf</span>
@@ -792,12 +549,7 @@ xyz:
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#localized-properties">Localized properties</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#esp-charges">ESP charges</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resp-charges">RESP charges</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loprop-charges-and-polarizabilities">LoProp charges and polarizabilities</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cpcm">CPCM</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polarizable-embedding">Polarizable embedding</a></li>
 </ul>
   </nav></div>

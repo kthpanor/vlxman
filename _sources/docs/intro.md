@@ -13,7 +13,7 @@ This manual gives a description of the installation process and basic usage of V
 ```{image} ../images/swedish_moebius.jpg
 :alt: cover
 :class: bg-primary mb-1
-:width: 450px
+:width: 400px
 :align: right
 ```
 
@@ -36,9 +36,9 @@ This manual gives a description of the installation process and basic usage of V
     - [Resonance Raman spectroscopy](sec:rrs) (RRS)
 - Classical methods
     - [Molecular mechanics](sec:mm) (MM)
-    - Interpolation mechanics (IM)
-    - Molecular dynamics (MD)
-    - Conformational search
-    - Polarizable embedding (PE)
-    - Localized properties (LoProp, RESP)
-    - Empirical Valence Bond (EVB)
+    - [Interpolation mechanics](sec:im) (IM)
+    - [Molecular dynamics](md) (MD)
+    - [Conformational search](sec:conf_search)
+    - [Polarizable embedding](sec:pe) (PE)
+    - [Localized properties](sec:loc_prop) (LoProp, RESP)
+    - [Empirical valence bond](sec:evb) (EVB)

@@ -1,5 +1,5 @@
 (sec:mm)=
 # Molecular mechanics
 
-(sec:ff-gen)=
+(sec:mm-ff-gen)=
 ## Force field generation

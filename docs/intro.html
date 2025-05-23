@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -206,6 +206,11 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Classical methods</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="mm.html">Molecular mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="im.html">Interpolation mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md.html">Molecular dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conf_search.html">Conformational search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loc_prop.html">Localized properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evb.html">Empirical valence bond</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Visualization</span></p>
 <ul class="nav bd-sidenav">
@@ -439,7 +444,7 @@ document.write(`
 <p>VeloxChem offers modeling of complex molecular systems by means of force-field molecular dynamics and polarizable embedding in combination with user-friendly support for automatized solvation and force-field derivations. It is an ideal platform for building simulation workflows and data-driven research <span id="id2">[<a class="reference internal" href="refs.html#id5" title="Juan Angel de Gracia Trivino, Iulia Emilia Brumboiu, David Carrasco-Busturia, Xin Li, Chenxi Li, Mathieu Linares, Valentin Lindfeld, Young Min Rhee, Julia Rune, Bastiaan van Hoorn, Patrick Norman, and Mårten S. G. Ahlquist. Veloxchem quantum–classical interoperability for modeling of complex molecular systems. J. Phys. Chem. A, 2025. submitted.">dGTBCB+25</a>]</span>.</p>
 <p>VeloxChem is education enabling, providing a means to explain and explore the theory underlying computational chemistry in a highly interactive manner <span id="id3">[<a class="reference internal" href="refs.html#id4" title="Thomas Fransson, Mickael G. Delcey, Iulia Emilia Brumboiu, Manuel Hodecker, Xin Li, Zilvinas Rinkevicius, Andreas Dreuw, Young Min Rhee, and Patrick Norman. eChem: A Notebook Exploration of Quantum Chemistry. J. Chem. Educ., 100(4):1664–1671, 2023. doi:10.1021/acs.jchemed.2c01103.">FDB+23</a>]</span>. It is science enabling, providing a means for accelerated method development in quantum chemistry <span id="id4">[<a class="reference internal" href="refs.html#id2" title="Manuel Hodecker, Patrick Norman, and Iulia Emilia Brumboiu. eChem: Accelerated method development in quantum chemistry with notebooks. 2025. doi:10.26434/chemrxiv-2025-x0csm.">HNB25</a>]</span>.</p>
 <p>This manual gives a description of the installation process and basic usage of VeloxChem. A more comprehensive view of the ample opportunities for Python software interactions is provided in the <a class="reference external" href="https://kthpanor.github.io/echem">eChem</a> book <span id="id5">[<a class="reference internal" href="refs.html#id3" title="Thomas Fransson, Mickael Delcey, Iulia E. Brumboiu, Manuel Hodecker, Xin Li, Zilvinas Rinkevicius, Andreas Dreuw, Young Min Rhee, and Patrick Norman. Computational Chemistry from Laptop to HPC: A notebook exploration of quantum chemistry. KTH Royal Institute of Technology, 2022. doi:10.30746/978-91-988114-0-7.">FDB+22</a>]</span>.</p>
-<a class="bg-primary mb-1 reference internal image-reference" href="../_images/swedish_moebius.jpg"><img alt="cover" class="bg-primary mb-1 align-right" src="../_images/swedish_moebius.jpg" style="width: 450px;" />
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/swedish_moebius.jpg"><img alt="cover" class="bg-primary mb-1 align-right" src="../_images/swedish_moebius.jpg" style="width: 400px;" />
 </a>
 <section id="selected-functionalities">
 <h3>Selected functionalities<a class="headerlink" href="#selected-functionalities" title="Link to this heading">#</a></h3>
@@ -468,12 +473,12 @@ document.write(`
 <li><p>Classical methods</p>
 <ul>
 <li><p><a class="reference internal" href="mm.html#sec-mm"><span class="std std-ref">Molecular mechanics</span></a> (MM)</p></li>
-<li><p>Interpolation mechanics (IM)</p></li>
-<li><p>Molecular dynamics (MD)</p></li>
-<li><p>Conformational search</p></li>
-<li><p>Polarizable embedding (PE)</p></li>
-<li><p>Localized properties (LoProp, RESP)</p></li>
-<li><p>Empirical Valence Bond (EVB)</p></li>
+<li><p><a class="reference internal" href="im.html#sec-im"><span class="std std-ref">Interpolation mechanics</span></a> (IM)</p></li>
+<li><p><a class="reference internal" href="md.html"><span class="doc std std-doc">Molecular dynamics</span></a> (MD)</p></li>
+<li><p><a class="reference internal" href="conf_search.html#sec-conf-search"><span class="std std-ref">Conformational search</span></a></p></li>
+<li><p><a class="reference internal" href="embedding.html#sec-pe"><span class="std std-ref">Polarizable embedding</span></a> (PE)</p></li>
+<li><p><a class="reference internal" href="loc_prop.html#sec-loc-prop"><span class="std std-ref">Localized properties</span></a> (LoProp, RESP)</p></li>
+<li><p><a class="reference internal" href="evb.html#sec-evb"><span class="std std-ref">Empirical valence bond</span></a> (EVB)</p></li>
 </ul>
 </li>
 </ul>

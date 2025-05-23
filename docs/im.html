@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Basis sets &#8212; VeloxChem program manual</title>
+    <title>Interpolation mechanics &#8212; VeloxChem program manual</title>
   
   
   
@@ -57,12 +57,12 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/basis_sets';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/im';</script>
     <link rel="icon" href="../_static/vlx_logo_mark.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Hamiltonian" href="hamiltonian.html" />
-    <link rel="prev" title="Exchange–correlation functionals" href="functionals.html" />
+    <link rel="next" title="Molecular dynamics" href="md.html" />
+    <link rel="prev" title="Molecular mechanics" href="mm.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -181,11 +181,11 @@
 <li class="toctree-l1"><a class="reference internal" href="keywords.html">Input text file keywords</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Model chemistry</span></p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="molecule.html">Molecule</a></li>
 <li class="toctree-l1"><a class="reference internal" href="refstate.html">Reference states</a></li>
 <li class="toctree-l1"><a class="reference internal" href="functionals.html">Exchange–correlation functionals</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Basis sets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basis_sets.html">Basis sets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="hamiltonian.html">Hamiltonian</a></li>
 <li class="toctree-l1"><a class="reference internal" href="embedding.html">Environment</a></li>
 </ul>
@@ -201,9 +201,9 @@
 <li class="toctree-l1"><a class="reference internal" href="xray.html">X-ray spectroscpies</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Classical methods</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="mm.html">Molecular mechanics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="im.html">Interpolation mechanics</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Interpolation mechanics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="md.html">Molecular dynamics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conf_search.html">Conformational search</a></li>
 <li class="toctree-l1"><a class="reference internal" href="loc_prop.html">Localized properties</a></li>
@@ -294,7 +294,7 @@
       
       
       
-      <li><a href="https://github.com/kthpanor/vlxman/issues/new?title=Issue%20on%20page%20%2Fdocs/basis_sets.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/kthpanor/vlxman/issues/new?title=Issue%20on%20page%20%2Fdocs/im.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -324,7 +324,7 @@
       
       
       
-      <li><a href="../_sources/docs/basis_sets.ipynb" target="_blank"
+      <li><a href="../_sources/docs/im.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -334,7 +334,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.ipynb</span>
+<span class="btn__text-container">.md</span>
 </a>
 </li>
       
@@ -408,7 +408,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Basis sets</h1>
+    <h1>Interpolation mechanics</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -418,10 +418,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basis-set-specification">Basis set specification</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#available-basis-sets">Available basis sets</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effective-core-potential-basis-sets">Effective-core potential basis sets</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-basis-set">Adding a basis set</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#force-field-generation">Force field generation</a></li>
 </ul>
             </nav>
         </div>
@@ -433,99 +430,10 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="basis-sets">
-<h1>Basis sets<a class="headerlink" href="#basis-sets" title="Link to this heading">#</a></h1>
-<section id="basis-set-specification">
-<h2>Basis set specification<a class="headerlink" href="#basis-set-specification" title="Link to this heading">#</a></h2>
-<p><strong>Python script</strong></p>
-<p>The choice of basis set is specified with the <code class="docutils literal notranslate"><span class="pre">read</span></code> method of the <code class="docutils literal notranslate"><span class="pre">MolecularBasis</span></code> class:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">basis</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">MolecularBasis</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="s2">&quot;cc-pVDZ&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Text file</strong></p>
-<p>The choice of basis set is specified under <code class="docutils literal notranslate"><span class="pre">method</span> <span class="pre">settings</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@method</span> <span class="n">settings</span>
-<span class="n">basis</span><span class="p">:</span> <span class="n">def2</span><span class="o">-</span><span class="n">svp</span>
-<span class="nd">@end</span>
-</pre></div>
-</div>
-</section>
-<section id="available-basis-sets">
-<h2>Available basis sets<a class="headerlink" href="#available-basis-sets" title="Link to this heading">#</a></h2>
-<p>The basis sets provided in the VeloxChem library for a specific element can be listed with the <code class="docutils literal notranslate"><span class="pre">get_avail_basis</span></code> method of the <code class="docutils literal notranslate"><span class="pre">MolecularBasis</span></code> class.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">avail_basis_carbon</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">MolecularBasis</span><span class="o">.</span><span class="n">get_avail_basis</span><span class="p">(</span><span class="s1">&#39;C&#39;</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Available basis sets for carbon:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">avail_basis_carbon</span><span class="p">),</span> <span class="mi">6</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">avail_basis_carbon</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="mi">6</span><span class="p">]))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Available basis sets for carbon:
-
-6-31++G, 6-31++G*, 6-31++G**, 6-31+G, 6-31+G*, 6-31+G**
-6-311++G, 6-311++G(2D,2P), 6-311++G(3DF,3PD), 6-311++G*, 6-311++G**, 6-311+G
-6-311+G(2D,P), 6-311+G*, 6-311+G**, 6-311G, 6-311G(2DF,2PD), 6-311G*
-6-311G**, 6-31G, 6-31G(2DF,P), 6-31G(3DF,3PD), 6-31G*, 6-31G**
-ANO-L-MB, ANO-L-VDZP, ANO-L-VQZP, ANO-L-VTZP, ANO-RCC-MB, ANO-S-MB
-ANO-S-VDZP, AO-START-GUESS, AUG-CC-PCV5Z, AUG-CC-PCVDZ, AUG-CC-PCVQZ, AUG-CC-PCVTZ
-AUG-CC-PV5Z, AUG-CC-PV6Z, AUG-CC-PVDZ, AUG-CC-PVQZ, AUG-CC-PVTZ, AUG-PCSEG-0
-AUG-PCSEG-1, AUG-PCSEG-2, AUG-PCSEG-3, AUG-PCSEG-4, AUG-PCX-1, AUG-PCX-2
-AUG-PCX-3, AUG-PCX-4, CC-PCV5Z, CC-PCVDZ, CC-PCVQZ, CC-PCVTZ
-CC-PV5Z, CC-PV6Z, CC-PV6Z-NO-OPT-GC, CC-PVDZ, CC-PVQZ, CC-PVTZ
-DAUG-CC-PCV5Z, DAUG-CC-PCVDZ, DAUG-CC-PCVQZ, DAUG-CC-PCVTZ, DAUG-CC-PV5Z, DAUG-CC-PV6Z
-DAUG-CC-PVDZ, DAUG-CC-PVQZ, DAUG-CC-PVTZ, DEF2-QZVP, DEF2-QZVPD, DEF2-QZVPP
-DEF2-QZVPPD, DEF2-SV(P), DEF2-SVP, DEF2-SVPD, DEF2-TZVP, DEF2-TZVPD
-DEF2-TZVPP, DEF2-TZVPPD, DEF2-UNIVERSAL-JFIT, DEF2-UNIVERSAL-JKFIT, PCSEG-0, PCSEG-1
-PCSEG-2, PCSEG-3, PCSEG-4, PCX-1, PCX-2, PCX-3
-PCX-4, SADLEJ-PVTZ, STO-3G, STO-3G-OLD, STO-6G, TAUG-CC-PCV5Z
-TAUG-CC-PCVDZ, TAUG-CC-PCVQZ, TAUG-CC-PCVTZ, TAUG-CC-PV5Z, TAUG-CC-PV6Z, TAUG-CC-PVDZ
-TAUG-CC-PVQZ, TAUG-CC-PVTZ
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="effective-core-potential-basis-sets">
-<h2>Effective-core potential basis sets<a class="headerlink" href="#effective-core-potential-basis-sets" title="Link to this heading">#</a></h2>
-<p>Effective-core potatials are in the process of being implmented in VeloxChem.</p>
-</section>
-<section id="adding-a-basis-set">
-<h2>Adding a basis set<a class="headerlink" href="#adding-a-basis-set" title="Link to this heading">#</a></h2>
-<p>You can provide you own basis set file in the job submission directory. The format of this file exeplified below for a single element (carbon), listing separated contracted atomic orbitals (AOs) after one another with specification made of the orbital angular momentum and number of Gaussian primitive functions.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@BASIS_SET</span> <span class="n">my_basis</span>
-
-<span class="nd">@ATOMBASIS</span> <span class="n">C</span>
-<span class="n">S</span> <span class="mi">6</span>  <span class="mi">1</span>
-<span class="mf">3.047524900000e+03</span>  <span class="mf">1.834700000000e-03</span>
-<span class="mf">4.573695100000e+02</span>  <span class="mf">1.403730000000e-02</span>
-<span class="mf">1.039486900000e+02</span>  <span class="mf">6.884260000000e-02</span>
-<span class="mf">2.921015500000e+01</span>  <span class="mf">2.321844000000e-01</span>
-<span class="mf">9.286663000000e+00</span>  <span class="mf">4.679413000000e-01</span>
-<span class="mf">3.163927000000e+00</span>  <span class="mf">3.623120000000e-01</span>
-<span class="n">S</span> <span class="mi">3</span>  <span class="mi">1</span>
-<span class="mf">7.868272400000e+00</span> <span class="o">-</span><span class="mf">1.193324000000e-01</span>
-<span class="mf">1.881288500000e+00</span> <span class="o">-</span><span class="mf">1.608542000000e-01</span>
-<span class="mf">5.442493000000e-01</span>  <span class="mf">1.143456400000e+00</span>
-<span class="n">P</span> <span class="mi">3</span>  <span class="mi">1</span>
-<span class="mf">7.868272400000e+00</span>  <span class="mf">6.899910000000e-02</span>
-<span class="mf">1.881288500000e+00</span>  <span class="mf">3.164240000000e-01</span>
-<span class="mf">5.442493000000e-01</span>  <span class="mf">7.443083000000e-01</span>
-<span class="n">S</span> <span class="mi">1</span>  <span class="mi">1</span>
-<span class="mf">1.687144000000e-01</span>  <span class="mf">1.000000000000e+00</span>
-<span class="n">P</span> <span class="mi">1</span>  <span class="mi">1</span>
-<span class="mf">1.687144000000e-01</span>  <span class="mf">1.000000000000e+00</span>
-<span class="nd">@END</span>
-</pre></div>
-</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="interpolation-mechanics">
+<span id="sec-im"></span><h1>Interpolation mechanics<a class="headerlink" href="#interpolation-mechanics" title="Link to this heading">#</a></h1>
+<section id="force-field-generation">
+<span id="sec-im-ff-gen"></span><h2>Force field generation<a class="headerlink" href="#force-field-generation" title="Link to this heading">#</a></h2>
 </section>
 </section>
 
@@ -560,20 +468,20 @@ TAUG-CC-PVQZ, TAUG-CC-PVTZ
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="functionals.html"
+       href="mm.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Exchange–correlation functionals</p>
+        <p class="prev-next-title">Molecular mechanics</p>
       </div>
     </a>
     <a class="right-next"
-       href="hamiltonian.html"
+       href="md.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Hamiltonian</p>
+        <p class="prev-next-title">Molecular dynamics</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -593,10 +501,7 @@ TAUG-CC-PVQZ, TAUG-CC-PVTZ
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basis-set-specification">Basis set specification</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#available-basis-sets">Available basis sets</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effective-core-potential-basis-sets">Effective-core potential basis sets</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-basis-set">Adding a basis set</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#force-field-generation">Force field generation</a></li>
 </ul>
   </nav></div>
 

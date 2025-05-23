@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Electronic densities &#8212; VeloxChem program manual</title>
+    <title>Molecular dynamics &#8212; VeloxChem program manual</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -57,10 +57,12 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/elec_dens';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/md';</script>
     <link rel="icon" href="../_static/vlx_logo_mark.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Conformational search" href="conf_search.html" />
+    <link rel="prev" title="Interpolation mechanics" href="im.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -123,8 +125,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -172,24 +172,17 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="intro.html">
-                    Home
-                </a>
-            </li>
-        </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="limits.html">Pushing the limits</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installing the program</a></li>
 <li class="toctree-l1"><a class="reference internal" href="run_desktop.html">Running on a laptop/desktop</a></li>
 <li class="toctree-l1"><a class="reference internal" href="run_cluster.html">Running on a cluster</a></li>
-<li class="toctree-l1"><a class="reference internal" href="keywords.html">Input file keywords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="keywords.html">Input text file keywords</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Model chemistry</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="molecule.html">Molecule</a></li>
 <li class="toctree-l1"><a class="reference internal" href="refstate.html">Reference states</a></li>
 <li class="toctree-l1"><a class="reference internal" href="functionals.html">Exchange–correlation functionals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="basis_sets.html">Basis sets</a></li>
@@ -207,10 +200,19 @@
 <li class="toctree-l1"><a class="reference internal" href="nlo.html">Multi-photon interactions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xray.html">X-ray spectroscpies</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Classical methods</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="mm.html">Molecular mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="im.html">Interpolation mechanics</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Molecular dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conf_search.html">Conformational search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loc_prop.html">Localized properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evb.html">Empirical valence bond</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Visualization</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="vis.html">Visualization in Jupyter Notebook</a></li>
-
+<li class="toctree-l1"><a class="reference internal" href="vis.html">Jupyter notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viamd.html">VIAMD software</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced users</span></p>
 <ul class="nav bd-sidenav">
@@ -292,7 +294,7 @@
       
       
       
-      <li><a href="https://github.com/kthpanor/vlxman/issues/new?title=Issue%20on%20page%20%2Fdocs/elec_dens.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/kthpanor/vlxman/issues/new?title=Issue%20on%20page%20%2Fdocs/md.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -322,7 +324,7 @@
       
       
       
-      <li><a href="../_sources/docs/elec_dens.md" target="_blank"
+      <li><a href="../_sources/docs/md.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -393,9 +395,7 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -406,24 +406,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Electronic densities</h1>
+    <h1>Molecular dynamics</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cube-files">Cube files</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#molecular-orbitals">Molecular orbitals</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#natural-transition-orbitals-and-attachment-detachment-densities">Natural transition orbitals and attachment/detachment densities</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-cube-files">Visualize cube files</a></li>
-</ul>
-</li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -433,73 +420,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="electronic-densities">
-<h1>Electronic densities<a class="headerlink" href="#electronic-densities" title="Link to this heading">#</a></h1>
-<section id="cube-files">
-<h2>Cube files<a class="headerlink" href="#cube-files" title="Link to this heading">#</a></h2>
-<section id="molecular-orbitals">
-<h3>Molecular orbitals<a class="headerlink" href="#molecular-orbitals" title="Link to this heading">#</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
-<span class="n">task</span><span class="p">:</span> <span class="n">visualization</span>
-<span class="nd">@end</span>
-
-<span class="nd">@method</span> <span class="n">settings</span>
-<span class="n">basis</span><span class="p">:</span> <span class="n">def2</span><span class="o">-</span><span class="n">svp</span>
-<span class="nd">@end</span>
-
-<span class="nd">@visualization</span>
-<span class="n">cubes</span><span class="p">:</span> <span class="n">density</span><span class="p">(</span><span class="n">alpha</span><span class="p">),</span> <span class="n">mo</span><span class="p">(</span><span class="n">homo</span><span class="p">)</span>
-<span class="n">files</span><span class="p">:</span> <span class="n">density</span><span class="o">.</span><span class="n">cube</span><span class="p">,</span> <span class="n">homo</span><span class="o">.</span><span class="n">cube</span>
-<span class="nd">@end</span>
-
-<span class="nd">@molecule</span>
-<span class="n">charge</span><span class="p">:</span> <span class="mi">0</span>
-<span class="n">multiplicity</span><span class="p">:</span> <span class="mi">1</span>
-<span class="n">xyz</span><span class="p">:</span>
-<span class="n">O</span>  <span class="mf">0.00000</span>  <span class="mf">0.00000</span>  <span class="mf">0.00000</span>
-<span class="n">H</span>  <span class="mf">0.00000</span>  <span class="mf">0.00000</span>  <span class="mf">1.79524</span>
-<span class="n">H</span>  <span class="mf">1.69319</span>  <span class="mf">0.00000</span> <span class="o">-</span><span class="mf">0.59904</span>
-<span class="nd">@end</span> 
-</pre></div>
-</div>
-</section>
-<section id="natural-transition-orbitals-and-attachment-detachment-densities">
-<h3>Natural transition orbitals and attachment/detachment densities<a class="headerlink" href="#natural-transition-orbitals-and-attachment-detachment-densities" title="Link to this heading">#</a></h3>
-<p>Cube files for natural transition orbitals (NTOs) and detachment/attachment densities can be generated in response calculations with the following response section statements:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@response</span>
-<span class="nb">property</span><span class="p">:</span> <span class="n">absorption</span>
-<span class="n">nstates</span><span class="p">:</span> <span class="mi">3</span>
-<span class="n">nto</span><span class="p">:</span> <span class="n">yes</span>
-<span class="n">nto_pairs</span><span class="p">:</span> <span class="mi">2</span>
-<span class="n">detach_attach</span><span class="p">:</span> <span class="n">yes</span>
-<span class="nd">@end</span>
-</pre></div>
-</div>
-</section>
-<section id="visualize-cube-files">
-<h3>Visualize cube files<a class="headerlink" href="#visualize-cube-files" title="Link to this heading">#</a></h3>
-<p>The cube files can be visualized in a Jupyter notebook with use of the <a class="reference external" href="https://pypi.org/project/py3Dmol/">py3Dmol</a> module:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">py3Dmol</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">p3d</span>
-
-<span class="c1"># generate view</span>
-<span class="n">v</span> <span class="o">=</span> <span class="n">p3d</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
-
-<span class="n">v</span><span class="o">.</span><span class="n">addModel</span><span class="p">(</span><span class="n">pyridine_xyz</span><span class="p">,</span> <span class="s2">&quot;xyz&quot;</span><span class="p">)</span>
-<span class="n">v</span><span class="o">.</span><span class="n">setStyle</span><span class="p">({</span><span class="s1">&#39;stick&#39;</span><span class="p">:{}})</span>
-
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;cube_1.cube&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="n">cube</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-
-<span class="c1"># negative lobe    </span>
-<span class="n">v</span><span class="o">.</span><span class="n">addVolumetricData</span><span class="p">(</span><span class="n">cube</span><span class="p">,</span> <span class="s2">&quot;cube&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;isoval&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">0.02</span><span class="p">,</span> <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;opacity&quot;</span><span class="p">:</span> <span class="mf">0.75</span><span class="p">})</span>
-<span class="c1"># positive lobe</span>
-<span class="n">v</span><span class="o">.</span><span class="n">addVolumetricData</span><span class="p">(</span><span class="n">cube</span><span class="p">,</span> <span class="s2">&quot;cube&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;isoval&quot;</span><span class="p">:</span> <span class="mf">0.02</span><span class="p">,</span> <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;opacity&quot;</span><span class="p">:</span> <span class="mf">0.75</span><span class="p">})</span>
-
-<span class="n">v</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</section>
-</section>
+  <section class="tex2jax_ignore mathjax_ignore" id="molecular-dynamics">
+<span id="sec-md"></span><h1>Molecular dynamics<a class="headerlink" href="#molecular-dynamics" title="Link to this heading">#</a></h1>
 </section>
 
     <script type="text/x-thebe-config">
@@ -532,32 +454,30 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="im.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Interpolation mechanics</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="conf_search.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Conformational search</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cube-files">Cube files</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#molecular-orbitals">Molecular orbitals</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#natural-transition-orbitals-and-attachment-detachment-densities">Natural transition orbitals and attachment/detachment densities</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-cube-files">Visualize cube files</a></li>
-</ul>
-</li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>
@@ -578,7 +498,7 @@ By The VeloxChem team
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2025.
       <br/>
     
   </p>

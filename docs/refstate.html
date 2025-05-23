@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -199,6 +199,15 @@
 <li class="toctree-l1"><a class="reference internal" href="linear-response.html">Linear response</a></li>
 <li class="toctree-l1"><a class="reference internal" href="nlo.html">Multi-photon interactions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xray.html">X-ray spectroscpies</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Classical methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="mm.html">Molecular mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="im.html">Interpolation mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md.html">Molecular dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conf_search.html">Conformational search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loc_prop.html">Localized properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evb.html">Empirical valence bond</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Visualization</span></p>
 <ul class="nav bd-sidenav">
@@ -431,7 +440,7 @@ document.write(`
 <p>A detailed list of keyword can be found in the <a class="reference internal" href="keywords.html#scf-optimization"><span class="std std-ref">SCF optimization</span></a> section of the <a class="reference internal" href="keywords.html"><span class="std std-doc">input file keywords</span></a> page.</p>
 <p>By default, the Hartree–Fock method is employed. To use Kohn–Sham DFT, any of the several available functionals is specified as illustrated below, see the <a class="reference internal" href="functionals.html"><span class="std std-doc">exchange-correlation functionals</span></a> page for a complete list of available functionals.</p>
 <section id="restricted-closed-shell">
-<h2>Restricted closed-shell<a class="headerlink" href="#restricted-closed-shell" title="Link to this heading">#</a></h2>
+<span id="sec-rhf"></span><h2>Restricted closed-shell<a class="headerlink" href="#restricted-closed-shell" title="Link to this heading">#</a></h2>
 <p><strong>Python script</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">veloxchem</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">vlx</span>
 
@@ -470,7 +479,7 @@ document.write(`
 </a>
 </section>
 <section id="restricted-open-shell">
-<h2>Restricted open-shell<a class="headerlink" href="#restricted-open-shell" title="Link to this heading">#</a></h2>
+<span id="sec-rohf"></span><h2>Restricted open-shell<a class="headerlink" href="#restricted-open-shell" title="Link to this heading">#</a></h2>
 <p><strong>Python script</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">veloxchem</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">vlx</span>
 
@@ -512,7 +521,7 @@ document.write(`
 </a>
 </section>
 <section id="unrestricted-open-shell">
-<h2>Unrestricted open-shell<a class="headerlink" href="#unrestricted-open-shell" title="Link to this heading">#</a></h2>
+<span id="sec-uhf"></span><h2>Unrestricted open-shell<a class="headerlink" href="#unrestricted-open-shell" title="Link to this heading">#</a></h2>
 <p><strong>Python script</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">veloxchem</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">vlx</span>
 
@@ -554,13 +563,13 @@ document.write(`
 </a>
 </section>
 <section id="restricted-mp2">
-<h2>Restricted MP2<a class="headerlink" href="#restricted-mp2" title="Link to this heading">#</a></h2>
+<span id="sec-rmp2"></span><h2>Restricted MP2<a class="headerlink" href="#restricted-mp2" title="Link to this heading">#</a></h2>
 </section>
 <section id="restricted-open-shell-mp2">
-<h2>Restricted open-shell MP2<a class="headerlink" href="#restricted-open-shell-mp2" title="Link to this heading">#</a></h2>
+<span id="sec-romp2"></span><h2>Restricted open-shell MP2<a class="headerlink" href="#restricted-open-shell-mp2" title="Link to this heading">#</a></h2>
 </section>
 <section id="unrestricted-mp2">
-<h2>Unrestricted MP2<a class="headerlink" href="#unrestricted-mp2" title="Link to this heading">#</a></h2>
+<span id="sec-ump2"></span><h2>Unrestricted MP2<a class="headerlink" href="#unrestricted-mp2" title="Link to this heading">#</a></h2>
 </section>
 </section>
 

@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -201,6 +201,15 @@
 <li class="toctree-l1"><a class="reference internal" href="linear-response.html">Linear response</a></li>
 <li class="toctree-l1"><a class="reference internal" href="nlo.html">Multi-photon interactions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xray.html">X-ray spectroscpies</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Classical methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="mm.html">Molecular mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="im.html">Interpolation mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md.html">Molecular dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conf_search.html">Conformational search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loc_prop.html">Localized properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evb.html">Empirical valence bond</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Visualization</span></p>
 <ul class="nav bd-sidenav">
@@ -457,7 +466,7 @@ R_{n0} =
 \langle 0 | \hat{p}_\alpha | n \rangle
 \langle n | \hat{m}_\alpha | 0\rangle
 \]</div>
-<p>In VeloxChem, the rotatory strength is evaluated in the velocity gauge as given in the second expression.</p>
+<p>In VeloxChem, the rotatory strength is evaluated in the velocity gauge as given in the second expression, and it is thereby gauge-origin independent.</p>
 <p><strong>Python script</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">veloxchem</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">vlx</span>
 
@@ -480,7 +489,7 @@ R_{n0} =
 <span class="n">results</span> <span class="o">=</span> <span class="n">rsp_drv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">basis</span><span class="p">,</span> <span class="n">results</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Download a <a class="reference download internal" download="" href="../_downloads/3acdadfa6786deb3984d2ac9eaf0ac0f/alanine-ecd.py"><span class="xref download myst">Python script</span></a> type of input file to calculate the the ECD spectra for the 10 first excited state of the alanine molecule at the CAM-B3LYP/def2-svp level of theory.</p>
+<p>Download a <a class="reference download internal" download="" href="../_downloads/3acdadfa6786deb3984d2ac9eaf0ac0f/alanine-ecd.py"><code class="xref download docutils literal notranslate"><span class="pre">Python</span> <span class="pre">script</span></code></a> type of input file to calculate the the ECD spectra for the ten lowest singlet excited states of the alanine molecule at the CAM-B3LYP/def2-svp level of theory.</p>
 <p><strong>Text file</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
 <span class="n">task</span><span class="p">:</span> <span class="n">response</span>
@@ -506,7 +515,7 @@ R_{n0} =
 
 </pre></div>
 </div>
-<p>Download a <a class="reference download internal" download="" href="../_downloads/e63616f6fd921d136c1c55ea7625cca5/alanine-ecd.inp"><span class="xref download myst">text file</span></a> type of input file to calculate the ECD spectra for the 10 first excited state of the alanine molecule at the CAM-B3LYP/def2-svp level of theory.</p>
+<p>Download a <a class="reference download internal" download="" href="../_downloads/e63616f6fd921d136c1c55ea7625cca5/alanine-ecd.inp"><code class="xref download docutils literal notranslate"><span class="pre">text</span> <span class="pre">file</span></code></a> type of input file to calculate the ECD spectra for the ten lowest singlet excited state of the alanine molecule at the CAM-B3LYP/def2-svp level of theory.</p>
 </section>
 <section id="extinction-coefficient">
 <h2>Extinction coefficient<a class="headerlink" href="#extinction-coefficient" title="Link to this heading">#</a></h2>
@@ -567,7 +576,7 @@ are converted  from atomic units to units of L mol<span class="math notranslate 
 <span class="n">cpp_results</span> <span class="o">=</span> <span class="n">cpp_drv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">basis</span><span class="p">,</span> <span class="n">scf_results</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Download a <a class="reference download internal" download="" href="../_downloads/455baab430c58902ff9ddebdc3bc2173/alanine-cpp.py"><span class="xref download myst">Python script</span></a> type of input file to calculate the the ECD spectra with the CPP approach for the alanine molecule at the CAM-B3LYP/def2-svp level of theory.</p>
+<p>Download a <a class="reference download internal" download="" href="../_downloads/455baab430c58902ff9ddebdc3bc2173/alanine-cpp.py"><code class="xref download docutils literal notranslate"><span class="pre">Python</span> <span class="pre">script</span></code></a> type of input file to calculate the the ECD spectra with the CPP approach for the alanine molecule at the CAM-B3LYP/def2-svp level of theory.</p>
 <p><strong>Text file</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@jobs
 task: response
@@ -593,12 +602,12 @@ xyz:
 @end
 </pre></div>
 </div>
-<p>Download a <a class="reference download internal" download="" href="../_downloads/ed1b6a51ef952de76a58bfeec67bdf3e/alanine-cpp.inp"><span class="xref download myst">text file</span></a> type of input file to calculate the the ECD spectra with the CPP approach for the alanine molecule at the CAM-B3LYP/def2-svp level of theory.</p>
+<p>Download a <a class="reference download internal" download="" href="../_downloads/ed1b6a51ef952de76a58bfeec67bdf3e/alanine-cpp.inp"><code class="xref download docutils literal notranslate"><span class="pre">text</span> <span class="pre">file</span></code></a> type of input file to calculate the the ECD spectra with the CPP approach for the alanine molecule at the CAM-B3LYP/def2-svp level of theory.</p>
 </section>
 <section id="exciton-coupling-model">
-<h2>Exciton coupling model<a class="headerlink" href="#exciton-coupling-model" title="Link to this heading">#</a></h2>
-<p>VeloxChem implements the exciton coupling model to determine circular dichroism spectra.
-<strong>Python script</strong></p>
+<span id="sec-ecm"></span><h2>Exciton coupling model<a class="headerlink" href="#exciton-coupling-model" title="Link to this heading">#</a></h2>
+<p>VeloxChem implements the exciton coupling model to determine circular dichroism spectra.</p>
+<p><strong>Python script</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">to</span> <span class="n">be</span> <span class="n">added</span><span class="o">.</span>
 </pre></div>
 </div>

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Input files &#8212; VeloxChem program manual</title>
+    <title>Empirical valence bond &#8212; VeloxChem program manual</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -57,10 +57,12 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/input_files';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/evb';</script>
     <link rel="icon" href="../_static/vlx_logo_mark.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Jupyter notebooks" href="vis.html" />
+    <link rel="prev" title="Localized properties" href="loc_prop.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -123,8 +125,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -172,24 +172,17 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="intro.html">
-                    Home
-                </a>
-            </li>
-        </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="limits.html">Pushing the limits</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installing the program</a></li>
-<li class="toctree-l1"><a class="reference internal" href="run_desktop.html">Running on a desktop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="run_desktop.html">Running on a laptop/desktop</a></li>
 <li class="toctree-l1"><a class="reference internal" href="run_cluster.html">Running on a cluster</a></li>
-<li class="toctree-l1"><a class="reference internal" href="keywords.html">Input file keywords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="keywords.html">Input text file keywords</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Model chemistry</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="molecule.html">Molecule</a></li>
 <li class="toctree-l1"><a class="reference internal" href="refstate.html">Reference states</a></li>
 <li class="toctree-l1"><a class="reference internal" href="functionals.html">Exchange–correlation functionals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="basis_sets.html">Basis sets</a></li>
@@ -198,18 +191,28 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Properties</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="pes.html">Potential energy surfaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="uv-vis.html">UV/vis absorption/emission</a></li>
 <li class="toctree-l1"><a class="reference internal" href="opt_act.html">Optical activity and dichroism</a></li>
 <li class="toctree-l1"><a class="reference internal" href="vib_spect.html">Vibrational spectroscopies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pes.html">Potential energy surfaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="magnetic.html">Magnetic resonances</a></li>
 <li class="toctree-l1"><a class="reference internal" href="linear-response.html">Linear response</a></li>
 <li class="toctree-l1"><a class="reference internal" href="nlo.html">Multi-photon interactions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xray.html">X-ray spectroscpies</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Classical methods</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="mm.html">Molecular mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="im.html">Interpolation mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md.html">Molecular dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conf_search.html">Conformational search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loc_prop.html">Localized properties</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Empirical valence bond</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Visualization</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="elec_dens.html">Electronic densities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vis.html">Jupyter notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="viamd.html">VIAMD software</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced users</span></p>
 <ul class="nav bd-sidenav">
@@ -291,7 +294,7 @@
       
       
       
-      <li><a href="https://github.com/kthpanor/vlxman/issues/new?title=Issue%20on%20page%20%2Fdocs/input_files.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/kthpanor/vlxman/issues/new?title=Issue%20on%20page%20%2Fdocs/evb.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -321,7 +324,7 @@
       
       
       
-      <li><a href="../_sources/docs/input_files.md" target="_blank"
+      <li><a href="../_sources/docs/evb.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -392,9 +395,7 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -405,25 +406,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Input files</h1>
+    <h1>Empirical valence bond</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scf-calculation">SCF calculation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geometry-optimization">Geometry optimization</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uv-vis-ecd-absorption-with-linear-response">UV-VIS (ECD) absorption with Linear Response</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uv-vis-absorption-with-complex-polarization-propagator">UV-VIS absorption with Complex Polarization Propagator</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ecd-absorption-with-complex-polarization-propagator">ECD absorption with Complex Polarization Propagator</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vibrational-spectroscopy">Vibrational spectroscopy</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resonance-raman">Resonance Raman</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -433,189 +420,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="input-files">
-<h1>Input files<a class="headerlink" href="#input-files" title="Link to this heading">#</a></h1>
-<p>In this section, we provide a series of input files for different task.</p>
-<section id="scf-calculation">
-<h2>SCF calculation<a class="headerlink" href="#scf-calculation" title="Link to this heading">#</a></h2>
-<p>This example is for a restricted closed-shell , use <code class="docutils literal notranslate"><span class="pre">task:</span> <span class="pre">uscf</span></code> for unrestricted open-shell and <code class="docutils literal notranslate"><span class="pre">task:</span> <span class="pre">roscf</span></code> for restricted open-shell</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
-<span class="n">task</span><span class="p">:</span> <span class="n">scf</span>
-<span class="nd">@end</span>
-
-<span class="nd">@method</span> <span class="n">settings</span>
-<span class="n">xcfun</span><span class="p">:</span> <span class="n">b3lyp</span>
-<span class="n">basis</span><span class="p">:</span> <span class="n">def2</span><span class="o">-</span><span class="n">svp</span>
-<span class="nd">@end</span>
-
-<span class="nd">@molecule</span>
-<span class="n">charge</span><span class="p">:</span> <span class="mi">0</span>
-<span class="n">multiplicity</span><span class="p">:</span> <span class="mi">1</span>
-<span class="n">xyz</span><span class="p">:</span>
-<span class="o">...</span>
-<span class="nd">@end</span>
-</pre></div>
-</div>
-</section>
-<section id="geometry-optimization">
-<h2>Geometry optimization<a class="headerlink" href="#geometry-optimization" title="Link to this heading">#</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
-<span class="n">task</span><span class="p">:</span> <span class="n">optimize</span>
-<span class="nd">@end</span>
-
-<span class="nd">@method</span> <span class="n">settings</span>
-<span class="n">xcfun</span><span class="p">:</span> <span class="n">b3lyp</span>
-<span class="n">basis</span><span class="p">:</span> <span class="n">def2</span><span class="o">-</span><span class="n">svp</span>
-<span class="n">dispersion</span><span class="p">:</span> <span class="n">yes</span> <span class="c1"># use dft-d4 correction</span>
-<span class="nd">@end</span>
-
-<span class="nd">@molecule</span>
-<span class="n">charge</span><span class="p">:</span> <span class="mi">0</span>
-<span class="n">multiplicity</span><span class="p">:</span> <span class="mi">1</span>
-<span class="n">xyz</span><span class="p">:</span>
-<span class="o">...</span>
-<span class="nd">@end</span>
-</pre></div>
-</div>
-</section>
-<section id="uv-vis-ecd-absorption-with-linear-response">
-<h2>UV-VIS (ECD) absorption with Linear Response<a class="headerlink" href="#uv-vis-ecd-absorption-with-linear-response" title="Link to this heading">#</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
-<span class="n">task</span><span class="p">:</span> <span class="n">response</span>
-<span class="nd">@end</span>
-
-<span class="nd">@method</span> <span class="n">settings</span>
-<span class="n">xcfun</span><span class="p">:</span> <span class="n">b3lyp</span>
-<span class="n">basis</span><span class="p">:</span> <span class="n">def2</span><span class="o">-</span><span class="n">svp</span>
-<span class="nd">@end</span>
-
-<span class="nd">@response</span>
-<span class="nb">property</span><span class="p">:</span> <span class="n">absorption</span>
-<span class="n">nstates</span><span class="p">:</span> <span class="mi">5</span>
-<span class="n">nto</span><span class="p">:</span> <span class="n">yes</span>
-<span class="nd">@end</span>
-
-<span class="nd">@molecule</span>
-<span class="n">charge</span><span class="p">:</span> <span class="mi">0</span>
-<span class="n">multiplicity</span><span class="p">:</span> <span class="mi">1</span>
-<span class="n">xyz</span><span class="p">:</span>
-<span class="o">...</span>
-<span class="nd">@end</span>
-</pre></div>
-</div>
-</section>
-<section id="uv-vis-absorption-with-complex-polarization-propagator">
-<h2>UV-VIS absorption with Complex Polarization Propagator<a class="headerlink" href="#uv-vis-absorption-with-complex-polarization-propagator" title="Link to this heading">#</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@jobs
-task: response
-@end
-
-@method settings
-xcfun: b3lyp
-basis: def2-svp
-@end
-
-@response
-property: absorption (cpp)
-! frequency region (and resolution)
-frequencies: 0.0-0.15 (0.0025)
-@end
-
-@molecule
-charge: 0
-multiplicity: 1
-xyz:
-...
-@end
-</pre></div>
-</div>
-</section>
-<section id="ecd-absorption-with-complex-polarization-propagator">
-<h2>ECD absorption with Complex Polarization Propagator<a class="headerlink" href="#ecd-absorption-with-complex-polarization-propagator" title="Link to this heading">#</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@jobs
-task: response
-@end
-
-@method settings
-xcfun: b3lyp
-basis: def2-svp
-@end
-
-@response
-property: ecd (cpp)
-! frequency region (and resolution)
-frequencies: 0.0-0.15 (0.0025)
-@end
-
-@molecule
-charge: 0
-multiplicity: 1
-xyz:
-...
-@end
-</pre></div>
-</div>
-</section>
-<section id="vibrational-spectroscopy">
-<h2>Vibrational spectroscopy<a class="headerlink" href="#vibrational-spectroscopy" title="Link to this heading">#</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
-<span class="n">task</span><span class="p">:</span> <span class="n">vibrational</span>
-<span class="nd">@end</span>
-
-<span class="nd">@method</span> <span class="n">settings</span>
-<span class="n">xcfun</span><span class="p">:</span> <span class="n">b3lyp</span>
-<span class="n">basis</span><span class="p">:</span> <span class="n">def2</span><span class="o">-</span><span class="n">svp</span>
-<span class="nd">@end</span>
-
-<span class="nd">@vibrational</span>
-<span class="n">do_ir</span><span class="p">:</span> <span class="n">yes</span>
-<span class="n">do_raman</span><span class="p">:</span> <span class="n">yes</span>
-<span class="nd">@end</span>
-
-<span class="nd">@molecule</span>
-<span class="n">charge</span><span class="p">:</span> <span class="mi">0</span>
-<span class="n">multiplicity</span><span class="p">:</span> <span class="mi">1</span>
-<span class="n">xyz</span><span class="p">:</span>
-<span class="o">...</span>                
-<span class="nd">@end</span>
-
-</pre></div>
-</div>
-</section>
-<section id="resonance-raman">
-<h2>Resonance Raman<a class="headerlink" href="#resonance-raman" title="Link to this heading">#</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
-<span class="n">task</span><span class="p">:</span> <span class="n">vibrational</span>
-<span class="nd">@end</span>
-
-<span class="nd">@method</span> <span class="n">settings</span>
-<span class="n">xcfun</span><span class="p">:</span> <span class="n">b3lyp</span>
-<span class="n">basis</span><span class="p">:</span> <span class="n">def2</span><span class="o">-</span><span class="n">svp</span>
-<span class="nd">@end</span>
-
-<span class="nd">@vibrational</span>
-<span class="n">do_ir</span><span class="p">:</span> <span class="n">yes</span>
-<span class="n">do_raman</span><span class="p">:</span> <span class="n">yes</span>
-<span class="n">do_resonance_raman</span><span class="p">:</span> <span class="n">yes</span>
-<span class="n">frequencies</span><span class="p">:</span> <span class="mf">0.05</span><span class="o">-</span><span class="mf">0.25</span> <span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
-<span class="nd">@end</span>
-
-<span class="nd">@molecule</span>
-<span class="n">charge</span><span class="p">:</span> <span class="mi">0</span>
-<span class="n">multiplicity</span><span class="p">:</span> <span class="mi">1</span>
-<span class="n">xyz</span><span class="p">:</span>
-<span class="o">...</span>                  
-<span class="nd">@end</span>
-
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-</section>
+  <section class="tex2jax_ignore mathjax_ignore" id="empirical-valence-bond">
+<span id="sec-evb"></span><h1>Empirical valence bond<a class="headerlink" href="#empirical-valence-bond" title="Link to this heading">#</a></h1>
 </section>
 
     <script type="text/x-thebe-config">
@@ -648,33 +454,30 @@ xyz:
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="loc_prop.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Localized properties</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="vis.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Jupyter notebooks</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scf-calculation">SCF calculation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geometry-optimization">Geometry optimization</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uv-vis-ecd-absorption-with-linear-response">UV-VIS (ECD) absorption with Linear Response</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uv-vis-absorption-with-complex-polarization-propagator">UV-VIS absorption with Complex Polarization Propagator</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ecd-absorption-with-complex-polarization-propagator">ECD absorption with Complex Polarization Propagator</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vibrational-spectroscopy">Vibrational spectroscopy</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resonance-raman">Resonance Raman</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>
@@ -695,7 +498,7 @@ By The VeloxChem team
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2025.
       <br/>
     
   </p>
