@@ -449,8 +449,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div id="3dmolviewer_1748010934469818"  style="position: relative; width: 400px; height: 300px;">
-        <p id="3dmolwarning_1748010934469818" style="background-color:#ffcccc;color:black">3Dmol.js failed to load for some reason.  Please check your browser console for error messages.<br></p>
+<div class="output text_html"><div id="3dmolviewer_17480112472955918"  style="position: relative; width: 400px; height: 300px;">
+        <p id="3dmolwarning_17480112472955918" style="background-color:#ffcccc;color:black">3Dmol.js failed to load for some reason.  Please check your browser console for error messages.<br></p>
         </div>
 <script>
 
@@ -481,34 +481,34 @@ $3Dmolpromise = null;
   $3Dmolpromise = loadScriptAsync('https://cdnjs.cloudflare.com/ajax/libs/3Dmol/2.4.2/3Dmol-min.js');
 }
 
-var viewer_1748010934469818 = null;
-var warn = document.getElementById("3dmolwarning_1748010934469818");
+var viewer_17480112472955918 = null;
+var warn = document.getElementById("3dmolwarning_17480112472955918");
 if(warn) {
     warn.parentNode.removeChild(warn);
 }
 $3Dmolpromise.then(function() {
-viewer_1748010934469818 = $3Dmol.createViewer(document.getElementById("3dmolviewer_1748010934469818"),{backgroundColor:"white"});
-viewer_1748010934469818.zoomTo();
-	viewer_1748010934469818.addModel("15\n\nC             -0.036510000000         1.984421000000        -1.075305000000\nC             -0.777160000000         0.832262000000        -1.348643000000\nC             -0.460300000000        -0.372939000000        -0.713944000000\nC              0.605365000000        -0.435523000000         0.203880000000\nC              1.344286000000         0.731485000000         0.471232000000\nC              1.022874000000         1.933954000000        -0.166473000000\nC              0.946521000000        -1.706875000000         0.879240000000\nO              0.285638000000        -2.753970000000         0.641139000000\nO              2.002466000000        -1.758835000000         1.785628000000\nH             -0.283434000000         2.916154000000        -1.567642000000\nH             -1.597921000000         0.872596000000        -2.053139000000\nH             -1.048264000000        -1.253362000000        -0.941366000000\nH              2.169652000000         0.716645000000         1.171840000000\nH              1.596089000000         2.827548000000         0.044492000000\nH              2.244453000000        -2.624142000000         2.253553000000\n");
-	viewer_1748010934469818.setViewStyle({"style": "outline", "width": 0.05});
-	viewer_1748010934469818.setStyle({"stick": {}, "sphere": {"scale": 0.25}});
-	viewer_1748010934469818.addLabel("C1",{"position": {"x": -0.03651, "y": 1.9844209999999998, "z": -1.075305}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
-	viewer_1748010934469818.addLabel("C2",{"position": {"x": -0.77716, "y": 0.8322619999999998, "z": -1.348643}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
-	viewer_1748010934469818.addLabel("C3",{"position": {"x": -0.4603, "y": -0.372939, "z": -0.713944}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
-	viewer_1748010934469818.addLabel("C4",{"position": {"x": 0.605365, "y": -0.435523, "z": 0.20388}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
-	viewer_1748010934469818.addLabel("C5",{"position": {"x": 1.344286, "y": 0.731485, "z": 0.47123199999999993}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
-	viewer_1748010934469818.addLabel("C6",{"position": {"x": 1.022874, "y": 1.933954, "z": -0.166473}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
-	viewer_1748010934469818.addLabel("C7",{"position": {"x": 0.9465209999999998, "y": -1.706875, "z": 0.8792399999999999}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
-	viewer_1748010934469818.addLabel("O8",{"position": {"x": 0.285638, "y": -2.75397, "z": 0.6411389999999999}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
-	viewer_1748010934469818.addLabel("O9",{"position": {"x": 2.002466, "y": -1.758835, "z": 1.785628}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
-	viewer_1748010934469818.addLabel("H10",{"position": {"x": -0.283434, "y": 2.916154, "z": -1.567642}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
-	viewer_1748010934469818.addLabel("H11",{"position": {"x": -1.597921, "y": 0.872596, "z": -2.053139}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
-	viewer_1748010934469818.addLabel("H12",{"position": {"x": -1.048264, "y": -1.253362, "z": -0.941366}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
-	viewer_1748010934469818.addLabel("H13",{"position": {"x": 2.1696519999999997, "y": 0.716645, "z": 1.1718399999999998}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
-	viewer_1748010934469818.addLabel("H14",{"position": {"x": 1.596089, "y": 2.827548, "z": 0.04449199999999999}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
-	viewer_1748010934469818.addLabel("H15",{"position": {"x": 2.244453, "y": -2.624142, "z": 2.253553}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
-	viewer_1748010934469818.zoomTo();
-viewer_1748010934469818.render();
+viewer_17480112472955918 = $3Dmol.createViewer(document.getElementById("3dmolviewer_17480112472955918"),{backgroundColor:"white"});
+viewer_17480112472955918.zoomTo();
+	viewer_17480112472955918.addModel("15\n\nC             -0.036510000000         1.984421000000        -1.075305000000\nC             -0.777160000000         0.832262000000        -1.348643000000\nC             -0.460300000000        -0.372939000000        -0.713944000000\nC              0.605365000000        -0.435523000000         0.203880000000\nC              1.344286000000         0.731485000000         0.471232000000\nC              1.022874000000         1.933954000000        -0.166473000000\nC              0.946521000000        -1.706875000000         0.879240000000\nO              0.285638000000        -2.753970000000         0.641139000000\nO              2.002466000000        -1.758835000000         1.785628000000\nH             -0.283434000000         2.916154000000        -1.567642000000\nH             -1.597921000000         0.872596000000        -2.053139000000\nH             -1.048264000000        -1.253362000000        -0.941366000000\nH              2.169652000000         0.716645000000         1.171840000000\nH              1.596089000000         2.827548000000         0.044492000000\nH              2.244453000000        -2.624142000000         2.253553000000\n");
+	viewer_17480112472955918.setViewStyle({"style": "outline", "width": 0.05});
+	viewer_17480112472955918.setStyle({"stick": {}, "sphere": {"scale": 0.25}});
+	viewer_17480112472955918.addLabel("C1",{"position": {"x": -0.03651, "y": 1.9844209999999998, "z": -1.075305}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17480112472955918.addLabel("C2",{"position": {"x": -0.77716, "y": 0.8322619999999998, "z": -1.348643}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17480112472955918.addLabel("C3",{"position": {"x": -0.4603, "y": -0.372939, "z": -0.713944}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17480112472955918.addLabel("C4",{"position": {"x": 0.605365, "y": -0.435523, "z": 0.20388}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17480112472955918.addLabel("C5",{"position": {"x": 1.344286, "y": 0.731485, "z": 0.47123199999999993}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17480112472955918.addLabel("C6",{"position": {"x": 1.022874, "y": 1.933954, "z": -0.166473}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17480112472955918.addLabel("C7",{"position": {"x": 0.9465209999999998, "y": -1.706875, "z": 0.8792399999999999}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17480112472955918.addLabel("O8",{"position": {"x": 0.285638, "y": -2.75397, "z": 0.6411389999999999}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17480112472955918.addLabel("O9",{"position": {"x": 2.002466, "y": -1.758835, "z": 1.785628}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17480112472955918.addLabel("H10",{"position": {"x": -0.283434, "y": 2.916154, "z": -1.567642}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17480112472955918.addLabel("H11",{"position": {"x": -1.597921, "y": 0.872596, "z": -2.053139}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17480112472955918.addLabel("H12",{"position": {"x": -1.048264, "y": -1.253362, "z": -0.941366}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17480112472955918.addLabel("H13",{"position": {"x": 2.1696519999999997, "y": 0.716645, "z": 1.1718399999999998}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17480112472955918.addLabel("H14",{"position": {"x": 1.596089, "y": 2.827548, "z": 0.04449199999999999}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17480112472955918.addLabel("H15",{"position": {"x": 2.244453, "y": -2.624142, "z": 2.253553}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17480112472955918.zoomTo();
+viewer_17480112472955918.render();
 });
 </script></div></div>
 </div>

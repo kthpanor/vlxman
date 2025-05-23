@@ -1,6 +1,4 @@
-# Home
-
-## Next-generation quantum chemistry software
+# Next-generation quantum chemistry software
 
 VeloxChem {cite}`veloxchem` is a Python-based open source quantum chemistry software for contemporary and future hardware architectures. It features interactive program access through Jupyter notebooks as well as massively parallel calculations in high-performance computing (HPC) environments. 
 
@@ -17,7 +15,7 @@ This manual gives a description of the installation process and basic usage of V
 :align: right
 ```
 
-### Selected functionalities
+## Selected functionalities
 
 - Kohn–Sham Density Functional Theory (DFT)
 - Time-dependent DFT (TDDFT)
