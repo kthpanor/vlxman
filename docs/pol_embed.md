@@ -1,3 +1,0 @@
-(sec:pe)=
-# Polarizable embedding
-

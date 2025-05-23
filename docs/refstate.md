@@ -4,6 +4,7 @@ A detailed list of keyword can be found in the [SCF optimization](./keywords.ipy
 
 By default, the Hartree–Fock method is employed. To use Kohn–Sham DFT, any of the several available functionals is specified as illustrated below, see the [exchange-correlation functionals](./functionals.ipynb) page for a complete list of available functionals.
 
+(sec:rhf)=
 ## Restricted closed-shell
 
 **Python script**
@@ -49,6 +50,7 @@ Download a [text format](../input_files/biphenyl-scf.inp) type of input file to 
 :align: center
 ```
 
+(sec:rohf)=
 ## Restricted open-shell
 **Python script**
 ```
@@ -97,6 +99,7 @@ Download a [text format](../input_files/tempo-roscf.inp) type of input file to p
 :align: center
 ```
 
+(sec:uhf)=
 ## Unrestricted open-shell
 **Python script**
 ```
@@ -144,8 +147,11 @@ Download a [text format](../input_files/tritylradical-uscf.inp) type of input fi
 :align: center
 ```
 
+(sec:rmp2)=
 ## Restricted MP2
 
+(sec:romp2)=
 ## Restricted open-shell MP2
 
+(sec:ump2)=
 ## Unrestricted MP2

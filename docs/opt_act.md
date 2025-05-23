@@ -187,6 +187,7 @@ xyz:
 
 Download a {download}`text file <../input_files/alanine-cpp.inp>` type of input file to calculate the the ECD spectra with the CPP approach for the alanine molecule at the CAM-B3LYP/def2-svp level of theory.
 
+(sec:ecm)=
 ## Exciton coupling model
 
 VeloxChem implements the exciton coupling model to determine circular dichroism spectra.
