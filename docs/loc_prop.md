@@ -61,8 +61,6 @@ and
 b_J = \sum_{a} \frac{V_a}{r_{aJ}}
 \end{equation*}
 
-The ESP charges are detemined with VeloxChem in a Jupyter notebook according to
-
 **Python script**
 ```
 import veloxchem as vlx
@@ -82,9 +80,11 @@ esp_drv.update_settings({
 })
 esp_charges = esp_drv.compute(molecule, basis, 'esp')
 ```
-Download a [Python script](../input_files/h2o-esp.py) type of input file to calculate the ESP charges for the water molecule at the HF/6-31G level of theory.
+
+Download a {download}`Python script <../input_files/h2o-esp.py>` type of input file to calculate the ESP charges for the water molecule at the HF/6-31G level of theory.
 
 **Text file**
+
 ```
 @jobs
 task: esp charges
