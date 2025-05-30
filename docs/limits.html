@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -423,6 +423,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#performance-and-scaling">Performance and scaling</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#laptop">Laptop</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#desktop">Desktop</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resolution-of-identity">Resolution of identity</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hpc-cpu">HPC-CPU</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hpc-gpu">HPC-GPU</a></li>
 </ul>
@@ -459,6 +460,12 @@ document.write(`
 </section>
 <section id="desktop">
 <h3>Desktop<a class="headerlink" href="#desktop" title="Link to this heading">#</a></h3>
+</section>
+<section id="resolution-of-identity">
+<h3>Resolution of identity<a class="headerlink" href="#resolution-of-identity" title="Link to this heading">#</a></h3>
+<p>Timings are in seconds, measured on 1 LUMI-CPU node with 128 cores (8 MPI x 16 OMP). Systems are water clusters of different sizes. The time spent in one Fock-J build is measured with and without RI. Speedup can be 10x, 20x, 40x or 100x depending on basis set and system size</p>
+<a class="bg-primary mb-1 reference internal image-reference" href="../_images/ri.png"><img alt="cover" class="bg-primary mb-1 align-center" src="../_images/ri.png" style="width: 800px;" />
+</a>
 </section>
 <section id="hpc-cpu">
 <h3>HPC-CPU<a class="headerlink" href="#hpc-cpu" title="Link to this heading">#</a></h3>
@@ -545,6 +552,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#performance-and-scaling">Performance and scaling</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#laptop">Laptop</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#desktop">Desktop</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resolution-of-identity">Resolution of identity</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hpc-cpu">HPC-CPU</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hpc-gpu">HPC-GPU</a></li>
 </ul>

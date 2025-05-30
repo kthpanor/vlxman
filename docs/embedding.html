@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -435,7 +435,49 @@ document.write(`
 <h1>Environment<a class="headerlink" href="#environment" title="Link to this heading">#</a></h1>
 <section id="cpcm">
 <span id="sec-cpcm"></span><h2>CPCM<a class="headerlink" href="#cpcm" title="Link to this heading">#</a></h2>
-<p>to be added</p>
+<p>The conductor-like polarizable continuum model, CPCM is implemented in VeloxChem and can be activated in the scf driver. Here is an example for calculation in water.</p>
+<p><strong>Python script</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">veloxchem</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">vlx</span>
+
+<span class="n">mol_xyz_string</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">...</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">molecule</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">Molecule</span><span class="o">.</span><span class="n">read_xyz_string</span><span class="p">(</span><span class="n">mol_xyz_string</span><span class="p">)</span>
+<span class="n">basis</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">MolecularBasis</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="s1">&#39;def2-svp&#39;</span><span class="p">)</span>
+
+<span class="n">scf_drv</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">ScfRestrictedDriver</span><span class="p">()</span>
+<span class="n">scf_drv</span><span class="o">.</span><span class="n">solvation_model</span> <span class="o">=</span> <span class="s1">&#39;cpcm&#39;</span>
+<span class="n">scf_drv</span><span class="o">.</span><span class="n">cpcm_epsilon</span> <span class="o">=</span> <span class="mf">78.39</span>  <span class="c1"># Water</span>
+<span class="n">scf_drv</span><span class="o">.</span><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;mol-cpcm&#39;</span>
+
+<span class="n">scf_results</span> <span class="o">=</span> <span class="n">scf_drv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">mol</span><span class="p">,</span> <span class="n">basis</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>Download a <a class="reference download internal" download="" href="../_downloads/99a8e94741e0402c80a36d3075eae412/ethanol-cpcm.py"><span class="xref download myst">Python script</span></a> type of input file to perfom a scf calculation under the presence of a static electric field for the p-nitroaniline.</p>
+<p><strong>Text file</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
+<span class="n">task</span><span class="p">:</span> <span class="n">scf</span>
+<span class="nd">@end</span>
+
+<span class="nd">@method</span> <span class="n">settings</span>
+<span class="n">basis</span><span class="p">:</span> <span class="n">def2</span><span class="o">-</span><span class="n">svp</span>
+<span class="n">xcfun</span><span class="p">:</span> <span class="n">b3lyp</span>
+<span class="n">solvation</span> <span class="n">model</span><span class="p">:</span> <span class="n">cpcm</span>
+<span class="n">cpcm</span> <span class="n">epsilon</span> <span class="p">:</span> <span class="mf">78.39</span>
+<span class="nd">@end</span>
+
+<span class="nd">@molecule</span>
+<span class="n">charge</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">multiplicity</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">xyz</span><span class="p">:</span>
+<span class="o">...</span>
+<span class="nd">@end</span>
+
+</pre></div>
+</div>
+<p>Download a <a class="reference download internal" download="" href="../_downloads/990b75b18105493248d2273fb9e7434e/ethanol-cpcm.inp"><span class="xref download myst">text format</span></a> type of input file to perfom a scf calculation under the presence of a static electric field for the p-nitroaniline.</p>
 </section>
 <section id="polarizable-embedding">
 <span id="sec-pe"></span><h2>Polarizable embedding<a class="headerlink" href="#polarizable-embedding" title="Link to this heading">#</a></h2>

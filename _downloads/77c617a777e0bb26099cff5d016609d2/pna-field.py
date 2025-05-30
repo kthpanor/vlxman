@@ -24,7 +24,7 @@ H   -3.9970   -0.8756   -0.0019
 molecule = vlx.Molecule.read_xyz_string(pna_xyz_string)
 basis = vlx.MolecularBasis.read(molecule, 'def2-svp')
 
-scfdrv = vlx.ScfRestrictedDriver()
-scfdrv.filename = 'pna-field'
-scfdrv.electric_field = [0.01, 0.0, 0.0]
-scf_results = scfdrv.compute(molecule, basis)
+scf_drv = vlx.ScfRestrictedDriver()
+scf_drv.filename = 'pna-field'
+scf_drv.electric_field = [0.01, 0.0, 0.0]
+scf_results = scf_drv.compute(molecule, basis)

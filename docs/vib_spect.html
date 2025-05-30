@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -439,7 +439,28 @@ document.write(`
 <section id="infrared">
 <span id="sec-ir"></span><h2>Infrared<a class="headerlink" href="#infrared" title="Link to this heading">#</a></h2>
 <p><strong>Python script</strong></p>
-<p>to be added</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">veloxchem</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">vlx</span>
+
+<span class="n">xyz</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">... </span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">molecule</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">Molecule</span><span class="o">.</span><span class="n">read_xyz_string</span><span class="p">(</span><span class="n">xyz</span><span class="p">)</span>
+<span class="n">basis</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">MolecularBasis</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="s1">&#39;def2-svp&#39;</span><span class="p">)</span>
+
+<span class="n">scf_drv</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">ScfRestrictedDriver</span><span class="p">()</span>
+<span class="n">scf_drv</span><span class="o">.</span><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;mol-ir&#39;</span>
+<span class="n">scf_drv</span><span class="o">.</span><span class="n">xcfun</span> <span class="o">=</span> <span class="s1">&#39;b3lyp&#39;</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">scf_drv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">basis</span><span class="p">)</span>
+
+<span class="n">vib_drv</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">VibrationalAnalysis</span><span class="p">(</span><span class="n">scf_drv</span><span class="p">)</span>
+<span class="n">vib_drv</span><span class="o">.</span><span class="n">do_ir</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">scf_drv</span><span class="o">.</span><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;mol-ir&#39;</span>
+<span class="n">vib_results</span> <span class="o">=</span> <span class="n">vib_drv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">basis</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>Download a <a class="reference download internal" download="" href="../_downloads/11830f64cd31f4fafde9f72813d40716/acro-ir.py"><code class="xref download docutils literal notranslate"><span class="pre">Python</span> <span class="pre">script</span></code></a> type of input file to perform an IR spectrum calculation of the acroleine molecule at the B3LYP/def2-svp level of theory.</p>
 <p><strong>Text file</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
 <span class="n">task</span><span class="p">:</span> <span class="n">vibrational</span>
@@ -467,7 +488,29 @@ document.write(`
 <section id="raman">
 <span id="sec-raman"></span><h2>Raman<a class="headerlink" href="#raman" title="Link to this heading">#</a></h2>
 <p><strong>Python script</strong></p>
-<p>to be added</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">veloxchem</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">vlx</span>
+
+<span class="n">xyz</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">... </span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">molecule</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">Molecule</span><span class="o">.</span><span class="n">read_xyz_string</span><span class="p">(</span><span class="n">xyz</span><span class="p">)</span>
+<span class="n">basis</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">MolecularBasis</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="s1">&#39;def2-svp&#39;</span><span class="p">)</span>
+
+<span class="n">scf_drv</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">ScfRestrictedDriver</span><span class="p">()</span>
+<span class="n">scf_drv</span><span class="o">.</span><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;mol-raman&#39;</span>
+<span class="n">scf_drv</span><span class="o">.</span><span class="n">xcfun</span> <span class="o">=</span> <span class="s1">&#39;b3lyp&#39;</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">scf_drv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">basis</span><span class="p">)</span>
+
+<span class="n">vib_drv</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">VibrationalAnalysis</span><span class="p">(</span><span class="n">scf_drv</span><span class="p">)</span>
+<span class="n">vib_drv</span><span class="o">.</span><span class="n">do_ir</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">vib_drv</span><span class="o">.</span><span class="n">do_raman</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">vib_drv</span><span class="o">.</span><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;mol-raman&#39;</span>
+<span class="n">vib_results</span> <span class="o">=</span> <span class="n">vib_drv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">basis</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>Download a <a class="reference download internal" download="" href="../_downloads/c004f4649ee35689c23f17caf50c826a/acro-raman.py"><code class="xref download docutils literal notranslate"><span class="pre">Python</span> <span class="pre">script</span></code></a> type of input file to perform a Raman spectrum calculation of the acroleine molecule at the B3LYP/def2-svp level of theory.</p>
 <p><strong>Text file</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
 <span class="n">task</span><span class="p">:</span> <span class="n">vibrational</span>
@@ -495,7 +538,29 @@ document.write(`
 <section id="resonance-raman">
 <span id="sec-rrs"></span><h2>Resonance Raman<a class="headerlink" href="#resonance-raman" title="Link to this heading">#</a></h2>
 <p><strong>Python script</strong></p>
-<p>to be added</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">veloxchem</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">vlx</span>
+
+<span class="n">xyz</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">... </span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">molecule</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">Molecule</span><span class="o">.</span><span class="n">read_xyz_string</span><span class="p">(</span><span class="n">xyz</span><span class="p">)</span>
+<span class="n">basis</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">MolecularBasis</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="s1">&#39;def2-svp&#39;</span><span class="p">)</span>
+
+<span class="n">scf_drv</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">ScfRestrictedDriver</span><span class="p">()</span>
+<span class="n">scf_drv</span><span class="o">.</span><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;mol-reson-raman&#39;</span>
+<span class="n">scf_drv</span><span class="o">.</span><span class="n">xcfun</span> <span class="o">=</span> <span class="s1">&#39;b3lyp&#39;</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">scf_drv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">basis</span><span class="p">)</span>
+
+<span class="n">vib_drv</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">VibrationalAnalysis</span><span class="p">(</span><span class="n">scf_drv</span><span class="p">)</span>
+<span class="n">vib_drv</span><span class="o">.</span><span class="n">do_ir</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">vib_drv</span><span class="o">.</span><span class="n">do_raman</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">vib_drv</span><span class="o">.</span><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;mol-reson-raman&#39;</span>
+<span class="n">vib_results</span> <span class="o">=</span> <span class="n">vib_drv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">basis</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>Download a <a class="reference download internal" download="" href="../_downloads/86c38713b80aa1d11c376509ebb298c0/acro-reson-raman.py"><code class="xref download docutils literal notranslate"><span class="pre">Python</span> <span class="pre">script</span></code></a> type of input file to perform a resonance Raman spectrum calculation of the acroleine molecule at the B3LYP/def2-svp level of theory.</p>
 <p><strong>Text file</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
 <span class="n">task</span><span class="p">:</span> <span class="n">vibrational</span>
@@ -508,7 +573,7 @@ document.write(`
 
 <span class="nd">@vibrational</span>
 <span class="n">do_resonance_raman</span><span class="p">:</span> <span class="n">yes</span>
-<span class="n">frequencies</span><span class="p">:</span> <span class="mf">0.05</span><span class="o">-</span><span class="mf">0.25</span> <span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="n">frequencies</span><span class="p">:</span> <span class="mf">0.05</span><span class="o">-</span><span class="mf">0.10</span> <span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
 <span class="nd">@end</span>
 
 <span class="nd">@molecule</span>
@@ -519,7 +584,7 @@ document.write(`
 <span class="nd">@end</span>
 </pre></div>
 </div>
-<p>Download a <a class="reference download internal" download="" href="../_downloads/4b40c922743d47f83239a8593d22a7a8/acro-reson-raman.inp"><code class="xref download docutils literal notranslate"><span class="pre">text</span> <span class="pre">file</span></code></a> type of input file to perform a Raman spectrum calculation of the acroleine molecule at the B3LYP/def2-svp level of theory.</p>
+<p>Download a <a class="reference download internal" download="" href="../_downloads/4b40c922743d47f83239a8593d22a7a8/acro-reson-raman.inp"><code class="xref download docutils literal notranslate"><span class="pre">text</span> <span class="pre">file</span></code></a> type of input file to perform a resonance Raman spectrum calculation of the acroleine molecule at the B3LYP/def2-svp level of theory.</p>
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/acro.png"><img alt="cover" class="bg-primary mb-1 align-center" src="../_images/acro.png" style="width: 400px;" />
 </a>
 </section>

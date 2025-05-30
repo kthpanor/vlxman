@@ -2,8 +2,51 @@
 
 (sec:cpcm)=
 ## CPCM
+The conductor-like polarizable continuum model, CPCM is implemented in VeloxChem and can be activated in the scf driver. Here is an example for calculation in water.
 
-to be added
+**Python script**
+```
+import veloxchem as vlx
+
+mol_xyz_string = """
+...
+"""
+
+molecule = vlx.Molecule.read_xyz_string(mol_xyz_string)
+basis = vlx.MolecularBasis.read(molecule, 'def2-svp')
+
+scf_drv = vlx.ScfRestrictedDriver()
+scf_drv.solvation_model = 'cpcm'
+scf_drv.cpcm_epsilon = 78.39  # Water
+scf_drv.filename = 'mol-cpcm'
+
+scf_results = scf_drv.compute(mol, basis)
+
+```
+Download a [Python script](../input_files/ethanol-cpcm.py) type of input file to perfom a scf calculation under the presence of a static electric field for the p-nitroaniline.
+
+**Text file**
+```
+@jobs
+task: scf
+@end
+
+@method settings
+basis: def2-svp
+xcfun: b3lyp
+solvation model: cpcm
+cpcm epsilon : 78.39
+@end
+
+@molecule
+charge: 0
+multiplicity: 1
+xyz:
+...
+@end
+
+```
+Download a [text format](../input_files/ethanol-cpcm.inp) type of input file to perfom a scf calculation under the presence of a static electric field for the p-nitroaniline.
 
 (sec:pe)=
 ## Polarizable embedding

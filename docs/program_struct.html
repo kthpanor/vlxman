@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -199,15 +199,6 @@
 <li class="toctree-l1"><a class="reference internal" href="linear-response.html">Linear response</a></li>
 <li class="toctree-l1"><a class="reference internal" href="nlo.html">Multi-photon interactions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xray.html">X-ray spectroscpies</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Classical methods</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="mm.html">Molecular mechanics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="im.html">Interpolation mechanics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="md.html">Molecular dynamics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="conf_search.html">Conformational search</a></li>
-<li class="toctree-l1"><a class="reference internal" href="loc_prop.html">Localized properties</a></li>
-<li class="toctree-l1"><a class="reference internal" href="evb.html">Empirical valence bond</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Visualization</span></p>
 <ul class="nav bd-sidenav">
@@ -523,6 +514,7 @@ PACKAGE CONTENTS
     features
     firstorderprop
     fockdriver
+    forcefieldgenerator
     gradientdriver
     griddriver
     hessiandriver
@@ -536,6 +528,7 @@ PACKAGE CONTENTS
     interpolationdatapoint
     interpolationdriver
     linearsolver
+    loprop
     lreigensolver
     lrsolver
     main
@@ -546,6 +539,7 @@ PACKAGE CONTENTS
     mmforcefieldgenerator
     mmgradientdriver
     mofbuilder
+    mofmdprepare
     mofoptimizer
     mofpreparer
     mofutils
@@ -574,6 +568,7 @@ PACKAGE CONTENTS
     reactionmatcher
     respchargesdriver
     rifockdriver
+    rigradientdriver
     rspabsorption
     rspc6
     rspcdspec
@@ -607,15 +602,18 @@ PACKAGE CONTENTS
     tddftorbitalresponse
     tdhfhessiandriver
     threepatransitiondriver
+    tmparameters
     tpadriver
     tpafulldriver
     tpareddriver
     tpatransitiondriver
     trajectorydriver
+    tsguesser
     uffparameters
     veloxchemlib
     vibrationalanalysis
     visualizationdriver
+    waterparameters
     xtbdriver
     xtbgradientdriver
     xtbhessiandriver
@@ -784,14 +782,11 @@ FUNCTIONS
 
         Gets convertion factor for rotatory strength (a.u. -&gt; 10^-40 cgs).
 
-DATA
-    __deployed__ = {&#39;author&#39;: &#39;Xin Li&#39;, &#39;build&#39;: &#39;198&#39;, &#39;commit&#39;: &#39;1f1e8c3...
-
 VERSION
     1.0rc4
 
 FILE
-    /opt/miniconda3/envs/echem/lib/python3.12/site-packages/veloxchem/__init__.py
+    /home/linares/miniconda3/envs/vlx-github/lib/python3.12/site-packages/veloxchem/__init__.py
 </pre></div>
 </div>
 </div>
@@ -831,6 +826,7 @@ FILE
  &#39;EvbDriver&#39;,
  &#39;EvbFepDriver&#39;,
  &#39;EvbForceFieldBuilder&#39;,
+ &#39;EvbForceGroup&#39;,
  &#39;EvbReporter&#39;,
  &#39;EvbSystemBuilder&#39;,
  &#39;ExcitedStateAnalysisDriver&#39;,
@@ -929,6 +925,7 @@ FILE
  &#39;TpaFullDriver&#39;,
  &#39;TpaReducedDriver&#39;,
  &#39;TpaTransitionDriver&#39;,
+ &#39;TransitionStateGuesser&#39;,
  &#39;TwoCenterElectronRepulsionDriver&#39;,
  &#39;TwoCenterElectronRepulsionGeom100Driver&#39;,
  &#39;VibrationalAnalysis&#39;,
@@ -941,7 +938,6 @@ FILE
  &#39;XtbHessianDriver&#39;,
  &#39;__builtins__&#39;,
  &#39;__cached__&#39;,
- &#39;__deployed__&#39;,
  &#39;__doc__&#39;,
  &#39;__file__&#39;,
  &#39;__loader__&#39;,
@@ -1031,6 +1027,7 @@ FILE
  &#39;mmforcefieldgenerator&#39;,
  &#39;mmgradientdriver&#39;,
  &#39;mofbuilder&#39;,
+ &#39;mofmdprepare&#39;,
  &#39;mofoptimizer&#39;,
  &#39;mofpreparer&#39;,
  &#39;mofutils&#39;,
@@ -1096,14 +1093,17 @@ FILE
  &#39;tddftorbitalresponse&#39;,
  &#39;tdhfhessiandriver&#39;,
  &#39;threepatransitiondriver&#39;,
+ &#39;tmparameters&#39;,
  &#39;tpadriver&#39;,
  &#39;tpafulldriver&#39;,
  &#39;tpareddriver&#39;,
  &#39;tpatransitiondriver&#39;,
+ &#39;tsguesser&#39;,
  &#39;uffparameters&#39;,
  &#39;veloxchemlib&#39;,
  &#39;vibrationalanalysis&#39;,
  &#39;visualizationdriver&#39;,
+ &#39;waterparameters&#39;,
  &#39;xtbdriver&#39;,
  &#39;xtbgradientdriver&#39;,
  &#39;xtbhessiandriver&#39;]
@@ -1224,6 +1224,7 @@ FILE
  &#39;print_keywords&#39;,
  &#39;rank&#39;,
  &#39;scf_energy&#39;,
+ &#39;scf_results&#39;,
  &#39;scf_tensors&#39;,
  &#39;scf_type&#39;,
  &#39;set_start_orbitals&#39;,
