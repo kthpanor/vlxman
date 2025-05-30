@@ -23,6 +23,18 @@ Basically, the only underlying approximation made is the adoption of Cauchy–Sc
 ## Performance and scaling
 ### Laptop
 ### Desktop
+
+### Resolution of identity
+
+Timings are in seconds, measured on 1 LUMI-CPU node with 128 cores (8 MPI x 16 OMP). Systems are water clusters of different sizes. The time spent in one Fock-J build is measured with and without RI. Speedup can be 10x, 20x, 40x or 100x depending on basis set and system size
+
+```{image} ../images/ri.png
+:alt: cover
+:class: bg-primary mb-1
+:width: 800px
+:align: center
+```
+
 ### HPC-CPU
 **Polarizabilities and C6 dispersion coefficients**
 

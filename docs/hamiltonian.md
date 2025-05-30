@@ -19,12 +19,12 @@ mol_xyz_string = """
 molecule = vlx.Molecule.read_xyz_string(mol_xyz_string)
 basis = vlx.MolecularBasis.read(molecule, 'def2-svp')
 
-scfdrv = vlx.ScfRestrictedDriver()
-scfdrv.filename = 'mol-field'
-scfdrv.electric_field = [0.01, 0.0, 0.0]
-scf_results = scfdrv.compute(molecule, basis)
+scf_drv = vlx.ScfRestrictedDriver()
+scf_drv.filename = 'mol-field'
+scf_drv.electric_field = [0.01, 0.0, 0.0]
+scf_results = scf_drv.compute(molecule, basis)
 ```
-Download a [text format](../input_files/pna-field.inp) type of input file to perfom a scf calculation under the presence of a static electric field for the p-nitroaniline.
+Download a [Python script](../input_files/pna-field.py) type of input file to perfom a scf calculation under the presence of a static electric field for the p-nitroaniline.
 
 **Text file**
 ```
@@ -44,7 +44,7 @@ xyz:
 ...
 @end
 ```
-Download a [Python script](../input_files/pna-field.py) type of input file to perfom a scf calculation under the presence of a static electric field for the p-nitroaniline.
+Download a [text format](../input_files/pna-field.inp) type of input file to perfom a scf calculation under the presence of a static electric field for the p-nitroaniline.
 ```{image} ../images/pna.png
 :alt: cover
 :class: bg-primary mb-1

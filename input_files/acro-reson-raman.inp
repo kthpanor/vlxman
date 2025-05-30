@@ -9,7 +9,7 @@ basis: def2-svp
 
 @vibrational
 do_resonance_raman: yes
-frequencies: 0.05-0.25 (0.05)
+frequencies: 0.05-0.10 (0.05)
 @end
 
 @molecule
