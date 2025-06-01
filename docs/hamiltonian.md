@@ -2,13 +2,14 @@
 
 ## Effective-core potentials
 
-This feature is under implementation.
+ECP integrals are under implementation.
 
 ## Static electric fields
 
-A term can be added in the Hamiltonian to describe the coupling of the molecular system and a time-independent (static), homogeneous, electric field. The value specified oin the input file are for the x,y,z direction respectively given in a.u.
+A term can be added in the Hamiltonian to describe the coupling of the molecular system and a time-independent (static), homogeneous, electric field. The vectorial electric-field strength is specified in atomic units.
 
 **Python script**
+
 ```
 import veloxchem as vlx
 
@@ -21,12 +22,13 @@ basis = vlx.MolecularBasis.read(molecule, 'def2-svp')
 
 scf_drv = vlx.ScfRestrictedDriver()
 scf_drv.filename = 'mol-field'
-scf_drv.electric_field = [0.01, 0.0, 0.0]
+scf_drv.electric_field = [0.01, 0.0, 0.0]  # [x, y, z] components
 scf_results = scf_drv.compute(molecule, basis)
 ```
-Download a [Python script](../input_files/pna-field.py) type of input file to perfom a scf calculation under the presence of a static electric field for the p-nitroaniline.
+Download a {download}`Python script <../input_files/pna-field.py>` type of input file to perform an SCF calculation for *para*-nitroaniline in the presence of a static electric field.
 
 **Text file**
+
 ```
 @jobs
 task: scf
@@ -44,7 +46,9 @@ xyz:
 ...
 @end
 ```
-Download a [text format](../input_files/pna-field.inp) type of input file to perfom a scf calculation under the presence of a static electric field for the p-nitroaniline.
+
+Download a {download}`text format <../input_files/pna-field.inp>` type of input file to perform an SCF calculation for *para*-nitroaniline in the presence of a static electric field.
+
 ```{image} ../images/pna.png
 :alt: cover
 :class: bg-primary mb-1

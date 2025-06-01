@@ -5,9 +5,9 @@
 
 The standard method to calculate UV/vis absorption and emission spectra is to solve the generalized eigenvalue equation {cite}`Norman2018`.
 
-In the case of SCF theory, it is commonly referred to as the time-dependent density functional theory or Hartree–Fock (TDDFT or TDHF) approach. TDHF is also known as the Random Phase Approximation (RPA). 
+In the case of SCF theory, it is commonly referred to as the time-dependent density functional theory or Hartree–Fock (TDDFT or TDHF) approach. TDHF is also known as the random phase approximation (RPA). 
 
-If electron de-excitations are ignored in the formation of the electronic Hessian, then one arrives at the Tamm–[Dancoff](https://en.wikipedia.org/wiki/Sidney_Dancoff) approximation and which can be invoked with a keyword in the input file.
+If electron de-excitations are ignored in the formation of the electronic Hessian, then one arrives at the Tamm–Dancoff approximation and which can be invoked with a keyword in the input file.
 
 VeloxChem implements a reduced-space Davidson algorithm to solve the equation for the *N* lowest eigenvalues (bottom-up). Based on these eigenvalues, or transition frequencies, and the associated transition moments, the dimensionless [oscillator strengths](https://en.wikipedia.org/wiki/Oscillator_strength#:~:text=In%20spectroscopy%2C%20oscillator%20strength%20is,of%20an%20atom%20or%20molecule.) are calculated according to
 

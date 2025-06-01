@@ -1,13 +1,16 @@
 # Reference states
 
-A detailed list of keyword can be found in the [SCF optimization](./keywords.ipynb#scf-optimization) section of the [input file keywords](./keywords.ipynb) page.
+By default, the Hartree–Fock method is employed. 
 
-By default, the Hartree–Fock method is employed. To use Kohn–Sham DFT, any of the several available functionals is specified as illustrated below, see the [exchange-correlation functionals](./functionals.ipynb) page for a complete list of available functionals.
+To use Kohn–Sham DFT, any of the several available functionals is specified as illustrated below, see the [exchange-correlation functionals](sec:xc-functionals) page for a complete list of available functionals.
+
+For input text files, a detailed [list of keywords](sec:text-file-keywords) is available.
 
 (sec:rhf)=
 ## Restricted closed-shell
 
 **Python script**
+
 ```
 import veloxchem as vlx
 
@@ -22,9 +25,11 @@ scfdrv = vlx.ScfRestrictedDriver()
 scfdrv.filename = 'mol-scf'
 scf_results = scfdrv.compute(molecule, basis)
 ```
-Download a [Python script](../input_files/biphenyl-scf.py) type of input file to perfom a restricted closed-shell calculation for the biphenyl molecule at the HF/def2-svp level of theory.
+
+Download a {download}`Python script <../input_files/biphenyl-scf.py>` type of input file to perfom a restricted closed-shell calculation for the biphenyl molecule at the HF/def2-svp level of theory.
 
 **Text file**
+
 ```
 @jobs
 task: scf
@@ -41,7 +46,8 @@ xyz:
 ...
 @end
 ```
-Download a [text format](../input_files/biphenyl-scf.inp) type of input file to perfom a restricted closed-shell calculation for the biphenyl molecule at the HF/def2-svp level of theory.
+
+Download a {download}`text format <../input_files/biphenyl-scf.inp>` type of input file to perfom a restricted closed-shell calculation for the biphenyl molecule at the HF/def2-svp level of theory.
 
 ```{image} ../images/biphenyl.png
 :alt: cover
@@ -52,7 +58,9 @@ Download a [text format](../input_files/biphenyl-scf.inp) type of input file to 
 
 (sec:rohf)=
 ## Restricted open-shell
+
 **Python script**
+
 ```
 import veloxchem as vlx
 
@@ -70,9 +78,10 @@ scfdrv.xcfun = 'b3lyp'
 scf_results = scfdrv.compute(molecule, basis)
 ```
 
-Download a [Python script](../input_files/tempo-roscf.py) type of input file to perfom a restricted open-shell calculation for the tempo molecule at the B3LYP/6-31+G* level of theory.
+Download a {download}`Python script <../input_files/tempo-roscf.py>` type of input file to perfom a restricted open-shell calculation for the tempo molecule at the B3LYP/6-31+G* level of theory.
 
 **Text file**
+
 ```
 @jobs
 task: roscf
@@ -90,7 +99,8 @@ xyz:
 ...
 @end
 ```
-Download a [text format](../input_files/tempo-roscf.inp) type of input file to perfom a restricted open-shell calculation for the tempo molecule at the B3LYP/6-31+G* level of theory.
+
+Download a {download}`text format <../input_files/tempo-roscf.inp>` type of input file to perfom a restricted open-shell calculation for the tempo molecule at the B3LYP/6-31+G* level of theory.
 
 ```{image} ../images/tempo.png
 :alt: cover
@@ -101,7 +111,9 @@ Download a [text format](../input_files/tempo-roscf.inp) type of input file to p
 
 (sec:uhf)=
 ## Unrestricted open-shell
+
 **Python script**
+
 ```
 import veloxchem as vlx
 
@@ -118,9 +130,11 @@ scfdrv.filename = 'mol-uscf'
 scfdrv.xcfun = 'b3lyp'
 scf_results = scfdrv.compute(molecule, basis)
 ```
-Download a [Python script](../input_files/tritylradical-uscf.py) type of input file to perfom a unrestricted open-shell calculation for the triphenylmethyl radical molecule (also called trityl radical) at the PBE0/CC-PVDZ level of theory.
+
+Download a {download}`Python script <../input_files/tritylradical-uscf.py>` type of input file to perfom a unrestricted open-shell calculation for the triphenylmethyl radical molecule (also called trityl radical) at the PBE0/CC-PVDZ level of theory.
 
 **Text file**
+
 ```
 @jobs
 task: uscf
@@ -138,7 +152,8 @@ xyz:
 ...
 @end
 ```
-Download a [text format](../input_files/tritylradical-uscf.inp) type of input file to perfom a unrestricted open-shell calculation for the triphenylmethyl radical molecule (also called trityl radical) at the PBE0/CC-PVDZ level of theory.
+
+Download a {download}`text format <../input_files/tritylradical-uscf.inp>` type of input file to perfom a unrestricted open-shell calculation for the triphenylmethyl radical molecule (also called trityl radical) at the PBE0/CC-PVDZ level of theory.
 
 ```{image} ../images/trityl.png
 :alt: cover
@@ -150,8 +165,14 @@ Download a [text format](../input_files/tritylradical-uscf.inp) type of input fi
 (sec:rmp2)=
 ## Restricted MP2
 
+to be added
+
 (sec:romp2)=
 ## Restricted open-shell MP2
 
+to be added
+
 (sec:ump2)=
 ## Unrestricted MP2
+
+to be added

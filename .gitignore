@@ -1,3 +1,4 @@
 _build/
 docs/.ipynb_checkpoints/
 .ipynb_checkpoints/
+docs/*h5
