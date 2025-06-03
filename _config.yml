@@ -3,7 +3,7 @@
 
 title                  : VeloxChem program manual
 author                 : The VeloxChem team
-logo                   : vlx_logo.png
+logo                   : images/logo/vlx-logo-blacktext-halo.png
 copyright              : "2025"
 exclude_patterns       : [ README.md ]
 only_build_toc_files   : false
