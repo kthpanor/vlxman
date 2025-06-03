@@ -156,8 +156,8 @@
       
     
     
-    <img src="../_static/vlx_logo.png" class="logo__image only-light" alt="VeloxChem program manual - Home"/>
-    <script>document.write(`<img src="../_static/vlx_logo.png" class="logo__image only-dark" alt="VeloxChem program manual - Home"/>`);</script>
+    <img src="../_static/vlx-logo-blacktext-halo.png" class="logo__image only-light" alt="VeloxChem program manual - Home"/>
+    <script>document.write(`<img src="../_static/vlx-logo-blacktext-halo.png" class="logo__image only-dark" alt="VeloxChem program manual - Home"/>`);</script>
   
   
 </a></div>
@@ -437,9 +437,9 @@ document.write(`
 <span id="sec-uv-vis"></span><h1>UV/vis absorption/emission<a class="headerlink" href="#uv-vis-absorption-emission" title="Link to this heading">#</a></h1>
 <section id="generalized-eigenvalue-equation">
 <h2>Generalized eigenvalue equation<a class="headerlink" href="#generalized-eigenvalue-equation" title="Link to this heading">#</a></h2>
-<p>The standard method to calculate UV/vis absorption and emission spectra is to solve the generalized eigenvalue equation <span id="id1">[<a class="reference internal" href="refs.html#id55" title="Patrick Norman, Kenneth Ruud, and Trond Saue. Principles and practices of molecular properties. John Wiley &amp; Sons, Ltd, Chichester, UK, 2018.">NRS18</a>]</span>.</p>
-<p>In the case of SCF theory, it is commonly referred to as the time-dependent density functional theory or Hartree–Fock (TDDFT or TDHF) approach. TDHF is also known as the Random Phase Approximation (RPA).</p>
-<p>If electron de-excitations are ignored in the formation of the electronic Hessian, then one arrives at the Tamm–<a class="reference external" href="https://en.wikipedia.org/wiki/Sidney_Dancoff">Dancoff</a> approximation and which can be invoked with a keyword in the input file.</p>
+<p>The standard method to calculate UV/vis absorption and emission spectra is to solve the generalized eigenvalue equation <span id="id1">[<a class="reference internal" href="refs.html#id56" title="Patrick Norman, Kenneth Ruud, and Trond Saue. Principles and practices of molecular properties. John Wiley &amp; Sons, Ltd, Chichester, UK, 2018.">NRS18</a>]</span>.</p>
+<p>In the case of SCF theory, it is commonly referred to as the time-dependent density functional theory or Hartree–Fock (TDDFT or TDHF) approach. TDHF is also known as the random phase approximation (RPA).</p>
+<p>If electron de-excitations are ignored in the formation of the electronic Hessian, then one arrives at the Tamm–Dancoff approximation and which can be invoked with a keyword in the input file.</p>
 <p>VeloxChem implements a reduced-space Davidson algorithm to solve the equation for the <em>N</em> lowest eigenvalues (bottom-up). Based on these eigenvalues, or transition frequencies, and the associated transition moments, the dimensionless <a class="reference external" href="https://en.wikipedia.org/wiki/Oscillator_strength#:~:text=In%20spectroscopy%2C%20oscillator%20strength%20is,of%20an%20atom%20or%20molecule.">oscillator strengths</a> are calculated according to</p>
 <div class="math notranslate nohighlight">
 \[
@@ -447,7 +447,7 @@ document.write(`
   \sum_{\alpha = x,y,z}
   |\langle 0 | \hat{\mu}_\alpha | n \rangle |^2
 \]</div>
-<p>With oscillator strengths and transition frequencies, the <a class="reference external" href="https://en.wikipedia.org/wiki/Absorption_cross_section">linear absorption cross section</a> can be determined from the expression <span id="id2">[<a class="reference internal" href="refs.html#id55" title="Patrick Norman, Kenneth Ruud, and Trond Saue. Principles and practices of molecular properties. John Wiley &amp; Sons, Ltd, Chichester, UK, 2018.">NRS18</a>]</span></p>
+<p>With oscillator strengths and transition frequencies, the <a class="reference external" href="https://en.wikipedia.org/wiki/Absorption_cross_section">linear absorption cross section</a> can be determined from the expression <span id="id2">[<a class="reference internal" href="refs.html#id56" title="Patrick Norman, Kenneth Ruud, and Trond Saue. Principles and practices of molecular properties. John Wiley &amp; Sons, Ltd, Chichester, UK, 2018.">NRS18</a>]</span></p>
 <div class="math notranslate nohighlight">
 \[
 \sigma(\omega) =
@@ -513,7 +513,7 @@ f_{n0}
 </section>
 <section id="complex-polarization-propagator-approach">
 <h2>Complex polarization propagator approach<a class="headerlink" href="#complex-polarization-propagator-approach" title="Link to this heading">#</a></h2>
-<p>The linear absorption cross section can be determined directly from the imaginary part of the <a class="reference external" href="https://en.wikipedia.org/wiki/Polarizability">polarizability</a> <span id="id3">[<a class="reference internal" href="refs.html#id55" title="Patrick Norman, Kenneth Ruud, and Trond Saue. Principles and practices of molecular properties. John Wiley &amp; Sons, Ltd, Chichester, UK, 2018.">NRS18</a>]</span></p>
+<p>The linear absorption cross section can be determined directly from the imaginary part of the <a class="reference external" href="https://en.wikipedia.org/wiki/Polarizability">polarizability</a> <span id="id3">[<a class="reference internal" href="refs.html#id56" title="Patrick Norman, Kenneth Ruud, and Trond Saue. Principles and practices of molecular properties. John Wiley &amp; Sons, Ltd, Chichester, UK, 2018.">NRS18</a>]</span></p>
 <div class="math notranslate nohighlight">
 \[
 \sigma(\omega) =

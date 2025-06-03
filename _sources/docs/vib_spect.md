@@ -3,7 +3,7 @@
 
 Calculations of normal modes are performed with the aid of geomeTRIC {cite}`geomeTRIC`.
 
-The associated IR spectrum is calculated by default also when Raman or resonance Raman calculations are requested.
+The associated IR spectrum is calculated by default also when Raman or resonance Raman calculations are requested except if specified otherwise.
 
 (sec:ir)=
 ## Infrared

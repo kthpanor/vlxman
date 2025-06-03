@@ -154,8 +154,8 @@
       
     
     
-    <img src="../_static/vlx_logo.png" class="logo__image only-light" alt="VeloxChem program manual - Home"/>
-    <script>document.write(`<img src="../_static/vlx_logo.png" class="logo__image only-dark" alt="VeloxChem program manual - Home"/>`);</script>
+    <img src="../_static/vlx-logo-blacktext-halo.png" class="logo__image only-light" alt="VeloxChem program manual - Home"/>
+    <script>document.write(`<img src="../_static/vlx-logo-blacktext-halo.png" class="logo__image only-dark" alt="VeloxChem program manual - Home"/>`);</script>
   
   
 </a></div>
@@ -437,8 +437,9 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="reference-states">
 <h1>Reference states<a class="headerlink" href="#reference-states" title="Link to this heading">#</a></h1>
-<p>A detailed list of keyword can be found in the <a class="reference internal" href="keywords.html#scf-optimization"><span class="std std-ref">SCF optimization</span></a> section of the <a class="reference internal" href="keywords.html"><span class="std std-doc">input file keywords</span></a> page.</p>
-<p>By default, the Hartree–Fock method is employed. To use Kohn–Sham DFT, any of the several available functionals is specified as illustrated below, see the <a class="reference internal" href="functionals.html"><span class="std std-doc">exchange-correlation functionals</span></a> page for a complete list of available functionals.</p>
+<p>By default, the Hartree–Fock method is employed.</p>
+<p>To use Kohn–Sham DFT, any of the several available functionals is specified as illustrated below, see the <a class="reference internal" href="functionals.html#sec-xc-functionals"><span class="std std-ref">exchange-correlation functionals</span></a> page for a complete list of available functionals.</p>
+<p>For input text files, a detailed <a class="reference internal" href="keywords.html#sec-text-file-keywords"><span class="std std-ref">list of keywords</span></a> is available.</p>
 <section id="restricted-closed-shell">
 <span id="sec-rhf"></span><h2>Restricted closed-shell<a class="headerlink" href="#restricted-closed-shell" title="Link to this heading">#</a></h2>
 <p><strong>Python script</strong></p>
@@ -456,7 +457,7 @@ document.write(`
 <span class="n">scf_results</span> <span class="o">=</span> <span class="n">scfdrv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">basis</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Download a <a class="reference download internal" download="" href="../_downloads/6c9760face8cfc49382c748e8a4c6a55/biphenyl-scf.py"><span class="xref download myst">Python script</span></a> type of input file to perfom a restricted closed-shell calculation for the biphenyl molecule at the HF/def2-svp level of theory.</p>
+<p>Download a <a class="reference download internal" download="" href="../_downloads/6c9760face8cfc49382c748e8a4c6a55/biphenyl-scf.py"><code class="xref download docutils literal notranslate"><span class="pre">Python</span> <span class="pre">script</span></code></a> type of input file to perfom a restricted closed-shell calculation for the biphenyl molecule at the HF/def2-svp level of theory.</p>
 <p><strong>Text file</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
 <span class="n">task</span><span class="p">:</span> <span class="n">scf</span>
@@ -474,7 +475,7 @@ document.write(`
 <span class="nd">@end</span>
 </pre></div>
 </div>
-<p>Download a <a class="reference download internal" download="" href="../_downloads/de54fd808bcad7e7ada9a09f0e9db659/biphenyl-scf.inp"><span class="xref download myst">text format</span></a> type of input file to perfom a restricted closed-shell calculation for the biphenyl molecule at the HF/def2-svp level of theory.</p>
+<p>Download a <a class="reference download internal" download="" href="../_downloads/de54fd808bcad7e7ada9a09f0e9db659/biphenyl-scf.inp"><code class="xref download docutils literal notranslate"><span class="pre">text</span> <span class="pre">format</span></code></a> type of input file to perfom a restricted closed-shell calculation for the biphenyl molecule at the HF/def2-svp level of theory.</p>
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/biphenyl.png"><img alt="cover" class="bg-primary mb-1 align-center" src="../_images/biphenyl.png" style="width: 400px;" />
 </a>
 </section>
@@ -497,7 +498,7 @@ document.write(`
 <span class="n">scf_results</span> <span class="o">=</span> <span class="n">scfdrv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">basis</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Download a <a class="reference download internal" download="" href="../_downloads/41eddabef1122ea9d7884f3e031b31e4/tempo-roscf.py"><span class="xref download myst">Python script</span></a> type of input file to perfom a restricted open-shell calculation for the tempo molecule at the B3LYP/6-31+G* level of theory.</p>
+<p>Download a <a class="reference download internal" download="" href="../_downloads/41eddabef1122ea9d7884f3e031b31e4/tempo-roscf.py"><code class="xref download docutils literal notranslate"><span class="pre">Python</span> <span class="pre">script</span></code></a> type of input file to perfom a restricted open-shell calculation for the tempo molecule at the B3LYP/6-31+G* level of theory.</p>
 <p><strong>Text file</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
 <span class="n">task</span><span class="p">:</span> <span class="n">roscf</span>
@@ -516,7 +517,7 @@ document.write(`
 <span class="nd">@end</span>
 </pre></div>
 </div>
-<p>Download a <a class="reference download internal" download="" href="../_downloads/1e2bc1c308af34442a468efbf394e29f/tempo-roscf.inp"><span class="xref download myst">text format</span></a> type of input file to perfom a restricted open-shell calculation for the tempo molecule at the B3LYP/6-31+G* level of theory.</p>
+<p>Download a <a class="reference download internal" download="" href="../_downloads/1e2bc1c308af34442a468efbf394e29f/tempo-roscf.inp"><code class="xref download docutils literal notranslate"><span class="pre">text</span> <span class="pre">format</span></code></a> type of input file to perfom a restricted open-shell calculation for the tempo molecule at the B3LYP/6-31+G* level of theory.</p>
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/tempo.png"><img alt="cover" class="bg-primary mb-1 align-center" src="../_images/tempo.png" style="width: 400px;" />
 </a>
 </section>
@@ -539,7 +540,7 @@ document.write(`
 <span class="n">scf_results</span> <span class="o">=</span> <span class="n">scfdrv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">basis</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Download a <a class="reference download internal" download="" href="../_downloads/addeb0a0bfae6d6d1ac6bad722cb6b90/tritylradical-uscf.py"><span class="xref download myst">Python script</span></a> type of input file to perfom a unrestricted open-shell calculation for the triphenylmethyl radical molecule (also called trityl radical) at the PBE0/CC-PVDZ level of theory.</p>
+<p>Download a <a class="reference download internal" download="" href="../_downloads/addeb0a0bfae6d6d1ac6bad722cb6b90/tritylradical-uscf.py"><code class="xref download docutils literal notranslate"><span class="pre">Python</span> <span class="pre">script</span></code></a> type of input file to perfom a unrestricted open-shell calculation for the triphenylmethyl radical molecule (also called trityl radical) at the PBE0/CC-PVDZ level of theory.</p>
 <p><strong>Text file</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
 <span class="n">task</span><span class="p">:</span> <span class="n">uscf</span>
@@ -558,18 +559,21 @@ document.write(`
 <span class="nd">@end</span>
 </pre></div>
 </div>
-<p>Download a <a class="reference download internal" download="" href="../_downloads/18efa1ff3aee0ba995371de36abd832e/tritylradical-uscf.inp"><span class="xref download myst">text format</span></a> type of input file to perfom a unrestricted open-shell calculation for the triphenylmethyl radical molecule (also called trityl radical) at the PBE0/CC-PVDZ level of theory.</p>
+<p>Download a <a class="reference download internal" download="" href="../_downloads/18efa1ff3aee0ba995371de36abd832e/tritylradical-uscf.inp"><code class="xref download docutils literal notranslate"><span class="pre">text</span> <span class="pre">format</span></code></a> type of input file to perfom a unrestricted open-shell calculation for the triphenylmethyl radical molecule (also called trityl radical) at the PBE0/CC-PVDZ level of theory.</p>
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/trityl.png"><img alt="cover" class="bg-primary mb-1 align-center" src="../_images/trityl.png" style="width: 400px;" />
 </a>
 </section>
 <section id="restricted-mp2">
 <span id="sec-rmp2"></span><h2>Restricted MP2<a class="headerlink" href="#restricted-mp2" title="Link to this heading">#</a></h2>
+<p>to be added</p>
 </section>
 <section id="restricted-open-shell-mp2">
 <span id="sec-romp2"></span><h2>Restricted open-shell MP2<a class="headerlink" href="#restricted-open-shell-mp2" title="Link to this heading">#</a></h2>
+<p>to be added</p>
 </section>
 <section id="unrestricted-mp2">
 <span id="sec-ump2"></span><h2>Unrestricted MP2<a class="headerlink" href="#unrestricted-mp2" title="Link to this heading">#</a></h2>
+<p>to be added</p>
 </section>
 </section>
 

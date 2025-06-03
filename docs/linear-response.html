@@ -156,8 +156,8 @@
       
     
     
-    <img src="../_static/vlx_logo.png" class="logo__image only-light" alt="VeloxChem program manual - Home"/>
-    <script>document.write(`<img src="../_static/vlx_logo.png" class="logo__image only-dark" alt="VeloxChem program manual - Home"/>`);</script>
+    <img src="../_static/vlx-logo-blacktext-halo.png" class="logo__image only-light" alt="VeloxChem program manual - Home"/>
+    <script>document.write(`<img src="../_static/vlx-logo-blacktext-halo.png" class="logo__image only-dark" alt="VeloxChem program manual - Home"/>`);</script>
   
   
 </a></div>
@@ -201,6 +201,15 @@
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Linear response</a></li>
 <li class="toctree-l1"><a class="reference internal" href="nlo.html">Multi-photon interactions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xray.html">X-ray spectroscpies</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Classical methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="mm.html">Molecular mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="im.html">Interpolation mechanics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="md.html">Molecular dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conf_search.html">Conformational search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loc_prop.html">Localized properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evb.html">Empirical valence bond</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Visualization</span></p>
 <ul class="nav bd-sidenav">
@@ -430,7 +439,7 @@ document.write(`
 <h1>Linear response<a class="headerlink" href="#linear-response" title="Link to this heading">#</a></h1>
 <section id="polarizability">
 <span id="sec-alpha"></span><h2>Polarizability<a class="headerlink" href="#polarizability" title="Link to this heading">#</a></h2>
-<p>The linear electric-dipole polarizabilty is determined from the linear response function <span id="id1">[<a class="reference internal" href="refs.html#id55" title="Patrick Norman, Kenneth Ruud, and Trond Saue. Principles and practices of molecular properties. John Wiley &amp; Sons, Ltd, Chichester, UK, 2018.">NRS18</a>]</span></p>
+<p>The linear electric-dipole polarizabilty is determined from the linear response function <span id="id1">[<a class="reference internal" href="refs.html#id56" title="Patrick Norman, Kenneth Ruud, and Trond Saue. Principles and practices of molecular properties. John Wiley &amp; Sons, Ltd, Chichester, UK, 2018.">NRS18</a>]</span></p>
 <div class="math notranslate nohighlight">
 \[
 \alpha_{\alpha\beta}(\omega) =
@@ -526,7 +535,7 @@ d\omega
 \[
     i\omega^I = i\omega_0 \frac{1-t}{1+t},\quad d\omega^I = \frac{-2\omega_0 dt}{(1+t)^2},
 \]</div>
-<p>where a transformation factor of <span class="math notranslate nohighlight">\(\omega_0 = 0.3\)</span> a.u. is used. The user may specify the number of frequency points used in the quadrature, or otherwise a default value is adopted. The polarizabilities are calculated from the complex polarization propagator (CPP), or complex linear response function <span id="id2">[<a class="reference internal" href="refs.html#id55" title="Patrick Norman, Kenneth Ruud, and Trond Saue. Principles and practices of molecular properties. John Wiley &amp; Sons, Ltd, Chichester, UK, 2018.">NRS18</a>]</span>.</p>
+<p>where a transformation factor of <span class="math notranslate nohighlight">\(\omega_0 = 0.3\)</span> a.u. is used. The user may specify the number of frequency points used in the quadrature, or otherwise a default value is adopted. The polarizabilities are calculated from the complex polarization propagator (CPP), or complex linear response function <span id="id2">[<a class="reference internal" href="refs.html#id56" title="Patrick Norman, Kenneth Ruud, and Trond Saue. Principles and practices of molecular properties. John Wiley &amp; Sons, Ltd, Chichester, UK, 2018.">NRS18</a>]</span>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
 <span class="n">task</span><span class="p">:</span> <span class="n">response</span>
 <span class="nd">@end</span>

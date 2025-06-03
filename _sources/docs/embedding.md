@@ -2,30 +2,37 @@
 
 (sec:cpcm)=
 ## CPCM
-The conductor-like polarizable continuum model, CPCM is implemented in VeloxChem and can be activated in the scf driver. Here is an example for calculation in water.
+
+The conductor-like polarizable continuum model (CPCM) is implemented in VeloxChem for implicit solvation {cite}`Tomasi2005`.
+
+A separation is made between equilibrium and non-equilibrium solvation. In the former case, the timescale is such that both nuclear and electronic relaxations take place in the environment, such as in molecular structure optimizations. In the latter case, only electrons are fully equilibrated with the time-dependent solute charge density, such as in UV/vis spectrum simulations. 
 
 **Python script**
+
+*Change to examples of structure optimization and UV/vis spectrum and show both types of solvation.*
+
 ```
 import veloxchem as vlx
 
-mol_xyz_string = """
+xyz_string = """
 ...
 """
 
-molecule = vlx.Molecule.read_xyz_string(mol_xyz_string)
+molecule = vlx.Molecule.read_xyz_string(xyz_string)
 basis = vlx.MolecularBasis.read(molecule, 'def2-svp')
 
 scf_drv = vlx.ScfRestrictedDriver()
 scf_drv.solvation_model = 'cpcm'
-scf_drv.cpcm_epsilon = 78.39  # Water
+scf_drv.cpcm_epsilon = 78.39  # water
 scf_drv.filename = 'mol-cpcm'
 
 scf_results = scf_drv.compute(mol, basis)
-
 ```
-Download a [Python script](../input_files/ethanol-cpcm.py) type of input file to perfom a scf calculation under the presence of a static electric field for the p-nitroaniline.
+
+Download a {download}`Python script <../input_files/ethanol-cpcm.py>` type of input file to perform an SCF calculation for ethanol in a water environment.
 
 **Text file**
+
 ```
 @jobs
 task: scf
@@ -44,9 +51,9 @@ multiplicity: 1
 xyz:
 ...
 @end
-
 ```
-Download a [text format](../input_files/ethanol-cpcm.inp) type of input file to perfom a scf calculation under the presence of a static electric field for the p-nitroaniline.
+
+Download a {download}`text format <../input_files/ethanol-cpcm.inp>` type of input file to perform an SCF calculation for ethanol in a water environment.
 
 (sec:pe)=
 ## Polarizable embedding
@@ -71,7 +78,7 @@ xyz:
 @end
 ```
 
-together with a potential file `pe.pot` using Isotropic LOPROP parameters.
+together with a potential file `pe.pot` using, in this case, isotropic LoProp polarizabilities.
 
 ```
 @environment

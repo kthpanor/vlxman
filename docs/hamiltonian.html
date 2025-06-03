@@ -154,8 +154,8 @@
       
     
     
-    <img src="../_static/vlx_logo.png" class="logo__image only-light" alt="VeloxChem program manual - Home"/>
-    <script>document.write(`<img src="../_static/vlx_logo.png" class="logo__image only-dark" alt="VeloxChem program manual - Home"/>`);</script>
+    <img src="../_static/vlx-logo-blacktext-halo.png" class="logo__image only-light" alt="VeloxChem program manual - Home"/>
+    <script>document.write(`<img src="../_static/vlx-logo-blacktext-halo.png" class="logo__image only-dark" alt="VeloxChem program manual - Home"/>`);</script>
   
   
 </a></div>
@@ -435,11 +435,11 @@ document.write(`
 <h1>Hamiltonian<a class="headerlink" href="#hamiltonian" title="Link to this heading">#</a></h1>
 <section id="effective-core-potentials">
 <h2>Effective-core potentials<a class="headerlink" href="#effective-core-potentials" title="Link to this heading">#</a></h2>
-<p>This feature is under implementation.</p>
+<p>ECP integrals are under implementation.</p>
 </section>
 <section id="static-electric-fields">
 <h2>Static electric fields<a class="headerlink" href="#static-electric-fields" title="Link to this heading">#</a></h2>
-<p>A term can be added in the Hamiltonian to describe the coupling of the molecular system and a time-independent (static), homogeneous, electric field. The value specified oin the input file are for the x,y,z direction respectively given in a.u.</p>
+<p>A term can be added in the Hamiltonian to describe the coupling of the molecular system and a time-independent (static), homogeneous, electric field. The vectorial electric-field strength is specified in atomic units.</p>
 <p><strong>Python script</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">veloxchem</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">vlx</span>
 
@@ -452,11 +452,11 @@ document.write(`
 
 <span class="n">scf_drv</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">ScfRestrictedDriver</span><span class="p">()</span>
 <span class="n">scf_drv</span><span class="o">.</span><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;mol-field&#39;</span>
-<span class="n">scf_drv</span><span class="o">.</span><span class="n">electric_field</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]</span>
+<span class="n">scf_drv</span><span class="o">.</span><span class="n">electric_field</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]</span>  <span class="c1"># [x, y, z] components</span>
 <span class="n">scf_results</span> <span class="o">=</span> <span class="n">scf_drv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">basis</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Download a <a class="reference download internal" download="" href="../_downloads/77c617a777e0bb26099cff5d016609d2/pna-field.py"><span class="xref download myst">Python script</span></a> type of input file to perfom a scf calculation under the presence of a static electric field for the p-nitroaniline.</p>
+<p>Download a <a class="reference download internal" download="" href="../_downloads/77c617a777e0bb26099cff5d016609d2/pna-field.py"><code class="xref download docutils literal notranslate"><span class="pre">Python</span> <span class="pre">script</span></code></a> type of input file to perform an SCF calculation for <em>para</em>-nitroaniline in the presence of a static electric field.</p>
 <p><strong>Text file</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@jobs</span>
 <span class="n">task</span><span class="p">:</span> <span class="n">scf</span>
@@ -475,7 +475,7 @@ document.write(`
 <span class="nd">@end</span>
 </pre></div>
 </div>
-<p>Download a <a class="reference download internal" download="" href="../_downloads/e672617b60ce4c1b63d36d492915ba3e/pna-field.inp"><span class="xref download myst">text format</span></a> type of input file to perfom a scf calculation under the presence of a static electric field for the p-nitroaniline.</p>
+<p>Download a <a class="reference download internal" download="" href="../_downloads/e672617b60ce4c1b63d36d492915ba3e/pna-field.inp"><code class="xref download docutils literal notranslate"><span class="pre">text</span> <span class="pre">format</span></code></a> type of input file to perform an SCF calculation for <em>para</em>-nitroaniline in the presence of a static electric field.</p>
 <a class="bg-primary mb-1 reference internal image-reference" href="../_images/pna.png"><img alt="cover" class="bg-primary mb-1 align-center" src="../_images/pna.png" style="width: 400px;" />
 </a>
 </section>
