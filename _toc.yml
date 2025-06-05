@@ -32,10 +32,12 @@ parts:
 - caption: Classical methods
   chapters:
   - file: docs/mm
-  - file: docs/im
   - file: docs/md
   - file: docs/conf_search
+  - file: docs/solvation
+  - file: docs/mof_builder
   - file: docs/loc_prop
+  - file: docs/im
   - file: docs/evb
 - caption: Visualization
   chapters:
