@@ -61,7 +61,7 @@
     <link rel="icon" href="../_static/vlx_logo_mark.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Interpolation mechanics" href="im.html" />
+    <link rel="next" title="Molecular dynamics" href="md.html" />
     <link rel="prev" title="X-ray spectroscpies" href="xray.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -203,10 +203,14 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Classical methods</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Molecular mechanics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="im.html">Interpolation mechanics</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="md.html">Molecular dynamics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conf_search.html">Conformational search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="solvation.html">SolvationBuilder</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="mof_builder.html">MOF(metal organic framework) Builder</a></li>
 <li class="toctree-l1"><a class="reference internal" href="loc_prop.html">Localized properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="im.html">Interpolation mechanics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="evb.html">Empirical valence bond</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Visualization</span></p>
@@ -324,7 +328,7 @@
       
       
       
-      <li><a href="../_sources/docs/mm.md" target="_blank"
+      <li><a href="../_sources/docs/mm.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -334,7 +338,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.md</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
 </li>
       
@@ -418,9 +422,13 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Molecular mechanics</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#force-field-generation">Force field generation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reparametrization-of-dihedral-angle">REparametrization of dihedral angle</a></li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#force-field-definition-and-reparametrization">Force-Field Definition and Reparametrization</a></li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -435,10 +443,620 @@ document.write(`
 <span id="sec-mm"></span><h1>Molecular mechanics<a class="headerlink" href="#molecular-mechanics" title="Link to this heading">#</a></h1>
 <section id="force-field-generation">
 <span id="sec-mm-ff-gen"></span><h2>Force field generation<a class="headerlink" href="#force-field-generation" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">veloxchem</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">vlx</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># load B3LYP optimized geometry in the xyz format</span>
+<span class="n">molecule</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">Molecule</span><span class="o">.</span><span class="n">read_xyz_file</span><span class="p">(</span><span class="s2">&quot;../input_files/hs276_optim_b3lyp_dev2-svp.xyz&quot;</span><span class="p">)</span>
+<span class="n">molecule</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">atom_indices</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">450</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div id="3dmolviewer_17491128787484684"  style="position: relative; width: 600px; height: 450px;">
+        <p id="3dmolwarning_17491128787484684" style="background-color:#ffcccc;color:black">3Dmol.js failed to load for some reason.  Please check your browser console for error messages.<br></p>
+        </div>
+<script>
+
+var loadScriptAsync = function(uri){
+  return new Promise((resolve, reject) => {
+    //this is to ignore the existence of requirejs amd
+    var savedexports, savedmodule;
+    if (typeof exports !== 'undefined') savedexports = exports;
+    else exports = {}
+    if (typeof module !== 'undefined') savedmodule = module;
+    else module = {}
+
+    var tag = document.createElement('script');
+    tag.src = uri;
+    tag.async = true;
+    tag.onload = () => {
+        exports = savedexports;
+        module = savedmodule;
+        resolve();
+    };
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+});
+};
+
+if(typeof $3Dmolpromise === 'undefined') {
+$3Dmolpromise = null;
+  $3Dmolpromise = loadScriptAsync('https://cdnjs.cloudflare.com/ajax/libs/3Dmol/2.4.2/3Dmol-min.js');
+}
+
+var viewer_17491128787484684 = null;
+var warn = document.getElementById("3dmolwarning_17491128787484684");
+if(warn) {
+    warn.parentNode.removeChild(warn);
+}
+$3Dmolpromise.then(function() {
+viewer_17491128787484684 = $3Dmol.createViewer(document.getElementById("3dmolviewer_17491128787484684"),{backgroundColor:"white"});
+viewer_17491128787484684.zoomTo();
+	viewer_17491128787484684.addModel("35\n\nC              4.339956021500         0.030542894600         0.082814478600\nC              4.409557653800         1.368361015800        -0.323519259500\nH              3.513402764300         1.993760190300        -0.392403299300\nN              5.572339554300         1.919743373700        -0.648874392400\nC              6.693527930900         1.175779413300        -0.586432916800\nH              7.622406821500         1.687595105200        -0.861642583900\nC              6.727691010800        -0.163591845200        -0.210784558100\nH              7.669503230000        -0.716226613700        -0.192442857300\nC              5.509753707500        -0.772074716200         0.133629353700\nC              5.100982469800        -2.087824065700         0.540643560400\nH              5.737299856800        -2.957065483800         0.689287362800\nC              3.743880116900        -2.044376359800         0.722649761000\nH              3.054306225100        -2.821426570600         1.046261903400\nN              3.260950845100        -0.768336055400         0.454983548300\nC              1.926007537600        -0.374984551000         0.528317658800\nS              0.678299339100        -1.388971657600        -0.154261377800\nC              1.406115373000         0.782477001700         1.060162572800\nH              2.018114321500         1.541616061300         1.545470354600\nC             -0.006885119400         0.847746565200         0.939868012600\nH             -0.605931397700         1.674121442100         1.324524116200\nC             -0.566747846700        -0.258021139800         0.329442961800\nC             -1.960433749300        -0.553335963800         0.079212364800\nC             -2.527728514800        -1.753558731500        -0.327027774800\nH             -1.941688198300        -2.656554300300        -0.503160431400\nC             -3.932110426000        -1.683175328300        -0.468422385300\nH             -4.576687763700        -2.508185843900        -0.771704273500\nS             -3.178744284100         0.676407875500         0.276409937800\nC             -4.439051163300        -0.434756502400        -0.173176694400\nC             -5.855681064100        -0.049904861400        -0.224072198100\nO             -6.757453030300        -0.792779963700        -0.536340582900\nO             -6.032843702200         1.242038298800         0.121423302400\nC             -7.376279586500         1.718278319700         0.102153914900\nH             -8.004463386000         1.145050137400         0.800943857400\nH             -7.332151587600         2.771427076000         0.405372317000\nH             -7.808567884500         1.628478144200        -0.906097381100\n");
+	viewer_17491128787484684.setViewStyle({"style": "outline", "width": 0.05});
+	viewer_17491128787484684.setStyle({"stick": {}, "sphere": {"scale": 0.25}});
+	viewer_17491128787484684.addLabel("1",{"position": {"x": 4.3399560215, "y": 0.0305428946, "z": 0.08281447859999999}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17491128787484684.addLabel("2",{"position": {"x": 4.4095576538, "y": 1.3683610158, "z": -0.3235192595}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17491128787484684.addLabel("3",{"position": {"x": 3.5134027643, "y": 1.9937601903, "z": -0.3924032993}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17491128787484684.addLabel("4",{"position": {"x": 5.5723395543, "y": 1.9197433737, "z": -0.6488743924}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17491128787484684.addLabel("5",{"position": {"x": 6.693527930899999, "y": 1.1757794132999997, "z": -0.5864329168}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17491128787484684.addLabel("6",{"position": {"x": 7.6224068215, "y": 1.6875951052, "z": -0.8616425839}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17491128787484684.addLabel("7",{"position": {"x": 6.7276910108, "y": -0.1635918452, "z": -0.2107845581}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17491128787484684.addLabel("8",{"position": {"x": 7.669503229999999, "y": -0.7162266136999998, "z": -0.19244285729999996}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17491128787484684.addLabel("9",{"position": {"x": 5.5097537075, "y": -0.7720747162, "z": 0.1336293537}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17491128787484684.addLabel("10",{"position": {"x": 5.1009824698, "y": -2.0878240657, "z": 0.5406435604}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17491128787484684.addLabel("11",{"position": {"x": 5.7372998568, "y": -2.9570654838, "z": 0.6892873627999999}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17491128787484684.addLabel("12",{"position": {"x": 3.7438801169, "y": -2.0443763598, "z": 0.722649761}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17491128787484684.addLabel("13",{"position": {"x": 3.0543062250999995, "y": -2.8214265706, "z": 1.0462619034}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17491128787484684.addLabel("14",{"position": {"x": 3.2609508451, "y": -0.7683360553999999, "z": 0.45498354829999993}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17491128787484684.addLabel("15",{"position": {"x": 1.9260075375999999, "y": -0.374984551, "z": 0.5283176588}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17491128787484684.addLabel("16",{"position": {"x": 0.6782993391, "y": -1.3889716576, "z": -0.15426137779999996}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17491128787484684.addLabel("17",{"position": {"x": 1.406115373, "y": 0.7824770017, "z": 1.0601625727999997}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17491128787484684.addLabel("18",{"position": {"x": 2.0181143215, "y": 1.5416160613, "z": 1.5454703546}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17491128787484684.addLabel("19",{"position": {"x": -0.0068851194, "y": 0.8477465652, "z": 0.9398680126}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17491128787484684.addLabel("20",{"position": {"x": -0.6059313977, "y": 1.6741214420999997, "z": 1.3245241162}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17491128787484684.addLabel("21",{"position": {"x": -0.5667478467, "y": -0.2580211398, "z": 0.3294429618}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17491128787484684.addLabel("22",{"position": {"x": -1.9604337492999997, "y": -0.5533359638, "z": 0.0792123648}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17491128787484684.addLabel("23",{"position": {"x": -2.5277285147999997, "y": -1.7535587315, "z": -0.32702777479999995}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17491128787484684.addLabel("24",{"position": {"x": -1.9416881983, "y": -2.6565543002999994, "z": -0.5031604314}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17491128787484684.addLabel("25",{"position": {"x": -3.932110426, "y": -1.6831753283, "z": -0.4684223853}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17491128787484684.addLabel("26",{"position": {"x": -4.5766877637, "y": -2.5081858439, "z": -0.7717042735}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17491128787484684.addLabel("27",{"position": {"x": -3.1787442841, "y": 0.6764078755, "z": 0.2764099378}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17491128787484684.addLabel("28",{"position": {"x": -4.439051163299999, "y": -0.4347565024, "z": -0.1731766944}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17491128787484684.addLabel("29",{"position": {"x": -5.8556810641, "y": -0.04990486139999999, "z": -0.2240721981}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17491128787484684.addLabel("30",{"position": {"x": -6.7574530303, "y": -0.7927799636999999, "z": -0.5363405829}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17491128787484684.addLabel("31",{"position": {"x": -6.032843702199999, "y": 1.2420382988, "z": 0.1214233024}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17491128787484684.addLabel("32",{"position": {"x": -7.3762795865, "y": 1.7182783196999998, "z": 0.10215391489999999}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17491128787484684.addLabel("33",{"position": {"x": -8.004463386, "y": 1.1450501374, "z": 0.8009438574}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17491128787484684.addLabel("34",{"position": {"x": -7.3321515876, "y": 2.771427076, "z": 0.4053723169999999}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17491128787484684.addLabel("35",{"position": {"x": -7.8085678845, "y": 1.6284781442, "z": -0.9060973811}, "alignment": "center", "fontColor": 0, "backgroundColor": 16777215, "backgroundOpacity": 0.0});
+	viewer_17491128787484684.zoomTo();
+viewer_17491128787484684.render();
+});
+</script></div></div>
+</div>
+<p><em>This part of the code load the MM Forfield Generator and create an initial topology for the molecule object. By default, RESP charges are computed at the B3LYP/6-31G</em> as recommended.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ff_gen</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">MMForceFieldGenerator</span><span class="p">()</span>
+<span class="n">ff_gen</span><span class="o">.</span><span class="n">create_topology</span><span class="p">(</span><span class="n">molecule</span><span class="p">)</span>
+<span class="n">ff_gen</span><span class="o">.</span><span class="n">write_gromacs_files</span><span class="p">(</span><span class="s1">&#39;HS-276_initial&#39;</span><span class="p">,</span> <span class="s1">&#39;MOL&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info * Using 6-31G* basis set for RESP charges...                                                                       
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info * Sum of partial charges is not a whole number.                                                                    
+* Info * Compensating by removing 1.000e-06 from the largest charge.                                                      
+                                                                                                                          
+* Info * Using GAFF (v2.11) parameters.                                                                                   
+         Reference: J. Wang, R. M. Wolf, J. W. Caldwell, P. A. Kollman, D. A. Case, J. Comput. Chem. 2004,
+         25, 1157-1174.
+                                                                                                                          
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info * Updated bond angle 1-9-10 (ca-ca-cc) to 107.067 deg                                                              
+* Info * Updated bond angle 1-14-15 (ca-na-cc) to 126.448 deg                                                             
+* Info * Updated bond angle 2-1-14 (ca-ca-na) to 131.608 deg                                                              
+* Info * Updated bond angle 7-9-10 (ca-ca-cc) to 135.484 deg                                                              
+* Info * Updated bond angle 9-1-14 (ca-ca-na) to 107.725 deg                                                              
+* Info * Updated bond angle 14-15-17 (na-cc-cd) to 128.299 deg                                                            
+* Info * Updated bond angle 19-21-22 (cd-cc-cc) to 129.072 deg                                                            
+* Info * Updated bond angle 21-22-23 (cc-cc-cd) to 128.378 deg                                                            
+</pre></div>
+</div>
+</div>
+</div>
+<p>The Force-Field Generator can identify rotatable bonds.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rot_bonds</span> <span class="o">=</span> <span class="n">ff_gen</span><span class="o">.</span><span class="n">rotatable_bonds</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">rot_bonds</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[14, 15], [21, 22], [28, 29], [29, 31], [31, 32]]
+</pre></div>
+</div>
+</div>
+</div>
 </section>
-<section id="reparametrization-of-dihedral-angle">
-<span id="sec-mm-ff-reparam"></span><h2>REparametrization of dihedral angle<a class="headerlink" href="#reparametrization-of-dihedral-angle" title="Link to this heading">#</a></h2>
 </section>
+<section class="tex2jax_ignore mathjax_ignore" id="force-field-definition-and-reparametrization">
+<span id="sec-mm-ff-reparam"></span><h1>Force-Field Definition and Reparametrization<a class="headerlink" href="#force-field-definition-and-reparametrization" title="Link to this heading">#</a></h1>
+<p>We will here focus on the reparametrization of the barrier around the rotatable bond [21, 22]. We use the file 16-21-22-27.xyz from the data folder containing the results from a relaxed scan around rotatable bond [21, 22], i. e. optimized geometries and energies (in the comment line for each geometries).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ff_gen</span><span class="o">.</span><span class="n">reparameterize_dihedrals</span><span class="p">(</span><span class="n">rotatable_bond</span><span class="o">=</span><span class="p">(</span><span class="mi">21</span><span class="p">,</span><span class="mi">22</span><span class="p">),</span>
+                                <span class="n">scan_file</span><span class="o">=</span><span class="s2">&quot;../input_files/16-21-22-27.xyz&quot;</span><span class="p">,</span> 
+                                <span class="n">visualize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                          VeloxChem Dihedral Reparameterization                                           
+                                         =======================================                                          
+                                                                                                                          
+* Info * Rotatable bond selected: 21-22                                                                                   
+* Info * Dihedrals involved:[[16, 21, 22, 23], [16, 21, 22, 27], [19, 21, 22, 23], [19, 21, 22, 27]]                      
+                                                                                                                          
+* Info * Reading QM scan from file...                                                                                     
+* Info *   ../input_files/16-21-22-27.xyz                                                                                 
+                                                                                                                          
+* Info * Performing dihedral scan for MM baseline by excluding the involved dihedral barriers...                          
+                                                                                                                          
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info * Target dihedral angle: 16-21-22-27                                                                               
+                                                                                                                          
+* Info *      180.0 deg...                                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info *      190.0 deg...                                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info *      200.0 deg...                                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info *      210.0 deg...                                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info *      220.0 deg...                                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info *      230.0 deg...                                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info *      240.0 deg...                                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info *      250.0 deg...                                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info *      260.0 deg...                                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info *      270.0 deg...                                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info *      280.0 deg...                                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info *      290.0 deg...                                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info *      300.0 deg...                                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info *      310.0 deg...                                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info *      320.0 deg...                                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info *      330.0 deg...                                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info *      340.0 deg...                                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info *      350.0 deg...                                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info *      360.0 deg...                                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                                                                          
+* Info * Dihedral barriers [4.184 4.184 4.184 4.184] will be used as initial guess.                                       
+                                                                                                                          
+* Info * Validating the initial force field...                                                                            
+                                                                                                                          
+* Info *       Dihedral      MM energy(rel)      QM energy(rel)       diff                                                
+* Info *   ---------------------------------------------------------------                                                
+* Info *      180.0 deg        0.000 kJ/mol        0.056 kJ/mol     -0.056                                                
+* Info *      190.0 deg        0.874 kJ/mol        0.000 kJ/mol      0.874                                                
+* Info *      200.0 deg        3.298 kJ/mol        0.097 kJ/mol      3.201                                                
+* Info *      210.0 deg        7.154 kJ/mol        0.799 kJ/mol      6.355                                                
+* Info *      220.0 deg       12.108 kJ/mol        2.385 kJ/mol      9.723                                                
+* Info *      230.0 deg       17.595 kJ/mol        4.878 kJ/mol     12.717                                                
+* Info *      240.0 deg       22.921 kJ/mol        8.047 kJ/mol     14.873                                                
+* Info *      250.0 deg       27.395 kJ/mol       11.478 kJ/mol     15.917                                                
+* Info *      260.0 deg       30.446 kJ/mol       14.445 kJ/mol     16.001                                                
+* Info *      270.0 deg       31.709 kJ/mol       15.853 kJ/mol     15.856                                                
+* Info *      280.0 deg       31.072 kJ/mol       15.105 kJ/mol     15.967                                                
+* Info *      290.0 deg       28.685 kJ/mol       12.570 kJ/mol     16.115                                                
+* Info *      300.0 deg       24.938 kJ/mol        9.354 kJ/mol     15.584                                                
+* Info *      310.0 deg       20.400 kJ/mol        6.386 kJ/mol     14.013                                                
+* Info *      320.0 deg       15.722 kJ/mol        4.246 kJ/mol     11.476                                                
+* Info *      330.0 deg       11.535 kJ/mol        3.135 kJ/mol      8.399                                                
+* Info *      340.0 deg        8.332 kJ/mol        2.897 kJ/mol      5.435                                                
+* Info *      350.0 deg        6.382 kJ/mol        3.082 kJ/mol      3.300                                                
+* Info *      360.0 deg        5.711 kJ/mol        3.165 kJ/mol      2.546                                                
+                                                                                                                          
+* Info * Summary of validation                                                                                            
+* Info * ---------------------                                                                                            
+* Info * Maximum difference: 16.115 kJ/mol                                                                                
+* Info * Standard deviation: 5.743 kJ/mol                                                                                 
+                                                                                                                          
+</pre></div>
+</div>
+<img alt="../_images/b8f518569691aa606def04e2c48b0329f7f060925e0dd6eda9ce907f90f96b27.png" src="../_images/b8f518569691aa606def04e2c48b0329f7f060925e0dd6eda9ce907f90f96b27.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info * Fitting the dihedral parameters...                                                                               
+* Info * Optimizing dihedral via least squares fitting...                                                                 
+* Info * New fitted barriers: [2.22536935 2.22536935 2.22536935 2.22536935]                                               
+                                                                                                                          
+* Info * Validating the fitted force field...                                                                             
+                                                                                                                          
+* Info *       Dihedral      MM energy(rel)      QM energy(rel)       diff                                                
+* Info *   ---------------------------------------------------------------                                                
+* Info *      180.0 deg        0.000 kJ/mol        0.056 kJ/mol     -0.056                                                
+* Info *      190.0 deg        0.401 kJ/mol        0.000 kJ/mol      0.401                                                
+* Info *      200.0 deg        1.465 kJ/mol        0.097 kJ/mol      1.368                                                
+* Info *      210.0 deg        3.237 kJ/mol        0.799 kJ/mol      2.438                                                
+* Info *      220.0 deg        5.634 kJ/mol        2.385 kJ/mol      3.249                                                
+* Info *      230.0 deg        8.400 kJ/mol        4.878 kJ/mol      3.522                                                
+* Info *      240.0 deg       11.169 kJ/mol        8.047 kJ/mol      3.122                                                
+* Info *      250.0 deg       13.559 kJ/mol       11.478 kJ/mol      2.081                                                
+* Info *      260.0 deg       15.249 kJ/mol       14.445 kJ/mol      0.804                                                
+* Info *      270.0 deg       16.040 kJ/mol       15.853 kJ/mol      0.187                                                
+* Info *      280.0 deg       15.875 kJ/mol       15.105 kJ/mol      0.770                                                
+* Info *      290.0 deg       14.849 kJ/mol       12.570 kJ/mol      2.279                                                
+* Info *      300.0 deg       13.186 kJ/mol        9.354 kJ/mol      3.833                                                
+* Info *      310.0 deg       11.205 kJ/mol        6.386 kJ/mol      4.818                                                
+* Info *      320.0 deg        9.248 kJ/mol        4.246 kJ/mol      5.002                                                
+* Info *      330.0 deg        7.617 kJ/mol        3.135 kJ/mol      4.482                                                
+* Info *      340.0 deg        6.499 kJ/mol        2.897 kJ/mol      3.602                                                
+* Info *      350.0 deg        5.910 kJ/mol        3.082 kJ/mol      2.828                                                
+* Info *      360.0 deg        5.711 kJ/mol        3.165 kJ/mol      2.546                                                
+                                                                                                                          
+* Info * Summary of validation                                                                                            
+* Info * ---------------------                                                                                            
+* Info * Maximum difference: 5.002 kJ/mol                                                                                 
+* Info * Standard deviation: 1.527 kJ/mol                                                                                 
+                                                                                                                          
+</pre></div>
+</div>
+<img alt="../_images/82f7fee9a20f6bb9a70e6b20aae01c556f01358b813d98d6dccb64de5cd157ee.png" src="../_images/82f7fee9a20f6bb9a70e6b20aae01c556f01358b813d98d6dccb64de5cd157ee.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info * Dihedral MM parameters have been reparameterized and updated in the topology.                                    
+</pre></div>
+</div>
+</div>
+</div>
+<p>The rotational barrier is now much improved but the relative energies between the two conformer minima are still not well reproduced, leading to significant errors in the statistical dihedral distributions. As a remedy to this situation, an additional dihedral potential can be added.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ff_gen</span><span class="o">.</span><span class="n">add_dihedral</span><span class="p">((</span><span class="mi">16</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">27</span><span class="p">),</span> 
+                    <span class="n">barrier</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> 
+                    <span class="n">phase</span><span class="o">=</span><span class="mf">180.0</span><span class="p">,</span> 
+                    <span class="n">periodicity</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info * Added dihedral 16-21-22-27                                                                                       
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can now restart the reparametrization procedure with this added dihedral angle.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ff_gen</span><span class="o">.</span><span class="n">reparameterize_dihedrals</span><span class="p">(</span><span class="n">rotatable_bond</span><span class="o">=</span><span class="p">(</span><span class="mi">21</span><span class="p">,</span><span class="mi">22</span><span class="p">),</span>
+                                <span class="n">scan_file</span><span class="o">=</span><span class="s2">&quot;../input_files/16-21-22-27.xyz&quot;</span><span class="p">,</span> 
+                                <span class="n">visualize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                <span class="n">initial_validation</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                          VeloxChem Dihedral Reparameterization                                           
+                                         =======================================                                          
+                                                                                                                          
+* Info * Rotatable bond selected: 21-22                                                                                   
+* Info * Dihedrals involved:[[16, 21, 22, 23], [16, 21, 22, 27], [19, 21, 22, 23], [19, 21, 22, 27]]                      
+                                                                                                                          
+* Info * Reading QM scan from file...                                                                                     
+* Info *   ../input_files/16-21-22-27.xyz                                                                                 
+                                                                                                                          
+* Info * Performing dihedral scan for MM baseline by excluding the involved dihedral barriers...                          
+                                                                                                                          
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info * Target dihedral angle: 16-21-22-27                                                                               
+                                                                                                                          
+* Info *      180.0 deg...                                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info *      190.0 deg...                                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info *      200.0 deg...                                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info *      210.0 deg...                                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info *      220.0 deg...                                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info *      230.0 deg...                                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info *      240.0 deg...                                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info *      250.0 deg...                                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info *      260.0 deg...                                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info *      270.0 deg...                                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info *      280.0 deg...                                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info *      290.0 deg...                                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info *      300.0 deg...                                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info *      310.0 deg...                                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info *      320.0 deg...                                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info *      330.0 deg...                                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info *      340.0 deg...                                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info *      350.0 deg...                                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info *      360.0 deg...                                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                                                                          
+* Info * Dihedral barriers [2.22536935 2.22536935 0.         2.22536935 2.22536935] will be used as initial guess.        
+                                                                                                                          
+* Info * Fitting the dihedral parameters...                                                                               
+* Info * Optimizing dihedral via least squares fitting...                                                                 
+* Info * New fitted barriers: [2.30913649 2.30913649 1.16030449 2.30913649 2.30913649]                                    
+                                                                                                                          
+* Info * Validating the fitted force field...                                                                             
+                                                                                                                          
+* Info *       Dihedral      MM energy(rel)      QM energy(rel)       diff                                                
+* Info *   ---------------------------------------------------------------                                                
+* Info *      180.0 deg        0.000 kJ/mol        0.056 kJ/mol     -0.056                                                
+* Info *      190.0 deg        0.404 kJ/mol        0.000 kJ/mol      0.404                                                
+* Info *      200.0 deg        1.473 kJ/mol        0.097 kJ/mol      1.376                                                
+* Info *      210.0 deg        3.249 kJ/mol        0.799 kJ/mol      2.450                                                
+* Info *      220.0 deg        5.639 kJ/mol        2.385 kJ/mol      3.254                                                
+* Info *      230.0 deg        8.379 kJ/mol        4.878 kJ/mol      3.500                                                
+* Info *      240.0 deg       11.091 kJ/mol        8.047 kJ/mol      3.044                                                
+* Info *      250.0 deg       13.387 kJ/mol       11.478 kJ/mol      1.909                                                
+* Info *      260.0 deg       14.940 kJ/mol       14.445 kJ/mol      0.495                                                
+* Info *      270.0 deg       15.550 kJ/mol       15.853 kJ/mol     -0.303                                                
+* Info *      280.0 deg       15.164 kJ/mol       15.105 kJ/mol      0.058                                                
+* Info *      290.0 deg       13.883 kJ/mol       12.570 kJ/mol      1.313                                                
+* Info *      300.0 deg       11.948 kJ/mol        9.354 kJ/mol      2.595                                                
+* Info *      310.0 deg        9.692 kJ/mol        6.386 kJ/mol      3.305                                                
+* Info *      320.0 deg        7.476 kJ/mol        4.246 kJ/mol      3.230                                                
+* Info *      330.0 deg        5.620 kJ/mol        3.135 kJ/mol      2.484                                                
+* Info *      340.0 deg        4.327 kJ/mol        2.897 kJ/mol      1.430                                                
+* Info *      350.0 deg        3.627 kJ/mol        3.082 kJ/mol      0.545                                                
+* Info *      360.0 deg        3.391 kJ/mol        3.165 kJ/mol      0.226                                                
+                                                                                                                          
+* Info * Summary of validation                                                                                            
+* Info * ---------------------                                                                                            
+* Info * Maximum difference: 3.500 kJ/mol                                                                                 
+* Info * Standard deviation: 1.279 kJ/mol                                                                                 
+                                                                                                                          
+</pre></div>
+</div>
+<img alt="../_images/8565444b6b8e7c50b1f045d03e5e90318350611ef8b33afc409679b0080dbfb1.png" src="../_images/8565444b6b8e7c50b1f045d03e5e90318350611ef8b33afc409679b0080dbfb1.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info * Dihedral MM parameters have been reparameterized and updated in the topology.                                    
+</pre></div>
+</div>
+</div>
+</div>
+<p>Another dihedral angle can be added for a better agreement with the QM Potential Energy Surface.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ff_gen</span><span class="o">.</span><span class="n">add_dihedral</span><span class="p">((</span><span class="mi">16</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">27</span><span class="p">),</span>
+                    <span class="n">barrier</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+                    <span class="n">phase</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+                    <span class="n">periodicity</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info * Added dihedral 16-21-22-27                                                                                       
+</pre></div>
+</div>
+</div>
+</div>
+<p>And start a new parametrization with this added dihedral angle.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ff_gen</span><span class="o">.</span><span class="n">reparameterize_dihedrals</span><span class="p">(</span><span class="n">rotatable_bond</span><span class="o">=</span><span class="p">(</span><span class="mi">21</span><span class="p">,</span><span class="mi">22</span><span class="p">),</span>
+                                <span class="n">scan_file</span><span class="o">=</span><span class="s2">&quot;../input_files/16-21-22-27.xyz&quot;</span><span class="p">,</span>
+                                <span class="n">visualize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                <span class="n">initial_validation</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                          VeloxChem Dihedral Reparameterization                                           
+                                         =======================================                                          
+                                                                                                                          
+* Info * Rotatable bond selected: 21-22                                                                                   
+* Info * Dihedrals involved:[[16, 21, 22, 23], [16, 21, 22, 27], [19, 21, 22, 23], [19, 21, 22, 27]]                      
+                                                                                                                          
+* Info * Reading QM scan from file...                                                                                     
+* Info *   ../input_files/16-21-22-27.xyz                                                                                 
+                                                                                                                          
+* Info * Performing dihedral scan for MM baseline by excluding the involved dihedral barriers...                          
+                                                                                                                          
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info * Target dihedral angle: 16-21-22-27                                                                               
+                                                                                                                          
+* Info *      180.0 deg...                                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info *      190.0 deg...                                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info *      200.0 deg...                                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info *      210.0 deg...                                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info *      220.0 deg...                                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info *      230.0 deg...                                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info *      240.0 deg...                                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info *      250.0 deg...                                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info *      260.0 deg...                                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info *      270.0 deg...                                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info *      280.0 deg...                                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info *      290.0 deg...                                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info *      300.0 deg...                                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info *      310.0 deg...                                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info *      320.0 deg...                                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info *      330.0 deg...                                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info *      340.0 deg...                                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info *      350.0 deg...                                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info *      360.0 deg...                                                                                                
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                                                                          
+* Info * Dihedral barriers [2.30913649 2.30913649 1.16030449 0.         2.30913649 2.30913649] will be used as initial guess.
+                                                                                                                          
+* Info * Fitting the dihedral parameters...                                                                               
+* Info * Optimizing dihedral via least squares fitting...                                                                 
+* Info * New fitted barriers: [2.30964534 2.30964534 1.11148563 1.79468455 2.30964534 2.30964534]                         
+                                                                                                                          
+* Info * Validating the fitted force field...                                                                             
+                                                                                                                          
+* Info *       Dihedral      MM energy(rel)      QM energy(rel)       diff                                                
+* Info *   ---------------------------------------------------------------                                                
+* Info *      180.0 deg        0.015 kJ/mol        0.056 kJ/mol     -0.040                                                
+* Info *      190.0 deg        0.000 kJ/mol        0.000 kJ/mol      0.000                                                
+* Info *      200.0 deg        0.009 kJ/mol        0.097 kJ/mol     -0.088                                                
+* Info *      210.0 deg        0.580 kJ/mol        0.799 kJ/mol     -0.219                                                
+* Info *      220.0 deg        2.187 kJ/mol        2.385 kJ/mol     -0.199                                                
+* Info *      230.0 deg        4.933 kJ/mol        4.878 kJ/mol      0.055                                                
+* Info *      240.0 deg        8.442 kJ/mol        8.047 kJ/mol      0.395                                                
+* Info *      250.0 deg       11.955 kJ/mol       11.478 kJ/mol      0.477                                                
+* Info *      260.0 deg       14.580 kJ/mol       14.445 kJ/mol      0.135                                                
+* Info *      270.0 deg       15.618 kJ/mol       15.853 kJ/mol     -0.235                                                
+* Info *      280.0 deg       14.820 kJ/mol       15.105 kJ/mol     -0.285                                                
+* Info *      290.0 deg       12.485 kJ/mol       12.570 kJ/mol     -0.085                                                
+* Info *      300.0 deg        9.348 kJ/mol        9.354 kJ/mol     -0.006                                                
+* Info *      310.0 deg        6.309 kJ/mol        6.386 kJ/mol     -0.078                                                
+* Info *      320.0 deg        4.098 kJ/mol        4.246 kJ/mol     -0.148                                                
+* Info *      330.0 deg        3.035 kJ/mol        3.135 kJ/mol     -0.100                                                
+* Info *      340.0 deg        2.955 kJ/mol        2.897 kJ/mol      0.057                                                
+* Info *      350.0 deg        3.320 kJ/mol        3.082 kJ/mol      0.237                                                
+* Info *      360.0 deg        3.504 kJ/mol        3.165 kJ/mol      0.339                                                
+                                                                                                                          
+* Info * Summary of validation                                                                                            
+* Info * ---------------------                                                                                            
+* Info * Maximum difference: 0.477 kJ/mol                                                                                 
+* Info * Standard deviation: 0.212 kJ/mol                                                                                 
+                                                                                                                          
+</pre></div>
+</div>
+<img alt="../_images/6d21c2c05c451ef762ea7a4e91ad9b7c77cc2979fc0ab51f4ca42a7ef1b22f99.png" src="../_images/6d21c2c05c451ef762ea7a4e91ad9b7c77cc2979fc0ab51f4ca42a7ef1b22f99.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* Info * Dihedral MM parameters have been reparameterized and updated in the topology.                                    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Rotatable Bond</p></th>
+<th class="head"><p>Max difference (kJ/mol)</p></th>
+<th class="head"><p>Std deviation (kJ/mol)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>[21, 22]</p></td>
+<td><p>0.477</p></td>
+<td><p>0.212</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>With this excellent agreement between the QM and MM Potential Energy Surface, we can now save the topology as, i. e., Gromacs ouptut files.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ff_gen</span><span class="o">.</span><span class="n">write_gromacs_files</span><span class="p">(</span><span class="s1">&#39;HS-276_final&#39;</span><span class="p">,</span> <span class="s1">&#39;MOL&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -481,11 +1099,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="im.html"
+       href="md.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Interpolation mechanics</p>
+        <p class="prev-next-title">Molecular dynamics</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -505,9 +1123,13 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Molecular mechanics</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#force-field-generation">Force field generation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reparametrization-of-dihedral-angle">REparametrization of dihedral angle</a></li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#force-field-definition-and-reparametrization">Force-Field Definition and Reparametrization</a></li>
+</ul>
+
   </nav></div>
 
 </div></div>
