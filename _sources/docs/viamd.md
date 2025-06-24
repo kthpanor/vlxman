@@ -10,7 +10,7 @@ VIAMD is an interactive visualization tool originally developed for molecular dy
 :align: center
 ```
 
-You can find detailed information on how to install VIAMD and read VeloxChem outfile file on the [wiki page](https://github.com/scanberg/viamd/wiki/7.-VIAMD-for-VeloxChem) of VIAMD's github.
+You can find detailed information on how to install VIAMD and read VeloxChem outfile file on the [wiki page](https://github.com/scanberg/viamd/wiki/7.-VIAMD-for-VeloxChem) of VIAMD'github.
 
 
 ```{image} ../images/logo/viamd_logo_hires.png

@@ -41,7 +41,7 @@ scf_drv = vlx.ScfRestrictedDriver()
 scf_drv.xcfun = "b3lyp"
 scf_drv.filename = "vlx_results_hdf5"
 
-scf_results = scfdrv.compute(molecule, basis)
+scf_results = scf_drv.compute(molecule, basis)
 ```
 
 The results of the calculation are stored in an [HDF5](https://en.wikipedia.org/wiki/Hierarchical_Data_Format) file with a user specified name. This file can be directly read and analyzed with VIAMD.

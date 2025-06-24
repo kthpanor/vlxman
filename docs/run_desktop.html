@@ -203,10 +203,14 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Classical methods</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="mm.html">Molecular mechanics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="im.html">Interpolation mechanics</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="md.html">Molecular dynamics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conf_search.html">Conformational search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="solvation.html">Solvation Builder</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="mof_builder.html">MOF Builder</a></li>
 <li class="toctree-l1"><a class="reference internal" href="loc_prop.html">Localized properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="im.html">Interpolation mechanics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="evb.html">Empirical valence bond</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Visualization</span></p>
@@ -467,7 +471,7 @@ document.write(`
 <span class="n">scf_drv</span><span class="o">.</span><span class="n">xcfun</span> <span class="o">=</span> <span class="s2">&quot;b3lyp&quot;</span>
 <span class="n">scf_drv</span><span class="o">.</span><span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;vlx_results_hdf5&quot;</span>
 
-<span class="n">scf_results</span> <span class="o">=</span> <span class="n">scfdrv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">basis</span><span class="p">)</span>
+<span class="n">scf_results</span> <span class="o">=</span> <span class="n">scf_drv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">basis</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The results of the calculation are stored in an <a class="reference external" href="https://en.wikipedia.org/wiki/Hierarchical_Data_Format">HDF5</a> file with a user specified name. This file can be directly read and analyzed with VIAMD.</p>
