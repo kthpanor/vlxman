@@ -77,11 +77,18 @@ scf_drv = vlx.ScfRestrictedDriver()
 scf_drv.filename = 'mol-opt'
 scf_drv.xcfun = 'b3lyp'
 scf_drv.dispersion = 'd4'
-results = scf_drv.compute(molecule, basis)
+scf_results = scf_drv.compute(molecule, basis)
 
-opt_drv = vlx.OptimizationDriver(scf_drv)
-opt_drv.filename = 'mol-opt'
-opt_results = opt_drv.compute(molecule, basis, results)
+rsp_drv = vlx.LinearResponseEigenSolver()
+rsp_drv.nstates = 2
+rsp_results = rsp_drv.compute(molecule, basis, scf_results)
+
+grad_drv = vlx.TddftGradientDriver(scf_drv)
+grad_drv.state_deriv_index = 1
+
+opt_drv = vlx.OptimizationDriver(grad_drv)
+opt_drv.filename = 'mol-S1-opt'
+opt_results = opt_drv.compute(molecule, basis, scf_drv, rsp_drv, rsp_results)
 ```
 
 Download a {download}`Python script <../input_files/bithio-S1-opt.py>` type of input file to perform an optimization of the first excited state of bithiophene molecule at the B3LYP/def2-svp level of theory.

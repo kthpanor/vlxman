@@ -507,11 +507,18 @@ document.write(`
 <span class="n">scf_drv</span><span class="o">.</span><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;mol-opt&#39;</span>
 <span class="n">scf_drv</span><span class="o">.</span><span class="n">xcfun</span> <span class="o">=</span> <span class="s1">&#39;b3lyp&#39;</span>
 <span class="n">scf_drv</span><span class="o">.</span><span class="n">dispersion</span> <span class="o">=</span> <span class="s1">&#39;d4&#39;</span>
-<span class="n">results</span> <span class="o">=</span> <span class="n">scf_drv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">basis</span><span class="p">)</span>
+<span class="n">scf_results</span> <span class="o">=</span> <span class="n">scf_drv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">basis</span><span class="p">)</span>
 
-<span class="n">opt_drv</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">OptimizationDriver</span><span class="p">(</span><span class="n">scf_drv</span><span class="p">)</span>
-<span class="n">opt_drv</span><span class="o">.</span><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;mol-opt&#39;</span>
-<span class="n">opt_results</span> <span class="o">=</span> <span class="n">opt_drv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">basis</span><span class="p">,</span> <span class="n">results</span><span class="p">)</span>
+<span class="n">rsp_drv</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">LinearResponseEigenSolver</span><span class="p">()</span>
+<span class="n">rsp_drv</span><span class="o">.</span><span class="n">nstates</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">rsp_results</span> <span class="o">=</span> <span class="n">rsp_drv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">basis</span><span class="p">,</span> <span class="n">scf_results</span><span class="p">)</span>
+
+<span class="n">grad_drv</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">TddftGradientDriver</span><span class="p">(</span><span class="n">scf_drv</span><span class="p">)</span>
+<span class="n">grad_drv</span><span class="o">.</span><span class="n">state_deriv_index</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">opt_drv</span> <span class="o">=</span> <span class="n">vlx</span><span class="o">.</span><span class="n">OptimizationDriver</span><span class="p">(</span><span class="n">grad_drv</span><span class="p">)</span>
+<span class="n">opt_drv</span><span class="o">.</span><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;mol-S1-opt&#39;</span>
+<span class="n">opt_results</span> <span class="o">=</span> <span class="n">opt_drv</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">basis</span><span class="p">,</span> <span class="n">scf_drv</span><span class="p">,</span> <span class="n">rsp_drv</span><span class="p">,</span> <span class="n">rsp_results</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Download a <a class="reference download internal" download="" href="../_downloads/943b543ff72590a9d72928eed3ee0408/bithio-S1-opt.py"><code class="xref download docutils literal notranslate"><span class="pre">Python</span> <span class="pre">script</span></code></a> type of input file to perform an optimization of the first excited state of bithiophene molecule at the B3LYP/def2-svp level of theory.</p>
